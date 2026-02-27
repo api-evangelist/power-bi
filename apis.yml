@@ -1,0 +1,102 @@
+name: Power BI
+description: Microsoft Power BI is a business analytics service that delivers insights to enable fast, informed decisions. It provides interactive visualizations and business intelligence capabilities with an interface simple enough for end users to create their own reports and dashboards.
+image: https://powerbi.microsoft.com/pictures/shared/social/social-default-image.png
+tags:
+- Business Intelligence
+- Analytics
+- Visualization
+- Dashboards
+- Reporting
+- Data Analysis
+created: '2024'
+modified: '2024'
+url: https://powerbi.microsoft.com
+specificationVersion: '0.18'
+apis:
+- name: Power BI REST API
+  description: The Power BI REST API provides service endpoints for embedding, administration, governance, and user resources.
+  image: https://powerbi.microsoft.com/pictures/shared/social/social-default-image.png
+  humanURL: https://docs.microsoft.com/en-us/rest/api/power-bi/
+  baseURL: https://api.powerbi.com
+  tags:
+  - REST
+  - Dashboards
+  - Reports
+  - Datasets
+  - Embeddings
+  properties:
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/rest/api/power-bi/
+  - type: OpenAPI
+    url: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/powerbi/data-plane/Microsoft.PowerBI/stable/v1.0/powerbi.json
+  - type: Authentication
+    url: https://docs.microsoft.com/en-us/power-bi/developer/embedded/get-azuread-access-token
+  - type: Getting Started
+    url: https://docs.microsoft.com/en-us/power-bi/developer/embedded/embedding-content
+  - type: Rate Limits
+    url: https://docs.microsoft.com/en-us/power-bi/developer/automation/api-rest-api-limitations
+  - type: SDKs
+    url: https://docs.microsoft.com/en-us/javascript/api/overview/powerbi/
+  - type: Changelog
+    url: https://docs.microsoft.com/en-us/power-bi/developer/embedded/embedded-analytics-power-bi-changelog
+- name: Power BI Embedded
+  description: Azure service that enables ISVs and developers to embed Power BI visuals, reports, and dashboards into their applications.
+  image: https://powerbi.microsoft.com/pictures/shared/social/social-default-image.png
+  humanURL: https://azure.microsoft.com/en-us/services/power-bi-embedded/
+  baseURL: https://api.powerbi.com
+  tags:
+  - Embedded
+  - Azure
+  - Integration
+  properties:
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/power-bi/developer/embedded/
+  - type: Pricing
+    url: https://azure.microsoft.com/en-us/pricing/details/power-bi-embedded/
+  - type: Playground
+    url: https://playground.powerbi.com/
+  - type: Code Samples
+    url: https://github.com/Microsoft/PowerBI-Developer-Samples
+- name: Power BI Management API
+  description: API for managing Power BI capacity, workspaces, and tenant settings.
+  image: https://powerbi.microsoft.com/pictures/shared/social/social-default-image.png
+  humanURL: https://docs.microsoft.com/en-us/rest/api/power-bi/admin
+  baseURL: https://api.powerbi.com/v1.0/myorg/admin
+  tags:
+  - Administration
+  - Management
+  - Governance
+  properties:
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/rest/api/power-bi/admin
+  - type: Authentication
+    url: https://docs.microsoft.com/en-us/power-bi/admin/service-admin-reference
+common:
+- type: Portal
+  url: https://app.powerbi.com
+- type: Developer Portal
+  url: https://powerbi.microsoft.com/en-us/developers/
+- type: Blog
+  url: https://powerbi.microsoft.com/en-us/blog/
+- type: Community
+  url: https://community.powerbi.com/
+- type: Support
+  url: https://powerbi.microsoft.com/en-us/support/
+- type: Status
+  url: https://powerbi.microsoft.com/en-us/status/
+- type: Terms of Service
+  url: https://powerbi.microsoft.com/en-us/terms-of-service/
+- type: Privacy Policy
+  url: https://privacy.microsoft.com/en-us/privacystatement
+- type: GitHub Organization
+  url: https://github.com/Microsoft/PowerBI-JavaScript
+- type: LinkedIn
+  url: https://www.linkedin.com/showcase/microsoft-power-bi/
+- type: Twitter
+  url: https://twitter.com/MSPowerBI
+- type: YouTube
+  url: https://www.youtube.com/user/mspowerbi
+maintainers:
+- FN: Microsoft
+  email: powerbi-support@microsoft.com
+  url: https://powerbi.microsoft.com
