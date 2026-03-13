@@ -1,0 +1,212 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://learn.microsoft.com/schemas/power-bi/report.json",
+  "title": "Power BI Report",
+  "description": "Schema for a Power BI report resource as returned by the Power BI REST API. A report is a multi-page visual presentation of data from a dataset, with interactive elements for filtering, drilling, and exploring insights.",
+  "type": "object",
+  "required": ["name"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The unique identifier of the report, assigned by the Power BI service"
+    },
+    "name": {
+      "type": "string",
+      "description": "The display name of the report",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "description": {
+      "type": "string",
+      "description": "A text description of the report's purpose and content"
+    },
+    "datasetId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The unique identifier of the dataset that provides data to this report"
+    },
+    "reportType": {
+      "type": "string",
+      "description": "The type of report, either an interactive Power BI report or a paginated report",
+      "enum": ["PowerBIReport", "PaginatedReport"]
+    },
+    "webUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "The web URL for viewing the report in the Power BI service"
+    },
+    "embedUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "The URL for embedding the report in third-party applications using the Power BI Embedded service"
+    },
+    "createdDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The UTC date and time when the report was first created"
+    },
+    "modifiedDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The UTC date and time when the report was last modified"
+    },
+    "modifiedBy": {
+      "type": "string",
+      "description": "The display name or email of the user who last modified the report"
+    },
+    "createdBy": {
+      "type": "string",
+      "description": "The display name or email of the user who created the report"
+    },
+    "workspaceId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The unique identifier of the workspace containing this report"
+    },
+    "pages": {
+      "type": "array",
+      "description": "The pages within the report, each containing visualizations and layout",
+      "items": {
+        "$ref": "#/$defs/Page"
+      }
+    },
+    "datasetWorkspaceId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The workspace ID of the dataset if it resides in a different workspace from the report"
+    },
+    "appId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The app ID if this report is part of a published Power BI app"
+    },
+    "users": {
+      "type": "array",
+      "description": "Users who have access to the report and their permissions",
+      "items": {
+        "$ref": "#/$defs/ReportUser"
+      }
+    },
+    "subscriptions": {
+      "type": "array",
+      "description": "Email subscriptions configured for this report",
+      "items": {
+        "$ref": "#/$defs/Subscription"
+      }
+    }
+  },
+  "$defs": {
+    "Page": {
+      "type": "object",
+      "description": "A page within a Power BI report containing visualizations and layout",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The internal name of the page, used as a unique identifier within the report"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "The display name shown in the report page tab"
+        },
+        "order": {
+          "type": "integer",
+          "description": "The zero-based order of the page within the report",
+          "minimum": 0
+        }
+      }
+    },
+    "ReportUser": {
+      "type": "object",
+      "description": "A user with access to the report",
+      "properties": {
+        "emailAddress": {
+          "type": "string",
+          "format": "email",
+          "description": "The email address of the user"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "The display name of the user"
+        },
+        "identifier": {
+          "type": "string",
+          "description": "The object ID of the user in Azure Active Directory"
+        },
+        "reportUserAccessRight": {
+          "type": "string",
+          "description": "The access right the user has on the report",
+          "enum": ["Owner", "ReadWrite", "Read", "ReadReshare", "ReadCopy", "ReadReshareExplore"]
+        },
+        "principalType": {
+          "type": "string",
+          "description": "The type of principal",
+          "enum": ["User", "Group", "App"]
+        }
+      }
+    },
+    "Subscription": {
+      "type": "object",
+      "description": "An email subscription for a report or report page",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid",
+          "description": "The unique identifier of the subscription"
+        },
+        "title": {
+          "type": "string",
+          "description": "The subject line of the subscription email"
+        },
+        "artifactId": {
+          "type": "string",
+          "format": "uuid",
+          "description": "The report ID this subscription is for"
+        },
+        "artifactDisplayName": {
+          "type": "string",
+          "description": "The display name of the report"
+        },
+        "subArtifactDisplayName": {
+          "type": "string",
+          "description": "The display name of the specific report page if applicable"
+        },
+        "frequency": {
+          "type": "string",
+          "description": "How often the subscription email is sent",
+          "enum": ["Daily", "Weekly", "Monthly"]
+        },
+        "startDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The start date and time for the subscription"
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The end date and time for the subscription"
+        },
+        "isEnabled": {
+          "type": "boolean",
+          "description": "Whether the subscription is currently active"
+        },
+        "users": {
+          "type": "array",
+          "description": "The recipients of the subscription email",
+          "items": {
+            "type": "object",
+            "properties": {
+              "emailAddress": {
+                "type": "string",
+                "format": "email"
+              },
+              "displayName": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

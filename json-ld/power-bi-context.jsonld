@@ -1,0 +1,274 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "powerbi": "https://learn.microsoft.com/rest/api/power-bi/schemas/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "Dataset": {
+      "@id": "powerbi:Dataset",
+      "@context": {
+        "id": "@id",
+        "name": "schema:name",
+        "addRowsAPIEnabled": "powerbi:addRowsAPIEnabled",
+        "configuredBy": "powerbi:configuredBy",
+        "isRefreshable": "powerbi:isRefreshable",
+        "isEffectiveIdentityRequired": "powerbi:isEffectiveIdentityRequired",
+        "isEffectiveIdentityRolesRequired": "powerbi:isEffectiveIdentityRolesRequired",
+        "isOnPremGatewayRequired": "powerbi:isOnPremGatewayRequired",
+        "targetStorageMode": "powerbi:targetStorageMode",
+        "defaultMode": "powerbi:defaultMode",
+        "createdDate": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "contentProviderType": "powerbi:contentProviderType",
+        "webUrl": {
+          "@id": "schema:url",
+          "@type": "@id"
+        },
+        "createReportEmbedURL": {
+          "@id": "powerbi:createReportEmbedURL",
+          "@type": "@id"
+        },
+        "qnaEmbedURL": {
+          "@id": "powerbi:qnaEmbedURL",
+          "@type": "@id"
+        },
+        "tables": {
+          "@id": "powerbi:tables",
+          "@container": "@set"
+        },
+        "relationships": {
+          "@id": "powerbi:relationships",
+          "@container": "@set"
+        }
+      }
+    },
+
+    "Table": {
+      "@id": "powerbi:Table",
+      "@context": {
+        "name": "schema:name",
+        "columns": {
+          "@id": "powerbi:columns",
+          "@container": "@set"
+        },
+        "measures": {
+          "@id": "powerbi:measures",
+          "@container": "@set"
+        },
+        "rows": {
+          "@id": "powerbi:rows",
+          "@container": "@list"
+        },
+        "isHidden": "powerbi:isHidden"
+      }
+    },
+
+    "Column": {
+      "@id": "powerbi:Column",
+      "@context": {
+        "name": "schema:name",
+        "dataType": "powerbi:dataType",
+        "formatString": "powerbi:formatString",
+        "sortByColumn": "powerbi:sortByColumn",
+        "dataCategory": "powerbi:dataCategory",
+        "isHidden": "powerbi:isHidden",
+        "summarizeBy": "powerbi:summarizeBy"
+      }
+    },
+
+    "Measure": {
+      "@id": "powerbi:Measure",
+      "@context": {
+        "name": "schema:name",
+        "expression": "powerbi:daxExpression",
+        "formatString": "powerbi:formatString",
+        "description": "dcterms:description",
+        "isHidden": "powerbi:isHidden"
+      }
+    },
+
+    "Relationship": {
+      "@id": "powerbi:Relationship",
+      "@context": {
+        "name": "schema:name",
+        "fromTable": "powerbi:fromTable",
+        "fromColumn": "powerbi:fromColumn",
+        "toTable": "powerbi:toTable",
+        "toColumn": "powerbi:toColumn",
+        "crossFilteringBehavior": "powerbi:crossFilteringBehavior"
+      }
+    },
+
+    "Report": {
+      "@id": "powerbi:Report",
+      "@context": {
+        "id": "@id",
+        "name": "schema:name",
+        "description": "dcterms:description",
+        "datasetId": "powerbi:datasetId",
+        "reportType": "powerbi:reportType",
+        "webUrl": {
+          "@id": "schema:url",
+          "@type": "@id"
+        },
+        "embedUrl": {
+          "@id": "powerbi:embedUrl",
+          "@type": "@id"
+        },
+        "createdDateTime": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "modifiedDateTime": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        },
+        "modifiedBy": "powerbi:modifiedBy",
+        "createdBy": "powerbi:createdBy",
+        "pages": {
+          "@id": "powerbi:pages",
+          "@container": "@list"
+        }
+      }
+    },
+
+    "Page": {
+      "@id": "powerbi:Page",
+      "@context": {
+        "name": "schema:name",
+        "displayName": "schema:alternateName",
+        "order": "schema:position"
+      }
+    },
+
+    "Dashboard": {
+      "@id": "powerbi:Dashboard",
+      "@context": {
+        "id": "@id",
+        "displayName": "schema:name",
+        "isReadOnly": "powerbi:isReadOnly",
+        "webUrl": {
+          "@id": "schema:url",
+          "@type": "@id"
+        },
+        "embedUrl": {
+          "@id": "powerbi:embedUrl",
+          "@type": "@id"
+        },
+        "dataClassification": "powerbi:dataClassification",
+        "tiles": {
+          "@id": "powerbi:tiles",
+          "@container": "@set"
+        }
+      }
+    },
+
+    "Tile": {
+      "@id": "powerbi:Tile",
+      "@context": {
+        "id": "@id",
+        "title": "schema:name",
+        "subTitle": "schema:alternateName",
+        "embedUrl": {
+          "@id": "powerbi:embedUrl",
+          "@type": "@id"
+        },
+        "reportId": "powerbi:reportId",
+        "datasetId": "powerbi:datasetId",
+        "rowSpan": "powerbi:rowSpan",
+        "colSpan": "powerbi:colSpan"
+      }
+    },
+
+    "Group": {
+      "@id": "powerbi:Group",
+      "@context": {
+        "id": "@id",
+        "name": "schema:name",
+        "isReadOnly": "powerbi:isReadOnly",
+        "isOnDedicatedCapacity": "powerbi:isOnDedicatedCapacity",
+        "capacityId": "powerbi:capacityId",
+        "type": "powerbi:workspaceType",
+        "state": "powerbi:workspaceState"
+      }
+    },
+
+    "GroupUser": {
+      "@id": "powerbi:GroupUser",
+      "@context": {
+        "emailAddress": "schema:email",
+        "displayName": "schema:name",
+        "identifier": "@id",
+        "groupUserAccessRight": "powerbi:accessRight",
+        "principalType": "powerbi:principalType"
+      }
+    },
+
+    "Gateway": {
+      "@id": "powerbi:Gateway",
+      "@context": {
+        "id": "@id",
+        "name": "schema:name",
+        "type": "powerbi:gatewayType",
+        "publicKey": "powerbi:publicKey",
+        "gatewayAnnotation": "powerbi:annotation"
+      }
+    },
+
+    "Datasource": {
+      "@id": "powerbi:Datasource",
+      "@context": {
+        "datasourceType": "powerbi:datasourceType",
+        "connectionDetails": "powerbi:connectionDetails",
+        "datasourceId": "@id",
+        "gatewayId": "powerbi:gatewayId"
+      }
+    },
+
+    "Refresh": {
+      "@id": "powerbi:Refresh",
+      "@context": {
+        "requestId": "@id",
+        "refreshType": "powerbi:refreshType",
+        "startTime": {
+          "@id": "powerbi:startTime",
+          "@type": "xsd:dateTime"
+        },
+        "endTime": {
+          "@id": "powerbi:endTime",
+          "@type": "xsd:dateTime"
+        },
+        "status": "powerbi:refreshStatus"
+      }
+    },
+
+    "Import": {
+      "@id": "powerbi:Import",
+      "@context": {
+        "id": "@id",
+        "name": "schema:name",
+        "importState": "powerbi:importState",
+        "createdDateTime": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "updatedDateTime": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        },
+        "reports": {
+          "@id": "powerbi:reports",
+          "@container": "@set"
+        },
+        "datasets": {
+          "@id": "powerbi:datasets",
+          "@container": "@set"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,295 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://learn.microsoft.com/schemas/power-bi/dataset.json",
+  "title": "Power BI Dataset",
+  "description": "Schema for a Power BI dataset resource as returned by the Power BI REST API. A dataset represents the data model that underpins reports and dashboards, including tables, columns, measures, relationships, and data source configuration.",
+  "type": "object",
+  "required": ["name", "tables"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The unique identifier of the dataset, assigned by the Power BI service"
+    },
+    "name": {
+      "type": "string",
+      "description": "The display name of the dataset",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "addRowsAPIEnabled": {
+      "type": "boolean",
+      "description": "Whether the dataset supports the push rows API for real-time data ingestion",
+      "default": false
+    },
+    "configuredBy": {
+      "type": "string",
+      "description": "The email address of the user who configured or last modified the dataset"
+    },
+    "isRefreshable": {
+      "type": "boolean",
+      "description": "Whether the dataset supports scheduled or on-demand refresh",
+      "default": false
+    },
+    "isEffectiveIdentityRequired": {
+      "type": "boolean",
+      "description": "Whether an effective identity (row-level security identity) is required when generating embed tokens",
+      "default": false
+    },
+    "isEffectiveIdentityRolesRequired": {
+      "type": "boolean",
+      "description": "Whether RLS role specification is required in effective identity for embed tokens",
+      "default": false
+    },
+    "isOnPremGatewayRequired": {
+      "type": "boolean",
+      "description": "Whether the dataset requires an on-premises data gateway to connect to its data sources",
+      "default": false
+    },
+    "targetStorageMode": {
+      "type": "string",
+      "description": "The storage mode that determines how data is stored and queried",
+      "enum": ["Import", "DirectQuery", "Dual", "PushDataset"]
+    },
+    "defaultMode": {
+      "type": "string",
+      "description": "The default mode for push datasets",
+      "enum": ["Push", "Streaming", "PushStreaming"]
+    },
+    "createdDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The UTC date and time when the dataset was first created"
+    },
+    "contentProviderType": {
+      "type": "string",
+      "description": "The type of content provider that generated this dataset"
+    },
+    "createReportEmbedURL": {
+      "type": "string",
+      "format": "uri",
+      "description": "The URL to create an embedded report connected to this dataset"
+    },
+    "qnaEmbedURL": {
+      "type": "string",
+      "format": "uri",
+      "description": "The URL for the Q&A natural language embedded experience"
+    },
+    "webUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "The web URL for accessing the dataset in the Power BI service"
+    },
+    "tables": {
+      "type": "array",
+      "description": "The tables that make up the dataset schema",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/Table"
+      }
+    },
+    "relationships": {
+      "type": "array",
+      "description": "The relationships between tables in the dataset model",
+      "items": {
+        "$ref": "#/$defs/Relationship"
+      }
+    },
+    "datasources": {
+      "type": "array",
+      "description": "The data sources used by the dataset",
+      "items": {
+        "$ref": "#/$defs/Datasource"
+      }
+    }
+  },
+  "$defs": {
+    "Table": {
+      "type": "object",
+      "description": "A table in the Power BI dataset model, containing columns, measures, and optionally rows for push datasets",
+      "required": ["name", "columns"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the table, used in DAX expressions and API references",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "columns": {
+          "type": "array",
+          "description": "The columns defined in this table",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/Column"
+          }
+        },
+        "rows": {
+          "type": "array",
+          "description": "Data rows in the table (used for push datasets)",
+          "items": {
+            "type": "object"
+          }
+        },
+        "measures": {
+          "type": "array",
+          "description": "DAX measures defined on this table",
+          "items": {
+            "$ref": "#/$defs/Measure"
+          }
+        },
+        "isHidden": {
+          "type": "boolean",
+          "description": "Whether the table is hidden from report authors",
+          "default": false
+        }
+      }
+    },
+    "Column": {
+      "type": "object",
+      "description": "A column in a dataset table",
+      "required": ["name", "dataType"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The column name used in DAX expressions",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "dataType": {
+          "type": "string",
+          "description": "The data type of the column values",
+          "enum": ["Int64", "Double", "Boolean", "Datetime", "String", "Decimal"]
+        },
+        "formatString": {
+          "type": "string",
+          "description": "A format string controlling how column values are displayed (e.g. '#,##0.00' for numbers)"
+        },
+        "sortByColumn": {
+          "type": "string",
+          "description": "The name of another column used to sort this column's values"
+        },
+        "dataCategory": {
+          "type": "string",
+          "description": "The data category providing semantic meaning to the column (e.g. Address, City, Country)"
+        },
+        "isHidden": {
+          "type": "boolean",
+          "description": "Whether the column is hidden from report authors",
+          "default": false
+        },
+        "summarizeBy": {
+          "type": "string",
+          "description": "The default aggregation function for the column",
+          "enum": ["sum", "count", "distinctCount", "min", "max", "average", "none"]
+        }
+      }
+    },
+    "Measure": {
+      "type": "object",
+      "description": "A DAX measure defined on a dataset table",
+      "required": ["name", "expression"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The display name of the measure",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "expression": {
+          "type": "string",
+          "description": "The DAX expression that defines the measure calculation",
+          "minLength": 1
+        },
+        "formatString": {
+          "type": "string",
+          "description": "A format string controlling how the measure value is displayed"
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of what the measure calculates"
+        },
+        "isHidden": {
+          "type": "boolean",
+          "description": "Whether the measure is hidden from report authors",
+          "default": false
+        }
+      }
+    },
+    "Relationship": {
+      "type": "object",
+      "description": "A relationship between two tables in the dataset model",
+      "required": ["name", "fromTable", "fromColumn", "toTable", "toColumn"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The unique name of the relationship"
+        },
+        "fromTable": {
+          "type": "string",
+          "description": "The name of the source (many-side) table"
+        },
+        "fromColumn": {
+          "type": "string",
+          "description": "The name of the column in the source table"
+        },
+        "toTable": {
+          "type": "string",
+          "description": "The name of the target (one-side) table"
+        },
+        "toColumn": {
+          "type": "string",
+          "description": "The name of the column in the target table"
+        },
+        "crossFilteringBehavior": {
+          "type": "string",
+          "description": "The cross-filtering direction for the relationship",
+          "enum": ["OneDirection", "BothDirections", "Automatic"],
+          "default": "OneDirection"
+        }
+      }
+    },
+    "Datasource": {
+      "type": "object",
+      "description": "A data source used by the dataset",
+      "properties": {
+        "datasourceType": {
+          "type": "string",
+          "description": "The type of data source (e.g. Sql, AnalysisServices, File, Web)"
+        },
+        "connectionDetails": {
+          "type": "object",
+          "description": "Connection details for the data source",
+          "properties": {
+            "server": {
+              "type": "string",
+              "description": "The server address"
+            },
+            "database": {
+              "type": "string",
+              "description": "The database name"
+            },
+            "url": {
+              "type": "string",
+              "format": "uri",
+              "description": "The connection URL for web-based data sources"
+            },
+            "path": {
+              "type": "string",
+              "description": "The file path for file-based data sources"
+            }
+          }
+        },
+        "datasourceId": {
+          "type": "string",
+          "format": "uuid",
+          "description": "The unique identifier of the bound data source"
+        },
+        "gatewayId": {
+          "type": "string",
+          "format": "uuid",
+          "description": "The gateway identifier if using an on-premises data gateway"
+        }
+      }
+    }
+  }
+}
