@@ -22,18 +22,18 @@ servers:
   - url: https://api.powerbi.com/v1.0/myorg
     description: Power BI REST API - User context
 tags:
-  - name: Datasets
-    description: >-
-      Manage datasets including creating, updating, refreshing, and deleting
-      datasets. Datasets represent the data model behind Power BI reports.
-  - name: Reports
-    description: >-
-      Manage reports including listing, cloning, exporting, rebinding, and
-      deleting reports. Reports are visual presentations of data from datasets.
   - name: Dashboards
     description: >-
       Manage dashboards including listing, creating, and retrieving tiles.
       Dashboards are single-page canvases with pinned visualizations.
+  - name: Datasets
+    description: >-
+      Manage datasets including creating, updating, refreshing, and deleting
+      datasets. Datasets represent the data model behind Power BI reports.
+  - name: Gateways
+    description: >-
+      Manage on-premises data gateways and their data sources for
+      connecting to on-premises data.
   - name: Groups
     description: >-
       Manage workspaces (groups) including listing, creating, deleting, and
@@ -43,10 +43,10 @@ tags:
     description: >-
       Import Power BI content such as PBIX files, Excel workbooks, and
       RDL reports into workspaces.
-  - name: Gateways
+  - name: Reports
     description: >-
-      Manage on-premises data gateways and their data sources for
-      connecting to on-premises data.
+      Manage reports including listing, cloning, exporting, rebinding, and
+      deleting reports. Reports are visual presentations of data from datasets.
 security:
   - bearerAuth: []
 paths:
@@ -924,8 +924,8 @@ paths:
         Returns a list of reports from the specified workspace. Each report
         includes its metadata and embed information.
       tags:
-        - Reports
         - Groups
+        - Reports
       parameters:
         - $ref: '#/components/parameters/groupId'
       responses:
@@ -985,8 +985,8 @@ paths:
         Returns a list of import operations for the specified workspace,
         including their status and the type of content imported.
       tags:
-        - Imports
         - Groups
+        - Imports
       parameters:
         - $ref: '#/components/parameters/groupId'
       responses:
@@ -1010,8 +1010,8 @@ paths:
         content into the specified workspace. The file must be uploaded as
         multipart form data.
       tags:
-        - Imports
         - Groups
+        - Imports
       parameters:
         - $ref: '#/components/parameters/groupId'
         - name: datasetDisplayName
