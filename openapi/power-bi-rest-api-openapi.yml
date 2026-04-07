@@ -53,7 +53,7 @@ paths:
   /datasets:
     get:
       operationId: getDatasets
-      summary: List datasets
+      summary: Power BI List datasets
       description: >-
         Returns a list of datasets from the user's My Workspace. Each dataset
         includes metadata such as name, configuration settings, and whether
@@ -75,7 +75,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
     post:
       operationId: createDataset
-      summary: Create a push dataset
+      summary: Power BI Create a push dataset
       description: >-
         Creates a new push dataset in the user's My Workspace. Push datasets
         allow applications to push data directly into Power BI in real time
@@ -125,7 +125,7 @@ paths:
   /datasets/{datasetId}:
     get:
       operationId: getDataset
-      summary: Get a dataset
+      summary: Power BI Get a dataset
       description: >-
         Returns the specified dataset from the user's My Workspace, including
         its configuration, tables, and data source details.
@@ -154,7 +154,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
     delete:
       operationId: deleteDataset
-      summary: Delete a dataset
+      summary: Power BI Delete a dataset
       description: >-
         Deletes the specified dataset from the user's My Workspace. This also
         deletes all reports and dashboard tiles that are built on the dataset.
@@ -180,7 +180,7 @@ paths:
   /datasets/{datasetId}/refreshes:
     get:
       operationId: getRefreshHistory
-      summary: Get refresh history
+      summary: Power BI Get refresh history
       description: >-
         Returns the refresh history for the specified dataset. The response
         includes the status, start time, and end time of each refresh
@@ -216,7 +216,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
     post:
       operationId: refreshDataset
-      summary: Trigger a dataset refresh
+      summary: Power BI Trigger a dataset refresh
       description: >-
         Triggers a refresh for the specified dataset. For enhanced refresh
         capabilities, include a request body specifying tables, partitions,
@@ -249,7 +249,7 @@ paths:
   /datasets/{datasetId}/datasources:
     get:
       operationId: getDatasources
-      summary: Get data sources
+      summary: Power BI Get data sources
       description: >-
         Returns a list of data sources for the specified dataset. Each data
         source includes connection details such as the server, database, and
@@ -280,7 +280,7 @@ paths:
   /datasets/{datasetId}/parameters:
     get:
       operationId: getParameters
-      summary: Get dataset parameters
+      summary: Power BI Get dataset parameters
       description: >-
         Returns a list of parameters for the specified dataset. Parameters
         allow dynamic configuration of data source connections and query
@@ -304,7 +304,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
     post:
       operationId: updateParameters
-      summary: Update dataset parameters
+      summary: Power BI Update dataset parameters
       description: >-
         Updates the values of one or more parameters for the specified dataset.
         After updating parameters, a dataset refresh is required for the new
@@ -337,7 +337,7 @@ paths:
   /reports:
     get:
       operationId: getReports
-      summary: List reports
+      summary: Power BI List reports
       description: >-
         Returns a list of reports from the user's My Workspace. Each report
         includes metadata such as name, the associated dataset, web URL, and
@@ -360,7 +360,7 @@ paths:
   /reports/{reportId}:
     get:
       operationId: getReport
-      summary: Get a report
+      summary: Power BI Get a report
       description: >-
         Returns the specified report from the user's My Workspace, including
         its name, dataset binding, web URL, and embed URL.
@@ -389,7 +389,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
     delete:
       operationId: deleteReport
-      summary: Delete a report
+      summary: Power BI Delete a report
       description: >-
         Deletes the specified report from the user's My Workspace. This does
         not delete the underlying dataset.
@@ -415,7 +415,7 @@ paths:
   /reports/{reportId}/Clone:
     post:
       operationId: cloneReport
-      summary: Clone a report
+      summary: Power BI Clone a report
       description: >-
         Clones the specified report from the user's My Workspace. The clone
         can be placed in a different workspace and optionally rebound to a
@@ -452,7 +452,7 @@ paths:
   /reports/{reportId}/Rebind:
     post:
       operationId: rebindReport
-      summary: Rebind a report to a dataset
+      summary: Power BI Rebind a report to a dataset
       description: >-
         Rebinds the specified report to a different dataset. The target
         dataset must have the same schema as the current dataset.
@@ -484,7 +484,7 @@ paths:
   /reports/{reportId}/Export:
     get:
       operationId: exportReport
-      summary: Export a report
+      summary: Power BI Export a report
       description: >-
         Exports the specified report as a PBIX file. Only reports created
         from PBIX files can be exported. Reports created from the Power BI
@@ -516,7 +516,7 @@ paths:
   /reports/{reportId}/pages:
     get:
       operationId: getPages
-      summary: Get report pages
+      summary: Power BI Get report pages
       description: >-
         Returns a list of pages within the specified report. Each page
         includes its name, display name, and order within the report.
@@ -546,7 +546,7 @@ paths:
   /dashboards:
     get:
       operationId: getDashboards
-      summary: List dashboards
+      summary: Power BI List dashboards
       description: >-
         Returns a list of dashboards from the user's My Workspace. Each
         dashboard includes its name, web URL, embed URL, and whether it
@@ -568,7 +568,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
     post:
       operationId: createDashboard
-      summary: Create a dashboard
+      summary: Power BI Create a dashboard
       description: >-
         Creates a new empty dashboard in the user's My Workspace. After
         creating the dashboard, use tile pinning to add content.
@@ -596,7 +596,7 @@ paths:
   /dashboards/{dashboardId}:
     get:
       operationId: getDashboard
-      summary: Get a dashboard
+      summary: Power BI Get a dashboard
       description: >-
         Returns the specified dashboard from the user's My Workspace,
         including its name, embed URL, and configuration.
@@ -626,7 +626,7 @@ paths:
   /dashboards/{dashboardId}/tiles:
     get:
       operationId: getTiles
-      summary: Get dashboard tiles
+      summary: Power BI Get dashboard tiles
       description: >-
         Returns a list of tiles within the specified dashboard. Each tile
         represents a pinned visualization and includes its embed URL,
@@ -657,7 +657,7 @@ paths:
   /dashboards/{dashboardId}/tiles/{tileId}:
     get:
       operationId: getTile
-      summary: Get a dashboard tile
+      summary: Power BI Get a dashboard tile
       description: >-
         Returns the specified tile from the specified dashboard, including
         its embed URL and configuration details.
@@ -688,7 +688,7 @@ paths:
   /groups:
     get:
       operationId: getGroups
-      summary: List workspaces
+      summary: Power BI List workspaces
       description: >-
         Returns a list of workspaces (groups) the user has access to. Each
         workspace includes its name, type, and whether it is read-only or
@@ -726,7 +726,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
     post:
       operationId: createGroup
-      summary: Create a workspace
+      summary: Power BI Create a workspace
       description: >-
         Creates a new workspace (group). The workspace can be assigned to
         a Premium capacity for enhanced features and performance.
@@ -754,7 +754,7 @@ paths:
   /groups/{groupId}:
     delete:
       operationId: deleteGroup
-      summary: Delete a workspace
+      summary: Power BI Delete a workspace
       description: >-
         Deletes the specified workspace. All content within the workspace
         including dashboards, reports, and datasets will be permanently
@@ -781,7 +781,7 @@ paths:
   /groups/{groupId}/users:
     get:
       operationId: getGroupUsers
-      summary: List workspace users
+      summary: Power BI List workspace users
       description: >-
         Returns a list of users who have access to the specified workspace,
         including their display name, email address, and access rights.
@@ -810,7 +810,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
     post:
       operationId: addGroupUser
-      summary: Add a workspace user
+      summary: Power BI Add a workspace user
       description: >-
         Grants the specified user access to the workspace with the given
         access right (Admin, Member, Contributor, or Viewer).
@@ -842,7 +842,7 @@ paths:
   /groups/{groupId}/users/{userId}:
     put:
       operationId: updateGroupUser
-      summary: Update workspace user access
+      summary: Power BI Update workspace user access
       description: >-
         Updates the access right for the specified user in the workspace.
       tags:
@@ -867,7 +867,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
     delete:
       operationId: deleteGroupUser
-      summary: Remove a workspace user
+      summary: Power BI Remove a workspace user
       description: >-
         Removes the specified user from the workspace, revoking all access.
       tags:
@@ -887,7 +887,7 @@ paths:
   /groups/{groupId}/datasets:
     get:
       operationId: getDatasetsInGroup
-      summary: List datasets in a workspace
+      summary: Power BI List datasets in a workspace
       description: >-
         Returns a list of datasets from the specified workspace. This is
         similar to the My Workspace datasets endpoint but scoped to a
@@ -919,7 +919,7 @@ paths:
   /groups/{groupId}/reports:
     get:
       operationId: getReportsInGroup
-      summary: List reports in a workspace
+      summary: Power BI List reports in a workspace
       description: >-
         Returns a list of reports from the specified workspace. Each report
         includes its metadata and embed information.
@@ -950,7 +950,7 @@ paths:
   /groups/{groupId}/dashboards:
     get:
       operationId: getDashboardsInGroup
-      summary: List dashboards in a workspace
+      summary: Power BI List dashboards in a workspace
       description: >-
         Returns a list of dashboards from the specified workspace.
       tags:
@@ -980,7 +980,7 @@ paths:
   /groups/{groupId}/imports:
     get:
       operationId: getImportsInGroup
-      summary: List imports in a workspace
+      summary: Power BI List imports in a workspace
       description: >-
         Returns a list of import operations for the specified workspace,
         including their status and the type of content imported.
@@ -1004,7 +1004,7 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
     post:
       operationId: createImportInGroup
-      summary: Import content into a workspace
+      summary: Power BI Import content into a workspace
       description: >-
         Imports a Power BI PBIX file, Excel workbook, or other supported
         content into the specified workspace. The file must be uploaded as
@@ -1063,7 +1063,7 @@ paths:
   /gateways:
     get:
       operationId: getGateways
-      summary: List gateways
+      summary: Power BI List gateways
       description: >-
         Returns a list of on-premises data gateways that the user has
         permissions to administer. Each gateway includes its cluster
@@ -1086,7 +1086,7 @@ paths:
   /gateways/{gatewayId}:
     get:
       operationId: getGateway
-      summary: Get a gateway
+      summary: Power BI Get a gateway
       description: Returns the specified on-premises data gateway.
       tags:
         - Gateways
@@ -1114,7 +1114,7 @@ paths:
   /gateways/{gatewayId}/datasources:
     get:
       operationId: getGatewayDatasources
-      summary: List gateway data sources
+      summary: Power BI List gateway data sources
       description: >-
         Returns a list of data sources configured on the specified gateway.
       tags:
