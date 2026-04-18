@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RefreshRequest",
+  "type": "object",
+  "description": "Request body for an enhanced dataset refresh",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "The type of processing to perform"
+    },
+    "commitMode": {
+      "type": "string",
+      "description": "Determines whether objects are committed in batches or only when complete"
+    },
+    "maxParallelism": {
+      "type": "integer",
+      "description": "Maximum number of threads to run in parallel"
+    },
+    "retryCount": {
+      "type": "integer",
+      "description": "Number of times to retry on failure"
+    },
+    "objects": {
+      "type": "array",
+      "description": "Specific tables or partitions to refresh"
+    }
+  }
+}

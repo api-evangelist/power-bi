@@ -1,0 +1,9 @@
+{
+  "requestId": "500123",
+  "id": "abc123",
+  "refreshType": "example_value",
+  "startTime": "example_value",
+  "endTime": "example_value",
+  "status": "example_value",
+  "serviceExceptionJson": "example_value"
+}

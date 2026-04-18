@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DashboardList",
+  "type": "object",
+  "description": "A list of Power BI dashboards",
+  "properties": {
+    "value": {
+      "type": "array"
+    },
+    "@odata.context": {
+      "type": "string"
+    }
+  }
+}

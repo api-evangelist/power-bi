@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Relationship",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "fromTable": {
+      "type": "string"
+    },
+    "fromColumn": {
+      "type": "string"
+    },
+    "toTable": {
+      "type": "string"
+    },
+    "toColumn": {
+      "type": "string"
+    },
+    "crossFilteringBehavior": {
+      "type": "string"
+    }
+  }
+}

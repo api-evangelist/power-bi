@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Parameter",
+  "type": "object",
+  "description": "A parameter in a dataset",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The parameter name"
+    },
+    "type": {
+      "type": "string",
+      "description": "The data type of the parameter"
+    },
+    "currentValue": {
+      "type": "string",
+      "description": "The current value of the parameter"
+    },
+    "isRequired": {
+      "type": "boolean",
+      "description": "Whether the parameter is required"
+    },
+    "suggestedValues": {
+      "type": "array",
+      "description": "Suggested values for the parameter"
+    }
+  }
+}

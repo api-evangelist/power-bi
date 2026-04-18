@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReportList",
+  "type": "object",
+  "description": "A list of Power BI reports",
+  "properties": {
+    "value": {
+      "type": "array"
+    },
+    "@odata.context": {
+      "type": "string"
+    }
+  }
+}

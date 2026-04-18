@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GatewayDatasource",
+  "type": "object",
+  "description": "A data source on a gateway",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the data source"
+    },
+    "gatewayId": {
+      "type": "string",
+      "description": "The gateway this data source belongs to"
+    },
+    "datasourceType": {
+      "type": "string",
+      "description": "The type of data source"
+    },
+    "connectionDetails": {
+      "type": "string",
+      "description": "JSON string with connection details"
+    },
+    "credentialType": {
+      "type": "string",
+      "description": "The credential type used for authentication"
+    },
+    "datasourceName": {
+      "type": "string",
+      "description": "The display name of the data source"
+    }
+  }
+}

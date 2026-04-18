@@ -1,0 +1,7 @@
+{
+  "id": "abc123",
+  "name": "Example Title",
+  "type": "example_value",
+  "publicKey": "example_value",
+  "gatewayAnnotation": "example_value"
+}

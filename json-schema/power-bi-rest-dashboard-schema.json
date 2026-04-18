@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dashboard",
+  "type": "object",
+  "description": "A Power BI dashboard",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the dashboard"
+    },
+    "displayName": {
+      "type": "string",
+      "description": "The display name of the dashboard"
+    },
+    "isReadOnly": {
+      "type": "boolean",
+      "description": "Whether the dashboard is read-only"
+    },
+    "webUrl": {
+      "type": "string",
+      "description": "The web URL of the dashboard"
+    },
+    "embedUrl": {
+      "type": "string",
+      "description": "The embed URL for embedding the dashboard"
+    },
+    "dataClassification": {
+      "type": "string",
+      "description": "The data classification label"
+    }
+  }
+}

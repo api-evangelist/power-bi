@@ -1,0 +1,7 @@
+{
+  "name": "Example Title",
+  "type": "example_value",
+  "currentValue": "example_value",
+  "isRequired": true,
+  "suggestedValues": []
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Dashboard",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "displayName": {
+      "type": "string"
+    },
+    "isReadOnly": {
+      "type": "boolean"
+    },
+    "webUrl": {
+      "type": "string"
+    },
+    "embedUrl": {
+      "type": "string"
+    },
+    "dataClassification": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CreateDatasetRequest",
+  "type": "object",
+  "description": "Request body for creating a push dataset",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The display name of the dataset"
+    },
+    "defaultMode": {
+      "type": "string",
+      "description": "The dataset mode"
+    },
+    "tables": {
+      "type": "array",
+      "description": "The tables within the dataset"
+    },
+    "relationships": {
+      "type": "array",
+      "description": "Relationships between tables"
+    }
+  }
+}

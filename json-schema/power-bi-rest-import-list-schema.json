@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ImportList",
+  "type": "object",
+  "description": "A list of import operations",
+  "properties": {
+    "value": {
+      "type": "array"
+    },
+    "@odata.context": {
+      "type": "string"
+    }
+  }
+}

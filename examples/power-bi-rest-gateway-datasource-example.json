@@ -1,0 +1,8 @@
+{
+  "id": "abc123",
+  "gatewayId": "500123",
+  "datasourceType": "example_value",
+  "connectionDetails": "example_value",
+  "credentialType": "example_value",
+  "datasourceName": "example_value"
+}

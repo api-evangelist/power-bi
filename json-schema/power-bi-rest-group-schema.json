@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Group",
+  "type": "object",
+  "description": "A Power BI workspace (group)",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the workspace"
+    },
+    "name": {
+      "type": "string",
+      "description": "The display name of the workspace"
+    },
+    "isReadOnly": {
+      "type": "boolean",
+      "description": "Whether the workspace is read-only"
+    },
+    "isOnDedicatedCapacity": {
+      "type": "boolean",
+      "description": "Whether the workspace is on a dedicated capacity"
+    },
+    "capacityId": {
+      "type": "string",
+      "description": "The capacity ID if on a dedicated capacity"
+    },
+    "type": {
+      "type": "string",
+      "description": "The workspace type"
+    },
+    "state": {
+      "type": "string",
+      "description": "The workspace state"
+    }
+  }
+}

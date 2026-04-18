@@ -1,0 +1,12 @@
+{
+  "id": "abc123",
+  "name": "Example Title",
+  "datasetId": "500123",
+  "webUrl": "https://www.example.com",
+  "embedUrl": "https://www.example.com",
+  "reportType": "example_value",
+  "description": "A sample description.",
+  "createdDateTime": "example_value",
+  "modifiedDateTime": "example_value",
+  "modifiedBy": "example_value"
+}

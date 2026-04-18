@@ -1,0 +1,9 @@
+{
+  "id": "abc123",
+  "name": "Example Title",
+  "isReadOnly": true,
+  "isOnDedicatedCapacity": true,
+  "capacityId": "500123",
+  "type": "example_value",
+  "state": "example_value"
+}

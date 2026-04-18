@@ -1,0 +1,8 @@
+{
+  "id": "abc123",
+  "displayName": "example_value",
+  "isReadOnly": true,
+  "webUrl": "https://www.example.com",
+  "embedUrl": "https://www.example.com",
+  "dataClassification": "example_value"
+}

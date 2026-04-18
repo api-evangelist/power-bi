@@ -1,0 +1,13 @@
+name: power-bi API Vocabulary
+provider: power-bi
+created: '2026-04-18'
+modified: '2026-04-18'
+operations: 36
+schemas: 38
+tags:
+- Dashboards
+- Datasets
+- Gateways
+- Groups
+- Imports
+- Reports

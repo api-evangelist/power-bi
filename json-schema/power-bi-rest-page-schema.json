@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Page",
+  "type": "object",
+  "description": "A page within a Power BI report",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The internal name of the page"
+    },
+    "displayName": {
+      "type": "string",
+      "description": "The display name shown in the report"
+    },
+    "order": {
+      "type": "integer",
+      "description": "The order of the page within the report"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dataset",
+  "type": "object",
+  "description": "A Power BI dataset representing a data model",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the dataset"
+    },
+    "name": {
+      "type": "string",
+      "description": "The display name of the dataset"
+    },
+    "addRowsAPIEnabled": {
+      "type": "boolean",
+      "description": "Whether the push API is enabled for this dataset"
+    },
+    "configuredBy": {
+      "type": "string",
+      "description": "The user who configured the dataset"
+    },
+    "isRefreshable": {
+      "type": "boolean",
+      "description": "Whether the dataset can be refreshed"
+    },
+    "isEffectiveIdentityRequired": {
+      "type": "boolean",
+      "description": "Whether effective identity is required for embedding"
+    },
+    "isEffectiveIdentityRolesRequired": {
+      "type": "boolean",
+      "description": "Whether RLS roles are required for embedding"
+    },
+    "isOnPremGatewayRequired": {
+      "type": "boolean",
+      "description": "Whether an on-premises gateway is required"
+    },
+    "targetStorageMode": {
+      "type": "string",
+      "description": "The storage mode of the dataset"
+    },
+    "createReportEmbedURL": {
+      "type": "string",
+      "description": "URL to create an embedded report on this dataset"
+    },
+    "qnaEmbedURL": {
+      "type": "string",
+      "description": "URL for the Q&A embedded experience"
+    },
+    "webUrl": {
+      "type": "string",
+      "description": "The web URL of the dataset"
+    },
+    "createdDate": {
+      "type": "string",
+      "description": "The date and time the dataset was created"
+    },
+    "contentProviderType": {
+      "type": "string",
+      "description": "The content provider type"
+    }
+  }
+}

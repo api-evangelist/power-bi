@@ -1,0 +1,7 @@
+{
+  "type": "example_value",
+  "commitMode": "example_value",
+  "maxParallelism": 10,
+  "retryCount": 10,
+  "objects": []
+}

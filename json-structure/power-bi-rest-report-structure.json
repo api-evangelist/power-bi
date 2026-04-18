@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Report",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "datasetId": {
+      "type": "string"
+    },
+    "webUrl": {
+      "type": "string"
+    },
+    "embedUrl": {
+      "type": "string"
+    },
+    "reportType": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "createdDateTime": {
+      "type": "string"
+    },
+    "modifiedDateTime": {
+      "type": "string"
+    },
+    "modifiedBy": {
+      "type": "string"
+    }
+  }
+}

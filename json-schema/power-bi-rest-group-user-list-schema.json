@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GroupUserList",
+  "type": "object",
+  "description": "A list of workspace users",
+  "properties": {
+    "value": {
+      "type": "array"
+    },
+    "@odata.context": {
+      "type": "string"
+    }
+  }
+}

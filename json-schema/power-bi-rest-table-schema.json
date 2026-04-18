@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Table",
+  "type": "object",
+  "description": "A table within a Power BI dataset",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the table"
+    },
+    "columns": {
+      "type": "array",
+      "description": "The columns in the table"
+    },
+    "rows": {
+      "type": "array",
+      "description": "Rows of data in the table"
+    },
+    "measures": {
+      "type": "array",
+      "description": "DAX measures defined on the table"
+    }
+  }
+}

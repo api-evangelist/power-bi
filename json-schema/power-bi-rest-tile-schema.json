@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Tile",
+  "type": "object",
+  "description": "A tile on a Power BI dashboard",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the tile"
+    },
+    "title": {
+      "type": "string",
+      "description": "The display title of the tile"
+    },
+    "subTitle": {
+      "type": "string",
+      "description": "The subtitle of the tile"
+    },
+    "embedUrl": {
+      "type": "string",
+      "description": "The embed URL for the tile"
+    },
+    "embedData": {
+      "type": "string",
+      "description": "Additional embed data for the tile"
+    },
+    "reportId": {
+      "type": "string",
+      "description": "The ID of the report the tile is pinned from"
+    },
+    "datasetId": {
+      "type": "string",
+      "description": "The ID of the dataset used by this tile"
+    },
+    "rowSpan": {
+      "type": "integer",
+      "description": "The number of rows the tile spans"
+    },
+    "colSpan": {
+      "type": "integer",
+      "description": "The number of columns the tile spans"
+    }
+  }
+}

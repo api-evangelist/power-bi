@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Datasource",
+  "type": "object",
+  "description": "A data source used by a dataset",
+  "properties": {
+    "datasourceType": {
+      "type": "string",
+      "description": "The type of data source (e.g. Sql, AnalysisServices, File)"
+    },
+    "connectionDetails": {
+      "type": "object",
+      "description": "Connection details for the data source"
+    },
+    "datasourceId": {
+      "type": "string",
+      "description": "The unique identifier of the data source"
+    },
+    "gatewayId": {
+      "type": "string",
+      "description": "The gateway identifier if using an on-premises gateway"
+    }
+  }
+}

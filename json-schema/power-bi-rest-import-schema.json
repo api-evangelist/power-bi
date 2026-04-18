@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Import",
+  "type": "object",
+  "description": "An import operation",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the import"
+    },
+    "name": {
+      "type": "string",
+      "description": "The display name of the import"
+    },
+    "importState": {
+      "type": "string",
+      "description": "The state of the import"
+    },
+    "createdDateTime": {
+      "type": "string",
+      "description": "When the import was created"
+    },
+    "updatedDateTime": {
+      "type": "string",
+      "description": "When the import was last updated"
+    },
+    "reports": {
+      "type": "array",
+      "description": "Reports created by this import"
+    },
+    "datasets": {
+      "type": "array",
+      "description": "Datasets created by this import"
+    }
+  }
+}

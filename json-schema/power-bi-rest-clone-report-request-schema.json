@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CloneReportRequest",
+  "type": "object",
+  "description": "Request body for cloning a report",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name for the cloned report"
+    },
+    "targetModelId": {
+      "type": "string",
+      "description": "Optional dataset ID to rebind the cloned report to"
+    },
+    "targetWorkspaceId": {
+      "type": "string",
+      "description": "Optional workspace ID for the cloned report"
+    }
+  }
+}

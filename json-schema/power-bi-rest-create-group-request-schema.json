@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CreateGroupRequest",
+  "type": "object",
+  "description": "Request body for creating a workspace",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The display name of the new workspace"
+    }
+  }
+}

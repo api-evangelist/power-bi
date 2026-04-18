@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "RefreshRequest",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string"
+    },
+    "commitMode": {
+      "type": "string"
+    },
+    "maxParallelism": {
+      "type": "integer"
+    },
+    "retryCount": {
+      "type": "integer"
+    },
+    "objects": {
+      "type": "array"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "abc123",
+  "name": "Example Title",
+  "addRowsAPIEnabled": true,
+  "configuredBy": "example_value",
+  "isRefreshable": true,
+  "isEffectiveIdentityRequired": true,
+  "isEffectiveIdentityRolesRequired": true,
+  "isOnPremGatewayRequired": true,
+  "targetStorageMode": "example_value",
+  "createReportEmbedURL": "https://www.example.com",
+  "qnaEmbedURL": "https://www.example.com",
+  "webUrl": "https://www.example.com",
+  "createdDate": "example_value",
+  "contentProviderType": "example_value"
+}

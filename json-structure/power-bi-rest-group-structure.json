@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Group",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "isReadOnly": {
+      "type": "boolean"
+    },
+    "isOnDedicatedCapacity": {
+      "type": "boolean"
+    },
+    "capacityId": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    }
+  }
+}

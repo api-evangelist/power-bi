@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Column",
+  "type": "object",
+  "description": "A column in a dataset table",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The column name"
+    },
+    "dataType": {
+      "type": "string",
+      "description": "The data type of the column"
+    },
+    "formatString": {
+      "type": "string",
+      "description": "Optional format string for the column"
+    },
+    "sortByColumn": {
+      "type": "string",
+      "description": "Name of the column to sort by"
+    },
+    "isHidden": {
+      "type": "boolean",
+      "description": "Whether the column is hidden in reports"
+    }
+  }
+}

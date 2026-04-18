@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Datasource",
+  "type": "object",
+  "properties": {
+    "datasourceType": {
+      "type": "string"
+    },
+    "connectionDetails": {
+      "type": "object"
+    },
+    "datasourceId": {
+      "type": "string"
+    },
+    "gatewayId": {
+      "type": "string"
+    }
+  }
+}

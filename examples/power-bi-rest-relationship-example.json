@@ -1,0 +1,8 @@
+{
+  "name": "Example Title",
+  "fromTable": "example_value",
+  "fromColumn": "example_value",
+  "toTable": "example_value",
+  "toColumn": "example_value",
+  "crossFilteringBehavior": "example_value"
+}

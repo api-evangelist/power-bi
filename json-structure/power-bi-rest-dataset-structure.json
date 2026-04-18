@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Dataset",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "addRowsAPIEnabled": {
+      "type": "boolean"
+    },
+    "configuredBy": {
+      "type": "string"
+    },
+    "isRefreshable": {
+      "type": "boolean"
+    },
+    "isEffectiveIdentityRequired": {
+      "type": "boolean"
+    },
+    "isEffectiveIdentityRolesRequired": {
+      "type": "boolean"
+    },
+    "isOnPremGatewayRequired": {
+      "type": "boolean"
+    },
+    "targetStorageMode": {
+      "type": "string"
+    },
+    "createReportEmbedURL": {
+      "type": "string"
+    },
+    "qnaEmbedURL": {
+      "type": "string"
+    },
+    "webUrl": {
+      "type": "string"
+    },
+    "createdDate": {
+      "type": "string"
+    },
+    "contentProviderType": {
+      "type": "string"
+    }
+  }
+}

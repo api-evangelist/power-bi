@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Import",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "importState": {
+      "type": "string"
+    },
+    "createdDateTime": {
+      "type": "string"
+    },
+    "updatedDateTime": {
+      "type": "string"
+    },
+    "reports": {
+      "type": "array"
+    },
+    "datasets": {
+      "type": "array"
+    }
+  }
+}

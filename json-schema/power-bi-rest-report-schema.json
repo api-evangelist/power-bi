@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Report",
+  "type": "object",
+  "description": "A Power BI report",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the report"
+    },
+    "name": {
+      "type": "string",
+      "description": "The display name of the report"
+    },
+    "datasetId": {
+      "type": "string",
+      "description": "The ID of the dataset associated with this report"
+    },
+    "webUrl": {
+      "type": "string",
+      "description": "The web URL of the report"
+    },
+    "embedUrl": {
+      "type": "string",
+      "description": "The embed URL for embedding the report in applications"
+    },
+    "reportType": {
+      "type": "string",
+      "description": "The type of the report"
+    },
+    "description": {
+      "type": "string",
+      "description": "The report description"
+    },
+    "createdDateTime": {
+      "type": "string",
+      "description": "When the report was created"
+    },
+    "modifiedDateTime": {
+      "type": "string",
+      "description": "When the report was last modified"
+    },
+    "modifiedBy": {
+      "type": "string",
+      "description": "The user who last modified the report"
+    }
+  }
+}

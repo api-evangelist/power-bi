@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GroupUser",
+  "type": "object",
+  "description": "A user in a Power BI workspace",
+  "properties": {
+    "emailAddress": {
+      "type": "string",
+      "description": "The email address of the user"
+    },
+    "displayName": {
+      "type": "string",
+      "description": "The display name of the user"
+    },
+    "identifier": {
+      "type": "string",
+      "description": "The object ID of the user"
+    },
+    "graphId": {
+      "type": "string",
+      "description": "The Microsoft Graph ID of the user"
+    },
+    "groupUserAccessRight": {
+      "type": "string",
+      "description": "The access right of the user in the workspace"
+    },
+    "principalType": {
+      "type": "string",
+      "description": "The principal type"
+    }
+  }
+}

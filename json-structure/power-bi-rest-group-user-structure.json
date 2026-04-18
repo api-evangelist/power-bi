@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "GroupUser",
+  "type": "object",
+  "properties": {
+    "emailAddress": {
+      "type": "string"
+    },
+    "displayName": {
+      "type": "string"
+    },
+    "identifier": {
+      "type": "string"
+    },
+    "graphId": {
+      "type": "string"
+    },
+    "groupUserAccessRight": {
+      "type": "string"
+    },
+    "principalType": {
+      "type": "string"
+    }
+  }
+}

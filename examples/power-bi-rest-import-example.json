@@ -1,0 +1,9 @@
+{
+  "id": "abc123",
+  "name": "Example Title",
+  "importState": "example_value",
+  "createdDateTime": "example_value",
+  "updatedDateTime": "example_value",
+  "reports": [],
+  "datasets": []
+}

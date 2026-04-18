@@ -1,0 +1,11 @@
+{
+  "id": "abc123",
+  "title": "Example Title",
+  "subTitle": "example_value",
+  "embedUrl": "https://www.example.com",
+  "embedData": "example_value",
+  "reportId": "500123",
+  "datasetId": "500123",
+  "rowSpan": 10,
+  "colSpan": 10
+}

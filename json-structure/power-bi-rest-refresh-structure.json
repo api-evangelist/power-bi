@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Refresh",
+  "type": "object",
+  "properties": {
+    "requestId": {
+      "type": "string"
+    },
+    "id": {
+      "type": "integer"
+    },
+    "refreshType": {
+      "type": "string"
+    },
+    "startTime": {
+      "type": "string"
+    },
+    "endTime": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "serviceExceptionJson": {
+      "type": "string"
+    }
+  }
+}

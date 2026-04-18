@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Gateway",
+  "type": "object",
+  "description": "An on-premises data gateway",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "The unique identifier of the gateway"
+    },
+    "name": {
+      "type": "string",
+      "description": "The display name of the gateway"
+    },
+    "type": {
+      "type": "string",
+      "description": "The type of gateway"
+    },
+    "publicKey": {
+      "type": "object",
+      "description": "The public key for encrypting credentials"
+    },
+    "gatewayAnnotation": {
+      "type": "string",
+      "description": "Gateway metadata annotation"
+    }
+  }
+}

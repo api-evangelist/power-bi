@@ -19,47 +19,47 @@ externalDocs:
   description: Power BI REST API Reference
   url: https://learn.microsoft.com/en-us/rest/api/power-bi/
 servers:
-  - url: https://api.powerbi.com/v1.0/myorg
-    description: Power BI REST API - User context
+- url: https://api.powerbi.com/v1.0/myorg
+  description: Power BI REST API - User context
 tags:
-  - name: Dashboards
-    description: >-
-      Manage dashboards including listing, creating, and retrieving tiles.
-      Dashboards are single-page canvases with pinned visualizations.
-  - name: Datasets
-    description: >-
-      Manage datasets including creating, updating, refreshing, and deleting
-      datasets. Datasets represent the data model behind Power BI reports.
-  - name: Gateways
-    description: >-
-      Manage on-premises data gateways and their data sources for
-      connecting to on-premises data.
-  - name: Groups
-    description: >-
-      Manage workspaces (groups) including listing, creating, deleting, and
-      managing workspace users. Workspaces are containers for dashboards,
-      reports, datasets, and dataflows.
-  - name: Imports
-    description: >-
-      Import Power BI content such as PBIX files, Excel workbooks, and
-      RDL reports into workspaces.
-  - name: Reports
-    description: >-
-      Manage reports including listing, cloning, exporting, rebinding, and
-      deleting reports. Reports are visual presentations of data from datasets.
+- name: Dashboards
+  description: >-
+    Manage dashboards including listing, creating, and retrieving tiles.
+    Dashboards are single-page canvases with pinned visualizations.
+- name: Datasets
+  description: >-
+    Manage datasets including creating, updating, refreshing, and deleting
+    datasets. Datasets represent the data model behind Power BI reports.
+- name: Gateways
+  description: >-
+    Manage on-premises data gateways and their data sources for
+    connecting to on-premises data.
+- name: Groups
+  description: >-
+    Manage workspaces (groups) including listing, creating, deleting, and
+    managing workspace users. Workspaces are containers for dashboards,
+    reports, datasets, and dataflows.
+- name: Imports
+  description: >-
+    Import Power BI content such as PBIX files, Excel workbooks, and
+    RDL reports into workspaces.
+- name: Reports
+  description: >-
+    Manage reports including listing, cloning, exporting, rebinding, and
+    deleting reports. Reports are visual presentations of data from datasets.
 security:
-  - bearerAuth: []
+- bearerAuth: []
 paths:
   /datasets:
     get:
       operationId: getDatasets
-      summary: Power BI List datasets
+      summary: Power Bi List Datasets
       description: >-
         Returns a list of datasets from the user's My Workspace. Each dataset
         includes metadata such as name, configuration settings, and whether
         it is a push dataset or refreshable.
       tags:
-        - Datasets
+      - Datasets
       responses:
         '200':
           description: List of datasets
@@ -67,36 +67,91 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DatasetList'
+              examples:
+                Getdatasets200Example:
+                  summary: Default getDatasets 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                    - id: abc123
+                      name: Example Title
+                      addRowsAPIEnabled: true
+                      configuredBy: example_value
+                      isRefreshable: true
+                      isEffectiveIdentityRequired: true
+                      isEffectiveIdentityRolesRequired: true
+                      isOnPremGatewayRequired: true
+                      targetStorageMode: Import
+                      createReportEmbedURL: https://www.example.com
+                      qnaEmbedURL: https://www.example.com
+                      webUrl: https://www.example.com
+                      createdDate: '2026-01-15T10:30:00Z'
+                      contentProviderType: example_value
+                    '@odata.context': example_value
         '401':
           description: Unauthorized - missing or invalid access token
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getdatasets401Example:
+                  summary: Default getDatasets 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: createDataset
-      summary: Power BI Create a push dataset
+      summary: Power Bi Create a Push Dataset
       description: >-
         Creates a new push dataset in the user's My Workspace. Push datasets
         allow applications to push data directly into Power BI in real time
         without needing a data source or scheduled refresh.
       tags:
-        - Datasets
+      - Datasets
       parameters:
-        - name: defaultRetentionPolicy
-          in: query
-          description: The default retention policy for the dataset
-          schema:
-            type: string
-            enum:
-              - None
-              - basicFIFO
+      - name: defaultRetentionPolicy
+        in: query
+        description: The default retention policy for the dataset
+        schema:
+          type: string
+          enum:
+          - None
+          - basicFIFO
+        example: None
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateDatasetRequest'
+            examples:
+              CreatedatasetRequestExample:
+                summary: Default createDataset request
+                x-microcks-default: true
+                value:
+                  name: Example Title
+                  defaultMode: Push
+                  tables:
+                  - name: Example Title
+                    columns: {}
+                    rows: {}
+                    measures: {}
+                  relationships:
+                  - name: Example Title
+                    fromTable: example_value
+                    fromColumn: example_value
+                    toTable: example_value
+                    toColumn: example_value
+                    crossFilteringBehavior: OneDirection
       responses:
         '201':
           description: Dataset created successfully
@@ -104,35 +159,90 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Dataset'
+              examples:
+                Createdataset201Example:
+                  summary: Default createDataset 201 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    name: Example Title
+                    addRowsAPIEnabled: true
+                    configuredBy: example_value
+                    isRefreshable: true
+                    isEffectiveIdentityRequired: true
+                    isEffectiveIdentityRolesRequired: true
+                    isOnPremGatewayRequired: true
+                    targetStorageMode: Import
+                    createReportEmbedURL: https://www.example.com
+                    qnaEmbedURL: https://www.example.com
+                    webUrl: https://www.example.com
+                    createdDate: '2026-01-15T10:30:00Z'
+                    contentProviderType: example_value
         '400':
           description: Invalid request body
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Createdataset400Example:
+                  summary: Default createDataset 400 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
         '401':
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Createdataset401Example:
+                  summary: Default createDataset 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
         '409':
           description: Dataset name conflict
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Createdataset409Example:
+                  summary: Default createDataset 409 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /datasets/{datasetId}:
     get:
       operationId: getDataset
-      summary: Power BI Get a dataset
+      summary: Power Bi Get a Dataset
       description: >-
         Returns the specified dataset from the user's My Workspace, including
         its configuration, tables, and data source details.
       tags:
-        - Datasets
+      - Datasets
       parameters:
-        - $ref: '#/components/parameters/datasetId'
+      - $ref: '#/components/parameters/datasetId'
       responses:
         '200':
           description: Dataset details
@@ -140,28 +250,72 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Dataset'
+              examples:
+                Getdataset200Example:
+                  summary: Default getDataset 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    name: Example Title
+                    addRowsAPIEnabled: true
+                    configuredBy: example_value
+                    isRefreshable: true
+                    isEffectiveIdentityRequired: true
+                    isEffectiveIdentityRolesRequired: true
+                    isOnPremGatewayRequired: true
+                    targetStorageMode: Import
+                    createReportEmbedURL: https://www.example.com
+                    qnaEmbedURL: https://www.example.com
+                    webUrl: https://www.example.com
+                    createdDate: '2026-01-15T10:30:00Z'
+                    contentProviderType: example_value
         '401':
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getdataset401Example:
+                  summary: Default getDataset 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
         '404':
           description: Dataset not found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getdataset404Example:
+                  summary: Default getDataset 404 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     delete:
       operationId: deleteDataset
-      summary: Power BI Delete a dataset
+      summary: Power Bi Delete a Dataset
       description: >-
         Deletes the specified dataset from the user's My Workspace. This also
         deletes all reports and dashboard tiles that are built on the dataset.
       tags:
-        - Datasets
+      - Datasets
       parameters:
-        - $ref: '#/components/parameters/datasetId'
+      - $ref: '#/components/parameters/datasetId'
       responses:
         '200':
           description: Dataset deleted successfully
@@ -171,30 +325,56 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Deletedataset401Example:
+                  summary: Default deleteDataset 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
         '404':
           description: Dataset not found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Deletedataset404Example:
+                  summary: Default deleteDataset 404 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /datasets/{datasetId}/refreshes:
     get:
       operationId: getRefreshHistory
-      summary: Power BI Get refresh history
+      summary: Power Bi Get Refresh History
       description: >-
         Returns the refresh history for the specified dataset. The response
         includes the status, start time, and end time of each refresh
         operation.
       tags:
-        - Datasets
+      - Datasets
       parameters:
-        - $ref: '#/components/parameters/datasetId'
-        - name: $top
-          in: query
-          description: Maximum number of refresh entries to return
-          schema:
-            type: integer
-            default: 10
+      - $ref: '#/components/parameters/datasetId'
+      - name: $top
+        in: query
+        description: Maximum number of refresh entries to return
+        schema:
+          type: integer
+          default: 10
+        example: 10
       responses:
         '200':
           description: List of refresh entries
@@ -202,35 +382,86 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RefreshList'
+              examples:
+                Getrefreshhistory200Example:
+                  summary: Default getRefreshHistory 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                    - requestId: '500123'
+                      id: abc123
+                      refreshType: Scheduled
+                      startTime: '2026-01-15T10:30:00Z'
+                      endTime: '2026-01-15T10:30:00Z'
+                      status: Unknown
+                      serviceExceptionJson: example_value
+                    '@odata.context': example_value
         '401':
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getrefreshhistory401Example:
+                  summary: Default getRefreshHistory 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
         '404':
           description: Dataset not found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getrefreshhistory404Example:
+                  summary: Default getRefreshHistory 404 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: refreshDataset
-      summary: Power BI Trigger a dataset refresh
+      summary: Power Bi Trigger a Dataset Refresh
       description: >-
         Triggers a refresh for the specified dataset. For enhanced refresh
         capabilities, include a request body specifying tables, partitions,
         or the type of refresh.
       tags:
-        - Datasets
+      - Datasets
       parameters:
-        - $ref: '#/components/parameters/datasetId'
+      - $ref: '#/components/parameters/datasetId'
       requestBody:
         description: Optional enhanced refresh request
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/RefreshRequest'
+            examples:
+              RefreshdatasetRequestExample:
+                summary: Default refreshDataset request
+                x-microcks-default: true
+                value:
+                  type: Full
+                  commitMode: transactional
+                  maxParallelism: 10
+                  retryCount: 10
+                  objects:
+                  - table: example_value
+                    partition: example_value
       responses:
         '202':
           description: Refresh triggered successfully
@@ -240,24 +471,49 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Refreshdataset401Example:
+                  summary: Default refreshDataset 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
         '404':
           description: Dataset not found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Refreshdataset404Example:
+                  summary: Default refreshDataset 404 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /datasets/{datasetId}/datasources:
     get:
       operationId: getDatasources
-      summary: Power BI Get data sources
+      summary: Power Bi Get Data Sources
       description: >-
         Returns a list of data sources for the specified dataset. Each data
         source includes connection details such as the server, database, and
         data source type.
       tags:
-        - Datasets
+      - Datasets
       parameters:
-        - $ref: '#/components/parameters/datasetId'
+      - $ref: '#/components/parameters/datasetId'
       responses:
         '200':
           description: List of data sources
@@ -265,30 +521,66 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DatasourceList'
+              examples:
+                Getdatasources200Example:
+                  summary: Default getDatasources 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                    - datasourceType: example_value
+                      connectionDetails: {}
+                      datasourceId: '500123'
+                      gatewayId: '500123'
+                    '@odata.context': example_value
         '401':
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getdatasources401Example:
+                  summary: Default getDatasources 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
         '404':
           description: Dataset not found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getdatasources404Example:
+                  summary: Default getDatasources 404 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /datasets/{datasetId}/parameters:
     get:
       operationId: getParameters
-      summary: Power BI Get dataset parameters
+      summary: Power Bi Get Dataset Parameters
       description: >-
         Returns a list of parameters for the specified dataset. Parameters
         allow dynamic configuration of data source connections and query
         behavior.
       tags:
-        - Datasets
+      - Datasets
       parameters:
-        - $ref: '#/components/parameters/datasetId'
+      - $ref: '#/components/parameters/datasetId'
       responses:
         '200':
           description: List of parameters
@@ -296,29 +588,63 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ParameterList'
+              examples:
+                Getparameters200Example:
+                  summary: Default getParameters 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                    - name: Example Title
+                      type: example_value
+                      currentValue: example_value
+                      isRequired: true
+                      suggestedValues: {}
+                    '@odata.context': example_value
         '401':
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getparameters401Example:
+                  summary: Default getParameters 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: updateParameters
-      summary: Power BI Update dataset parameters
+      summary: Power Bi Update Dataset Parameters
       description: >-
         Updates the values of one or more parameters for the specified dataset.
         After updating parameters, a dataset refresh is required for the new
         values to take effect.
       tags:
-        - Datasets
+      - Datasets
       parameters:
-        - $ref: '#/components/parameters/datasetId'
+      - $ref: '#/components/parameters/datasetId'
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/UpdateParametersRequest'
+            examples:
+              UpdateparametersRequestExample:
+                summary: Default updateParameters request
+                x-microcks-default: true
+                value:
+                  updateDetails:
+                  - name: Example Title
+                    newValue: example_value
       responses:
         '200':
           description: Parameters updated successfully
@@ -328,22 +654,47 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Updateparameters400Example:
+                  summary: Default updateParameters 400 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
         '401':
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Updateparameters401Example:
+                  summary: Default updateParameters 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /reports:
     get:
       operationId: getReports
-      summary: Power BI List reports
+      summary: Power Bi List Reports
       description: >-
         Returns a list of reports from the user's My Workspace. Each report
         includes metadata such as name, the associated dataset, web URL, and
         embed URL for embedding scenarios.
       tags:
-        - Reports
+      - Reports
       responses:
         '200':
           description: List of reports
@@ -351,23 +702,54 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ReportList'
+              examples:
+                Getreports200Example:
+                  summary: Default getReports 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                    - id: abc123
+                      name: Example Title
+                      datasetId: '500123'
+                      webUrl: https://www.example.com
+                      embedUrl: https://www.example.com
+                      reportType: PowerBIReport
+                      description: A sample description.
+                      createdDateTime: '2026-01-15T10:30:00Z'
+                      modifiedDateTime: '2026-01-15T10:30:00Z'
+                      modifiedBy: example_value
+                    '@odata.context': example_value
         '401':
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getreports401Example:
+                  summary: Default getReports 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /reports/{reportId}:
     get:
       operationId: getReport
-      summary: Power BI Get a report
+      summary: Power Bi Get a Report
       description: >-
         Returns the specified report from the user's My Workspace, including
         its name, dataset binding, web URL, and embed URL.
       tags:
-        - Reports
+      - Reports
       parameters:
-        - $ref: '#/components/parameters/reportId'
+      - $ref: '#/components/parameters/reportId'
       responses:
         '200':
           description: Report details
@@ -375,28 +757,68 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Report'
+              examples:
+                Getreport200Example:
+                  summary: Default getReport 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    name: Example Title
+                    datasetId: '500123'
+                    webUrl: https://www.example.com
+                    embedUrl: https://www.example.com
+                    reportType: PowerBIReport
+                    description: A sample description.
+                    createdDateTime: '2026-01-15T10:30:00Z'
+                    modifiedDateTime: '2026-01-15T10:30:00Z'
+                    modifiedBy: example_value
         '401':
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getreport401Example:
+                  summary: Default getReport 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
         '404':
           description: Report not found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getreport404Example:
+                  summary: Default getReport 404 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     delete:
       operationId: deleteReport
-      summary: Power BI Delete a report
+      summary: Power Bi Delete a Report
       description: >-
         Deletes the specified report from the user's My Workspace. This does
         not delete the underlying dataset.
       tags:
-        - Reports
+      - Reports
       parameters:
-        - $ref: '#/components/parameters/reportId'
+      - $ref: '#/components/parameters/reportId'
       responses:
         '200':
           description: Report deleted successfully
@@ -406,30 +828,63 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Deletereport401Example:
+                  summary: Default deleteReport 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
         '404':
           description: Report not found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Deletereport404Example:
+                  summary: Default deleteReport 404 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /reports/{reportId}/Clone:
     post:
       operationId: cloneReport
-      summary: Power BI Clone a report
+      summary: Power Bi Clone a Report
       description: >-
         Clones the specified report from the user's My Workspace. The clone
         can be placed in a different workspace and optionally rebound to a
         different dataset.
       tags:
-        - Reports
+      - Reports
       parameters:
-        - $ref: '#/components/parameters/reportId'
+      - $ref: '#/components/parameters/reportId'
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/CloneReportRequest'
+            examples:
+              ClonereportRequestExample:
+                summary: Default cloneReport request
+                x-microcks-default: true
+                value:
+                  name: Example Title
+                  targetModelId: '500123'
+                  targetWorkspaceId: '500123'
       responses:
         '200':
           description: Cloned report
@@ -437,35 +892,81 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Report'
+              examples:
+                Clonereport200Example:
+                  summary: Default cloneReport 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    name: Example Title
+                    datasetId: '500123'
+                    webUrl: https://www.example.com
+                    embedUrl: https://www.example.com
+                    reportType: PowerBIReport
+                    description: A sample description.
+                    createdDateTime: '2026-01-15T10:30:00Z'
+                    modifiedDateTime: '2026-01-15T10:30:00Z'
+                    modifiedBy: example_value
         '400':
           description: Invalid request
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Clonereport400Example:
+                  summary: Default cloneReport 400 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
         '401':
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Clonereport401Example:
+                  summary: Default cloneReport 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /reports/{reportId}/Rebind:
     post:
       operationId: rebindReport
-      summary: Power BI Rebind a report to a dataset
+      summary: Power Bi Rebind a Report to a Dataset
       description: >-
         Rebinds the specified report to a different dataset. The target
         dataset must have the same schema as the current dataset.
       tags:
-        - Reports
+      - Reports
       parameters:
-        - $ref: '#/components/parameters/reportId'
+      - $ref: '#/components/parameters/reportId'
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/RebindReportRequest'
+            examples:
+              RebindreportRequestExample:
+                summary: Default rebindReport request
+                x-microcks-default: true
+                value:
+                  datasetId: '500123'
       responses:
         '200':
           description: Report rebound successfully
@@ -475,24 +976,49 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Rebindreport400Example:
+                  summary: Default rebindReport 400 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
         '401':
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Rebindreport401Example:
+                  summary: Default rebindReport 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /reports/{reportId}/Export:
     get:
       operationId: exportReport
-      summary: Power BI Export a report
+      summary: Power Bi Export a Report
       description: >-
         Exports the specified report as a PBIX file. Only reports created
         from PBIX files can be exported. Reports created from the Power BI
         service are not supported.
       tags:
-        - Reports
+      - Reports
       parameters:
-        - $ref: '#/components/parameters/reportId'
+      - $ref: '#/components/parameters/reportId'
       responses:
         '200':
           description: Report PBIX file
@@ -501,29 +1027,59 @@ paths:
               schema:
                 type: string
                 format: binary
+              examples:
+                Exportreport200Example:
+                  summary: Default exportReport 200 response
+                  x-microcks-default: true
+                  value: example_value
         '401':
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Exportreport401Example:
+                  summary: Default exportReport 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
         '404':
           description: Report not found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Exportreport404Example:
+                  summary: Default exportReport 404 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /reports/{reportId}/pages:
     get:
       operationId: getPages
-      summary: Power BI Get report pages
+      summary: Power Bi Get Report Pages
       description: >-
         Returns a list of pages within the specified report. Each page
         includes its name, display name, and order within the report.
       tags:
-        - Reports
+      - Reports
       parameters:
-        - $ref: '#/components/parameters/reportId'
+      - $ref: '#/components/parameters/reportId'
       responses:
         '200':
           description: List of report pages
@@ -531,28 +1087,63 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PageList'
+              examples:
+                Getpages200Example:
+                  summary: Default getPages 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                    - name: Example Title
+                      displayName: example_value
+                      order: 10
+                    '@odata.context': example_value
         '401':
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getpages401Example:
+                  summary: Default getPages 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
         '404':
           description: Report not found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getpages404Example:
+                  summary: Default getPages 404 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /dashboards:
     get:
       operationId: getDashboards
-      summary: Power BI List dashboards
+      summary: Power Bi List Dashboards
       description: >-
         Returns a list of dashboards from the user's My Workspace. Each
         dashboard includes its name, web URL, embed URL, and whether it
         is read-only.
       tags:
-        - Dashboards
+      - Dashboards
       responses:
         '200':
           description: List of dashboards
@@ -560,26 +1151,59 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DashboardList'
+              examples:
+                Getdashboards200Example:
+                  summary: Default getDashboards 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                    - id: abc123
+                      displayName: example_value
+                      isReadOnly: true
+                      webUrl: https://www.example.com
+                      embedUrl: https://www.example.com
+                      dataClassification: example_value
+                    '@odata.context': example_value
         '401':
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getdashboards401Example:
+                  summary: Default getDashboards 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: createDashboard
-      summary: Power BI Create a dashboard
+      summary: Power Bi Create a Dashboard
       description: >-
         Creates a new empty dashboard in the user's My Workspace. After
         creating the dashboard, use tile pinning to add content.
       tags:
-        - Dashboards
+      - Dashboards
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateDashboardRequest'
+            examples:
+              CreatedashboardRequestExample:
+                summary: Default createDashboard request
+                x-microcks-default: true
+                value:
+                  name: Example Title
       responses:
         '201':
           description: Dashboard created successfully
@@ -587,23 +1211,48 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Dashboard'
+              examples:
+                Createdashboard201Example:
+                  summary: Default createDashboard 201 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    displayName: example_value
+                    isReadOnly: true
+                    webUrl: https://www.example.com
+                    embedUrl: https://www.example.com
+                    dataClassification: example_value
         '401':
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Createdashboard401Example:
+                  summary: Default createDashboard 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /dashboards/{dashboardId}:
     get:
       operationId: getDashboard
-      summary: Power BI Get a dashboard
+      summary: Power Bi Get a Dashboard
       description: >-
         Returns the specified dashboard from the user's My Workspace,
         including its name, embed URL, and configuration.
       tags:
-        - Dashboards
+      - Dashboards
       parameters:
-        - $ref: '#/components/parameters/dashboardId'
+      - $ref: '#/components/parameters/dashboardId'
       responses:
         '200':
           description: Dashboard details
@@ -611,30 +1260,66 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Dashboard'
+              examples:
+                Getdashboard200Example:
+                  summary: Default getDashboard 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    displayName: example_value
+                    isReadOnly: true
+                    webUrl: https://www.example.com
+                    embedUrl: https://www.example.com
+                    dataClassification: example_value
         '401':
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getdashboard401Example:
+                  summary: Default getDashboard 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
         '404':
           description: Dashboard not found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getdashboard404Example:
+                  summary: Default getDashboard 404 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /dashboards/{dashboardId}/tiles:
     get:
       operationId: getTiles
-      summary: Power BI Get dashboard tiles
+      summary: Power Bi Get Dashboard Tiles
       description: >-
         Returns a list of tiles within the specified dashboard. Each tile
         represents a pinned visualization and includes its embed URL,
         report and dataset references, and configuration.
       tags:
-        - Dashboards
+      - Dashboards
       parameters:
-        - $ref: '#/components/parameters/dashboardId'
+      - $ref: '#/components/parameters/dashboardId'
       responses:
         '200':
           description: List of tiles
@@ -642,30 +1327,71 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TileList'
+              examples:
+                Gettiles200Example:
+                  summary: Default getTiles 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                    - id: abc123
+                      title: Example Title
+                      subTitle: example_value
+                      embedUrl: https://www.example.com
+                      embedData: example_value
+                      reportId: '500123'
+                      datasetId: '500123'
+                      rowSpan: 10
+                      colSpan: 10
+                    '@odata.context': example_value
         '401':
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Gettiles401Example:
+                  summary: Default getTiles 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
         '404':
           description: Dashboard not found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Gettiles404Example:
+                  summary: Default getTiles 404 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /dashboards/{dashboardId}/tiles/{tileId}:
     get:
       operationId: getTile
-      summary: Power BI Get a dashboard tile
+      summary: Power Bi Get a Dashboard Tile
       description: >-
         Returns the specified tile from the specified dashboard, including
         its embed URL and configuration details.
       tags:
-        - Dashboards
+      - Dashboards
       parameters:
-        - $ref: '#/components/parameters/dashboardId'
-        - $ref: '#/components/parameters/tileId'
+      - $ref: '#/components/parameters/dashboardId'
+      - $ref: '#/components/parameters/tileId'
       responses:
         '200':
           description: Tile details
@@ -673,44 +1399,86 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Tile'
+              examples:
+                Gettile200Example:
+                  summary: Default getTile 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    title: Example Title
+                    subTitle: example_value
+                    embedUrl: https://www.example.com
+                    embedData: example_value
+                    reportId: '500123'
+                    datasetId: '500123'
+                    rowSpan: 10
+                    colSpan: 10
         '401':
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Gettile401Example:
+                  summary: Default getTile 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
         '404':
           description: Tile not found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Gettile404Example:
+                  summary: Default getTile 404 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /groups:
     get:
       operationId: getGroups
-      summary: Power BI List workspaces
+      summary: Power Bi List Workspaces
       description: >-
         Returns a list of workspaces (groups) the user has access to. Each
         workspace includes its name, type, and whether it is read-only or
         on a dedicated capacity.
       tags:
-        - Groups
+      - Groups
       parameters:
-        - name: $filter
-          in: query
-          description: OData filter expression to filter workspaces
-          schema:
-            type: string
-        - name: $top
-          in: query
-          description: Maximum number of workspaces to return
-          schema:
-            type: integer
-        - name: $skip
-          in: query
-          description: Number of workspaces to skip
-          schema:
-            type: integer
+      - name: $filter
+        in: query
+        description: OData filter expression to filter workspaces
+        schema:
+          type: string
+        example: example_value
+      - name: $top
+        in: query
+        description: Maximum number of workspaces to return
+        schema:
+          type: integer
+        example: 10
+      - name: $skip
+        in: query
+        description: Number of workspaces to skip
+        schema:
+          type: integer
+        example: 10
       responses:
         '200':
           description: List of workspaces
@@ -718,26 +1486,60 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GroupList'
+              examples:
+                Getgroups200Example:
+                  summary: Default getGroups 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                    - id: abc123
+                      name: Example Title
+                      isReadOnly: true
+                      isOnDedicatedCapacity: true
+                      capacityId: '500123'
+                      type: Workspace
+                      state: Active
+                    '@odata.context': example_value
         '401':
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getgroups401Example:
+                  summary: Default getGroups 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: createGroup
-      summary: Power BI Create a workspace
+      summary: Power Bi Create a Workspace
       description: >-
         Creates a new workspace (group). The workspace can be assigned to
         a Premium capacity for enhanced features and performance.
       tags:
-        - Groups
+      - Groups
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateGroupRequest'
+            examples:
+              CreategroupRequestExample:
+                summary: Default createGroup request
+                x-microcks-default: true
+                value:
+                  name: Example Title
       responses:
         '200':
           description: Workspace created successfully
@@ -745,24 +1547,50 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Group'
+              examples:
+                Creategroup200Example:
+                  summary: Default createGroup 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    name: Example Title
+                    isReadOnly: true
+                    isOnDedicatedCapacity: true
+                    capacityId: '500123'
+                    type: Workspace
+                    state: Active
         '401':
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Creategroup401Example:
+                  summary: Default createGroup 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /groups/{groupId}:
     delete:
       operationId: deleteGroup
-      summary: Power BI Delete a workspace
+      summary: Power Bi Delete a Workspace
       description: >-
         Deletes the specified workspace. All content within the workspace
         including dashboards, reports, and datasets will be permanently
         removed.
       tags:
-        - Groups
+      - Groups
       parameters:
-        - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/groupId'
       responses:
         '200':
           description: Workspace deleted successfully
@@ -772,23 +1600,48 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Deletegroup401Example:
+                  summary: Default deleteGroup 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
         '404':
           description: Workspace not found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Deletegroup404Example:
+                  summary: Default deleteGroup 404 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /groups/{groupId}/users:
     get:
       operationId: getGroupUsers
-      summary: Power BI List workspace users
+      summary: Power Bi List Workspace Users
       description: >-
         Returns a list of users who have access to the specified workspace,
         including their display name, email address, and access rights.
       tags:
-        - Groups
+      - Groups
       parameters:
-        - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/groupId'
       responses:
         '200':
           description: List of workspace users
@@ -796,34 +1649,83 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GroupUserList'
+              examples:
+                Getgroupusers200Example:
+                  summary: Default getGroupUsers 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                    - emailAddress: user@example.com
+                      displayName: example_value
+                      identifier: example_value
+                      graphId: '500123'
+                      groupUserAccessRight: Admin
+                      principalType: User
+                    '@odata.context': example_value
         '401':
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getgroupusers401Example:
+                  summary: Default getGroupUsers 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
         '404':
           description: Workspace not found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getgroupusers404Example:
+                  summary: Default getGroupUsers 404 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: addGroupUser
-      summary: Power BI Add a workspace user
+      summary: Power Bi Add a Workspace User
       description: >-
         Grants the specified user access to the workspace with the given
         access right (Admin, Member, Contributor, or Viewer).
       tags:
-        - Groups
+      - Groups
       parameters:
-        - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/groupId'
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/GroupUser'
+            examples:
+              AddgroupuserRequestExample:
+                summary: Default addGroupUser request
+                x-microcks-default: true
+                value:
+                  emailAddress: user@example.com
+                  displayName: example_value
+                  identifier: example_value
+                  graphId: '500123'
+                  groupUserAccessRight: Admin
+                  principalType: User
       responses:
         '200':
           description: User added to workspace
@@ -833,29 +1735,65 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Addgroupuser400Example:
+                  summary: Default addGroupUser 400 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
         '401':
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Addgroupuser401Example:
+                  summary: Default addGroupUser 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /groups/{groupId}/users/{userId}:
     put:
       operationId: updateGroupUser
-      summary: Power BI Update workspace user access
+      summary: Power Bi Update Workspace User Access
       description: >-
         Updates the access right for the specified user in the workspace.
       tags:
-        - Groups
+      - Groups
       parameters:
-        - $ref: '#/components/parameters/groupId'
-        - $ref: '#/components/parameters/userId'
+      - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/userId'
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/GroupUser'
+            examples:
+              UpdategroupuserRequestExample:
+                summary: Default updateGroupUser request
+                x-microcks-default: true
+                value:
+                  emailAddress: user@example.com
+                  displayName: example_value
+                  identifier: example_value
+                  graphId: '500123'
+                  groupUserAccessRight: Admin
+                  principalType: User
       responses:
         '200':
           description: User access updated
@@ -865,16 +1803,30 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Updategroupuser401Example:
+                  summary: Default updateGroupUser 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     delete:
       operationId: deleteGroupUser
-      summary: Power BI Remove a workspace user
+      summary: Power Bi Remove a Workspace User
       description: >-
         Removes the specified user from the workspace, revoking all access.
       tags:
-        - Groups
+      - Groups
       parameters:
-        - $ref: '#/components/parameters/groupId'
-        - $ref: '#/components/parameters/userId'
+      - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/userId'
       responses:
         '200':
           description: User removed from workspace
@@ -884,19 +1836,33 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Deletegroupuser401Example:
+                  summary: Default deleteGroupUser 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /groups/{groupId}/datasets:
     get:
       operationId: getDatasetsInGroup
-      summary: Power BI List datasets in a workspace
+      summary: Power Bi List Datasets in a Workspace
       description: >-
         Returns a list of datasets from the specified workspace. This is
         similar to the My Workspace datasets endpoint but scoped to a
         specific workspace.
       tags:
-        - Datasets
-        - Groups
+      - Datasets
+      - Groups
       parameters:
-        - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/groupId'
       responses:
         '200':
           description: List of datasets in the workspace
@@ -904,30 +1870,76 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DatasetList'
+              examples:
+                Getdatasetsingroup200Example:
+                  summary: Default getDatasetsInGroup 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                    - id: abc123
+                      name: Example Title
+                      addRowsAPIEnabled: true
+                      configuredBy: example_value
+                      isRefreshable: true
+                      isEffectiveIdentityRequired: true
+                      isEffectiveIdentityRolesRequired: true
+                      isOnPremGatewayRequired: true
+                      targetStorageMode: Import
+                      createReportEmbedURL: https://www.example.com
+                      qnaEmbedURL: https://www.example.com
+                      webUrl: https://www.example.com
+                      createdDate: '2026-01-15T10:30:00Z'
+                      contentProviderType: example_value
+                    '@odata.context': example_value
         '401':
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getdatasetsingroup401Example:
+                  summary: Default getDatasetsInGroup 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
         '404':
           description: Workspace not found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getdatasetsingroup404Example:
+                  summary: Default getDatasetsInGroup 404 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /groups/{groupId}/reports:
     get:
       operationId: getReportsInGroup
-      summary: Power BI List reports in a workspace
+      summary: Power Bi List Reports in a Workspace
       description: >-
         Returns a list of reports from the specified workspace. Each report
         includes its metadata and embed information.
       tags:
-        - Groups
-        - Reports
+      - Groups
+      - Reports
       parameters:
-        - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/groupId'
       responses:
         '200':
           description: List of reports in the workspace
@@ -935,29 +1947,71 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ReportList'
+              examples:
+                Getreportsingroup200Example:
+                  summary: Default getReportsInGroup 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                    - id: abc123
+                      name: Example Title
+                      datasetId: '500123'
+                      webUrl: https://www.example.com
+                      embedUrl: https://www.example.com
+                      reportType: PowerBIReport
+                      description: A sample description.
+                      createdDateTime: '2026-01-15T10:30:00Z'
+                      modifiedDateTime: '2026-01-15T10:30:00Z'
+                      modifiedBy: example_value
+                    '@odata.context': example_value
         '401':
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getreportsingroup401Example:
+                  summary: Default getReportsInGroup 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
         '404':
           description: Workspace not found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getreportsingroup404Example:
+                  summary: Default getReportsInGroup 404 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /groups/{groupId}/dashboards:
     get:
       operationId: getDashboardsInGroup
-      summary: Power BI List dashboards in a workspace
+      summary: Power Bi List Dashboards in a Workspace
       description: >-
         Returns a list of dashboards from the specified workspace.
       tags:
-        - Dashboards
-        - Groups
+      - Dashboards
+      - Groups
       parameters:
-        - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/groupId'
       responses:
         '200':
           description: List of dashboards in the workspace
@@ -965,30 +2019,68 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DashboardList'
+              examples:
+                Getdashboardsingroup200Example:
+                  summary: Default getDashboardsInGroup 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                    - id: abc123
+                      displayName: example_value
+                      isReadOnly: true
+                      webUrl: https://www.example.com
+                      embedUrl: https://www.example.com
+                      dataClassification: example_value
+                    '@odata.context': example_value
         '401':
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getdashboardsingroup401Example:
+                  summary: Default getDashboardsInGroup 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
         '404':
           description: Workspace not found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getdashboardsingroup404Example:
+                  summary: Default getDashboardsInGroup 404 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /groups/{groupId}/imports:
     get:
       operationId: getImportsInGroup
-      summary: Power BI List imports in a workspace
+      summary: Power Bi List Imports in a Workspace
       description: >-
         Returns a list of import operations for the specified workspace,
         including their status and the type of content imported.
       tags:
-        - Groups
-        - Imports
+      - Groups
+      - Imports
       parameters:
-        - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/groupId'
       responses:
         '200':
           description: List of imports
@@ -996,40 +2088,70 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ImportList'
+              examples:
+                Getimportsingroup200Example:
+                  summary: Default getImportsInGroup 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                    - id: abc123
+                      name: Example Title
+                      importState: Publishing
+                      createdDateTime: '2026-01-15T10:30:00Z'
+                      updatedDateTime: '2026-01-15T10:30:00Z'
+                      reports: {}
+                      datasets: {}
+                    '@odata.context': example_value
         '401':
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getimportsingroup401Example:
+                  summary: Default getImportsInGroup 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: createImportInGroup
-      summary: Power BI Import content into a workspace
+      summary: Power Bi Import Content Into a Workspace
       description: >-
         Imports a Power BI PBIX file, Excel workbook, or other supported
         content into the specified workspace. The file must be uploaded as
         multipart form data.
       tags:
-        - Groups
-        - Imports
+      - Groups
+      - Imports
       parameters:
-        - $ref: '#/components/parameters/groupId'
-        - name: datasetDisplayName
-          in: query
-          required: true
-          description: Display name of the dataset
-          schema:
-            type: string
-        - name: nameConflict
-          in: query
-          description: Action to take if a dataset with the same name exists
-          schema:
-            type: string
-            enum:
-              - Ignore
-              - Abort
-              - Overwrite
-              - CreateOrOverwrite
+      - $ref: '#/components/parameters/groupId'
+      - name: datasetDisplayName
+        in: query
+        required: true
+        description: Display name of the dataset
+        schema:
+          type: string
+        example: example_value
+      - name: nameConflict
+        in: query
+        description: Action to take if a dataset with the same name exists
+        schema:
+          type: string
+          enum:
+          - Ignore
+          - Abort
+          - Overwrite
+          - CreateOrOverwrite
+        example: Ignore
       requestBody:
         required: true
         content:
@@ -1041,6 +2163,12 @@ paths:
                   type: string
                   format: binary
                   description: The file to import
+            examples:
+              CreateimportingroupRequestExample:
+                summary: Default createImportInGroup request
+                x-microcks-default: true
+                value:
+                  file: example_value
       responses:
         '200':
           description: Import started
@@ -1048,28 +2176,114 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Import'
+              examples:
+                Createimportingroup200Example:
+                  summary: Default createImportInGroup 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    name: Example Title
+                    importState: Publishing
+                    createdDateTime: '2026-01-15T10:30:00Z'
+                    updatedDateTime: '2026-01-15T10:30:00Z'
+                    reports:
+                    - id: abc123
+                      name: Example Title
+                      datasetId: '500123'
+                      webUrl: https://www.example.com
+                      embedUrl: https://www.example.com
+                      reportType: PowerBIReport
+                      description: A sample description.
+                      createdDateTime: '2026-01-15T10:30:00Z'
+                      modifiedDateTime: '2026-01-15T10:30:00Z'
+                      modifiedBy: example_value
+                    datasets:
+                    - id: abc123
+                      name: Example Title
+                      addRowsAPIEnabled: true
+                      configuredBy: example_value
+                      isRefreshable: true
+                      isEffectiveIdentityRequired: true
+                      isEffectiveIdentityRolesRequired: true
+                      isOnPremGatewayRequired: true
+                      targetStorageMode: Import
+                      createReportEmbedURL: https://www.example.com
+                      qnaEmbedURL: https://www.example.com
+                      webUrl: https://www.example.com
+                      createdDate: '2026-01-15T10:30:00Z'
+                      contentProviderType: example_value
         '202':
           description: Import accepted and processing
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Import'
+              examples:
+                Createimportingroup202Example:
+                  summary: Default createImportInGroup 202 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    name: Example Title
+                    importState: Publishing
+                    createdDateTime: '2026-01-15T10:30:00Z'
+                    updatedDateTime: '2026-01-15T10:30:00Z'
+                    reports:
+                    - id: abc123
+                      name: Example Title
+                      datasetId: '500123'
+                      webUrl: https://www.example.com
+                      embedUrl: https://www.example.com
+                      reportType: PowerBIReport
+                      description: A sample description.
+                      createdDateTime: '2026-01-15T10:30:00Z'
+                      modifiedDateTime: '2026-01-15T10:30:00Z'
+                      modifiedBy: example_value
+                    datasets:
+                    - id: abc123
+                      name: Example Title
+                      addRowsAPIEnabled: true
+                      configuredBy: example_value
+                      isRefreshable: true
+                      isEffectiveIdentityRequired: true
+                      isEffectiveIdentityRolesRequired: true
+                      isOnPremGatewayRequired: true
+                      targetStorageMode: Import
+                      createReportEmbedURL: https://www.example.com
+                      qnaEmbedURL: https://www.example.com
+                      webUrl: https://www.example.com
+                      createdDate: '2026-01-15T10:30:00Z'
+                      contentProviderType: example_value
         '401':
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Createimportingroup401Example:
+                  summary: Default createImportInGroup 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /gateways:
     get:
       operationId: getGateways
-      summary: Power BI List gateways
+      summary: Power Bi List Gateways
       description: >-
         Returns a list of on-premises data gateways that the user has
         permissions to administer. Each gateway includes its cluster
         information and public key for credential encryption.
       tags:
-        - Gateways
+      - Gateways
       responses:
         '200':
           description: List of gateways
@@ -1077,21 +2291,47 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GatewayList'
+              examples:
+                Getgateways200Example:
+                  summary: Default getGateways 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                    - id: abc123
+                      name: Example Title
+                      type: Resource
+                      publicKey: {}
+                      gatewayAnnotation: example_value
+                    '@odata.context': example_value
         '401':
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getgateways401Example:
+                  summary: Default getGateways 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /gateways/{gatewayId}:
     get:
       operationId: getGateway
-      summary: Power BI Get a gateway
+      summary: Power Bi Get a Gateway
       description: Returns the specified on-premises data gateway.
       tags:
-        - Gateways
+      - Gateways
       parameters:
-        - $ref: '#/components/parameters/gatewayId'
+      - $ref: '#/components/parameters/gatewayId'
       responses:
         '200':
           description: Gateway details
@@ -1099,28 +2339,65 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Gateway'
+              examples:
+                Getgateway200Example:
+                  summary: Default getGateway 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    name: Example Title
+                    type: Resource
+                    publicKey:
+                      exponent: example_value
+                      modulus: example_value
+                    gatewayAnnotation: example_value
         '401':
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getgateway401Example:
+                  summary: Default getGateway 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
         '404':
           description: Gateway not found
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getgateway404Example:
+                  summary: Default getGateway 404 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /gateways/{gatewayId}/datasources:
     get:
       operationId: getGatewayDatasources
-      summary: Power BI List gateway data sources
+      summary: Power Bi List Gateway Data Sources
       description: >-
         Returns a list of data sources configured on the specified gateway.
       tags:
-        - Gateways
+      - Gateways
       parameters:
-        - $ref: '#/components/parameters/gatewayId'
+      - $ref: '#/components/parameters/gatewayId'
       responses:
         '200':
           description: List of data sources
@@ -1128,12 +2405,39 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GatewayDatasourceList'
+              examples:
+                Getgatewaydatasources200Example:
+                  summary: Default getGatewayDatasources 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                    - id: abc123
+                      gatewayId: '500123'
+                      datasourceType: example_value
+                      connectionDetails: example_value
+                      credentialType: Basic
+                      datasourceName: example_value
+                    '@odata.context': example_value
         '401':
           description: Unauthorized
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getgatewaydatasources401Example:
+                  summary: Default getGatewayDatasources 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   securitySchemes:
     bearerAuth:
@@ -1209,54 +2513,68 @@ components:
           type: string
           format: uuid
           description: The unique identifier of the dataset
+          example: abc123
         name:
           type: string
           description: The display name of the dataset
+          example: Example Title
         addRowsAPIEnabled:
           type: boolean
           description: Whether the push API is enabled for this dataset
+          example: true
         configuredBy:
           type: string
           description: The user who configured the dataset
+          example: example_value
         isRefreshable:
           type: boolean
           description: Whether the dataset can be refreshed
+          example: true
         isEffectiveIdentityRequired:
           type: boolean
           description: Whether effective identity is required for embedding
+          example: true
         isEffectiveIdentityRolesRequired:
           type: boolean
           description: Whether RLS roles are required for embedding
+          example: true
         isOnPremGatewayRequired:
           type: boolean
           description: Whether an on-premises gateway is required
+          example: true
         targetStorageMode:
           type: string
           description: The storage mode of the dataset
           enum:
-            - Import
-            - DirectQuery
-            - Dual
-            - PushDataset
+          - Import
+          - DirectQuery
+          - Dual
+          - PushDataset
+          example: Import
         createReportEmbedURL:
           type: string
           format: uri
           description: URL to create an embedded report on this dataset
+          example: https://www.example.com
         qnaEmbedURL:
           type: string
           format: uri
           description: URL for the Q&A embedded experience
+          example: https://www.example.com
         webUrl:
           type: string
           format: uri
           description: The web URL of the dataset
+          example: https://www.example.com
         createdDate:
           type: string
           format: date-time
           description: The date and time the dataset was created
+          example: '2026-01-15T10:30:00Z'
         contentProviderType:
           type: string
           description: The content provider type
+          example: example_value
     DatasetList:
       type: object
       description: A list of Power BI datasets
@@ -1265,141 +2583,166 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Dataset'
+          example: []
         '@odata.context':
           type: string
           description: OData context URL
+          example: example_value
     CreateDatasetRequest:
       type: object
       required:
-        - name
-        - tables
+      - name
+      - tables
       description: Request body for creating a push dataset
       properties:
         name:
           type: string
           description: The display name of the dataset
+          example: Example Title
         defaultMode:
           type: string
           description: The dataset mode
           enum:
-            - Push
-            - Streaming
-            - PushStreaming
+          - Push
+          - Streaming
+          - PushStreaming
+          example: Push
         tables:
           type: array
           description: The tables within the dataset
           items:
             $ref: '#/components/schemas/Table'
+          example: []
         relationships:
           type: array
           description: Relationships between tables
           items:
             $ref: '#/components/schemas/Relationship'
+          example: []
     Table:
       type: object
       required:
-        - name
-        - columns
+      - name
+      - columns
       description: A table within a Power BI dataset
       properties:
         name:
           type: string
           description: The name of the table
+          example: Example Title
         columns:
           type: array
           description: The columns in the table
           items:
             $ref: '#/components/schemas/Column'
+          example: []
         rows:
           type: array
           description: Rows of data in the table
           items:
             type: object
+          example: []
         measures:
           type: array
           description: DAX measures defined on the table
           items:
             $ref: '#/components/schemas/Measure'
+          example: []
     Column:
       type: object
       required:
-        - name
-        - dataType
+      - name
+      - dataType
       description: A column in a dataset table
       properties:
         name:
           type: string
           description: The column name
+          example: Example Title
         dataType:
           type: string
           description: The data type of the column
           enum:
-            - Int64
-            - Double
-            - Boolean
-            - Datetime
-            - String
-            - Decimal
+          - Int64
+          - Double
+          - Boolean
+          - Datetime
+          - String
+          - Decimal
+          example: Int64
         formatString:
           type: string
           description: Optional format string for the column
+          example: example_value
         sortByColumn:
           type: string
           description: Name of the column to sort by
+          example: example_value
         isHidden:
           type: boolean
           description: Whether the column is hidden in reports
+          example: true
     Measure:
       type: object
       required:
-        - name
-        - expression
+      - name
+      - expression
       description: A DAX measure defined on a table
       properties:
         name:
           type: string
           description: The name of the measure
+          example: Example Title
         expression:
           type: string
           description: The DAX expression for the measure
+          example: example_value
         formatString:
           type: string
           description: Optional format string
+          example: example_value
         isHidden:
           type: boolean
           description: Whether the measure is hidden in reports
+          example: true
     Relationship:
       type: object
       required:
-        - name
-        - fromTable
-        - fromColumn
-        - toTable
-        - toColumn
+      - name
+      - fromTable
+      - fromColumn
+      - toTable
+      - toColumn
       description: A relationship between two tables in a dataset
       properties:
         name:
           type: string
           description: The name of the relationship
+          example: Example Title
         fromTable:
           type: string
           description: The source table name
+          example: example_value
         fromColumn:
           type: string
           description: The source column name
+          example: example_value
         toTable:
           type: string
           description: The target table name
+          example: example_value
         toColumn:
           type: string
           description: The target column name
+          example: example_value
         crossFilteringBehavior:
           type: string
           description: The cross-filtering direction
           enum:
-            - OneDirection
-            - BothDirections
-            - Automatic
+          - OneDirection
+          - BothDirections
+          - Automatic
+          example: OneDirection
     RefreshList:
       type: object
       description: A list of dataset refresh entries
@@ -1408,8 +2751,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Refresh'
+          example: []
         '@odata.context':
           type: string
+          example: example_value
     Refresh:
       type: object
       description: A dataset refresh operation entry
@@ -1417,37 +2762,44 @@ components:
         requestId:
           type: string
           description: The unique identifier of the refresh request
+          example: '500123'
         id:
           type: integer
           description: The sequential identifier of the refresh
+          example: abc123
         refreshType:
           type: string
           description: The type of refresh
           enum:
-            - Scheduled
-            - OnDemand
-            - ViaApi
-            - ViaEnhancedApi
+          - Scheduled
+          - OnDemand
+          - ViaApi
+          - ViaEnhancedApi
+          example: Scheduled
         startTime:
           type: string
           format: date-time
           description: The start time of the refresh
+          example: '2026-01-15T10:30:00Z'
         endTime:
           type: string
           format: date-time
           description: The end time of the refresh
+          example: '2026-01-15T10:30:00Z'
         status:
           type: string
           description: The status of the refresh
           enum:
-            - Unknown
-            - Completed
-            - Failed
-            - Cancelled
-            - Disabled
+          - Unknown
+          - Completed
+          - Failed
+          - Cancelled
+          - Disabled
+          example: Unknown
         serviceExceptionJson:
           type: string
           description: JSON-formatted error details if the refresh failed
+          example: example_value
     RefreshRequest:
       type: object
       description: Request body for an enhanced dataset refresh
@@ -1456,24 +2808,28 @@ components:
           type: string
           description: The type of processing to perform
           enum:
-            - Full
-            - ClearValues
-            - Calculate
-            - DataOnly
-            - Automatic
-            - Defragment
+          - Full
+          - ClearValues
+          - Calculate
+          - DataOnly
+          - Automatic
+          - Defragment
+          example: Full
         commitMode:
           type: string
           description: Determines whether objects are committed in batches or only when complete
           enum:
-            - transactional
-            - partialBatch
+          - transactional
+          - partialBatch
+          example: transactional
         maxParallelism:
           type: integer
           description: Maximum number of threads to run in parallel
+          example: 10
         retryCount:
           type: integer
           description: Number of times to retry on failure
+          example: 10
         objects:
           type: array
           description: Specific tables or partitions to refresh
@@ -1486,6 +2842,7 @@ components:
               partition:
                 type: string
                 description: The partition name within the table to refresh
+          example: []
     DatasourceList:
       type: object
       description: A list of data sources
@@ -1494,8 +2851,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Datasource'
+          example: []
         '@odata.context':
           type: string
+          example: example_value
     Datasource:
       type: object
       description: A data source used by a dataset
@@ -1503,6 +2862,7 @@ components:
         datasourceType:
           type: string
           description: The type of data source (e.g. Sql, AnalysisServices, File)
+          example: example_value
         connectionDetails:
           type: object
           description: Connection details for the data source
@@ -1519,14 +2879,17 @@ components:
             path:
               type: string
               description: The file path
+          example: example_value
         datasourceId:
           type: string
           format: uuid
           description: The unique identifier of the data source
+          example: '500123'
         gatewayId:
           type: string
           format: uuid
           description: The gateway identifier if using an on-premises gateway
+          example: '500123'
     ParameterList:
       type: object
       description: A list of dataset parameters
@@ -1535,8 +2898,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Parameter'
+          example: []
         '@odata.context':
           type: string
+          example: example_value
     Parameter:
       type: object
       description: A parameter in a dataset
@@ -1544,24 +2909,29 @@ components:
         name:
           type: string
           description: The parameter name
+          example: Example Title
         type:
           type: string
           description: The data type of the parameter
+          example: example_value
         currentValue:
           type: string
           description: The current value of the parameter
+          example: example_value
         isRequired:
           type: boolean
           description: Whether the parameter is required
+          example: true
         suggestedValues:
           type: array
           description: Suggested values for the parameter
           items:
             type: string
+          example: []
     UpdateParametersRequest:
       type: object
       required:
-        - updateDetails
+      - updateDetails
       description: Request body for updating dataset parameters
       properties:
         updateDetails:
@@ -1569,8 +2939,8 @@ components:
           items:
             type: object
             required:
-              - name
-              - newValue
+            - name
+            - newValue
             properties:
               name:
                 type: string
@@ -1578,6 +2948,7 @@ components:
               newValue:
                 type: string
                 description: The new value for the parameter
+          example: []
     Report:
       type: object
       description: A Power BI report
@@ -1586,41 +2957,51 @@ components:
           type: string
           format: uuid
           description: The unique identifier of the report
+          example: abc123
         name:
           type: string
           description: The display name of the report
+          example: Example Title
         datasetId:
           type: string
           format: uuid
           description: The ID of the dataset associated with this report
+          example: '500123'
         webUrl:
           type: string
           format: uri
           description: The web URL of the report
+          example: https://www.example.com
         embedUrl:
           type: string
           format: uri
           description: The embed URL for embedding the report in applications
+          example: https://www.example.com
         reportType:
           type: string
           description: The type of the report
           enum:
-            - PowerBIReport
-            - PaginatedReport
+          - PowerBIReport
+          - PaginatedReport
+          example: PowerBIReport
         description:
           type: string
           description: The report description
+          example: A sample description.
         createdDateTime:
           type: string
           format: date-time
           description: When the report was created
+          example: '2026-01-15T10:30:00Z'
         modifiedDateTime:
           type: string
           format: date-time
           description: When the report was last modified
+          example: '2026-01-15T10:30:00Z'
         modifiedBy:
           type: string
           description: The user who last modified the report
+          example: example_value
     ReportList:
       type: object
       description: A list of Power BI reports
@@ -1629,35 +3010,41 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Report'
+          example: []
         '@odata.context':
           type: string
+          example: example_value
     CloneReportRequest:
       type: object
       required:
-        - name
+      - name
       description: Request body for cloning a report
       properties:
         name:
           type: string
           description: The name for the cloned report
+          example: Example Title
         targetModelId:
           type: string
           format: uuid
           description: Optional dataset ID to rebind the cloned report to
+          example: '500123'
         targetWorkspaceId:
           type: string
           format: uuid
           description: Optional workspace ID for the cloned report
+          example: '500123'
     RebindReportRequest:
       type: object
       required:
-        - datasetId
+      - datasetId
       description: Request body for rebinding a report to a different dataset
       properties:
         datasetId:
           type: string
           format: uuid
           description: The ID of the target dataset
+          example: '500123'
     PageList:
       type: object
       description: A list of report pages
@@ -1666,8 +3053,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Page'
+          example: []
         '@odata.context':
           type: string
+          example: example_value
     Page:
       type: object
       description: A page within a Power BI report
@@ -1675,12 +3064,15 @@ components:
         name:
           type: string
           description: The internal name of the page
+          example: Example Title
         displayName:
           type: string
           description: The display name shown in the report
+          example: example_value
         order:
           type: integer
           description: The order of the page within the report
+          example: 10
     Dashboard:
       type: object
       description: A Power BI dashboard
@@ -1689,23 +3081,29 @@ components:
           type: string
           format: uuid
           description: The unique identifier of the dashboard
+          example: abc123
         displayName:
           type: string
           description: The display name of the dashboard
+          example: example_value
         isReadOnly:
           type: boolean
           description: Whether the dashboard is read-only
+          example: true
         webUrl:
           type: string
           format: uri
           description: The web URL of the dashboard
+          example: https://www.example.com
         embedUrl:
           type: string
           format: uri
           description: The embed URL for embedding the dashboard
+          example: https://www.example.com
         dataClassification:
           type: string
           description: The data classification label
+          example: example_value
     DashboardList:
       type: object
       description: A list of Power BI dashboards
@@ -1714,17 +3112,20 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Dashboard'
+          example: []
         '@odata.context':
           type: string
+          example: example_value
     CreateDashboardRequest:
       type: object
       required:
-        - name
+      - name
       description: Request body for creating a dashboard
       properties:
         name:
           type: string
           description: The display name of the new dashboard
+          example: Example Title
     TileList:
       type: object
       description: A list of dashboard tiles
@@ -1733,8 +3134,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Tile'
+          example: []
         '@odata.context':
           type: string
+          example: example_value
     Tile:
       type: object
       description: A tile on a Power BI dashboard
@@ -1743,33 +3146,42 @@ components:
           type: string
           format: uuid
           description: The unique identifier of the tile
+          example: abc123
         title:
           type: string
           description: The display title of the tile
+          example: Example Title
         subTitle:
           type: string
           description: The subtitle of the tile
+          example: example_value
         embedUrl:
           type: string
           format: uri
           description: The embed URL for the tile
+          example: https://www.example.com
         embedData:
           type: string
           description: Additional embed data for the tile
+          example: example_value
         reportId:
           type: string
           format: uuid
           description: The ID of the report the tile is pinned from
+          example: '500123'
         datasetId:
           type: string
           format: uuid
           description: The ID of the dataset used by this tile
+          example: '500123'
         rowSpan:
           type: integer
           description: The number of rows the tile spans
+          example: 10
         colSpan:
           type: integer
           description: The number of columns the tile spans
+          example: 10
     Group:
       type: object
       description: A Power BI workspace (group)
@@ -1778,33 +3190,40 @@ components:
           type: string
           format: uuid
           description: The unique identifier of the workspace
+          example: abc123
         name:
           type: string
           description: The display name of the workspace
+          example: Example Title
         isReadOnly:
           type: boolean
           description: Whether the workspace is read-only
+          example: true
         isOnDedicatedCapacity:
           type: boolean
           description: Whether the workspace is on a dedicated capacity
+          example: true
         capacityId:
           type: string
           format: uuid
           description: The capacity ID if on a dedicated capacity
+          example: '500123'
         type:
           type: string
           description: The workspace type
           enum:
-            - Workspace
-            - Group
-            - PersonalGroup
+          - Workspace
+          - Group
+          - PersonalGroup
+          example: Workspace
         state:
           type: string
           description: The workspace state
           enum:
-            - Active
-            - Deleted
-            - Removing
+          - Active
+          - Deleted
+          - Removing
+          example: Active
     GroupList:
       type: object
       description: A list of Power BI workspaces
@@ -1813,52 +3232,61 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Group'
+          example: []
         '@odata.context':
           type: string
+          example: example_value
     CreateGroupRequest:
       type: object
       required:
-        - name
+      - name
       description: Request body for creating a workspace
       properties:
         name:
           type: string
           description: The display name of the new workspace
+          example: Example Title
     GroupUser:
       type: object
       required:
-        - emailAddress
-        - groupUserAccessRight
+      - emailAddress
+      - groupUserAccessRight
       description: A user in a Power BI workspace
       properties:
         emailAddress:
           type: string
           format: email
           description: The email address of the user
+          example: user@example.com
         displayName:
           type: string
           description: The display name of the user
+          example: example_value
         identifier:
           type: string
           description: The object ID of the user
+          example: example_value
         graphId:
           type: string
           description: The Microsoft Graph ID of the user
+          example: '500123'
         groupUserAccessRight:
           type: string
           description: The access right of the user in the workspace
           enum:
-            - Admin
-            - Member
-            - Contributor
-            - Viewer
+          - Admin
+          - Member
+          - Contributor
+          - Viewer
+          example: Admin
         principalType:
           type: string
           description: The principal type
           enum:
-            - User
-            - Group
-            - App
+          - User
+          - Group
+          - App
+          example: User
     GroupUserList:
       type: object
       description: A list of workspace users
@@ -1867,8 +3295,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/GroupUser'
+          example: []
         '@odata.context':
           type: string
+          example: example_value
     Import:
       type: object
       description: An import operation
@@ -1877,34 +3307,41 @@ components:
           type: string
           format: uuid
           description: The unique identifier of the import
+          example: abc123
         name:
           type: string
           description: The display name of the import
+          example: Example Title
         importState:
           type: string
           description: The state of the import
           enum:
-            - Publishing
-            - Succeeded
-            - Failed
+          - Publishing
+          - Succeeded
+          - Failed
+          example: Publishing
         createdDateTime:
           type: string
           format: date-time
           description: When the import was created
+          example: '2026-01-15T10:30:00Z'
         updatedDateTime:
           type: string
           format: date-time
           description: When the import was last updated
+          example: '2026-01-15T10:30:00Z'
         reports:
           type: array
           description: Reports created by this import
           items:
             $ref: '#/components/schemas/Report'
+          example: []
         datasets:
           type: array
           description: Datasets created by this import
           items:
             $ref: '#/components/schemas/Dataset'
+          example: []
     ImportList:
       type: object
       description: A list of import operations
@@ -1913,8 +3350,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Import'
+          example: []
         '@odata.context':
           type: string
+          example: example_value
     Gateway:
       type: object
       description: An on-premises data gateway
@@ -1923,15 +3362,18 @@ components:
           type: string
           format: uuid
           description: The unique identifier of the gateway
+          example: abc123
         name:
           type: string
           description: The display name of the gateway
+          example: Example Title
         type:
           type: string
           description: The type of gateway
           enum:
-            - Resource
-            - Personal
+          - Resource
+          - Personal
+          example: Resource
         publicKey:
           type: object
           description: The public key for encrypting credentials
@@ -1942,9 +3384,11 @@ components:
             modulus:
               type: string
               description: The RSA modulus
+          example: example_value
         gatewayAnnotation:
           type: string
           description: Gateway metadata annotation
+          example: example_value
     GatewayList:
       type: object
       description: A list of gateways
@@ -1953,8 +3397,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Gateway'
+          example: []
         '@odata.context':
           type: string
+          example: example_value
     GatewayDatasource:
       type: object
       description: A data source on a gateway
@@ -1963,28 +3409,34 @@ components:
           type: string
           format: uuid
           description: The unique identifier of the data source
+          example: abc123
         gatewayId:
           type: string
           format: uuid
           description: The gateway this data source belongs to
+          example: '500123'
         datasourceType:
           type: string
           description: The type of data source
+          example: example_value
         connectionDetails:
           type: string
           description: JSON string with connection details
+          example: example_value
         credentialType:
           type: string
           description: The credential type used for authentication
           enum:
-            - Basic
-            - Windows
-            - Anonymous
-            - OAuth2
-            - Key
+          - Basic
+          - Windows
+          - Anonymous
+          - OAuth2
+          - Key
+          example: Basic
         datasourceName:
           type: string
           description: The display name of the data source
+          example: example_value
     GatewayDatasourceList:
       type: object
       description: A list of gateway data sources
@@ -1993,8 +3445,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/GatewayDatasource'
+          example: []
         '@odata.context':
           type: string
+          example: example_value
     ErrorResponse:
       type: object
       description: Error response from the Power BI REST API
@@ -2018,3 +3472,4 @@ components:
                     type: string
                   target:
                     type: string
+          example: example_value
