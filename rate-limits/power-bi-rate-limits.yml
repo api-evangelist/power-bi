@@ -4,113 +4,69 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Power BI
 providerId: power-bi
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
   - Analytics
   - Business Intelligence
-  - Dashboards
-  - Data Analysis
-  - Reporting
-  - Visualization
+  - Microsoft
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Power BI API surface. Captures per-tier quotas,
-  burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to be replaced
-  with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+description: >-
+  Power BI REST APIs apply per-user throttling to prevent overuse, returning
+  HTTP 429 with a Retry-After header when a calling identity exceeds the
+  documented per-time-window threshold. Numeric per-second/minute ceilings are
+  not exhaustively published; specific operation groups (admin, embed-token,
+  capacity, dataset refresh) carry their own published per-hour and per-day
+  caps in the relevant operation reference. For Power BI Embedded and Fabric
+  F-SKU capacity, throughput is governed by the v-core capacity rather than
+  by API quota: utilization is evaluated every 30 seconds and capacities
+  exceeding 100% enter "interactive request delay" mode.
+sources:
+  - https://learn.microsoft.com/en-us/rest/api/power-bi/
+  - https://learn.microsoft.com/en-us/power-bi/developer/embedded/embedded-faq
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
+  capacityOverload: 429
+headers:
+  retryAfter: Retry-After
+  requestId: RequestId
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Power BI REST API
-      - Power BI Embedded
-      - Power BI Management API
-      - Power BI Push Datasets API
-      - Power BI Report Server REST API
-      - Power BI Visuals API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Power BI REST API
-      - Power BI Embedded
-      - Power BI Management API
-      - Power BI Push Datasets API
-      - Power BI Report Server REST API
-      - Power BI Visuals API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Power BI REST API
-      - Power BI Embedded
-      - Power BI Management API
-      - Power BI Push Datasets API
-      - Power BI Report Server REST API
-      - Power BI Visuals API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Power BI REST API
-      - Power BI Embedded
-      - Power BI Management API
-      - Power BI Push Datasets API
-      - Power BI Report Server REST API
-      - Power BI Visuals API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Power BI REST API
-      - Power BI Embedded
-      - Power BI Management API
-      - Power BI Push Datasets API
-      - Power BI Report Server REST API
-      - Power BI Visuals API
+  - name: Per-user request throttling
+    scope: user
+    metric: varies
+    limit: per-operation thresholds; see operation reference
+    notes: Power BI throttles when a single user exceeds the per-operation time-window threshold; HTTP 429 + Retry-After is returned.
+  - name: Embed-token generation (Pro / PPU)
+    scope: user
+    metric: varies
+    limit: limited number per master account or service principal (development testing only)
+    notes: Production embedding requires assigning a Power BI Embedded (A SKU) or Fabric (F SKU) capacity; capacity removes the embed-token cap.
+  - name: Embedded / Premium capacity utilization
+    scope: capacity
+    metric: v-core_seconds
+    limit: '30 seconds of CPU per v-core per 30-second cycle'
+    notes: Each evaluation cycle aggregates interactive (current cycle) plus background (1/2880 of past 24h) operations.
+  - name: Capacity overload behavior
+    scope: capacity
+    metric: percent_overload
+    limit: 'no delay below 10% overload; up to 20s interactive delay at 100% overload'
+    notes: Capacity remains in interactive-request-delay mode until the previous evaluation drops below 100% utilization.
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Honor Retry-After
+    description: On 429, clients must wait the number of seconds indicated in Retry-After before retrying.
+  - name: Capacity-bound throttling
+    description: For Embedded and Fabric workloads, scale up the v-core capacity (or use autoscale where supported) rather than retrying through 429 storms.
+  - name: Cross-region operations
+    description: Operations that download files from a different region than the call origin may take longer; treat regional differences as latency, not throttling.
+  - name: Operation-level limits
+    description: Specific operations (admin scans, dataset refresh, embed-token generation) have their own caps documented in the per-operation reference; consult the operation page rather than assuming a uniform global limit.
+  - name: Development vs production embedding
+    description: Trial embed tokens with Pro/PPU are for development testing only; production embedding must run on purchased capacity.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
-    url: https://apievangelist.com
+notes: >-
+  Microsoft documents the throttling mechanism (429 + Retry-After) and the
+  capacity utilization model in detail but does not publish a single global
+  per-second numeric limit for the Power BI REST API. Per-operation limits
+  appear in each operation's reference page.
