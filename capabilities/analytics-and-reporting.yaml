@@ -1,342 +1,708 @@
-naftiko: "1.0.0-alpha1"
-
+naftiko: 1.0.0-alpha2
 info:
-  label: "Power BI Analytics and Reporting"
-  description: "Unified workflow for Power BI analytics operations including dataset management, report creation and distribution, dashboard monitoring, workspace administration, and gateway configuration. Used by BI analysts, report developers, and Power BI administrators."
+  label: Power BI Analytics and Reporting
+  description: Unified workflow for Power BI analytics operations including dataset management, report creation and distribution,
+    dashboard monitoring, workspace administration, and gateway configuration. Used by BI analysts, report developers, and
+    Power BI administrators.
   tags:
-    - Power BI
-    - Analytics
-    - Business Intelligence
-    - Reporting
-  created: "2026-04-18"
-  modified: "2026-04-18"
-
+  - Power BI
+  - Analytics
+  - Business Intelligence
+  - Reporting
+  created: '2026-04-18'
+  modified: '2026-05-06'
 binds:
-  - namespace: env
-    keys:
-      POWER_BI_ACCESS_TOKEN: POWER_BI_ACCESS_TOKEN
-
+- namespace: env
+  keys:
+    POWER_BI_ACCESS_TOKEN: POWER_BI_ACCESS_TOKEN
 capability:
   consumes:
-    - import: power-bi
-      location: ./shared/power-bi-rest.yaml
-
+  - type: http
+    namespace: power-bi
+    baseUri: https://api.powerbi.com/v1.0/myorg
+    description: Power BI REST API
+    authentication:
+      type: bearer
+      token: '{{POWER_BI_ACCESS_TOKEN}}'
+    resources:
+    - name: datasets
+      path: /datasets
+      description: Manage Power BI datasets
+      operations:
+      - name: get-datasets
+        method: GET
+        description: List datasets in My Workspace
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-dataset
+        method: POST
+        description: Create a new dataset
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            name: '{{tools.name}}'
+            tables: '{{tools.tables}}'
+      - name: get-dataset
+        method: GET
+        description: Get a dataset by ID
+        inputParameters:
+        - name: datasetId
+          in: path
+          type: string
+          required: true
+          description: Dataset ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: delete-dataset
+        method: DELETE
+        description: Delete a dataset
+        inputParameters:
+        - name: datasetId
+          in: path
+          type: string
+          required: true
+          description: Dataset ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: refresh-dataset
+        method: POST
+        description: Trigger a dataset refresh
+        inputParameters:
+        - name: datasetId
+          in: path
+          type: string
+          required: true
+          description: Dataset ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-refresh-history
+        method: GET
+        description: Get dataset refresh history
+        inputParameters:
+        - name: datasetId
+          in: path
+          type: string
+          required: true
+          description: Dataset ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-datasources
+        method: GET
+        description: Get datasources for a dataset
+        inputParameters:
+        - name: datasetId
+          in: path
+          type: string
+          required: true
+          description: Dataset ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-parameters
+        method: GET
+        description: Get dataset parameters
+        inputParameters:
+        - name: datasetId
+          in: path
+          type: string
+          required: true
+          description: Dataset ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: update-parameters
+        method: POST
+        description: Update dataset parameters
+        inputParameters:
+        - name: datasetId
+          in: path
+          type: string
+          required: true
+          description: Dataset ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: reports
+      path: /reports
+      description: Manage Power BI reports
+      operations:
+      - name: get-reports
+        method: GET
+        description: List reports in My Workspace
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-report
+        method: GET
+        description: Get a report by ID
+        inputParameters:
+        - name: reportId
+          in: path
+          type: string
+          required: true
+          description: Report ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: delete-report
+        method: DELETE
+        description: Delete a report
+        inputParameters:
+        - name: reportId
+          in: path
+          type: string
+          required: true
+          description: Report ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: clone-report
+        method: POST
+        description: Clone a report
+        inputParameters:
+        - name: reportId
+          in: path
+          type: string
+          required: true
+          description: Report ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: export-report
+        method: GET
+        description: Export a report
+        inputParameters:
+        - name: reportId
+          in: path
+          type: string
+          required: true
+          description: Report ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-pages
+        method: GET
+        description: Get report pages
+        inputParameters:
+        - name: reportId
+          in: path
+          type: string
+          required: true
+          description: Report ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: dashboards
+      path: /dashboards
+      description: Manage Power BI dashboards
+      operations:
+      - name: get-dashboards
+        method: GET
+        description: List dashboards
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-dashboard
+        method: POST
+        description: Create a dashboard
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-dashboard
+        method: GET
+        description: Get a dashboard by ID
+        inputParameters:
+        - name: dashboardId
+          in: path
+          type: string
+          required: true
+          description: Dashboard ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-tiles
+        method: GET
+        description: Get dashboard tiles
+        inputParameters:
+        - name: dashboardId
+          in: path
+          type: string
+          required: true
+          description: Dashboard ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: groups
+      path: /groups
+      description: Manage workspaces (groups)
+      operations:
+      - name: get-groups
+        method: GET
+        description: List workspaces
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-group
+        method: POST
+        description: Create a workspace
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: delete-group
+        method: DELETE
+        description: Delete a workspace
+        inputParameters:
+        - name: groupId
+          in: path
+          type: string
+          required: true
+          description: Group ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-group-users
+        method: GET
+        description: List workspace users
+        inputParameters:
+        - name: groupId
+          in: path
+          type: string
+          required: true
+          description: Group ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: add-group-user
+        method: POST
+        description: Add a user to a workspace
+        inputParameters:
+        - name: groupId
+          in: path
+          type: string
+          required: true
+          description: Group ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: gateways
+      path: /gateways
+      description: Manage data gateways
+      operations:
+      - name: get-gateways
+        method: GET
+        description: List gateways
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-gateway
+        method: GET
+        description: Get a gateway by ID
+        inputParameters:
+        - name: gatewayId
+          in: path
+          type: string
+          required: true
+          description: Gateway ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-gateway-datasources
+        method: GET
+        description: Get gateway datasources
+        inputParameters:
+        - name: gatewayId
+          in: path
+          type: string
+          required: true
+          description: Gateway ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
   exposes:
-    - type: rest
-      port: 8080
-      namespace: power-bi-analytics-api
-      description: "Unified REST API for Power BI analytics and reporting."
-      resources:
-        - path: /v1/datasets
-          name: datasets
-          description: "Dataset management"
-          operations:
-            - method: GET
-              name: list-datasets
-              description: "List all datasets"
-              call: "power-bi.get-datasets"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: POST
-              name: create-dataset
-              description: "Create a dataset"
-              call: "power-bi.create-dataset"
-              with:
-                name: "rest.name"
-                tables: "rest.tables"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/datasets/{datasetId}
-          name: dataset
-          description: "Individual dataset operations"
-          operations:
-            - method: GET
-              name: get-dataset
-              description: "Get dataset details"
-              call: "power-bi.get-dataset"
-              with:
-                datasetId: "rest.datasetId"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: DELETE
-              name: delete-dataset
-              description: "Delete a dataset"
-              call: "power-bi.delete-dataset"
-              with:
-                datasetId: "rest.datasetId"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/reports
-          name: reports
-          description: "Report management"
-          operations:
-            - method: GET
-              name: list-reports
-              description: "List all reports"
-              call: "power-bi.get-reports"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/dashboards
-          name: dashboards
-          description: "Dashboard management"
-          operations:
-            - method: GET
-              name: list-dashboards
-              description: "List all dashboards"
-              call: "power-bi.get-dashboards"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: POST
-              name: create-dashboard
-              description: "Create a dashboard"
-              call: "power-bi.create-dashboard"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/workspaces
-          name: workspaces
-          description: "Workspace management"
-          operations:
-            - method: GET
-              name: list-workspaces
-              description: "List workspaces"
-              call: "power-bi.get-groups"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/gateways
-          name: gateways
-          description: "Gateway management"
-          operations:
-            - method: GET
-              name: list-gateways
-              description: "List gateways"
-              call: "power-bi.get-gateways"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-    - type: mcp
-      port: 9090
-      namespace: power-bi-analytics-mcp
-      transport: http
-      description: "MCP server for AI-assisted Power BI analytics and reporting."
-      tools:
-        - name: list-datasets
-          description: "List all Power BI datasets"
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "power-bi.get-datasets"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-dataset
-          description: "Get dataset details by ID"
-          hints:
-            readOnly: true
-          call: "power-bi.get-dataset"
-          with:
-            datasetId: "tools.datasetId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: create-dataset
-          description: "Create a new dataset"
-          hints:
-            readOnly: false
-          call: "power-bi.create-dataset"
-          with:
-            name: "tools.name"
-            tables: "tools.tables"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: delete-dataset
-          description: "Delete a dataset"
-          hints:
-            destructive: true
-            idempotent: true
-          call: "power-bi.delete-dataset"
-          with:
-            datasetId: "tools.datasetId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: refresh-dataset
-          description: "Trigger a dataset refresh"
-          hints:
-            readOnly: false
-          call: "power-bi.refresh-dataset"
-          with:
-            datasetId: "tools.datasetId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-refresh-history
-          description: "Get dataset refresh history"
-          hints:
-            readOnly: true
-          call: "power-bi.get-refresh-history"
-          with:
-            datasetId: "tools.datasetId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-datasources
-          description: "Get datasources for a dataset"
-          hints:
-            readOnly: true
-          call: "power-bi.get-datasources"
-          with:
-            datasetId: "tools.datasetId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-reports
-          description: "List all Power BI reports"
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "power-bi.get-reports"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-report
-          description: "Get report details by ID"
-          hints:
-            readOnly: true
-          call: "power-bi.get-report"
-          with:
-            reportId: "tools.reportId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: clone-report
-          description: "Clone a report"
-          hints:
-            readOnly: false
-          call: "power-bi.clone-report"
-          with:
-            reportId: "tools.reportId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: export-report
-          description: "Export a report"
-          hints:
-            readOnly: true
-          call: "power-bi.export-report"
-          with:
-            reportId: "tools.reportId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-report-pages
-          description: "Get pages for a report"
-          hints:
-            readOnly: true
-          call: "power-bi.get-pages"
-          with:
-            reportId: "tools.reportId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-dashboards
-          description: "List all dashboards"
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "power-bi.get-dashboards"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-dashboard
-          description: "Get dashboard details"
-          hints:
-            readOnly: true
-          call: "power-bi.get-dashboard"
-          with:
-            dashboardId: "tools.dashboardId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: create-dashboard
-          description: "Create a new dashboard"
-          hints:
-            readOnly: false
-          call: "power-bi.create-dashboard"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-dashboard-tiles
-          description: "Get tiles for a dashboard"
-          hints:
-            readOnly: true
-          call: "power-bi.get-tiles"
-          with:
-            dashboardId: "tools.dashboardId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-workspaces
-          description: "List all workspaces"
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "power-bi.get-groups"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: create-workspace
-          description: "Create a new workspace"
-          hints:
-            readOnly: false
-          call: "power-bi.create-group"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-workspace-users
-          description: "List workspace users"
-          hints:
-            readOnly: true
-          call: "power-bi.get-group-users"
-          with:
-            groupId: "tools.groupId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-gateways
-          description: "List data gateways"
-          hints:
-            readOnly: true
-          call: "power-bi.get-gateways"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-gateway
-          description: "Get gateway details"
-          hints:
-            readOnly: true
-          call: "power-bi.get-gateway"
-          with:
-            gatewayId: "tools.gatewayId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-gateway-datasources
-          description: "Get gateway datasources"
-          hints:
-            readOnly: true
-          call: "power-bi.get-gateway-datasources"
-          with:
-            gatewayId: "tools.gatewayId"
-          outputParameters:
-            - type: object
-              mapping: "$."
+  - type: rest
+    port: 8080
+    namespace: power-bi-analytics-api
+    description: Unified REST API for Power BI analytics and reporting.
+    resources:
+    - path: /v1/datasets
+      name: datasets
+      description: Dataset management
+      operations:
+      - method: GET
+        name: list-datasets
+        description: List all datasets
+        call: power-bi.get-datasets
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: create-dataset
+        description: Create a dataset
+        call: power-bi.create-dataset
+        with:
+          name: rest.name
+          tables: rest.tables
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/datasets/{datasetId}
+      name: dataset
+      description: Individual dataset operations
+      operations:
+      - method: GET
+        name: get-dataset
+        description: Get dataset details
+        call: power-bi.get-dataset
+        with:
+          datasetId: rest.datasetId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete-dataset
+        description: Delete a dataset
+        call: power-bi.delete-dataset
+        with:
+          datasetId: rest.datasetId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/reports
+      name: reports
+      description: Report management
+      operations:
+      - method: GET
+        name: list-reports
+        description: List all reports
+        call: power-bi.get-reports
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/dashboards
+      name: dashboards
+      description: Dashboard management
+      operations:
+      - method: GET
+        name: list-dashboards
+        description: List all dashboards
+        call: power-bi.get-dashboards
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: create-dashboard
+        description: Create a dashboard
+        call: power-bi.create-dashboard
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/workspaces
+      name: workspaces
+      description: Workspace management
+      operations:
+      - method: GET
+        name: list-workspaces
+        description: List workspaces
+        call: power-bi.get-groups
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/gateways
+      name: gateways
+      description: Gateway management
+      operations:
+      - method: GET
+        name: list-gateways
+        description: List gateways
+        call: power-bi.get-gateways
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: power-bi-analytics-mcp
+    transport: http
+    description: MCP server for AI-assisted Power BI analytics and reporting.
+    tools:
+    - name: list-datasets
+      description: List all Power BI datasets
+      hints:
+        readOnly: true
+        openWorld: true
+      call: power-bi.get-datasets
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-dataset
+      description: Get dataset details by ID
+      hints:
+        readOnly: true
+      call: power-bi.get-dataset
+      with:
+        datasetId: tools.datasetId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-dataset
+      description: Create a new dataset
+      hints:
+        readOnly: false
+      call: power-bi.create-dataset
+      with:
+        name: tools.name
+        tables: tools.tables
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-dataset
+      description: Delete a dataset
+      hints:
+        destructive: true
+        idempotent: true
+      call: power-bi.delete-dataset
+      with:
+        datasetId: tools.datasetId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: refresh-dataset
+      description: Trigger a dataset refresh
+      hints:
+        readOnly: false
+      call: power-bi.refresh-dataset
+      with:
+        datasetId: tools.datasetId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-refresh-history
+      description: Get dataset refresh history
+      hints:
+        readOnly: true
+      call: power-bi.get-refresh-history
+      with:
+        datasetId: tools.datasetId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-datasources
+      description: Get datasources for a dataset
+      hints:
+        readOnly: true
+      call: power-bi.get-datasources
+      with:
+        datasetId: tools.datasetId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-reports
+      description: List all Power BI reports
+      hints:
+        readOnly: true
+        openWorld: true
+      call: power-bi.get-reports
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-report
+      description: Get report details by ID
+      hints:
+        readOnly: true
+      call: power-bi.get-report
+      with:
+        reportId: tools.reportId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: clone-report
+      description: Clone a report
+      hints:
+        readOnly: false
+      call: power-bi.clone-report
+      with:
+        reportId: tools.reportId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: export-report
+      description: Export a report
+      hints:
+        readOnly: true
+      call: power-bi.export-report
+      with:
+        reportId: tools.reportId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-report-pages
+      description: Get pages for a report
+      hints:
+        readOnly: true
+      call: power-bi.get-pages
+      with:
+        reportId: tools.reportId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-dashboards
+      description: List all dashboards
+      hints:
+        readOnly: true
+        openWorld: true
+      call: power-bi.get-dashboards
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-dashboard
+      description: Get dashboard details
+      hints:
+        readOnly: true
+      call: power-bi.get-dashboard
+      with:
+        dashboardId: tools.dashboardId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-dashboard
+      description: Create a new dashboard
+      hints:
+        readOnly: false
+      call: power-bi.create-dashboard
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-dashboard-tiles
+      description: Get tiles for a dashboard
+      hints:
+        readOnly: true
+      call: power-bi.get-tiles
+      with:
+        dashboardId: tools.dashboardId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-workspaces
+      description: List all workspaces
+      hints:
+        readOnly: true
+        openWorld: true
+      call: power-bi.get-groups
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-workspace
+      description: Create a new workspace
+      hints:
+        readOnly: false
+      call: power-bi.create-group
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-workspace-users
+      description: List workspace users
+      hints:
+        readOnly: true
+      call: power-bi.get-group-users
+      with:
+        groupId: tools.groupId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-gateways
+      description: List data gateways
+      hints:
+        readOnly: true
+      call: power-bi.get-gateways
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-gateway
+      description: Get gateway details
+      hints:
+        readOnly: true
+      call: power-bi.get-gateway
+      with:
+        gatewayId: tools.gatewayId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-gateway-datasources
+      description: Get gateway datasources
+      hints:
+        readOnly: true
+      call: power-bi.get-gateway-datasources
+      with:
+        gatewayId: tools.gatewayId
+      outputParameters:
+      - type: object
+        mapping: $.
