@@ -1,0 +1,233 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Power BI REST API — Dashboards
+  description: 'Power BI REST API — Dashboards. 6 operations. Lead operation: Power Bi List Dashboards. Self-contained Naftiko
+    capability covering one Power Bi business surface.'
+  tags:
+  - Power Bi
+  - Dashboards
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    POWER_BI_API_KEY: POWER_BI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-dashboards
+    baseUri: https://api.powerbi.com/v1.0/myorg
+    description: Power BI REST API — Dashboards business capability. Self-contained, no shared references.
+    resources:
+    - name: dashboards
+      path: /dashboards
+      operations:
+      - name: getdashboards
+        method: GET
+        description: Power Bi List Dashboards
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createdashboard
+        method: POST
+        description: Power Bi Create a Dashboard
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: dashboards-dashboardId
+      path: /dashboards/{dashboardId}
+      operations:
+      - name: getdashboard
+        method: GET
+        description: Power Bi Get a Dashboard
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: dashboards-dashboardId-tiles
+      path: /dashboards/{dashboardId}/tiles
+      operations:
+      - name: gettiles
+        method: GET
+        description: Power Bi Get Dashboard Tiles
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: dashboards-dashboardId-tiles-tileId
+      path: /dashboards/{dashboardId}/tiles/{tileId}
+      operations:
+      - name: gettile
+        method: GET
+        description: Power Bi Get a Dashboard Tile
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: groups-groupId-dashboards
+      path: /groups/{groupId}/dashboards
+      operations:
+      - name: getdashboardsingroup
+        method: GET
+        description: Power Bi List Dashboards in a Workspace
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.POWER_BI_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: rest-dashboards-rest
+    port: 8080
+    description: REST adapter for Power BI REST API — Dashboards. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/dashboards
+      name: dashboards
+      description: REST surface for dashboards.
+      operations:
+      - method: GET
+        name: getdashboards
+        description: Power Bi List Dashboards
+        call: rest-dashboards.getdashboards
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createdashboard
+        description: Power Bi Create a Dashboard
+        call: rest-dashboards.createdashboard
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/dashboards/{dashboardid}
+      name: dashboards-dashboardid
+      description: REST surface for dashboards-dashboardId.
+      operations:
+      - method: GET
+        name: getdashboard
+        description: Power Bi Get a Dashboard
+        call: rest-dashboards.getdashboard
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/dashboards/{dashboardid}/tiles
+      name: dashboards-dashboardid-tiles
+      description: REST surface for dashboards-dashboardId-tiles.
+      operations:
+      - method: GET
+        name: gettiles
+        description: Power Bi Get Dashboard Tiles
+        call: rest-dashboards.gettiles
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/dashboards/{dashboardid}/tiles/{tileid}
+      name: dashboards-dashboardid-tiles-tileid
+      description: REST surface for dashboards-dashboardId-tiles-tileId.
+      operations:
+      - method: GET
+        name: gettile
+        description: Power Bi Get a Dashboard Tile
+        call: rest-dashboards.gettile
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/groups/{groupid}/dashboards
+      name: groups-groupid-dashboards
+      description: REST surface for groups-groupId-dashboards.
+      operations:
+      - method: GET
+        name: getdashboardsingroup
+        description: Power Bi List Dashboards in a Workspace
+        call: rest-dashboards.getdashboardsingroup
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-dashboards-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Power BI REST API — Dashboards. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: power-bi-list-dashboards
+      description: Power Bi List Dashboards
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-dashboards.getdashboards
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: power-bi-create-dashboard
+      description: Power Bi Create a Dashboard
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: rest-dashboards.createdashboard
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: power-bi-get-dashboard
+      description: Power Bi Get a Dashboard
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-dashboards.getdashboard
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: power-bi-get-dashboard-tiles
+      description: Power Bi Get Dashboard Tiles
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-dashboards.gettiles
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: power-bi-get-dashboard-tile
+      description: Power Bi Get a Dashboard Tile
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-dashboards.gettile
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: power-bi-list-dashboards-workspace
+      description: Power Bi List Dashboards in a Workspace
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-dashboards.getdashboardsingroup
+      outputParameters:
+      - type: object
+        mapping: $.

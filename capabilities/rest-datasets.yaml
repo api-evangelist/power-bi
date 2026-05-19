@@ -1,0 +1,375 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Power BI REST API — Datasets
+  description: 'Power BI REST API — Datasets. 10 operations. Lead operation: Power Bi List Datasets. Self-contained Naftiko
+    capability covering one Power Bi business surface.'
+  tags:
+  - Power Bi
+  - Datasets
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    POWER_BI_API_KEY: POWER_BI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-datasets
+    baseUri: https://api.powerbi.com/v1.0/myorg
+    description: Power BI REST API — Datasets business capability. Self-contained, no shared references.
+    resources:
+    - name: datasets
+      path: /datasets
+      operations:
+      - name: getdatasets
+        method: GET
+        description: Power Bi List Datasets
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createdataset
+        method: POST
+        description: Power Bi Create a Push Dataset
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: defaultRetentionPolicy
+          in: query
+          type: string
+          description: The default retention policy for the dataset
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: datasets-datasetId
+      path: /datasets/{datasetId}
+      operations:
+      - name: getdataset
+        method: GET
+        description: Power Bi Get a Dataset
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletedataset
+        method: DELETE
+        description: Power Bi Delete a Dataset
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: datasets-datasetId-datasources
+      path: /datasets/{datasetId}/datasources
+      operations:
+      - name: getdatasources
+        method: GET
+        description: Power Bi Get Data Sources
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: datasets-datasetId-parameters
+      path: /datasets/{datasetId}/parameters
+      operations:
+      - name: getparameters
+        method: GET
+        description: Power Bi Get Dataset Parameters
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateparameters
+        method: POST
+        description: Power Bi Update Dataset Parameters
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: datasets-datasetId-refreshes
+      path: /datasets/{datasetId}/refreshes
+      operations:
+      - name: getrefreshhistory
+        method: GET
+        description: Power Bi Get Refresh History
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: $top
+          in: query
+          type: integer
+          description: Maximum number of refresh entries to return
+      - name: refreshdataset
+        method: POST
+        description: Power Bi Trigger a Dataset Refresh
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: groups-groupId-datasets
+      path: /groups/{groupId}/datasets
+      operations:
+      - name: getdatasetsingroup
+        method: GET
+        description: Power Bi List Datasets in a Workspace
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.POWER_BI_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: rest-datasets-rest
+    port: 8080
+    description: REST adapter for Power BI REST API — Datasets. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/datasets
+      name: datasets
+      description: REST surface for datasets.
+      operations:
+      - method: GET
+        name: getdatasets
+        description: Power Bi List Datasets
+        call: rest-datasets.getdatasets
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createdataset
+        description: Power Bi Create a Push Dataset
+        call: rest-datasets.createdataset
+        with:
+          defaultRetentionPolicy: rest.defaultRetentionPolicy
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/datasets/{datasetid}
+      name: datasets-datasetid
+      description: REST surface for datasets-datasetId.
+      operations:
+      - method: GET
+        name: getdataset
+        description: Power Bi Get a Dataset
+        call: rest-datasets.getdataset
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletedataset
+        description: Power Bi Delete a Dataset
+        call: rest-datasets.deletedataset
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/datasets/{datasetid}/datasources
+      name: datasets-datasetid-datasources
+      description: REST surface for datasets-datasetId-datasources.
+      operations:
+      - method: GET
+        name: getdatasources
+        description: Power Bi Get Data Sources
+        call: rest-datasets.getdatasources
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/datasets/{datasetid}/parameters
+      name: datasets-datasetid-parameters
+      description: REST surface for datasets-datasetId-parameters.
+      operations:
+      - method: GET
+        name: getparameters
+        description: Power Bi Get Dataset Parameters
+        call: rest-datasets.getparameters
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: updateparameters
+        description: Power Bi Update Dataset Parameters
+        call: rest-datasets.updateparameters
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/datasets/{datasetid}/refreshes
+      name: datasets-datasetid-refreshes
+      description: REST surface for datasets-datasetId-refreshes.
+      operations:
+      - method: GET
+        name: getrefreshhistory
+        description: Power Bi Get Refresh History
+        call: rest-datasets.getrefreshhistory
+        with:
+          $top: rest.$top
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: refreshdataset
+        description: Power Bi Trigger a Dataset Refresh
+        call: rest-datasets.refreshdataset
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/groups/{groupid}/datasets
+      name: groups-groupid-datasets
+      description: REST surface for groups-groupId-datasets.
+      operations:
+      - method: GET
+        name: getdatasetsingroup
+        description: Power Bi List Datasets in a Workspace
+        call: rest-datasets.getdatasetsingroup
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-datasets-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Power BI REST API — Datasets. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: power-bi-list-datasets
+      description: Power Bi List Datasets
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-datasets.getdatasets
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: power-bi-create-push-dataset
+      description: Power Bi Create a Push Dataset
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: rest-datasets.createdataset
+      with:
+        defaultRetentionPolicy: tools.defaultRetentionPolicy
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: power-bi-get-dataset
+      description: Power Bi Get a Dataset
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-datasets.getdataset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: power-bi-delete-dataset
+      description: Power Bi Delete a Dataset
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: rest-datasets.deletedataset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: power-bi-get-data-sources
+      description: Power Bi Get Data Sources
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-datasets.getdatasources
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: power-bi-get-dataset-parameters
+      description: Power Bi Get Dataset Parameters
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-datasets.getparameters
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: power-bi-update-dataset-parameters
+      description: Power Bi Update Dataset Parameters
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: rest-datasets.updateparameters
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: power-bi-get-refresh-history
+      description: Power Bi Get Refresh History
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-datasets.getrefreshhistory
+      with:
+        $top: tools.$top
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: power-bi-trigger-dataset-refresh
+      description: Power Bi Trigger a Dataset Refresh
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: rest-datasets.refreshdataset
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: power-bi-list-datasets-workspace
+      description: Power Bi List Datasets in a Workspace
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-datasets.getdatasetsingroup
+      outputParameters:
+      - type: object
+        mapping: $.
