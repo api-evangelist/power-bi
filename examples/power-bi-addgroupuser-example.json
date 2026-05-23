@@ -1,0 +1,56 @@
+{
+  "operationId": "addGroupUser",
+  "method": "POST",
+  "path": "/groups/{groupId}/users",
+  "summary": "Power Bi Add a Workspace User",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "AddgroupuserRequestExample",
+      "example": {
+        "emailAddress": "user@example.com",
+        "displayName": "example_value",
+        "identifier": "example_value",
+        "graphId": "500123",
+        "groupUserAccessRight": "Admin",
+        "principalType": "User"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "Addgroupuser400Example",
+      "example": {
+        "error": {
+          "code": "example_value",
+          "message": "example_value",
+          "details": [
+            {
+              "message": "example_value",
+              "target": "example_value"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "name": "Addgroupuser401Example",
+      "example": {
+        "error": {
+          "code": "example_value",
+          "message": "example_value",
+          "details": [
+            {
+              "message": "example_value",
+              "target": "example_value"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

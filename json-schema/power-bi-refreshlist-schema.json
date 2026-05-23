@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RefreshList",
+  "title": "RefreshList",
+  "type": "object",
+  "description": "A list of dataset refresh entries",
+  "properties": {
+    "value": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Refresh"
+      },
+      "example": []
+    },
+    "@odata.context": {
+      "type": "string",
+      "example": "example_value"
+    }
+  }
+}

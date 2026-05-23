@@ -1,0 +1,21 @@
+name: Power BI Domain Vocabulary
+provider: Power BI
+providerId: power-bi
+description: Tag-derived vocabulary for the Power BI API surface; sourced from openapi/ tags.
+terms:
+- term: Dashboards
+  description: Manage dashboards including listing, creating, and retrieving tiles. Dashboards are single-page canvases with
+    pinned visualizations.
+- term: Datasets
+  description: Manage datasets including creating, updating, refreshing, and deleting datasets. Datasets represent the data
+    model behind Power BI reports.
+- term: Gateways
+  description: Manage on-premises data gateways and their data sources for connecting to on-premises data.
+- term: Groups
+  description: Manage workspaces (groups) including listing, creating, deleting, and managing workspace users. Workspaces
+    are containers for dashboards, reports, datasets, and dataflows.
+- term: Imports
+  description: Import Power BI content such as PBIX files, Excel workbooks, and RDL reports into workspaces.
+- term: Reports
+  description: Manage reports including listing, cloning, exporting, rebinding, and deleting reports. Reports are visual presentations
+    of data from datasets.

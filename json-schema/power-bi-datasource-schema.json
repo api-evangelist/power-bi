@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Datasource",
+  "title": "Datasource",
+  "type": "object",
+  "description": "A data source used by a dataset",
+  "properties": {
+    "datasourceType": {
+      "type": "string",
+      "description": "The type of data source (e.g. Sql, AnalysisServices, File)",
+      "example": "example_value"
+    },
+    "connectionDetails": {
+      "type": "object",
+      "description": "Connection details for the data source",
+      "properties": {
+        "server": {
+          "type": "string",
+          "description": "The server address"
+        },
+        "database": {
+          "type": "string",
+          "description": "The database name"
+        },
+        "url": {
+          "type": "string",
+          "description": "The connection URL"
+        },
+        "path": {
+          "type": "string",
+          "description": "The file path"
+        }
+      },
+      "example": "example_value"
+    },
+    "datasourceId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The unique identifier of the data source",
+      "example": "500123"
+    },
+    "gatewayId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The gateway identifier if using an on-premises gateway",
+      "example": "500123"
+    }
+  }
+}

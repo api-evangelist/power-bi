@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RebindReportRequest",
+  "title": "RebindReportRequest",
+  "type": "object",
+  "required": [
+    "datasetId"
+  ],
+  "description": "Request body for rebinding a report to a different dataset",
+  "properties": {
+    "datasetId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The ID of the target dataset",
+      "example": "500123"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "operationId": "deleteReport",
+  "method": "DELETE",
+  "path": "/reports/{reportId}",
+  "summary": "Power Bi Delete a Report",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "name": "Deletereport401Example",
+      "example": {
+        "error": {
+          "code": "example_value",
+          "message": "example_value",
+          "details": [
+            {
+              "message": "example_value",
+              "target": "example_value"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "status": "404",
+      "contentType": "application/json",
+      "name": "Deletereport404Example",
+      "example": {
+        "error": {
+          "code": "example_value",
+          "message": "example_value",
+          "details": [
+            {
+              "message": "example_value",
+              "target": "example_value"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

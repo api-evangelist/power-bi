@@ -1,0 +1,59 @@
+{
+  "operationId": "getTile",
+  "method": "GET",
+  "path": "/dashboards/{dashboardId}/tiles/{tileId}",
+  "summary": "Power Bi Get a Dashboard Tile",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Gettile200Example",
+      "example": {
+        "id": "abc123",
+        "title": "Example Title",
+        "subTitle": "example_value",
+        "embedUrl": "https://www.example.com",
+        "embedData": "example_value",
+        "reportId": "500123",
+        "datasetId": "500123",
+        "rowSpan": 10,
+        "colSpan": 10
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "name": "Gettile401Example",
+      "example": {
+        "error": {
+          "code": "example_value",
+          "message": "example_value",
+          "details": [
+            {
+              "message": "example_value",
+              "target": "example_value"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "status": "404",
+      "contentType": "application/json",
+      "name": "Gettile404Example",
+      "example": {
+        "error": {
+          "code": "example_value",
+          "message": "example_value",
+          "details": [
+            {
+              "message": "example_value",
+              "target": "example_value"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

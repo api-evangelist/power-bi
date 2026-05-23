@@ -1,0 +1,58 @@
+{
+  "operationId": "getGateway",
+  "method": "GET",
+  "path": "/gateways/{gatewayId}",
+  "summary": "Power Bi Get a Gateway",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getgateway200Example",
+      "example": {
+        "id": "abc123",
+        "name": "Example Title",
+        "type": "Resource",
+        "publicKey": {
+          "exponent": "example_value",
+          "modulus": "example_value"
+        },
+        "gatewayAnnotation": "example_value"
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "name": "Getgateway401Example",
+      "example": {
+        "error": {
+          "code": "example_value",
+          "message": "example_value",
+          "details": [
+            {
+              "message": "example_value",
+              "target": "example_value"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "status": "404",
+      "contentType": "application/json",
+      "name": "Getgateway404Example",
+      "example": {
+        "error": {
+          "code": "example_value",
+          "message": "example_value",
+          "details": [
+            {
+              "message": "example_value",
+              "target": "example_value"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "operationId": "getPages",
+  "method": "GET",
+  "path": "/reports/{reportId}/pages",
+  "summary": "Power Bi Get Report Pages",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getpages200Example",
+      "example": {
+        "value": [
+          {
+            "name": "Example Title",
+            "displayName": "example_value",
+            "order": 10
+          }
+        ],
+        "@odata.context": "example_value"
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "name": "Getpages401Example",
+      "example": {
+        "error": {
+          "code": "example_value",
+          "message": "example_value",
+          "details": [
+            {
+              "message": "example_value",
+              "target": "example_value"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "status": "404",
+      "contentType": "application/json",
+      "name": "Getpages404Example",
+      "example": {
+        "error": {
+          "code": "example_value",
+          "message": "example_value",
+          "details": [
+            {
+              "message": "example_value",
+              "target": "example_value"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

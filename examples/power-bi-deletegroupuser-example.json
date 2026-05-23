@@ -1,0 +1,26 @@
+{
+  "operationId": "deleteGroupUser",
+  "method": "DELETE",
+  "path": "/groups/{groupId}/users/{userId}",
+  "summary": "Power Bi Remove a Workspace User",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "name": "Deletegroupuser401Example",
+      "example": {
+        "error": {
+          "code": "example_value",
+          "message": "example_value",
+          "details": [
+            {
+              "message": "example_value",
+              "target": "example_value"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

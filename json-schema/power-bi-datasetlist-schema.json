@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DatasetList",
+  "title": "DatasetList",
+  "type": "object",
+  "description": "A list of Power BI datasets",
+  "properties": {
+    "value": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Dataset"
+      },
+      "example": []
+    },
+    "@odata.context": {
+      "type": "string",
+      "description": "OData context URL",
+      "example": "example_value"
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Refresh",
+  "title": "Refresh",
+  "type": "object",
+  "description": "A dataset refresh operation entry",
+  "properties": {
+    "requestId": {
+      "type": "string",
+      "description": "The unique identifier of the refresh request",
+      "example": "500123"
+    },
+    "id": {
+      "type": "integer",
+      "description": "The sequential identifier of the refresh",
+      "example": "abc123"
+    },
+    "refreshType": {
+      "type": "string",
+      "description": "The type of refresh",
+      "enum": [
+        "Scheduled",
+        "OnDemand",
+        "ViaApi",
+        "ViaEnhancedApi"
+      ],
+      "example": "Scheduled"
+    },
+    "startTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The start time of the refresh",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "endTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The end time of the refresh",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "status": {
+      "type": "string",
+      "description": "The status of the refresh",
+      "enum": [
+        "Unknown",
+        "Completed",
+        "Failed",
+        "Cancelled",
+        "Disabled"
+      ],
+      "example": "Unknown"
+    },
+    "serviceExceptionJson": {
+      "type": "string",
+      "description": "JSON-formatted error details if the refresh failed",
+      "example": "example_value"
+    }
+  }
+}

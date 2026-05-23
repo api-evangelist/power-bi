@@ -1,0 +1,60 @@
+{
+  "operationId": "refreshDataset",
+  "method": "POST",
+  "path": "/datasets/{datasetId}/refreshes",
+  "summary": "Power Bi Trigger a Dataset Refresh",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "RefreshdatasetRequestExample",
+      "example": {
+        "type": "Full",
+        "commitMode": "transactional",
+        "maxParallelism": 10,
+        "retryCount": 10,
+        "objects": [
+          {
+            "table": "example_value",
+            "partition": "example_value"
+          }
+        ]
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "name": "Refreshdataset401Example",
+      "example": {
+        "error": {
+          "code": "example_value",
+          "message": "example_value",
+          "details": [
+            {
+              "message": "example_value",
+              "target": "example_value"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "status": "404",
+      "contentType": "application/json",
+      "name": "Refreshdataset404Example",
+      "example": {
+        "error": {
+          "code": "example_value",
+          "message": "example_value",
+          "details": [
+            {
+              "message": "example_value",
+              "target": "example_value"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

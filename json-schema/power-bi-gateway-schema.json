@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Gateway",
+  "title": "Gateway",
+  "type": "object",
+  "description": "An on-premises data gateway",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The unique identifier of the gateway",
+      "example": "abc123"
+    },
+    "name": {
+      "type": "string",
+      "description": "The display name of the gateway",
+      "example": "Example Title"
+    },
+    "type": {
+      "type": "string",
+      "description": "The type of gateway",
+      "enum": [
+        "Resource",
+        "Personal"
+      ],
+      "example": "Resource"
+    },
+    "publicKey": {
+      "type": "object",
+      "description": "The public key for encrypting credentials",
+      "properties": {
+        "exponent": {
+          "type": "string",
+          "description": "The RSA exponent"
+        },
+        "modulus": {
+          "type": "string",
+          "description": "The RSA modulus"
+        }
+      },
+      "example": "example_value"
+    },
+    "gatewayAnnotation": {
+      "type": "string",
+      "description": "Gateway metadata annotation",
+      "example": "example_value"
+    }
+  }
+}

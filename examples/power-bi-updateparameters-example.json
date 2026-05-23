@@ -1,0 +1,56 @@
+{
+  "operationId": "updateParameters",
+  "method": "POST",
+  "path": "/datasets/{datasetId}/parameters",
+  "summary": "Power Bi Update Dataset Parameters",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "UpdateparametersRequestExample",
+      "example": {
+        "updateDetails": [
+          {
+            "name": "Example Title",
+            "newValue": "example_value"
+          }
+        ]
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "Updateparameters400Example",
+      "example": {
+        "error": {
+          "code": "example_value",
+          "message": "example_value",
+          "details": [
+            {
+              "message": "example_value",
+              "target": "example_value"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "name": "Updateparameters401Example",
+      "example": {
+        "error": {
+          "code": "example_value",
+          "message": "example_value",
+          "details": [
+            {
+              "message": "example_value",
+              "target": "example_value"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreateDatasetRequest",
+  "title": "CreateDatasetRequest",
+  "type": "object",
+  "required": [
+    "name",
+    "tables"
+  ],
+  "description": "Request body for creating a push dataset",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The display name of the dataset",
+      "example": "Example Title"
+    },
+    "defaultMode": {
+      "type": "string",
+      "description": "The dataset mode",
+      "enum": [
+        "Push",
+        "Streaming",
+        "PushStreaming"
+      ],
+      "example": "Push"
+    },
+    "tables": {
+      "type": "array",
+      "description": "The tables within the dataset",
+      "items": {
+        "$ref": "#/components/schemas/Table"
+      },
+      "example": []
+    },
+    "relationships": {
+      "type": "array",
+      "description": "Relationships between tables",
+      "items": {
+        "$ref": "#/components/schemas/Relationship"
+      },
+      "example": []
+    }
+  }
+}

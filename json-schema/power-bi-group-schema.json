@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Group",
+  "title": "Group",
+  "type": "object",
+  "description": "A Power BI workspace (group)",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The unique identifier of the workspace",
+      "example": "abc123"
+    },
+    "name": {
+      "type": "string",
+      "description": "The display name of the workspace",
+      "example": "Example Title"
+    },
+    "isReadOnly": {
+      "type": "boolean",
+      "description": "Whether the workspace is read-only",
+      "example": true
+    },
+    "isOnDedicatedCapacity": {
+      "type": "boolean",
+      "description": "Whether the workspace is on a dedicated capacity",
+      "example": true
+    },
+    "capacityId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The capacity ID if on a dedicated capacity",
+      "example": "500123"
+    },
+    "type": {
+      "type": "string",
+      "description": "The workspace type",
+      "enum": [
+        "Workspace",
+        "Group",
+        "PersonalGroup"
+      ],
+      "example": "Workspace"
+    },
+    "state": {
+      "type": "string",
+      "description": "The workspace state",
+      "enum": [
+        "Active",
+        "Deleted",
+        "Removing"
+      ],
+      "example": "Active"
+    }
+  }
+}

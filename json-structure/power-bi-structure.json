@@ -1,0 +1,600 @@
+{
+  "provider": "Power BI",
+  "providerId": "power-bi",
+  "kind": "json-structure",
+  "description": "Structural overview of the Power BI API surface; extracted from openapi/.",
+  "schemaCount": 38,
+  "operationCount": 36,
+  "schemas": [
+    {
+      "name": "Dataset",
+      "type": "object",
+      "propertyCount": 14,
+      "required": []
+    },
+    {
+      "name": "DatasetList",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "CreateDatasetRequest",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "name",
+        "tables"
+      ]
+    },
+    {
+      "name": "Table",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "name",
+        "columns"
+      ]
+    },
+    {
+      "name": "Column",
+      "type": "object",
+      "propertyCount": 5,
+      "required": [
+        "name",
+        "dataType"
+      ]
+    },
+    {
+      "name": "Measure",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "name",
+        "expression"
+      ]
+    },
+    {
+      "name": "Relationship",
+      "type": "object",
+      "propertyCount": 6,
+      "required": [
+        "name",
+        "fromTable",
+        "fromColumn",
+        "toTable",
+        "toColumn"
+      ]
+    },
+    {
+      "name": "RefreshList",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Refresh",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "RefreshRequest",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "DatasourceList",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Datasource",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "ParameterList",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Parameter",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "UpdateParametersRequest",
+      "type": "object",
+      "propertyCount": 1,
+      "required": [
+        "updateDetails"
+      ]
+    },
+    {
+      "name": "Report",
+      "type": "object",
+      "propertyCount": 10,
+      "required": []
+    },
+    {
+      "name": "ReportList",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "CloneReportRequest",
+      "type": "object",
+      "propertyCount": 3,
+      "required": [
+        "name"
+      ]
+    },
+    {
+      "name": "RebindReportRequest",
+      "type": "object",
+      "propertyCount": 1,
+      "required": [
+        "datasetId"
+      ]
+    },
+    {
+      "name": "PageList",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Page",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "Dashboard",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "DashboardList",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "CreateDashboardRequest",
+      "type": "object",
+      "propertyCount": 1,
+      "required": [
+        "name"
+      ]
+    },
+    {
+      "name": "TileList",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Tile",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "Group",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "GroupList",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "CreateGroupRequest",
+      "type": "object",
+      "propertyCount": 1,
+      "required": [
+        "name"
+      ]
+    },
+    {
+      "name": "GroupUser",
+      "type": "object",
+      "propertyCount": 6,
+      "required": [
+        "emailAddress",
+        "groupUserAccessRight"
+      ]
+    },
+    {
+      "name": "GroupUserList",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Import",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "ImportList",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Gateway",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "GatewayList",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "GatewayDatasource",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "GatewayDatasourceList",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "ErrorResponse",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/datasets",
+      "operationId": "getDatasets",
+      "summary": "Power Bi List Datasets",
+      "tags": [
+        "Datasets"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/datasets",
+      "operationId": "createDataset",
+      "summary": "Power Bi Create a Push Dataset",
+      "tags": [
+        "Datasets"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/datasets/{datasetId}",
+      "operationId": "getDataset",
+      "summary": "Power Bi Get a Dataset",
+      "tags": [
+        "Datasets"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/datasets/{datasetId}",
+      "operationId": "deleteDataset",
+      "summary": "Power Bi Delete a Dataset",
+      "tags": [
+        "Datasets"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/datasets/{datasetId}/refreshes",
+      "operationId": "getRefreshHistory",
+      "summary": "Power Bi Get Refresh History",
+      "tags": [
+        "Datasets"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/datasets/{datasetId}/refreshes",
+      "operationId": "refreshDataset",
+      "summary": "Power Bi Trigger a Dataset Refresh",
+      "tags": [
+        "Datasets"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/datasets/{datasetId}/datasources",
+      "operationId": "getDatasources",
+      "summary": "Power Bi Get Data Sources",
+      "tags": [
+        "Datasets"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/datasets/{datasetId}/parameters",
+      "operationId": "getParameters",
+      "summary": "Power Bi Get Dataset Parameters",
+      "tags": [
+        "Datasets"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/datasets/{datasetId}/parameters",
+      "operationId": "updateParameters",
+      "summary": "Power Bi Update Dataset Parameters",
+      "tags": [
+        "Datasets"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/reports",
+      "operationId": "getReports",
+      "summary": "Power Bi List Reports",
+      "tags": [
+        "Reports"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/reports/{reportId}",
+      "operationId": "getReport",
+      "summary": "Power Bi Get a Report",
+      "tags": [
+        "Reports"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/reports/{reportId}",
+      "operationId": "deleteReport",
+      "summary": "Power Bi Delete a Report",
+      "tags": [
+        "Reports"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/reports/{reportId}/Clone",
+      "operationId": "cloneReport",
+      "summary": "Power Bi Clone a Report",
+      "tags": [
+        "Reports"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/reports/{reportId}/Rebind",
+      "operationId": "rebindReport",
+      "summary": "Power Bi Rebind a Report to a Dataset",
+      "tags": [
+        "Reports"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/reports/{reportId}/Export",
+      "operationId": "exportReport",
+      "summary": "Power Bi Export a Report",
+      "tags": [
+        "Reports"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/reports/{reportId}/pages",
+      "operationId": "getPages",
+      "summary": "Power Bi Get Report Pages",
+      "tags": [
+        "Reports"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/dashboards",
+      "operationId": "getDashboards",
+      "summary": "Power Bi List Dashboards",
+      "tags": [
+        "Dashboards"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/dashboards",
+      "operationId": "createDashboard",
+      "summary": "Power Bi Create a Dashboard",
+      "tags": [
+        "Dashboards"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/dashboards/{dashboardId}",
+      "operationId": "getDashboard",
+      "summary": "Power Bi Get a Dashboard",
+      "tags": [
+        "Dashboards"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/dashboards/{dashboardId}/tiles",
+      "operationId": "getTiles",
+      "summary": "Power Bi Get Dashboard Tiles",
+      "tags": [
+        "Dashboards"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/dashboards/{dashboardId}/tiles/{tileId}",
+      "operationId": "getTile",
+      "summary": "Power Bi Get a Dashboard Tile",
+      "tags": [
+        "Dashboards"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/groups",
+      "operationId": "getGroups",
+      "summary": "Power Bi List Workspaces",
+      "tags": [
+        "Groups"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/groups",
+      "operationId": "createGroup",
+      "summary": "Power Bi Create a Workspace",
+      "tags": [
+        "Groups"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/groups/{groupId}",
+      "operationId": "deleteGroup",
+      "summary": "Power Bi Delete a Workspace",
+      "tags": [
+        "Groups"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/groups/{groupId}/users",
+      "operationId": "getGroupUsers",
+      "summary": "Power Bi List Workspace Users",
+      "tags": [
+        "Groups"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/groups/{groupId}/users",
+      "operationId": "addGroupUser",
+      "summary": "Power Bi Add a Workspace User",
+      "tags": [
+        "Groups"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/groups/{groupId}/users/{userId}",
+      "operationId": "updateGroupUser",
+      "summary": "Power Bi Update Workspace User Access",
+      "tags": [
+        "Groups"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/groups/{groupId}/users/{userId}",
+      "operationId": "deleteGroupUser",
+      "summary": "Power Bi Remove a Workspace User",
+      "tags": [
+        "Groups"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/groups/{groupId}/datasets",
+      "operationId": "getDatasetsInGroup",
+      "summary": "Power Bi List Datasets in a Workspace",
+      "tags": [
+        "Datasets",
+        "Groups"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/groups/{groupId}/reports",
+      "operationId": "getReportsInGroup",
+      "summary": "Power Bi List Reports in a Workspace",
+      "tags": [
+        "Groups",
+        "Reports"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/groups/{groupId}/dashboards",
+      "operationId": "getDashboardsInGroup",
+      "summary": "Power Bi List Dashboards in a Workspace",
+      "tags": [
+        "Dashboards",
+        "Groups"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/groups/{groupId}/imports",
+      "operationId": "getImportsInGroup",
+      "summary": "Power Bi List Imports in a Workspace",
+      "tags": [
+        "Groups",
+        "Imports"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/groups/{groupId}/imports",
+      "operationId": "createImportInGroup",
+      "summary": "Power Bi Import Content Into a Workspace",
+      "tags": [
+        "Groups",
+        "Imports"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/gateways",
+      "operationId": "getGateways",
+      "summary": "Power Bi List Gateways",
+      "tags": [
+        "Gateways"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/gateways/{gatewayId}",
+      "operationId": "getGateway",
+      "summary": "Power Bi Get a Gateway",
+      "tags": [
+        "Gateways"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/gateways/{gatewayId}/datasources",
+      "operationId": "getGatewayDatasources",
+      "summary": "Power Bi List Gateway Data Sources",
+      "tags": [
+        "Gateways"
+      ]
+    }
+  ]
+}

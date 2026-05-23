@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Measure",
+  "title": "Measure",
+  "type": "object",
+  "required": [
+    "name",
+    "expression"
+  ],
+  "description": "A DAX measure defined on a table",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the measure",
+      "example": "Example Title"
+    },
+    "expression": {
+      "type": "string",
+      "description": "The DAX expression for the measure",
+      "example": "example_value"
+    },
+    "formatString": {
+      "type": "string",
+      "description": "Optional format string",
+      "example": "example_value"
+    },
+    "isHidden": {
+      "type": "boolean",
+      "description": "Whether the measure is hidden in reports",
+      "example": true
+    }
+  }
+}

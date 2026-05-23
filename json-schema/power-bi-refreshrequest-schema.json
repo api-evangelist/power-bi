@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RefreshRequest",
+  "title": "RefreshRequest",
+  "type": "object",
+  "description": "Request body for an enhanced dataset refresh",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "The type of processing to perform",
+      "enum": [
+        "Full",
+        "ClearValues",
+        "Calculate",
+        "DataOnly",
+        "Automatic",
+        "Defragment"
+      ],
+      "example": "Full"
+    },
+    "commitMode": {
+      "type": "string",
+      "description": "Determines whether objects are committed in batches or only when complete",
+      "enum": [
+        "transactional",
+        "partialBatch"
+      ],
+      "example": "transactional"
+    },
+    "maxParallelism": {
+      "type": "integer",
+      "description": "Maximum number of threads to run in parallel",
+      "example": 10
+    },
+    "retryCount": {
+      "type": "integer",
+      "description": "Number of times to retry on failure",
+      "example": 10
+    },
+    "objects": {
+      "type": "array",
+      "description": "Specific tables or partitions to refresh",
+      "items": {
+        "type": "object",
+        "properties": {
+          "table": {
+            "type": "string",
+            "description": "The table name to refresh"
+          },
+          "partition": {
+            "type": "string",
+            "description": "The partition name within the table to refresh"
+          }
+        }
+      },
+      "example": []
+    }
+  }
+}

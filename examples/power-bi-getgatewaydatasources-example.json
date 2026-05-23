@@ -1,0 +1,44 @@
+{
+  "operationId": "getGatewayDatasources",
+  "method": "GET",
+  "path": "/gateways/{gatewayId}/datasources",
+  "summary": "Power Bi List Gateway Data Sources",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getgatewaydatasources200Example",
+      "example": {
+        "value": [
+          {
+            "id": "abc123",
+            "gatewayId": "500123",
+            "datasourceType": "example_value",
+            "connectionDetails": "example_value",
+            "credentialType": "Basic",
+            "datasourceName": "example_value"
+          }
+        ],
+        "@odata.context": "example_value"
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "name": "Getgatewaydatasources401Example",
+      "example": {
+        "error": {
+          "code": "example_value",
+          "message": "example_value",
+          "details": [
+            {
+              "message": "example_value",
+              "target": "example_value"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

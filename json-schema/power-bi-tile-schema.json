@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Tile",
+  "title": "Tile",
+  "type": "object",
+  "description": "A tile on a Power BI dashboard",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The unique identifier of the tile",
+      "example": "abc123"
+    },
+    "title": {
+      "type": "string",
+      "description": "The display title of the tile",
+      "example": "Example Title"
+    },
+    "subTitle": {
+      "type": "string",
+      "description": "The subtitle of the tile",
+      "example": "example_value"
+    },
+    "embedUrl": {
+      "type": "string",
+      "format": "uri",
+      "description": "The embed URL for the tile",
+      "example": "https://www.example.com"
+    },
+    "embedData": {
+      "type": "string",
+      "description": "Additional embed data for the tile",
+      "example": "example_value"
+    },
+    "reportId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The ID of the report the tile is pinned from",
+      "example": "500123"
+    },
+    "datasetId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The ID of the dataset used by this tile",
+      "example": "500123"
+    },
+    "rowSpan": {
+      "type": "integer",
+      "description": "The number of rows the tile spans",
+      "example": 10
+    },
+    "colSpan": {
+      "type": "integer",
+      "description": "The number of columns the tile spans",
+      "example": 10
+    }
+  }
+}

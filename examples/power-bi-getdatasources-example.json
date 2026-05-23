@@ -1,0 +1,59 @@
+{
+  "operationId": "getDatasources",
+  "method": "GET",
+  "path": "/datasets/{datasetId}/datasources",
+  "summary": "Power Bi Get Data Sources",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getdatasources200Example",
+      "example": {
+        "value": [
+          {
+            "datasourceType": "example_value",
+            "connectionDetails": {},
+            "datasourceId": "500123",
+            "gatewayId": "500123"
+          }
+        ],
+        "@odata.context": "example_value"
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "name": "Getdatasources401Example",
+      "example": {
+        "error": {
+          "code": "example_value",
+          "message": "example_value",
+          "details": [
+            {
+              "message": "example_value",
+              "target": "example_value"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "status": "404",
+      "contentType": "application/json",
+      "name": "Getdatasources404Example",
+      "example": {
+        "error": {
+          "code": "example_value",
+          "message": "example_value",
+          "details": [
+            {
+              "message": "example_value",
+              "target": "example_value"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

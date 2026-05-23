@@ -1,0 +1,43 @@
+{
+  "operationId": "getParameters",
+  "method": "GET",
+  "path": "/datasets/{datasetId}/parameters",
+  "summary": "Power Bi Get Dataset Parameters",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getparameters200Example",
+      "example": {
+        "value": [
+          {
+            "name": "Example Title",
+            "type": "example_value",
+            "currentValue": "example_value",
+            "isRequired": true,
+            "suggestedValues": {}
+          }
+        ],
+        "@odata.context": "example_value"
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "name": "Getparameters401Example",
+      "example": {
+        "error": {
+          "code": "example_value",
+          "message": "example_value",
+          "details": [
+            {
+              "message": "example_value",
+              "target": "example_value"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

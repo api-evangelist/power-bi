@@ -1,0 +1,48 @@
+{
+  "operationId": "getReports",
+  "method": "GET",
+  "path": "/reports",
+  "summary": "Power Bi List Reports",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getreports200Example",
+      "example": {
+        "value": [
+          {
+            "id": "abc123",
+            "name": "Example Title",
+            "datasetId": "500123",
+            "webUrl": "https://www.example.com",
+            "embedUrl": "https://www.example.com",
+            "reportType": "PowerBIReport",
+            "description": "A sample description.",
+            "createdDateTime": "2026-01-15T10:30:00Z",
+            "modifiedDateTime": "2026-01-15T10:30:00Z",
+            "modifiedBy": "example_value"
+          }
+        ],
+        "@odata.context": "example_value"
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "name": "Getreports401Example",
+      "example": {
+        "error": {
+          "code": "example_value",
+          "message": "example_value",
+          "details": [
+            {
+              "message": "example_value",
+              "target": "example_value"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

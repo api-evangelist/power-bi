@@ -1,0 +1,61 @@
+{
+  "operationId": "getGroupUsers",
+  "method": "GET",
+  "path": "/groups/{groupId}/users",
+  "summary": "Power Bi List Workspace Users",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getgroupusers200Example",
+      "example": {
+        "value": [
+          {
+            "emailAddress": "user@example.com",
+            "displayName": "example_value",
+            "identifier": "example_value",
+            "graphId": "500123",
+            "groupUserAccessRight": "Admin",
+            "principalType": "User"
+          }
+        ],
+        "@odata.context": "example_value"
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "name": "Getgroupusers401Example",
+      "example": {
+        "error": {
+          "code": "example_value",
+          "message": "example_value",
+          "details": [
+            {
+              "message": "example_value",
+              "target": "example_value"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "status": "404",
+      "contentType": "application/json",
+      "name": "Getgroupusers404Example",
+      "example": {
+        "error": {
+          "code": "example_value",
+          "message": "example_value",
+          "details": [
+            {
+              "message": "example_value",
+              "target": "example_value"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "operationId": "getTiles",
+  "method": "GET",
+  "path": "/dashboards/{dashboardId}/tiles",
+  "summary": "Power Bi Get Dashboard Tiles",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Gettiles200Example",
+      "example": {
+        "value": [
+          {
+            "id": "abc123",
+            "title": "Example Title",
+            "subTitle": "example_value",
+            "embedUrl": "https://www.example.com",
+            "embedData": "example_value",
+            "reportId": "500123",
+            "datasetId": "500123",
+            "rowSpan": 10,
+            "colSpan": 10
+          }
+        ],
+        "@odata.context": "example_value"
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "name": "Gettiles401Example",
+      "example": {
+        "error": {
+          "code": "example_value",
+          "message": "example_value",
+          "details": [
+            {
+              "message": "example_value",
+              "target": "example_value"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "status": "404",
+      "contentType": "application/json",
+      "name": "Gettiles404Example",
+      "example": {
+        "error": {
+          "code": "example_value",
+          "message": "example_value",
+          "details": [
+            {
+              "message": "example_value",
+              "target": "example_value"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

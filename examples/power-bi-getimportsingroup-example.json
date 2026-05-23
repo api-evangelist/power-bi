@@ -1,0 +1,45 @@
+{
+  "operationId": "getImportsInGroup",
+  "method": "GET",
+  "path": "/groups/{groupId}/imports",
+  "summary": "Power Bi List Imports in a Workspace",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getimportsingroup200Example",
+      "example": {
+        "value": [
+          {
+            "id": "abc123",
+            "name": "Example Title",
+            "importState": "Publishing",
+            "createdDateTime": "2026-01-15T10:30:00Z",
+            "updatedDateTime": "2026-01-15T10:30:00Z",
+            "reports": {},
+            "datasets": {}
+          }
+        ],
+        "@odata.context": "example_value"
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "name": "Getimportsingroup401Example",
+      "example": {
+        "error": {
+          "code": "example_value",
+          "message": "example_value",
+          "details": [
+            {
+              "message": "example_value",
+              "target": "example_value"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

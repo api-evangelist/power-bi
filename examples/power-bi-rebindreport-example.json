@@ -1,0 +1,51 @@
+{
+  "operationId": "rebindReport",
+  "method": "POST",
+  "path": "/reports/{reportId}/Rebind",
+  "summary": "Power Bi Rebind a Report to a Dataset",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "RebindreportRequestExample",
+      "example": {
+        "datasetId": "500123"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "400",
+      "contentType": "application/json",
+      "name": "Rebindreport400Example",
+      "example": {
+        "error": {
+          "code": "example_value",
+          "message": "example_value",
+          "details": [
+            {
+              "message": "example_value",
+              "target": "example_value"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "name": "Rebindreport401Example",
+      "example": {
+        "error": {
+          "code": "example_value",
+          "message": "example_value",
+          "details": [
+            {
+              "message": "example_value",
+              "target": "example_value"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

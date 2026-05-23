@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Import",
+  "title": "Import",
+  "type": "object",
+  "description": "An import operation",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The unique identifier of the import",
+      "example": "abc123"
+    },
+    "name": {
+      "type": "string",
+      "description": "The display name of the import",
+      "example": "Example Title"
+    },
+    "importState": {
+      "type": "string",
+      "description": "The state of the import",
+      "enum": [
+        "Publishing",
+        "Succeeded",
+        "Failed"
+      ],
+      "example": "Publishing"
+    },
+    "createdDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the import was created",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "updatedDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the import was last updated",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "reports": {
+      "type": "array",
+      "description": "Reports created by this import",
+      "items": {
+        "$ref": "#/components/schemas/Report"
+      },
+      "example": []
+    },
+    "datasets": {
+      "type": "array",
+      "description": "Datasets created by this import",
+      "items": {
+        "$ref": "#/components/schemas/Dataset"
+      },
+      "example": []
+    }
+  }
+}

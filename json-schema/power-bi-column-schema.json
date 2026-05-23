@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Column",
+  "title": "Column",
+  "type": "object",
+  "required": [
+    "name",
+    "dataType"
+  ],
+  "description": "A column in a dataset table",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The column name",
+      "example": "Example Title"
+    },
+    "dataType": {
+      "type": "string",
+      "description": "The data type of the column",
+      "enum": [
+        "Int64",
+        "Double",
+        "Boolean",
+        "Datetime",
+        "String",
+        "Decimal"
+      ],
+      "example": "Int64"
+    },
+    "formatString": {
+      "type": "string",
+      "description": "Optional format string for the column",
+      "example": "example_value"
+    },
+    "sortByColumn": {
+      "type": "string",
+      "description": "Name of the column to sort by",
+      "example": "example_value"
+    },
+    "isHidden": {
+      "type": "boolean",
+      "description": "Whether the column is hidden in reports",
+      "example": true
+    }
+  }
+}

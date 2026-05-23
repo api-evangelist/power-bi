@@ -1,0 +1,49 @@
+{
+  "operationId": "exportReport",
+  "method": "GET",
+  "path": "/reports/{reportId}/Export",
+  "summary": "Power Bi Export a Report",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/zip",
+      "name": "Exportreport200Example",
+      "example": "example_value"
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "name": "Exportreport401Example",
+      "example": {
+        "error": {
+          "code": "example_value",
+          "message": "example_value",
+          "details": [
+            {
+              "message": "example_value",
+              "target": "example_value"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "status": "404",
+      "contentType": "application/json",
+      "name": "Exportreport404Example",
+      "example": {
+        "error": {
+          "code": "example_value",
+          "message": "example_value",
+          "details": [
+            {
+              "message": "example_value",
+              "target": "example_value"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

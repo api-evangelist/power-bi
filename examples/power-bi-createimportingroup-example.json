@@ -1,0 +1,122 @@
+{
+  "operationId": "createImportInGroup",
+  "method": "POST",
+  "path": "/groups/{groupId}/imports",
+  "summary": "Power Bi Import Content Into a Workspace",
+  "requestExamples": [
+    {
+      "contentType": "multipart/form-data",
+      "name": "CreateimportingroupRequestExample",
+      "example": {
+        "file": "example_value"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Createimportingroup200Example",
+      "example": {
+        "id": "abc123",
+        "name": "Example Title",
+        "importState": "Publishing",
+        "createdDateTime": "2026-01-15T10:30:00Z",
+        "updatedDateTime": "2026-01-15T10:30:00Z",
+        "reports": [
+          {
+            "id": "abc123",
+            "name": "Example Title",
+            "datasetId": "500123",
+            "webUrl": "https://www.example.com",
+            "embedUrl": "https://www.example.com",
+            "reportType": "PowerBIReport",
+            "description": "A sample description.",
+            "createdDateTime": "2026-01-15T10:30:00Z",
+            "modifiedDateTime": "2026-01-15T10:30:00Z",
+            "modifiedBy": "example_value"
+          }
+        ],
+        "datasets": [
+          {
+            "id": "abc123",
+            "name": "Example Title",
+            "addRowsAPIEnabled": true,
+            "configuredBy": "example_value",
+            "isRefreshable": true,
+            "isEffectiveIdentityRequired": true,
+            "isEffectiveIdentityRolesRequired": true,
+            "isOnPremGatewayRequired": true,
+            "targetStorageMode": "Import",
+            "createReportEmbedURL": "https://www.example.com",
+            "qnaEmbedURL": "https://www.example.com",
+            "webUrl": "https://www.example.com",
+            "createdDate": "2026-01-15T10:30:00Z",
+            "contentProviderType": "example_value"
+          }
+        ]
+      }
+    },
+    {
+      "status": "202",
+      "contentType": "application/json",
+      "name": "Createimportingroup202Example",
+      "example": {
+        "id": "abc123",
+        "name": "Example Title",
+        "importState": "Publishing",
+        "createdDateTime": "2026-01-15T10:30:00Z",
+        "updatedDateTime": "2026-01-15T10:30:00Z",
+        "reports": [
+          {
+            "id": "abc123",
+            "name": "Example Title",
+            "datasetId": "500123",
+            "webUrl": "https://www.example.com",
+            "embedUrl": "https://www.example.com",
+            "reportType": "PowerBIReport",
+            "description": "A sample description.",
+            "createdDateTime": "2026-01-15T10:30:00Z",
+            "modifiedDateTime": "2026-01-15T10:30:00Z",
+            "modifiedBy": "example_value"
+          }
+        ],
+        "datasets": [
+          {
+            "id": "abc123",
+            "name": "Example Title",
+            "addRowsAPIEnabled": true,
+            "configuredBy": "example_value",
+            "isRefreshable": true,
+            "isEffectiveIdentityRequired": true,
+            "isEffectiveIdentityRolesRequired": true,
+            "isOnPremGatewayRequired": true,
+            "targetStorageMode": "Import",
+            "createReportEmbedURL": "https://www.example.com",
+            "qnaEmbedURL": "https://www.example.com",
+            "webUrl": "https://www.example.com",
+            "createdDate": "2026-01-15T10:30:00Z",
+            "contentProviderType": "example_value"
+          }
+        ]
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "name": "Createimportingroup401Example",
+      "example": {
+        "error": {
+          "code": "example_value",
+          "message": "example_value",
+          "details": [
+            {
+              "message": "example_value",
+              "target": "example_value"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

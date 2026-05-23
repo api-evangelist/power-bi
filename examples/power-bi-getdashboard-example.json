@@ -1,0 +1,56 @@
+{
+  "operationId": "getDashboard",
+  "method": "GET",
+  "path": "/dashboards/{dashboardId}",
+  "summary": "Power Bi Get a Dashboard",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getdashboard200Example",
+      "example": {
+        "id": "abc123",
+        "displayName": "example_value",
+        "isReadOnly": true,
+        "webUrl": "https://www.example.com",
+        "embedUrl": "https://www.example.com",
+        "dataClassification": "example_value"
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "name": "Getdashboard401Example",
+      "example": {
+        "error": {
+          "code": "example_value",
+          "message": "example_value",
+          "details": [
+            {
+              "message": "example_value",
+              "target": "example_value"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "status": "404",
+      "contentType": "application/json",
+      "name": "Getdashboard404Example",
+      "example": {
+        "error": {
+          "code": "example_value",
+          "message": "example_value",
+          "details": [
+            {
+              "message": "example_value",
+              "target": "example_value"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

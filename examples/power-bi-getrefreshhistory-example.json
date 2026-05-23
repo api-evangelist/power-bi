@@ -1,0 +1,62 @@
+{
+  "operationId": "getRefreshHistory",
+  "method": "GET",
+  "path": "/datasets/{datasetId}/refreshes",
+  "summary": "Power Bi Get Refresh History",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getrefreshhistory200Example",
+      "example": {
+        "value": [
+          {
+            "requestId": "500123",
+            "id": "abc123",
+            "refreshType": "Scheduled",
+            "startTime": "2026-01-15T10:30:00Z",
+            "endTime": "2026-01-15T10:30:00Z",
+            "status": "Unknown",
+            "serviceExceptionJson": "example_value"
+          }
+        ],
+        "@odata.context": "example_value"
+      }
+    },
+    {
+      "status": "401",
+      "contentType": "application/json",
+      "name": "Getrefreshhistory401Example",
+      "example": {
+        "error": {
+          "code": "example_value",
+          "message": "example_value",
+          "details": [
+            {
+              "message": "example_value",
+              "target": "example_value"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "status": "404",
+      "contentType": "application/json",
+      "name": "Getrefreshhistory404Example",
+      "example": {
+        "error": {
+          "code": "example_value",
+          "message": "example_value",
+          "details": [
+            {
+              "message": "example_value",
+              "target": "example_value"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

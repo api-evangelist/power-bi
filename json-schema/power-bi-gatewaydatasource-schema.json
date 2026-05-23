@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GatewayDatasource",
+  "title": "GatewayDatasource",
+  "type": "object",
+  "description": "A data source on a gateway",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The unique identifier of the data source",
+      "example": "abc123"
+    },
+    "gatewayId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The gateway this data source belongs to",
+      "example": "500123"
+    },
+    "datasourceType": {
+      "type": "string",
+      "description": "The type of data source",
+      "example": "example_value"
+    },
+    "connectionDetails": {
+      "type": "string",
+      "description": "JSON string with connection details",
+      "example": "example_value"
+    },
+    "credentialType": {
+      "type": "string",
+      "description": "The credential type used for authentication",
+      "enum": [
+        "Basic",
+        "Windows",
+        "Anonymous",
+        "OAuth2",
+        "Key"
+      ],
+      "example": "Basic"
+    },
+    "datasourceName": {
+      "type": "string",
+      "description": "The display name of the data source",
+      "example": "example_value"
+    }
+  }
+}

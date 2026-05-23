@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Table",
+  "title": "Table",
+  "type": "object",
+  "required": [
+    "name",
+    "columns"
+  ],
+  "description": "A table within a Power BI dataset",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the table",
+      "example": "Example Title"
+    },
+    "columns": {
+      "type": "array",
+      "description": "The columns in the table",
+      "items": {
+        "$ref": "#/components/schemas/Column"
+      },
+      "example": []
+    },
+    "rows": {
+      "type": "array",
+      "description": "Rows of data in the table",
+      "items": {
+        "type": "object"
+      },
+      "example": []
+    },
+    "measures": {
+      "type": "array",
+      "description": "DAX measures defined on the table",
+      "items": {
+        "$ref": "#/components/schemas/Measure"
+      },
+      "example": []
+    }
+  }
+}

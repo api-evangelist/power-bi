@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Relationship",
+  "title": "Relationship",
+  "type": "object",
+  "required": [
+    "name",
+    "fromTable",
+    "fromColumn",
+    "toTable",
+    "toColumn"
+  ],
+  "description": "A relationship between two tables in a dataset",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the relationship",
+      "example": "Example Title"
+    },
+    "fromTable": {
+      "type": "string",
+      "description": "The source table name",
+      "example": "example_value"
+    },
+    "fromColumn": {
+      "type": "string",
+      "description": "The source column name",
+      "example": "example_value"
+    },
+    "toTable": {
+      "type": "string",
+      "description": "The target table name",
+      "example": "example_value"
+    },
+    "toColumn": {
+      "type": "string",
+      "description": "The target column name",
+      "example": "example_value"
+    },
+    "crossFilteringBehavior": {
+      "type": "string",
+      "description": "The cross-filtering direction",
+      "enum": [
+        "OneDirection",
+        "BothDirections",
+        "Automatic"
+      ],
+      "example": "OneDirection"
+    }
+  }
+}
