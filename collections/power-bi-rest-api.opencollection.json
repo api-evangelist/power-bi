@@ -1,0 +1,786 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Power BI REST API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Datasets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Power Bi List Datasets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/datasets"
+          },
+          "docs": "Returns a list of datasets from the user's My Workspace. Each dataset includes metadata such as name, configuration settings, and whether it is a push dataset or refreshable."
+        },
+        {
+          "info": {
+            "name": "Power Bi Create a Push Dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.powerbi.com/v1.0/myorg/datasets",
+            "params": [
+              {
+                "name": "defaultRetentionPolicy",
+                "value": "None",
+                "type": "query",
+                "description": "The default retention policy for the dataset"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new push dataset in the user's My Workspace. Push datasets allow applications to push data directly into Power BI in real time without needing a data source or scheduled refresh."
+        },
+        {
+          "info": {
+            "name": "Power Bi Get a Dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/datasets/:datasetId",
+            "params": [
+              {
+                "name": "datasetId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the dataset"
+              }
+            ]
+          },
+          "docs": "Returns the specified dataset from the user's My Workspace, including its configuration, tables, and data source details."
+        },
+        {
+          "info": {
+            "name": "Power Bi Delete a Dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.powerbi.com/v1.0/myorg/datasets/:datasetId",
+            "params": [
+              {
+                "name": "datasetId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the dataset"
+              }
+            ]
+          },
+          "docs": "Deletes the specified dataset from the user's My Workspace. This also deletes all reports and dashboard tiles that are built on the dataset."
+        },
+        {
+          "info": {
+            "name": "Power Bi Get Refresh History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/datasets/:datasetId/refreshes",
+            "params": [
+              {
+                "name": "datasetId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the dataset"
+              },
+              {
+                "name": "$top",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of refresh entries to return"
+              }
+            ]
+          },
+          "docs": "Returns the refresh history for the specified dataset. The response includes the status, start time, and end time of each refresh operation."
+        },
+        {
+          "info": {
+            "name": "Power Bi Trigger a Dataset Refresh",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.powerbi.com/v1.0/myorg/datasets/:datasetId/refreshes",
+            "params": [
+              {
+                "name": "datasetId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the dataset"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Triggers a refresh for the specified dataset. For enhanced refresh capabilities, include a request body specifying tables, partitions, or the type of refresh."
+        },
+        {
+          "info": {
+            "name": "Power Bi Get Data Sources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/datasets/:datasetId/datasources",
+            "params": [
+              {
+                "name": "datasetId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the dataset"
+              }
+            ]
+          },
+          "docs": "Returns a list of data sources for the specified dataset. Each data source includes connection details such as the server, database, and data source type."
+        },
+        {
+          "info": {
+            "name": "Power Bi Get Dataset Parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/datasets/:datasetId/parameters",
+            "params": [
+              {
+                "name": "datasetId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the dataset"
+              }
+            ]
+          },
+          "docs": "Returns a list of parameters for the specified dataset. Parameters allow dynamic configuration of data source connections and query behavior."
+        },
+        {
+          "info": {
+            "name": "Power Bi Update Dataset Parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.powerbi.com/v1.0/myorg/datasets/:datasetId/parameters",
+            "params": [
+              {
+                "name": "datasetId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the dataset"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the values of one or more parameters for the specified dataset. After updating parameters, a dataset refresh is required for the new values to take effect."
+        },
+        {
+          "info": {
+            "name": "Power Bi List Datasets in a Workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/groups/:groupId/datasets",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the workspace (group)"
+              }
+            ]
+          },
+          "docs": "Returns a list of datasets from the specified workspace. This is similar to the My Workspace datasets endpoint but scoped to a specific workspace."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Power Bi List Reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/reports"
+          },
+          "docs": "Returns a list of reports from the user's My Workspace. Each report includes metadata such as name, the associated dataset, web URL, and embed URL for embedding scenarios."
+        },
+        {
+          "info": {
+            "name": "Power Bi Get a Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/reports/:reportId",
+            "params": [
+              {
+                "name": "reportId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the report"
+              }
+            ]
+          },
+          "docs": "Returns the specified report from the user's My Workspace, including its name, dataset binding, web URL, and embed URL."
+        },
+        {
+          "info": {
+            "name": "Power Bi Delete a Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.powerbi.com/v1.0/myorg/reports/:reportId",
+            "params": [
+              {
+                "name": "reportId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the report"
+              }
+            ]
+          },
+          "docs": "Deletes the specified report from the user's My Workspace. This does not delete the underlying dataset."
+        },
+        {
+          "info": {
+            "name": "Power Bi Clone a Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.powerbi.com/v1.0/myorg/reports/:reportId/Clone",
+            "params": [
+              {
+                "name": "reportId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the report"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Clones the specified report from the user's My Workspace. The clone can be placed in a different workspace and optionally rebound to a different dataset."
+        },
+        {
+          "info": {
+            "name": "Power Bi Rebind a Report to a Dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.powerbi.com/v1.0/myorg/reports/:reportId/Rebind",
+            "params": [
+              {
+                "name": "reportId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the report"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Rebinds the specified report to a different dataset. The target dataset must have the same schema as the current dataset."
+        },
+        {
+          "info": {
+            "name": "Power Bi Export a Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/reports/:reportId/Export",
+            "params": [
+              {
+                "name": "reportId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the report"
+              }
+            ]
+          },
+          "docs": "Exports the specified report as a PBIX file. Only reports created from PBIX files can be exported. Reports created from the Power BI service are not supported."
+        },
+        {
+          "info": {
+            "name": "Power Bi Get Report Pages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/reports/:reportId/pages",
+            "params": [
+              {
+                "name": "reportId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the report"
+              }
+            ]
+          },
+          "docs": "Returns a list of pages within the specified report. Each page includes its name, display name, and order within the report."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Dashboards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Power Bi List Dashboards",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/dashboards"
+          },
+          "docs": "Returns a list of dashboards from the user's My Workspace. Each dashboard includes its name, web URL, embed URL, and whether it is read-only."
+        },
+        {
+          "info": {
+            "name": "Power Bi Create a Dashboard",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.powerbi.com/v1.0/myorg/dashboards",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new empty dashboard in the user's My Workspace. After creating the dashboard, use tile pinning to add content."
+        },
+        {
+          "info": {
+            "name": "Power Bi Get a Dashboard",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/dashboards/:dashboardId",
+            "params": [
+              {
+                "name": "dashboardId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the dashboard"
+              }
+            ]
+          },
+          "docs": "Returns the specified dashboard from the user's My Workspace, including its name, embed URL, and configuration."
+        },
+        {
+          "info": {
+            "name": "Power Bi Get Dashboard Tiles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/dashboards/:dashboardId/tiles",
+            "params": [
+              {
+                "name": "dashboardId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the dashboard"
+              }
+            ]
+          },
+          "docs": "Returns a list of tiles within the specified dashboard. Each tile represents a pinned visualization and includes its embed URL, report and dataset references, and configuration."
+        },
+        {
+          "info": {
+            "name": "Power Bi Get a Dashboard Tile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/dashboards/:dashboardId/tiles/:tileId",
+            "params": [
+              {
+                "name": "dashboardId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the dashboard"
+              },
+              {
+                "name": "tileId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the tile"
+              }
+            ]
+          },
+          "docs": "Returns the specified tile from the specified dashboard, including its embed URL and configuration details."
+        },
+        {
+          "info": {
+            "name": "Power Bi List Dashboards in a Workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/groups/:groupId/dashboards",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the workspace (group)"
+              }
+            ]
+          },
+          "docs": "Returns a list of dashboards from the specified workspace."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Power Bi List Workspaces",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/groups",
+            "params": [
+              {
+                "name": "$filter",
+                "value": "example_value",
+                "type": "query",
+                "description": "OData filter expression to filter workspaces"
+              },
+              {
+                "name": "$top",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of workspaces to return"
+              },
+              {
+                "name": "$skip",
+                "value": "10",
+                "type": "query",
+                "description": "Number of workspaces to skip"
+              }
+            ]
+          },
+          "docs": "Returns a list of workspaces (groups) the user has access to. Each workspace includes its name, type, and whether it is read-only or on a dedicated capacity."
+        },
+        {
+          "info": {
+            "name": "Power Bi Create a Workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.powerbi.com/v1.0/myorg/groups",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new workspace (group). The workspace can be assigned to a Premium capacity for enhanced features and performance."
+        },
+        {
+          "info": {
+            "name": "Power Bi Delete a Workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.powerbi.com/v1.0/myorg/groups/:groupId",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the workspace (group)"
+              }
+            ]
+          },
+          "docs": "Deletes the specified workspace. All content within the workspace including dashboards, reports, and datasets will be permanently removed."
+        },
+        {
+          "info": {
+            "name": "Power Bi List Workspace Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/groups/:groupId/users",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the workspace (group)"
+              }
+            ]
+          },
+          "docs": "Returns a list of users who have access to the specified workspace, including their display name, email address, and access rights."
+        },
+        {
+          "info": {
+            "name": "Power Bi Add a Workspace User",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.powerbi.com/v1.0/myorg/groups/:groupId/users",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the workspace (group)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Grants the specified user access to the workspace with the given access right (Admin, Member, Contributor, or Viewer)."
+        },
+        {
+          "info": {
+            "name": "Power Bi Update Workspace User Access",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.powerbi.com/v1.0/myorg/groups/:groupId/users/:userId",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the workspace (group)"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The email address or object ID of the user"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the access right for the specified user in the workspace."
+        },
+        {
+          "info": {
+            "name": "Power Bi Remove a Workspace User",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.powerbi.com/v1.0/myorg/groups/:groupId/users/:userId",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the workspace (group)"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The email address or object ID of the user"
+              }
+            ]
+          },
+          "docs": "Removes the specified user from the workspace, revoking all access."
+        },
+        {
+          "info": {
+            "name": "Power Bi List Reports in a Workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/groups/:groupId/reports",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the workspace (group)"
+              }
+            ]
+          },
+          "docs": "Returns a list of reports from the specified workspace. Each report includes its metadata and embed information."
+        },
+        {
+          "info": {
+            "name": "Power Bi List Imports in a Workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/groups/:groupId/imports",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the workspace (group)"
+              }
+            ]
+          },
+          "docs": "Returns a list of import operations for the specified workspace, including their status and the type of content imported."
+        },
+        {
+          "info": {
+            "name": "Power Bi Import Content Into a Workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.powerbi.com/v1.0/myorg/groups/:groupId/imports",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the workspace (group)"
+              },
+              {
+                "name": "datasetDisplayName",
+                "value": "example_value",
+                "type": "query",
+                "description": "Display name of the dataset"
+              },
+              {
+                "name": "nameConflict",
+                "value": "Ignore",
+                "type": "query",
+                "description": "Action to take if a dataset with the same name exists"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Imports a Power BI PBIX file, Excel workbook, or other supported content into the specified workspace. The file must be uploaded as multipart form data."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Gateways",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Power Bi List Gateways",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/gateways"
+          },
+          "docs": "Returns a list of on-premises data gateways that the user has permissions to administer. Each gateway includes its cluster information and public key for credential encryption."
+        },
+        {
+          "info": {
+            "name": "Power Bi Get a Gateway",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/gateways/:gatewayId",
+            "params": [
+              {
+                "name": "gatewayId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the gateway"
+              }
+            ]
+          },
+          "docs": "Returns the specified on-premises data gateway."
+        },
+        {
+          "info": {
+            "name": "Power Bi List Gateway Data Sources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/gateways/:gatewayId/datasources",
+            "params": [
+              {
+                "name": "gatewayId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the gateway"
+              }
+            ]
+          },
+          "docs": "Returns a list of data sources configured on the specified gateway."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
