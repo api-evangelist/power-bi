@@ -46,7 +46,7 @@ apis:
         url: https://docs.microsoft.com/en-us/power-bi/developer/embedded/embedding-content
       - type: RateLimits
         url: https://docs.microsoft.com/en-us/power-bi/developer/automation/api-rest-api-limitations
-      - type: SDK
+      - type: SDKs
         url: https://docs.microsoft.com/en-us/javascript/api/overview/powerbi/
         title: JavaScript SDK
       - type: ChangeLog
@@ -79,10 +79,10 @@ apis:
         url: https://learn.microsoft.com/en-us/power-bi/developer/embedded/embed-organization-app
       - type: Authentication
         url: https://learn.microsoft.com/en-us/power-bi/developer/embedded/embed-tokens
-      - type: SDK
+      - type: SDKs
         url: https://learn.microsoft.com/en-us/javascript/api/overview/powerbi/embedded-analytics-client-api
         title: JavaScript SDK
-      - type: SDK
+      - type: SDKs
         url: https://github.com/microsoft/PowerBI-CSharp
         title: .NET SDK
   - name: Power BI Management API
@@ -194,7 +194,7 @@ common:
     url: https://learn.microsoft.com/en-us/power-bi/
   - type: Pricing
     url: https://www.microsoft.com/en-us/power-platform/products/power-bi/pricing
-  - type: SignUp
+  - type: Signup
     url: https://app.powerbi.com/signupredirect?pbi_source=web
   - type: Login
     url: https://app.powerbi.com/signin
@@ -208,7 +208,7 @@ common:
     url: json-schema/power-bi-dataset-schema.json
   - type: JSONSchema
     url: json-schema/power-bi-report-schema.json
-  - type: SDK
+  - type: SDKs
     url: https://github.com/microsoft/PowerBI-CSharp
     title: .NET SDK
   - type: Features
