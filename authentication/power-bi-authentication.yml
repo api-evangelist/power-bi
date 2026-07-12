@@ -1,0 +1,15 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/power-bi-rest-api-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: Azure Active Directory OAuth 2.0 access token. Obtain a token by registering
+    an Azure AD application and requesting the Power BI Service scope (https://analysis.windows.net/powerbi/api/.default).
+  sources:
+  - openapi/power-bi-rest-api-openapi.yml

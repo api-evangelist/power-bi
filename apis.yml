@@ -165,6 +165,13 @@ apis:
       - type: Authentication
         url: https://learn.microsoft.com/en-us/power-bi/developer/visuals/authentication-api
 common:
+  - type: DomainSecurity
+    url: security/power-bi-domain-security.yml
+  - type: Authentication
+    url: authentication/power-bi-authentication.yml
+  - name: Agent Skills
+    url: https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/AI-Powered-Power-BI-reporting-From-design-to-deployment-with/ba-p/5190703
+    type: AgentSkills
   - type: Portal
     url: https://app.powerbi.com
   - type: DeveloperPortal
