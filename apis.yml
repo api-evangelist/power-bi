@@ -165,6 +165,8 @@ apis:
       - type: Authentication
         url: https://learn.microsoft.com/en-us/power-bi/developer/visuals/authentication-api
 common:
+  - type: AgenticAccess
+    url: agentic-access/power-bi-agentic-access.yml
   - type: DomainSecurity
     url: security/power-bi-domain-security.yml
   - type: Authentication
