@@ -1,0 +1,36 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/power-bi-rest-api-openapi.yml + Microsoft Power BI docs
+standards:
+  - id: oauth2
+    conforms: true
+    evidence: All operations require an Azure Active Directory OAuth 2.0 bearer token (resource https://analysis.windows.net/powerbi/api); documented authorization-code and client-credentials flows.
+  - id: oidc
+    conforms: true
+    evidence: Azure AD / Microsoft Entra ID is an OpenID Connect provider; tokens are OIDC-issued JWTs.
+  - id: openapi-3-1
+    conforms: true
+    evidence: Curated spec is OpenAPI 3.1.0.
+  - id: odata
+    conforms: true
+    evidence: Power BI REST admin and scanner APIs support OData query options ($top, $skip, $filter, $expand) and OData-style collection envelopes with "value" arrays.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors use a Microsoft-specific envelope (error.code / error.message / error.details) as application/json, not application/problem+json.
+  - id: json-api
+    conforms: false
+  - id: fhir-r4
+    conforms: false
+  - id: fapi
+    conforms: false
+  - id: scim
+    conforms: false
+  - id: idempotency-keys
+    conforms: false
+    evidence: No Idempotency-Key header documented; writes are not idempotent beyond HTTP method semantics.
+  - id: pagination
+    conforms: true
+    evidence: Large collections (admin, activity events) paginate via continuationToken / continuationUri; some list endpoints support OData $top/$skip.
+  - id: rate-limiting
+    conforms: true
+    evidence: Per-operation request throttling; 429 Too Many Requests with Retry-After header documented in REST API limitations.

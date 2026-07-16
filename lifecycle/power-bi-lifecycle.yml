@@ -1,0 +1,32 @@
+generated: '2026-06-20'
+method: searched
+source: Microsoft Power BI developer documentation + repository blog artifacts
+versioning:
+  scheme: uri-path
+  current: v1.0
+  base: https://api.powerbi.com/v1.0/myorg
+  docs: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  note: >-
+    The Power BI REST data-plane API is versioned as v1.0 in the URI path. New
+    capabilities are added additively; breaking changes are rare and announced
+    through the developer changelog and monthly feature summaries. Preview
+    features are labeled "(preview)" and may change before GA.
+deprecation:
+  policy_url: https://learn.microsoft.com/en-us/power-bi/developer/embedded/embedded-analytics-power-bi-changelog
+  sunset_header: false
+  deprecation_header: false
+  note: >-
+    Deprecations are communicated via the changelog, monthly feature summaries,
+    and the Power BI blog rather than RFC 8594 Sunset/Deprecation headers.
+    Recent example: deprecation of the old Excel and CSV import experience
+    (Feb 2026); Dataflows Gen1 wind-down in favor of Gen2 (Apr 2026).
+release_cadence:
+  scheme: monthly-feature-summary
+  channel: https://powerbi.microsoft.com/en-us/blog/
+  release_notes: https://learn.microsoft.com/en-us/power-bi/fundamentals/whats-new
+sla:
+  provider: Microsoft / Azure
+  url: https://azure.microsoft.com/en-us/support/legal/sla/power-bi-embedded/
+  note: Power BI Embedded (Azure A SKUs) carries an Azure SLA; the shared Power BI service SLA is governed by the Microsoft 365 / Power Platform service level commitments.
+status_page: https://powerbi.microsoft.com/en-us/status/
+deprecated_operations: []

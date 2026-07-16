@@ -1,0 +1,48 @@
+generated: '2026-06-20'
+method: searched
+source: Microsoft Power BI PowerShell cmdlets documentation
+name: MicrosoftPowerBIMgmt
+kind: powershell-module
+description: >-
+  The official Power BI management PowerShell cmdlets — a first-party command
+  surface over the Power BI REST API for automation and administration. The
+  binary/module is catalogued in packages/ (PowerShell Gallery); this artifact
+  captures its command surface.
+docs: https://learn.microsoft.com/en-us/powershell/power-bi/overview
+install:
+  - method: powershell-gallery
+    command: Install-Module -Name MicrosoftPowerBIMgmt
+modules:
+  - MicrosoftPowerBIMgmt (rollup)
+  - MicrosoftPowerBIMgmt.Profile
+  - MicrosoftPowerBIMgmt.Workspaces
+  - MicrosoftPowerBIMgmt.Reports
+  - MicrosoftPowerBIMgmt.Data
+  - MicrosoftPowerBIMgmt.Admin
+  - MicrosoftPowerBIMgmt.Capacities
+auth_flow:
+  - Connect-PowerBIServiceAccount
+  - Disconnect-PowerBIServiceAccount
+command_groups:
+  - group: Profile / auth
+    commands: [Connect-PowerBIServiceAccount, Disconnect-PowerBIServiceAccount, Get-PowerBIAccessToken]
+  - group: Workspaces
+    commands: [Get-PowerBIWorkspace, New-PowerBIWorkspace, Set-PowerBIWorkspace, Remove-PowerBIWorkspace, Add-PowerBIWorkspaceUser, Remove-PowerBIWorkspaceUser, Restore-PowerBIWorkspace]
+  - group: Reports
+    commands: [Get-PowerBIReport, New-PowerBIReport, Export-PowerBIReport, Copy-PowerBIReport, Remove-PowerBIReport]
+  - group: Datasets / data
+    commands: [Get-PowerBIDataset, Get-PowerBITable, Add-PowerBIRow, Remove-PowerBIRow, Get-PowerBIDatasource]
+  - group: Dashboards / tiles
+    commands: [Get-PowerBIDashboard, Get-PowerBITile]
+  - group: Imports
+    commands: [Get-PowerBIImport, New-PowerBIImport]
+  - group: Capacities
+    commands: [Get-PowerBICapacity]
+  - group: Admin
+    commands: [Get-PowerBIActivityEvent]
+  - group: Generic REST passthrough
+    commands: [Invoke-PowerBIRestMethod]
+notes: >-
+  Invoke-PowerBIRestMethod exposes any Power BI REST endpoint not wrapped by a
+  dedicated cmdlet. The newer Microsoft Fabric CLI (fab) also covers Power BI
+  items under the unified Fabric platform.

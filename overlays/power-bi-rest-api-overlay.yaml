@@ -1,0 +1,23 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Power BI REST API
+  version: 1.0.0
+extends: openapi/power-bi-rest-api-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: power-bi
+      x-apievangelist-artifacts:
+        authentication: authentication/power-bi-authentication.yml
+        scopes: scopes/power-bi-scopes.yml
+        conventions: conventions/power-bi-conventions.yml
+        errors: errors/power-bi-problem-types.yml
+        lifecycle: lifecycle/power-bi-lifecycle.yml
+        data-model: data-model/power-bi-data-model.yml
+        agentic-access: agentic-access/power-bi-agentic-access.yml
+  - target: $.info
+    update:
+      x-authentication-model: Azure Active Directory OAuth 2.0 (bearer JWT); resource https://analysis.windows.net/powerbi/api
+  - target: $.servers[0]
+    update:
+      x-rate-limits: See lifecycle/power-bi-lifecycle.yml and rate-limits/power-bi-rate-limits.yml; per-operation throttling with Retry-After on 429.

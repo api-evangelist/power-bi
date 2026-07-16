@@ -1,0 +1,41 @@
+generated: '2026-06-20'
+method: searched
+source: Power BI embedded analytics client (powerbi-client) + React wrapper docs
+description: >-
+  Client-side embedding components for surfacing Power BI reports, dashboards,
+  tiles, Q&A, and paginated reports inside custom web applications. Distinct
+  from the server-side SDKs in packages/ (though delivered via the same npm
+  libraries).
+docs: https://learn.microsoft.com/en-us/javascript/api/overview/powerbi/
+loaders:
+  - name: powerbi-client
+    library: powerbi.js (window.powerbi service)
+    url: https://www.npmjs.com/package/powerbi-client
+  - name: powerbi-client-react
+    library: PowerBIEmbed React component
+    url: https://www.npmjs.com/package/powerbi-client-react
+families:
+  - family: Embedding surfaces
+    components:
+      - name: Report
+        detail: Embed an interactive Power BI report (view or edit mode) via powerbi.embed() or <PowerBIEmbed type="report">.
+      - name: Dashboard
+        detail: Embed a full dashboard of pinned tiles.
+      - name: Tile
+        detail: Embed a single dashboard tile.
+      - name: QnA
+        detail: Embed the natural-language Q&A experience.
+      - name: PaginatedReport
+        detail: Embed a pixel-perfect paginated (RDL) report.
+      - name: Visual
+        detail: Embed a single visual from a report.
+  - family: Configuration models
+    components:
+      - name: Embed configuration
+        detail: IEmbedConfiguration / IReportEmbedConfiguration objects (from powerbi-models) supplying embedUrl, accessToken, tokenType, settings.
+      - name: Report authoring
+        detail: Client-side create/edit visuals via powerbi-report-authoring.
+integration:
+  - Microsoft Teams (embed reports in channels/chats)
+  - SharePoint Online (report web part)
+  - Playground: https://playground.powerbi.com/

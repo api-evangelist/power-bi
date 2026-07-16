@@ -1,15 +1,34 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/power-bi-rest-api-openapi.yml
+generated: '2026-06-20'
+method: searched
+source: openapi/power-bi-rest-api-openapi.yml + Microsoft Power BI authentication docs
+docs: https://learn.microsoft.com/en-us/power-bi/developer/embedded/get-azuread-access-token
 summary:
   types:
   - http
+  - oauth2
+  oauth2_flows:
+  - authorizationCode
+  - clientCredentials
 schemes:
 - name: bearerAuth
   type: http
   scheme: bearer
   bearerFormat: JWT
-  description: Azure Active Directory OAuth 2.0 access token. Obtain a token by registering
-    an Azure AD application and requesting the Power BI Service scope (https://analysis.windows.net/powerbi/api/.default).
+  description: >-
+    Azure Active Directory / Microsoft Entra ID OAuth 2.0 access token. Register
+    an Azure AD application, then request a token for the Power BI Service
+    resource (https://analysis.windows.net/powerbi/api). Delegated (user)
+    permissions use the authorization-code flow; app-only automation uses the
+    client-credentials flow with the .default scope and requires tenant admin
+    settings ("Allow service principals to use Power BI APIs").
   sources:
   - openapi/power-bi-rest-api-openapi.yml
+identity_provider:
+  name: Microsoft Entra ID (Azure AD)
+  authorize_url: https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize
+  token_url: https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
+  resource: https://analysis.windows.net/powerbi/api
+embed_tokens:
+  docs: https://learn.microsoft.com/en-us/power-bi/developer/embedded/embed-tokens
+  note: Embedded scenarios additionally mint short-lived Power BI embed tokens via GenerateToken for embed-for-your-customers and embed-for-your-organization.
+scopes_ref: scopes/power-bi-scopes.yml

@@ -1,0 +1,32 @@
+generated: '2026-06-20'
+method: searched
+source: live /.well-known/ probes of Power BI + Microsoft hosts
+notes: >-
+  api.powerbi.com and app.powerbi.com expose no valid /.well-known/ documents
+  (security.txt on app.powerbi.com returns a 200 HTML error page, not RFC 9116
+  text). The authoritative security.txt is served at the registrable parent
+  domain www.microsoft.com (MSRC), which governs powerbi.microsoft.com.
+hosts:
+  - host: https://api.powerbi.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+  - host: https://app.powerbi.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        note: returns Power BI HTML error page, not a valid security.txt
+  - host: https://www.microsoft.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        file: power-bi-security.txt
+        format: rfc9116

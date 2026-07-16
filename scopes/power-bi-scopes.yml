@@ -1,0 +1,74 @@
+generated: '2026-06-20'
+method: searched
+source: Microsoft Entra ID (Azure AD) Power BI Service delegated permissions reference
+docs: https://learn.microsoft.com/en-us/power-bi/developer/embedded/register-app
+resource: https://analysis.windows.net/powerbi/api
+note: >-
+  Power BI authorizes via Microsoft Entra ID (Azure AD) OAuth 2.0. The curated
+  OpenAPI declares only an http-bearer scheme, so no scopes are derivable from
+  the spec; the scopes below are the documented Power BI Service delegated
+  permissions requested against the resource
+  https://analysis.windows.net/powerbi/api. Application permissions
+  (client-credentials) use .default and are governed by tenant admin settings.
+schemes:
+  - name: AzureADOAuth2
+    type: oauth2
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://login.microsoftonline.com/common/oauth2/v2.0/authorize
+        tokenUrl: https://login.microsoftonline.com/common/oauth2/v2.0/token
+      - flow: clientCredentials
+        tokenUrl: https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
+        note: Uses the .default scope; requires tenant admin consent and Power BI service admin settings.
+scopes:
+  - scope: https://analysis.windows.net/powerbi/api/.default
+    description: Request all statically consented permissions (used by client-credentials / app-only flows).
+    flows: [clientCredentials, authorizationCode]
+  - scope: Dataset.Read.All
+    description: View all datasets.
+    flows: [authorizationCode]
+  - scope: Dataset.ReadWrite.All
+    description: Read and write all datasets.
+    flows: [authorizationCode]
+  - scope: Report.Read.All
+    description: View all reports.
+    flows: [authorizationCode]
+  - scope: Report.ReadWrite.All
+    description: Read and write all reports (clone, rebind, export, delete).
+    flows: [authorizationCode]
+  - scope: Dashboard.Read.All
+    description: View all dashboards and tiles.
+    flows: [authorizationCode]
+  - scope: Dashboard.ReadWrite.All
+    description: Read and write all dashboards.
+    flows: [authorizationCode]
+  - scope: Workspace.Read.All
+    description: View all workspaces (groups).
+    flows: [authorizationCode]
+  - scope: Workspace.ReadWrite.All
+    description: Read and write all workspaces (create, delete, manage users).
+    flows: [authorizationCode]
+  - scope: Gateway.Read.All
+    description: View all on-premises data gateways and their datasources.
+    flows: [authorizationCode]
+  - scope: Gateway.ReadWrite.All
+    description: Read and write all gateways and datasources.
+    flows: [authorizationCode]
+  - scope: Content.Create
+    description: Create content such as workspaces, datasets, and reports.
+    flows: [authorizationCode]
+  - scope: Tenant.Read.All
+    description: View all content in the tenant (admin/read-only; requires Power BI admin).
+    flows: [authorizationCode]
+  - scope: Tenant.ReadWrite.All
+    description: Read and write all content in the tenant (admin).
+    flows: [authorizationCode]
+  - scope: App.Read.All
+    description: View all Power BI apps.
+    flows: [authorizationCode]
+  - scope: Capacity.Read.All
+    description: View all capacities.
+    flows: [authorizationCode]
+  - scope: Capacity.ReadWrite.All
+    description: Read and write all capacities.
+    flows: [authorizationCode]

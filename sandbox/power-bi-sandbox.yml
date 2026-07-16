@@ -1,0 +1,24 @@
+generated: '2026-06-20'
+method: searched
+source: Power BI developer playground + sample content documentation
+notes: >-
+  Power BI does not publish test API keys or magic test values (auth is real
+  Azure AD tokens against a real tenant). Its "sandbox" surface is the embedding
+  playground plus built-in sample datasets/reports that let developers try the
+  embedding APIs without wiring their own data.
+environments:
+  - name: Power BI Embedded Playground
+    url: https://playground.powerbi.com/
+    detail: >-
+      Interactive, no-signup playground for the powerbi-client embedding APIs —
+      experiment with report/dashboard/tile/Q&A embedding, event handlers, and
+      the client-side authoring API against Microsoft-hosted sample content.
+  - name: Sample reports / apps
+    detail: >-
+      Built-in Power BI samples (Retail Analysis, Sales & Marketing, Human
+      Resources, Customer Profitability, IT Spend, Opportunity Analysis,
+      Procurement, Supplier Quality) can be installed into a workspace for
+      testing REST and embed flows.
+    docs: https://learn.microsoft.com/en-us/power-bi/create-reports/sample-datasets
+test_data: null
+test_credentials: null

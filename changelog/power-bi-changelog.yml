@@ -1,0 +1,55 @@
+generated: '2026-06-20'
+method: searched
+source: Power BI monthly feature summaries + embedded analytics changelog
+scheme: monthly-feature-summary
+current_version: v1.0 (data-plane REST); features shipped on a monthly cadence
+changelog_urls:
+  - https://learn.microsoft.com/en-us/power-bi/developer/embedded/embedded-analytics-power-bi-changelog
+  - https://powerbi.microsoft.com/en-us/blog/
+  - https://learn.microsoft.com/en-us/power-bi/fundamentals/whats-new
+entries:
+  - version: 2026-06
+    date: '2026-06-09'
+    type: additions
+    highlights:
+      - Power BI June 2026 feature summary.
+      - Building in the agentic era with Power BI and Fabric; Power BI at Microsoft Build 2026 (agentic era of analytics).
+      - Copilot in web modeling (preview); org apps with audiences for Power BI and Fabric (GA).
+      - Workspace outbound access protection for Power BI reports; protection policies (protect once, enforce everywhere).
+      - Power BI Desktop Bridge (preview); simplified Oracle connectivity (preview); ADBC driver migration.
+  - version: 2026-05
+    date: '2026-05-20'
+    type: additions
+    highlights:
+      - Power BI May 2026 feature summary.
+      - Execute DAX queries REST API (preview).
+      - Outbound access protection for semantic models (preview); semantic model settings pane (preview).
+      - New Power Query experience in Power BI Desktop (preview).
+  - version: 2026-04
+    date: '2026-04-22'
+    type: mixed
+    highlights:
+      - Power BI April 2026 feature summary.
+      - Translytical task flows generally available.
+      - Modern visual tooltips generally available; composite semantic models with Direct Lake.
+      - Dataflows Gen1 wind-down announced in favor of Gen2.
+  - version: 2026-03
+    date: '2026-03-18'
+    type: additions
+    highlights:
+      - Power BI March 2026 feature summary.
+      - TMDL view on the web (preview); modern visual defaults and theme customization.
+      - Chat with Copilot inside a report on the Power BI mobile app.
+  - version: 2026-02
+    date: '2026-02-24'
+    type: mixed
+    highlights:
+      - Power BI February 2026 feature summary.
+      - Input slicer (filter reports and collect user input) generally available.
+      - Deprecation of the old Excel and CSV import experience.
+  - version: 2026-01
+    date: '2026-01-20'
+    type: additions
+    highlights:
+      - Power BI January 2026 feature summary; Report Server January 2026 feature summary.
+      - Markers in Azure Maps for Power BI.

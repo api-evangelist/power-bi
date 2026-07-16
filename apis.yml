@@ -6,7 +6,7 @@ description: >-
 image: https://powerbi.microsoft.com/pictures/shared/social/social-default-image.png
 url: https://powerbi.microsoft.com
 created: '2024'
-modified: '2026-05-19'
+modified: '2026-06-20'
 specificationVersion: '0.18'
 type: Index
 access: 3rd-Party
@@ -171,6 +171,42 @@ common:
     url: security/power-bi-domain-security.yml
   - type: Authentication
     url: authentication/power-bi-authentication.yml
+  - type: Packages
+    url: packages/power-bi-packages.yml
+  - type: WellKnown
+    url: well-known/power-bi-well-known.yml
+  - type: SecurityTxt
+    url: well-known/power-bi-security.txt
+  - type: MCPServer
+    url: mcp/power-bi-mcp.yml
+  - type: LLMsTxt
+    url: llms/power-bi-llms.txt
+  - type: Overlay
+    url: overlays/power-bi-rest-api-overlay.yaml
+  - type: Conformance
+    url: conformance/power-bi-conformance.yml
+  - type: ErrorCatalog
+    url: errors/power-bi-problem-types.yml
+  - type: Lifecycle
+    url: lifecycle/power-bi-lifecycle.yml
+  - type: OAuthScopes
+    url: scopes/power-bi-scopes.yml
+  - type: VulnerabilityDisclosure
+    url: security/power-bi-vulnerability-disclosure.yml
+  - type: TrustCenter
+    url: security/power-bi-trust-center.yml
+  - type: Sandbox
+    url: sandbox/power-bi-sandbox.yml
+  - type: Conventions
+    url: conventions/power-bi-conventions.yml
+  - type: ChangeLog
+    url: changelog/power-bi-changelog.yml
+  - type: CLI
+    url: cli/power-bi-cli.yml
+  - type: Components
+    url: components/power-bi-components.yml
+  - type: DataModel
+    url: data-model/power-bi-data-model.yml
   - name: Agent Skills
     url: https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/AI-Powered-Power-BI-reporting-From-design-to-deployment-with/ba-p/5190703
     type: AgentSkills

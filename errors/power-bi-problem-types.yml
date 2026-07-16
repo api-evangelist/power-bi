@@ -1,0 +1,58 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/power-bi-rest-api-openapi.yml (4xx responses) + Microsoft Power BI docs
+format: microsoft-error-envelope
+envelope:
+  media_type: application/json
+  shape: '{ "error": { "code": "string", "message": "string", "details": [ ... ], "target": "string" } }'
+  note: >-
+    Power BI does not use RFC 9457 problem+json. Errors return the Microsoft REST
+    error envelope with an error.code string, error.message, and optional
+    error.details[] and error.target. Correlation is via the RequestId /
+    ActivityId response headers.
+problems:
+  - status: 400
+    title: Bad Request
+    description: Invalid request body, invalid parameter values, or malformed request.
+    schema: components/schemas/ErrorResponse
+    source_operations:
+      - openapi/power-bi-rest-api-openapi.yml#createDataset
+      - openapi/power-bi-rest-api-openapi.yml#updateParameters
+      - openapi/power-bi-rest-api-openapi.yml#cloneReport
+      - openapi/power-bi-rest-api-openapi.yml#createDashboard
+      - openapi/power-bi-rest-api-openapi.yml#createGroup
+  - status: 401
+    title: Unauthorized
+    description: Missing, expired, or invalid Azure AD bearer token, or insufficient permissions/scopes.
+    schema: components/schemas/ErrorResponse
+    remediation: Acquire a fresh Azure AD access token for the Power BI Service resource and ensure the required delegated/application permission is consented.
+  - status: 404
+    title: Not Found
+    description: The requested dataset, report, dashboard, tile, group, gateway, or datasource does not exist or is not accessible to the caller.
+    schema: components/schemas/ErrorResponse
+    common_codes: [PowerBIEntityNotFound, ItemNotFound]
+  - status: 409
+    title: Conflict
+    description: The request conflicts with the current state of the resource (e.g. a name collision or an in-progress operation).
+    schema: components/schemas/ErrorResponse
+    source_operations:
+      - openapi/power-bi-rest-api-openapi.yml#createImportInGroup
+  - status: 429
+    title: Too Many Requests
+    description: Request throttled — per-operation rate limit exceeded. Honor the Retry-After response header.
+    note: Documented in the REST API limitations; not enumerated per-operation in the spec.
+common_error_codes:
+  docs: https://learn.microsoft.com/en-us/power-bi/developer/embedded/troubleshoot-rest-api
+  codes:
+    - code: PowerBIEntityNotFound
+      meaning: The referenced Power BI item (dataset, report, dashboard, etc.) was not found.
+    - code: InvalidRequest
+      meaning: The request was malformed or contained invalid parameters.
+    - code: TokenExpired
+      meaning: The Azure AD access token has expired; acquire a new token.
+    - code: Unauthorized
+      meaning: The caller lacks permission for the requested operation or resource.
+    - code: DailyDatasetRefreshLimitExceeded
+      meaning: The dataset refresh limit for the day has been exceeded.
+    - code: OperationNotSupportedForDatasetVersion
+      meaning: The requested operation is not supported for this dataset's storage/version.

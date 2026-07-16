@@ -1,0 +1,65 @@
+generated: '2026-06-20'
+method: searched
+source: npm, NuGet, PyPI, PowerShell Gallery registry probes + Microsoft docs
+packages:
+  - language: javascript
+    registry: npm
+    name: powerbi-client
+    url: https://www.npmjs.com/package/powerbi-client
+    install: npm install powerbi-client
+    repo: https://github.com/microsoft/PowerBI-JavaScript
+    official: true
+    description: Power BI JavaScript client library for embedding reports, dashboards, tiles, and Q&A into web applications.
+  - language: javascript
+    registry: npm
+    name: powerbi-client-react
+    url: https://www.npmjs.com/package/powerbi-client-react
+    install: npm install powerbi-client-react
+    repo: https://github.com/microsoft/powerbi-client-react
+    official: true
+    description: React wrapper (PowerBIEmbed component) around powerbi-client for embedding Power BI in React apps.
+  - language: javascript
+    registry: npm
+    name: powerbi-models
+    url: https://www.npmjs.com/package/powerbi-models
+    install: npm install powerbi-models
+    repo: https://github.com/microsoft/powerbi-models
+    official: true
+    description: Type definitions and validation for the objects passed to the Power BI JavaScript embedding API.
+  - language: javascript
+    registry: npm
+    name: powerbi-report-authoring
+    url: https://www.npmjs.com/package/powerbi-report-authoring
+    install: npm install powerbi-report-authoring
+    official: true
+    description: Client-side report authoring API extending powerbi-client (create/edit visuals in embedded reports).
+  - language: dotnet
+    registry: nuget
+    name: Microsoft.PowerBI.Api
+    url: https://www.nuget.org/packages/Microsoft.PowerBI.Api
+    install: dotnet add package Microsoft.PowerBI.Api
+    repo: https://github.com/microsoft/PowerBI-CSharp
+    official: true
+    description: Official .NET client for the Power BI REST API (workspaces, datasets, reports, embed tokens, admin).
+  - language: dotnet
+    registry: nuget
+    name: Microsoft.PowerBI.JavaScript
+    url: https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript
+    install: dotnet add package Microsoft.PowerBI.JavaScript
+    official: true
+    description: NuGet distribution of the powerbi.js client-side embedding library for .NET web projects.
+  - language: python
+    registry: pypi
+    name: powerbiclient
+    url: https://pypi.org/project/powerbiclient/
+    install: pip install powerbiclient
+    repo: https://github.com/microsoft/powerbi-jupyter
+    official: true
+    description: Power BI client for Jupyter notebooks (Power BI report widget, authentication, export). Published by Microsoft.
+  - language: powershell
+    registry: powershell-gallery
+    name: MicrosoftPowerBIMgmt
+    url: https://www.powershellgallery.com/packages/MicrosoftPowerBIMgmt
+    install: Install-Module -Name MicrosoftPowerBIMgmt
+    official: true
+    description: Official Power BI management PowerShell cmdlets (Connect-PowerBIServiceAccount, Get/New/Set-PowerBI* over the REST API).

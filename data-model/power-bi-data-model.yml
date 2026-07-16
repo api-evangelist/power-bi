@@ -1,0 +1,134 @@
+generated: '2026-06-20'
+method: derived
+source: openapi/power-bi-rest-api-openapi.yml ($ref links + id-reference path params) + Power BI object reference
+notes: >-
+  Entity-relationship graph derived from the Power BI REST API schemas and the
+  path hierarchy. Identifiers are UUIDs (no type prefixes). The Group (workspace)
+  is the top-level container; My Workspace is the implicit per-user container.
+entities:
+  - name: Group
+    aka: Workspace
+    id: id (uuid)
+    description: Container for datasets, reports, dashboards, dataflows, and users.
+    relationships:
+      - kind: has_many
+        target: Dataset
+        via: groupId
+      - kind: has_many
+        target: Report
+        via: groupId
+      - kind: has_many
+        target: Dashboard
+        via: groupId
+      - kind: has_many
+        target: Import
+        via: groupId
+      - kind: has_many
+        target: GroupUser
+        via: groupId
+  - name: Dataset
+    id: id (uuid)
+    description: The data model behind reports; can be push, DirectQuery, or import.
+    relationships:
+      - kind: has_many
+        target: Table
+        via: datasetId
+      - kind: has_many
+        target: Datasource
+        via: datasetId
+      - kind: has_many
+        target: Parameter
+        via: datasetId
+      - kind: has_many
+        target: Refresh
+        via: datasetId
+      - kind: has_many
+        target: Relationship
+        via: datasetId
+  - name: Report
+    id: id (uuid)
+    description: Visual presentation of data from a dataset.
+    relationships:
+      - kind: belongs_to
+        target: Dataset
+        via: datasetId
+      - kind: has_many
+        target: Page
+        via: reportId
+  - name: Dashboard
+    id: id (uuid)
+    description: Single-page canvas of pinned visualizations (tiles).
+    relationships:
+      - kind: has_many
+        target: Tile
+        via: dashboardId
+  - name: Tile
+    id: id (uuid)
+    relationships:
+      - kind: belongs_to
+        target: Dashboard
+        via: dashboardId
+      - kind: belongs_to
+        target: Report
+        via: reportId
+  - name: Table
+    id: name
+    relationships:
+      - kind: belongs_to
+        target: Dataset
+        via: datasetId
+      - kind: has_many
+        target: Column
+        via: tableName
+      - kind: has_many
+        target: Measure
+        via: tableName
+  - name: Column
+    relationships:
+      - kind: belongs_to
+        target: Table
+        via: tableName
+  - name: Measure
+    relationships:
+      - kind: belongs_to
+        target: Table
+        via: tableName
+  - name: Datasource
+    relationships:
+      - kind: belongs_to
+        target: Dataset
+        via: datasetId
+      - kind: belongs_to
+        target: Gateway
+        via: gatewayId
+  - name: Parameter
+    relationships:
+      - kind: belongs_to
+        target: Dataset
+        via: datasetId
+  - name: Refresh
+    description: A dataset refresh-history entry.
+    relationships:
+      - kind: belongs_to
+        target: Dataset
+        via: datasetId
+  - name: Import
+    id: id (uuid)
+    description: An upload of PBIX/Excel/RDL content into a workspace.
+    relationships:
+      - kind: belongs_to
+        target: Group
+        via: groupId
+  - name: Gateway
+    id: id (uuid)
+    description: On-premises data gateway.
+    relationships:
+      - kind: has_many
+        target: Datasource
+        via: gatewayId
+  - name: GroupUser
+    description: A user or service principal with a role on a workspace.
+    relationships:
+      - kind: belongs_to
+        target: Group
+        via: groupId

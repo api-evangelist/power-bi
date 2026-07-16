@@ -1,0 +1,39 @@
+generated: '2026-06-20'
+method: searched
+source: Microsoft Power BI REST API documentation + openapi/power-bi-rest-api-openapi.yml
+authentication:
+  style: oauth2-bearer
+  detail: Azure AD / Microsoft Entra ID OAuth 2.0 access token in the Authorization header (Bearer JWT); resource https://analysis.windows.net/powerbi/api.
+  ref: authentication/power-bi-authentication.yml
+base_url: https://api.powerbi.com/v1.0/myorg
+versioning:
+  style: uri-path
+  value: v1.0
+  ref: lifecycle/power-bi-lifecycle.yml
+pagination:
+  style: continuation-token
+  detail: >-
+    Large / admin collections (activity events, scanner, admin list APIs) return
+    a continuationToken and continuationUri; the client re-requests with the
+    token until it is absent. Some list endpoints also accept OData $top and
+    $skip. Standard list responses wrap results in an OData-style "value" array.
+  response_fields: [value, continuationToken, continuationUri, '@odata.context']
+  query_params: [$top, $skip, $filter, $expand]
+filtering:
+  style: odata
+  detail: Admin and scanner endpoints support OData $filter/$expand; not all data-plane endpoints.
+idempotency:
+  supported: false
+  detail: No Idempotency-Key header; write safety relies on HTTP method semantics.
+request_tracing:
+  headers: [RequestId, ActivityId]
+  detail: Responses carry RequestId and ActivityId headers; include these when opening support tickets.
+error_envelope:
+  media_type: application/json
+  shape: '{ "error": { "code": "string", "message": "string", "details": [], "target": "string" } }'
+  ref: errors/power-bi-problem-types.yml
+rate_limiting:
+  signal: 429 Too Many Requests + Retry-After header
+  detail: Per-operation request limits; some operations also have concurrency and payload-size caps.
+  ref: rate-limits/power-bi-rate-limits.yml
+content_type: application/json
