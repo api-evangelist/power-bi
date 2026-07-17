@@ -1,0 +1,98 @@
+arazzo: 1.0.1
+info:
+  title: Power BI Audit Gateway-Bound Datasources
+  summary: Walk the gateway inventory and cross-reference a dataset's datasources to prove which gateway backs it.
+  description: >-
+    The pattern behind diagnosing "why won't this dataset refresh". An
+    on-premises dataset refreshes only when every one of its datasources is
+    bound to a datasource registered on a reachable gateway. Because dataset
+    datasources and gateway datasources are exposed through different
+    collections, answering the question means reading both sides and comparing
+    the gateway identifiers. This workflow enumerates the gateways, inspects the
+    target gateway and its registered datasources, then reads the dataset's own
+    datasources so the two sides can be reconciled. Every step spells out its
+    request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: powerBiApi
+  url: ../openapi/power-bi-rest-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: gateway-datasource-audit
+  summary: Reconcile a dataset's datasources against a gateway's registered datasources.
+  description: >-
+    Lists gateways, inspects one gateway and the datasources registered on it,
+    and reads the dataset's datasources so the gateway binding can be verified.
+  inputs:
+    type: object
+    required:
+    - gatewayId
+    - datasetId
+    properties:
+      gatewayId:
+        type: string
+        description: The identifier of the gateway to audit.
+      datasetId:
+        type: string
+        description: The identifier of the dataset whose datasources are being reconciled.
+  steps:
+  - stepId: listGateways
+    description: >-
+      Enumerate every gateway the caller can see, establishing the set of
+      gateways available to bind datasources against.
+    operationId: getGateways
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      gateways: $response.body#/value
+  - stepId: inspectGateway
+    description: >-
+      Read the target gateway to confirm it exists and to record whether it is
+      a shared Resource gateway or a Personal gateway.
+    operationId: getGateway
+    parameters:
+    - name: gatewayId
+      in: path
+      value: $inputs.gatewayId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      gatewayName: $response.body#/name
+      gatewayType: $response.body#/type
+      gatewayAnnotation: $response.body#/gatewayAnnotation
+  - stepId: listGatewayDatasources
+    description: >-
+      List the datasources registered on the gateway. A dataset can only refresh
+      through this gateway if its datasources appear in this collection.
+    operationId: getGatewayDatasources
+    parameters:
+    - name: gatewayId
+      in: path
+      value: $inputs.gatewayId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      gatewayDatasources: $response.body#/value
+  - stepId: listDatasetDatasources
+    description: >-
+      Read the dataset's own datasources and capture the gatewayId reported on
+      the first one, which is the value to compare against the audited gateway.
+    operationId: getDatasources
+    parameters:
+    - name: datasetId
+      in: path
+      value: $inputs.datasetId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      datasetDatasources: $response.body#/value
+      datasetGatewayId: $response.body#/value/0/gatewayId
+      datasetDatasourceType: $response.body#/value/0/datasourceType
+  outputs:
+    gateways: $steps.listGateways.outputs.gateways
+    gatewayName: $steps.inspectGateway.outputs.gatewayName
+    gatewayType: $steps.inspectGateway.outputs.gatewayType
+    gatewayDatasources: $steps.listGatewayDatasources.outputs.gatewayDatasources
+    datasetDatasources: $steps.listDatasetDatasources.outputs.datasetDatasources
+    datasetGatewayId: $steps.listDatasetDatasources.outputs.datasetGatewayId

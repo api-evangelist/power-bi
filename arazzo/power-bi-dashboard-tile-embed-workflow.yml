@@ -1,0 +1,105 @@
+arazzo: 1.0.1
+info:
+  title: Power BI Resolve a Dashboard Tile for Embedding
+  summary: Walk from the dashboard list down to a single tile and capture the embed URL, report, and dataset it needs.
+  description: >-
+    The preparation pattern for embedding Power BI content in a host
+    application. Embedding a single tile requires more than the tile itself: the
+    host needs the tile's embed URL plus the reportId and datasetId behind it,
+    because those are the artifacts an embed token has to be scoped to. This
+    workflow lists the dashboards, inspects the target dashboard, enumerates its
+    tiles, and reads one tile in full. Every step spells out its request inline
+    so the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: powerBiApi
+  url: ../openapi/power-bi-rest-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: dashboard-tile-embed
+  summary: Resolve a dashboard tile and the artifacts an embed token must cover.
+  description: >-
+    Lists dashboards, reads the target dashboard and its tiles, and inspects a
+    single tile to capture its embed URL and the report and dataset behind it.
+  inputs:
+    type: object
+    required:
+    - dashboardId
+    - tileId
+    properties:
+      dashboardId:
+        type: string
+        description: The identifier of the dashboard that holds the tile.
+      tileId:
+        type: string
+        description: The identifier of the tile to resolve for embedding.
+  steps:
+  - stepId: listDashboards
+    description: >-
+      Enumerate the dashboards available to the caller, establishing which
+      dashboards are in scope for embedding.
+    operationId: getDashboards
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      dashboards: $response.body#/value
+  - stepId: inspectDashboard
+    description: >-
+      Read the target dashboard to capture its own embed URL and confirm
+      whether the caller holds read-only access to it.
+    operationId: getDashboard
+    parameters:
+    - name: dashboardId
+      in: path
+      value: $inputs.dashboardId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      displayName: $response.body#/displayName
+      dashboardEmbedUrl: $response.body#/embedUrl
+      isReadOnly: $response.body#/isReadOnly
+      dataClassification: $response.body#/dataClassification
+  - stepId: listTiles
+    description: >-
+      List the dashboard's tiles so the target tile can be confirmed to exist
+      before it is read in full.
+    operationId: getTiles
+    parameters:
+    - name: dashboardId
+      in: path
+      value: $inputs.dashboardId
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.value.length > 0
+      type: jsonpath
+    outputs:
+      tiles: $response.body#/value
+      firstTileId: $response.body#/value/0/id
+  - stepId: inspectTile
+    description: >-
+      Read the single tile and capture its embed URL along with the reportId and
+      datasetId an embed token has to be scoped to.
+    operationId: getTile
+    parameters:
+    - name: dashboardId
+      in: path
+      value: $inputs.dashboardId
+    - name: tileId
+      in: path
+      value: $inputs.tileId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      tileTitle: $response.body#/title
+      tileEmbedUrl: $response.body#/embedUrl
+      tileReportId: $response.body#/reportId
+      tileDatasetId: $response.body#/datasetId
+  outputs:
+    dashboards: $steps.listDashboards.outputs.dashboards
+    dashboardEmbedUrl: $steps.inspectDashboard.outputs.dashboardEmbedUrl
+    tiles: $steps.listTiles.outputs.tiles
+    tileEmbedUrl: $steps.inspectTile.outputs.tileEmbedUrl
+    tileReportId: $steps.inspectTile.outputs.tileReportId
+    tileDatasetId: $steps.inspectTile.outputs.tileDatasetId

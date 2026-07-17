@@ -1,0 +1,121 @@
+arazzo: 1.0.1
+info:
+  title: Power BI Clone a Report and Rebind It to Another Dataset
+  summary: Copy a report into a target workspace and repoint the copy at a different dataset, then verify the binding.
+  description: >-
+    The canonical Power BI content promotion pattern. A report is a thin visual
+    layer bound to a dataset, so promoting a report from development to
+    production means cloning it into the target workspace and rebinding the
+    clone to the dataset that lives there. This workflow inspects the source
+    report, clones it, rebinds the clone, and reads the clone back to prove the
+    datasetId actually changed. Every step spells out its request inline so the
+    flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: powerBiApi
+  url: ../openapi/power-bi-rest-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: report-clone-rebind
+  summary: Promote a report by cloning it and rebinding it to a target dataset.
+  description: >-
+    Reads the source report and its current dataset binding, clones it into the
+    target workspace, rebinds the clone to the target dataset, and verifies the
+    resulting binding and embed URL.
+  inputs:
+    type: object
+    required:
+    - reportId
+    - cloneName
+    - targetDatasetId
+    properties:
+      reportId:
+        type: string
+        description: The identifier of the source report to clone.
+      cloneName:
+        type: string
+        description: The display name to give the cloned report.
+      targetDatasetId:
+        type: string
+        description: The identifier of the dataset the clone should be bound to.
+      targetWorkspaceId:
+        type: string
+        description: >-
+          The identifier of the workspace to clone into. Omit to clone into the
+          same workspace as the source report.
+  steps:
+  - stepId: inspectSourceReport
+    description: >-
+      Read the source report to capture its name, type, and the dataset it is
+      currently bound to, so the promotion can be compared against a baseline.
+    operationId: getReport
+    parameters:
+    - name: reportId
+      in: path
+      value: $inputs.reportId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      sourceName: $response.body#/name
+      sourceDatasetId: $response.body#/datasetId
+      reportType: $response.body#/reportType
+      sourceWebUrl: $response.body#/webUrl
+  - stepId: cloneToTarget
+    description: >-
+      Clone the report into the target workspace. The clone initially inherits
+      the source report's dataset binding unless a target model is supplied.
+    operationId: cloneReport
+    parameters:
+    - name: reportId
+      in: path
+      value: $inputs.reportId
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.cloneName
+        targetWorkspaceId: $inputs.targetWorkspaceId
+        targetModelId: $inputs.targetDatasetId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      clonedReportId: $response.body#/id
+      clonedName: $response.body#/name
+      clonedDatasetId: $response.body#/datasetId
+      clonedWebUrl: $response.body#/webUrl
+  - stepId: rebindClone
+    description: >-
+      Explicitly rebind the clone to the target dataset. The call returns 200
+      with no body, so the new binding is confirmed by reading the report back.
+    operationId: rebindReport
+    parameters:
+    - name: reportId
+      in: path
+      value: $steps.cloneToTarget.outputs.clonedReportId
+    requestBody:
+      contentType: application/json
+      payload:
+        datasetId: $inputs.targetDatasetId
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: verifyRebind
+    description: >-
+      Read the cloned report back and confirm its datasetId now matches the
+      target dataset, then capture the embed URL for the promoted report.
+    operationId: getReport
+    parameters:
+    - name: reportId
+      in: path
+      value: $steps.cloneToTarget.outputs.clonedReportId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      boundDatasetId: $response.body#/datasetId
+      promotedReportName: $response.body#/name
+      embedUrl: $response.body#/embedUrl
+      modifiedDateTime: $response.body#/modifiedDateTime
+  outputs:
+    sourceDatasetId: $steps.inspectSourceReport.outputs.sourceDatasetId
+    clonedReportId: $steps.cloneToTarget.outputs.clonedReportId
+    boundDatasetId: $steps.verifyRebind.outputs.boundDatasetId
+    embedUrl: $steps.verifyRebind.outputs.embedUrl

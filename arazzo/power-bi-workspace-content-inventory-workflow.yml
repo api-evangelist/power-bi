@@ -1,0 +1,114 @@
+arazzo: 1.0.1
+info:
+  title: Power BI Inventory a Workspace's Content
+  summary: Find a workspace by OData filter and enumerate every dataset, report, dashboard, and import it contains.
+  description: >-
+    The governance pattern behind any Power BI tenant audit or content
+    migration. Workspace-scoped content is exposed through separate collection
+    operations, so a full picture of what a workspace holds requires resolving
+    the workspace identifier and then walking each collection in turn. This
+    workflow filters the workspace list by name, then inventories the datasets,
+    reports, dashboards, and imports underneath it. Every step spells out its
+    request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: powerBiApi
+  url: ../openapi/power-bi-rest-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: workspace-content-inventory
+  summary: Resolve a workspace by name and list all of its content.
+  description: >-
+    Locates a workspace using an OData filter and enumerates its datasets,
+    reports, dashboards, and imports into a single inventory result.
+  inputs:
+    type: object
+    required:
+    - workspaceFilter
+    properties:
+      workspaceFilter:
+        type: string
+        description: >-
+          An OData filter expression selecting the workspace, for example
+          "name eq 'Finance Reporting'".
+  steps:
+  - stepId: findWorkspace
+    description: >-
+      Filter the workspace list down to the target workspace and capture its
+      identifier, which every content collection below is scoped by.
+    operationId: getGroups
+    parameters:
+    - name: "$filter"
+      in: query
+      value: $inputs.workspaceFilter
+    - name: "$top"
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.value.length > 0
+      type: jsonpath
+    outputs:
+      groupId: $response.body#/value/0/id
+      groupName: $response.body#/value/0/name
+      isOnDedicatedCapacity: $response.body#/value/0/isOnDedicatedCapacity
+      capacityId: $response.body#/value/0/capacityId
+  - stepId: inventoryDatasets
+    description: >-
+      List the workspace's datasets, the models that every report and dashboard
+      in the workspace ultimately depends on.
+    operationId: getDatasetsInGroup
+    parameters:
+    - name: groupId
+      in: path
+      value: $steps.findWorkspace.outputs.groupId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      datasets: $response.body#/value
+  - stepId: inventoryReports
+    description: >-
+      List the workspace's reports, each of which carries the datasetId it is
+      bound to so dataset-to-report dependencies can be mapped.
+    operationId: getReportsInGroup
+    parameters:
+    - name: groupId
+      in: path
+      value: $steps.findWorkspace.outputs.groupId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      reports: $response.body#/value
+  - stepId: inventoryDashboards
+    description: List the workspace's dashboards, including their data classification.
+    operationId: getDashboardsInGroup
+    parameters:
+    - name: groupId
+      in: path
+      value: $steps.findWorkspace.outputs.groupId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      dashboards: $response.body#/value
+  - stepId: inventoryImports
+    description: >-
+      List the workspace's imports to record how the content arrived and
+      whether any import is still publishing or has failed.
+    operationId: getImportsInGroup
+    parameters:
+    - name: groupId
+      in: path
+      value: $steps.findWorkspace.outputs.groupId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      imports: $response.body#/value
+  outputs:
+    groupId: $steps.findWorkspace.outputs.groupId
+    groupName: $steps.findWorkspace.outputs.groupName
+    datasets: $steps.inventoryDatasets.outputs.datasets
+    reports: $steps.inventoryReports.outputs.reports
+    dashboards: $steps.inventoryDashboards.outputs.dashboards
+    imports: $steps.inventoryImports.outputs.imports

@@ -306,6 +306,42 @@ common:
         description: Enterprise authentication and authorization with Azure AD for secure API access.
       - name: Salesforce
         description: Connect to Salesforce data with native connectors for CRM analytics and reporting.
+  - type: Arazzo
+    url: arazzo/power-bi-dataset-refresh-poll-workflow.yml
+    name: Power BI Trigger a Dataset Refresh and Poll to Completion
+  - type: Arazzo
+    url: arazzo/power-bi-push-dataset-provision-workflow.yml
+    name: Power BI Create a Push Dataset and Verify Its Schema
+  - type: Arazzo
+    url: arazzo/power-bi-parameter-update-refresh-workflow.yml
+    name: Power BI Update Dataset Parameters and Refresh
+  - type: Arazzo
+    url: arazzo/power-bi-report-clone-rebind-workflow.yml
+    name: Power BI Clone a Report and Rebind It to Another Dataset
+  - type: Arazzo
+    url: arazzo/power-bi-workspace-provision-access-workflow.yml
+    name: Power BI Provision a Workspace and Grant Access
+  - type: Arazzo
+    url: arazzo/power-bi-pbix-import-publish-workflow.yml
+    name: Power BI Import a PBIX and Poll Until Published
+  - type: Arazzo
+    url: arazzo/power-bi-workspace-content-inventory-workflow.yml
+    name: 'Power BI Inventory a Workspace''s Content'
+  - type: Arazzo
+    url: arazzo/power-bi-gateway-datasource-audit-workflow.yml
+    name: Power BI Audit Gateway-Bound Datasources
+  - type: Arazzo
+    url: arazzo/power-bi-dashboard-tile-embed-workflow.yml
+    name: Power BI Resolve a Dashboard Tile for Embedding
+  - type: Arazzo
+    url: arazzo/power-bi-report-export-archive-workflow.yml
+    name: Power BI Export a Report for Archive
+  - type: Arazzo
+    url: arazzo/power-bi-dataset-decommission-workflow.yml
+    name: Power BI Decommission a Dataset After Clearing Dependents
+  - type: Arazzo
+    url: arazzo/power-bi-workspace-access-review-workflow.yml
+    name: Power BI Review and Adjust Workspace Access
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

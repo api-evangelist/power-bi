@@ -1,0 +1,92 @@
+arazzo: 1.0.1
+info:
+  title: Power BI Decommission a Dataset After Clearing Dependents
+  summary: Confirm a dataset, find the reports bound to it, delete the dependent report, and then delete the dataset.
+  description: >-
+    The retirement pattern, and the one most likely to break a tenant if run
+    carelessly. Reports are bound to datasets by datasetId, so deleting a
+    dataset out from under a live report leaves that report broken rather than
+    removed. This workflow reads the dataset, lists the reports so their
+    datasetId values can be compared against the target, deletes the dependent
+    report the caller nominated, and only then deletes the dataset. The delete
+    calls return 200 with no body. Every step spells out its request inline so
+    the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: powerBiApi
+  url: ../openapi/power-bi-rest-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: dataset-decommission
+  summary: Retire a dataset after removing the report that depends on it.
+  description: >-
+    Confirms the target dataset, enumerates reports so dependents can be
+    identified by datasetId, deletes the nominated dependent report, and then
+    deletes the dataset itself.
+  inputs:
+    type: object
+    required:
+    - datasetId
+    - dependentReportId
+    properties:
+      datasetId:
+        type: string
+        description: The identifier of the dataset to decommission.
+      dependentReportId:
+        type: string
+        description: >-
+          The identifier of the report bound to this dataset that should be
+          deleted before the dataset is removed.
+  steps:
+  - stepId: confirmDataset
+    description: >-
+      Read the dataset to confirm it exists and to record who configured it,
+      so the retirement is logged against a real, identified model.
+    operationId: getDataset
+    parameters:
+    - name: datasetId
+      in: path
+      value: $inputs.datasetId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      datasetName: $response.body#/name
+      configuredBy: $response.body#/configuredBy
+      createdDate: $response.body#/createdDate
+  - stepId: findDependentReports
+    description: >-
+      List every report visible to the caller. Each report carries the datasetId
+      it is bound to, so this collection is what identifies the dependents that
+      must be cleared before the dataset can be safely removed.
+    operationId: getReports
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      reports: $response.body#/value
+  - stepId: deleteDependentReport
+    description: >-
+      Delete the nominated dependent report so no report is left pointing at a
+      dataset that is about to disappear. Returns 200 with no body.
+    operationId: deleteReport
+    parameters:
+    - name: reportId
+      in: path
+      value: $inputs.dependentReportId
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: deleteTargetDataset
+    description: >-
+      Delete the dataset now that its dependent report has been removed. This is
+      irreversible. Returns 200 with no body.
+    operationId: deleteDataset
+    parameters:
+    - name: datasetId
+      in: path
+      value: $inputs.datasetId
+    successCriteria:
+    - condition: $statusCode == 200
+  outputs:
+    datasetName: $steps.confirmDataset.outputs.datasetName
+    configuredBy: $steps.confirmDataset.outputs.configuredBy
+    reports: $steps.findDependentReports.outputs.reports

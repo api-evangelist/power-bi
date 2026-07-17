@@ -1,0 +1,128 @@
+arazzo: 1.0.1
+info:
+  title: Power BI Import a PBIX and Poll Until Published
+  summary: Upload a PBIX file into a workspace, wait for the import to finish publishing, and list the resulting reports and datasets.
+  description: >-
+    The deployment pattern for shipping Power BI Desktop content into a
+    workspace from CI. The import is a multipart upload that returns either 200
+    or 202 with an import record in the Publishing state, and publishing then
+    continues asynchronously. This API surface exposes no get-import-by-id
+    operation, so completion is observed by listing the workspace's imports and
+    waiting until none are still Publishing, after which the reports and
+    datasets the import produced are enumerated. Every step spells out its
+    request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: powerBiApi
+  url: ../openapi/power-bi-rest-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: pbix-import-publish
+  summary: Publish a PBIX into a workspace and wait for it to finish importing.
+  description: >-
+    Uploads a PBIX file to a workspace, polls the workspace import list until
+    publishing settles, and enumerates the reports and datasets that resulted.
+  inputs:
+    type: object
+    required:
+    - groupId
+    - datasetDisplayName
+    - file
+    properties:
+      groupId:
+        type: string
+        description: The identifier of the workspace to import into.
+      datasetDisplayName:
+        type: string
+        description: The display name for the imported file, including the .pbix extension.
+      file:
+        type: string
+        format: binary
+        description: The PBIX file content to upload.
+      nameConflict:
+        type: string
+        description: >-
+          How to handle an existing item with the same name. One of Ignore,
+          Abort, Overwrite, or CreateOrOverwrite.
+        default: Abort
+  steps:
+  - stepId: startImport
+    description: >-
+      Upload the PBIX as multipart form data. The service accepts the file and
+      returns an import record that begins life in the Publishing state.
+    operationId: createImportInGroup
+    parameters:
+    - name: groupId
+      in: path
+      value: $inputs.groupId
+    - name: datasetDisplayName
+      in: query
+      value: $inputs.datasetDisplayName
+    - name: nameConflict
+      in: query
+      value: $inputs.nameConflict
+    requestBody:
+      contentType: multipart/form-data
+      payload:
+        file: $inputs.file
+    successCriteria:
+    - condition: $statusCode == 200 || $statusCode == 202
+    outputs:
+      importId: $response.body#/id
+      importName: $response.body#/name
+      importState: $response.body#/importState
+  - stepId: pollImport
+    description: >-
+      List the workspace's imports and wait until none remain in the Publishing
+      state. This API exposes no get-import-by-id operation, so the workspace
+      import list is the only available completion signal.
+    operationId: getImportsInGroup
+    parameters:
+    - name: groupId
+      in: path
+      value: $inputs.groupId
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.value[?(@.importState == 'Publishing')].length == 0
+      type: jsonpath
+    onFailure:
+    - name: importStillPublishing
+      type: retry
+      stepId: pollImport
+      retryAfter: 15
+      retryLimit: 40
+    outputs:
+      imports: $response.body#/value
+  - stepId: listPublishedDatasets
+    description: >-
+      Enumerate the workspace datasets so the dataset the import created can be
+      matched by name and handed to a refresh or rebind flow.
+    operationId: getDatasetsInGroup
+    parameters:
+    - name: groupId
+      in: path
+      value: $inputs.groupId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      datasets: $response.body#/value
+  - stepId: listPublishedReports
+    description: >-
+      Enumerate the workspace reports so the report the import created can be
+      matched by name and its embed URL captured.
+    operationId: getReportsInGroup
+    parameters:
+    - name: groupId
+      in: path
+      value: $inputs.groupId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      reports: $response.body#/value
+  outputs:
+    importId: $steps.startImport.outputs.importId
+    imports: $steps.pollImport.outputs.imports
+    datasets: $steps.listPublishedDatasets.outputs.datasets
+    reports: $steps.listPublishedReports.outputs.reports

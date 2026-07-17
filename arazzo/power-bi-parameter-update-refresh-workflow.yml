@@ -1,0 +1,137 @@
+arazzo: 1.0.1
+info:
+  title: Power BI Update Dataset Parameters and Refresh
+  summary: Read a dataset's mashup parameters, update them, confirm the new values, and refresh so the change takes effect.
+  description: >-
+    The dev/test/prod promotion pattern for parameterized Power BI datasets.
+    Changing a mashup parameter such as a server name or database name does not
+    move any data on its own: the new value is only applied to the model once
+    the dataset is refreshed. This workflow reads the current parameters,
+    applies the update, reads them back to confirm the write landed, triggers a
+    full refresh, and polls the refresh history until the run reaches a terminal
+    state. Every step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: powerBiApi
+  url: ../openapi/power-bi-rest-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: parameter-update-refresh
+  summary: Repoint a parameterized dataset and refresh it so the new values apply.
+  description: >-
+    Lists current mashup parameters, updates them, verifies the new values, and
+    then refreshes the dataset and waits for the refresh to complete.
+  inputs:
+    type: object
+    required:
+    - datasetId
+    - updateDetails
+    properties:
+      datasetId:
+        type: string
+        description: The identifier of the dataset whose parameters are being changed.
+      updateDetails:
+        type: array
+        description: >-
+          The parameter changes to apply. Each entry requires a name and a
+          newValue, for example {"name": "ServerName", "newValue": "prod-sql"}.
+        items:
+          type: object
+      refreshType:
+        type: string
+        description: The refresh type to run after the parameter change. One of Full, ClearValues, Calculate, DataOnly, Automatic, or Defragment.
+        default: Full
+  steps:
+  - stepId: listParameters
+    description: >-
+      Read the dataset's current mashup parameters so the existing values are
+      captured before anything is overwritten.
+    operationId: getParameters
+    parameters:
+    - name: datasetId
+      in: path
+      value: $inputs.datasetId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      originalParameters: $response.body#/value
+  - stepId: applyParameters
+    description: >-
+      Apply the new parameter values. The call returns 200 with no body, so the
+      write is confirmed by reading the parameters back in the next step.
+    operationId: updateParameters
+    parameters:
+    - name: datasetId
+      in: path
+      value: $inputs.datasetId
+    requestBody:
+      contentType: application/json
+      payload:
+        updateDetails: $inputs.updateDetails
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: confirmParameters
+    description: >-
+      Read the parameters back to confirm the service persisted the new current
+      values.
+    operationId: getParameters
+    parameters:
+    - name: datasetId
+      in: path
+      value: $inputs.datasetId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      updatedParameters: $response.body#/value
+  - stepId: refreshAfterParameterChange
+    description: >-
+      Trigger a refresh so the model is rebuilt against the newly parameterized
+      source. Without this the parameter change has no effect on the data.
+    operationId: refreshDataset
+    parameters:
+    - name: datasetId
+      in: path
+      value: $inputs.datasetId
+    requestBody:
+      contentType: application/json
+      payload:
+        type: $inputs.refreshType
+        commitMode: transactional
+        retryCount: 2
+    successCriteria:
+    - condition: $statusCode == 202
+  - stepId: pollRefresh
+    description: >-
+      Poll the most recent refresh history entry until it leaves the "Unknown"
+      in-progress state, so the caller learns whether the reparameterized
+      refresh actually succeeded.
+    operationId: getRefreshHistory
+    parameters:
+    - name: datasetId
+      in: path
+      value: $inputs.datasetId
+    - name: "$top"
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.value[0].status != "Unknown"
+      type: jsonpath
+    onFailure:
+    - name: refreshStillRunning
+      type: retry
+      stepId: pollRefresh
+      retryAfter: 30
+      retryLimit: 20
+    outputs:
+      finalStatus: $response.body#/value/0/status
+      requestId: $response.body#/value/0/requestId
+      endTime: $response.body#/value/0/endTime
+      serviceExceptionJson: $response.body#/value/0/serviceExceptionJson
+  outputs:
+    originalParameters: $steps.listParameters.outputs.originalParameters
+    updatedParameters: $steps.confirmParameters.outputs.updatedParameters
+    finalStatus: $steps.pollRefresh.outputs.finalStatus
+    serviceExceptionJson: $steps.pollRefresh.outputs.serviceExceptionJson

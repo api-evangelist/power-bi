@@ -1,0 +1,121 @@
+arazzo: 1.0.1
+info:
+  title: Power BI Review and Adjust Workspace Access
+  summary: List a workspace's members, downgrade an over-privileged principal, remove a departed one, and confirm the final membership.
+  description: >-
+    The periodic access review pattern. A workspace access review produces two
+    kinds of change: principals who keep access but at a lower right, and
+    principals who lose access entirely. Both write operations return 200 with
+    no body, so the review is only evidenced by reading the membership back
+    afterwards. This workflow captures the starting membership, applies a
+    downgrade and a revocation, and re-reads the membership to record the state
+    the review left behind. Every step spells out its request inline so the flow
+    can be read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: powerBiApi
+  url: ../openapi/power-bi-rest-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: workspace-access-review
+  summary: Run an access review pass over a workspace's membership.
+  description: >-
+    Reads the current workspace members, downgrades one principal's access
+    right, removes another principal, and reads the membership back to evidence
+    the resulting state.
+  inputs:
+    type: object
+    required:
+    - groupId
+    - downgradeUserId
+    - downgradeUserEmail
+    - downgradeAccessRight
+    - revokeUserId
+    properties:
+      groupId:
+        type: string
+        description: The identifier of the workspace under review.
+      downgradeUserId:
+        type: string
+        description: The identifier of the principal whose access right is being reduced.
+      downgradeUserEmail:
+        type: string
+        description: The email address of the principal being downgraded.
+      downgradeAccessRight:
+        type: string
+        description: The access right to reduce the principal to. One of Admin, Member, Contributor, or Viewer.
+        default: Viewer
+      downgradePrincipalType:
+        type: string
+        description: The kind of principal being downgraded. One of User, Group, or App.
+        default: User
+      revokeUserId:
+        type: string
+        description: The identifier of the principal whose access is being removed entirely.
+  steps:
+  - stepId: reviewMembers
+    description: >-
+      Read the workspace's current membership and access rights. This is the
+      "before" record the review is evaluated against.
+    operationId: getGroupUsers
+    parameters:
+    - name: groupId
+      in: path
+      value: $inputs.groupId
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.value.length > 0
+      type: jsonpath
+    outputs:
+      membersBefore: $response.body#/value
+  - stepId: adjustAccess
+    description: >-
+      Reduce the over-privileged principal to the reviewed access right. The
+      call returns 200 with no body, so the change is verified by reading back.
+    operationId: updateGroupUser
+    parameters:
+    - name: groupId
+      in: path
+      value: $inputs.groupId
+    - name: userId
+      in: path
+      value: $inputs.downgradeUserId
+    requestBody:
+      contentType: application/json
+      payload:
+        emailAddress: $inputs.downgradeUserEmail
+        groupUserAccessRight: $inputs.downgradeAccessRight
+        principalType: $inputs.downgradePrincipalType
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: revokeAccess
+    description: >-
+      Remove the departed principal from the workspace entirely. Returns 200
+      with no body.
+    operationId: deleteGroupUser
+    parameters:
+    - name: groupId
+      in: path
+      value: $inputs.groupId
+    - name: userId
+      in: path
+      value: $inputs.revokeUserId
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: confirmAccess
+    description: >-
+      Read the membership back so the downgrade and the revocation are both
+      evidenced in the review record.
+    operationId: getGroupUsers
+    parameters:
+    - name: groupId
+      in: path
+      value: $inputs.groupId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      membersAfter: $response.body#/value
+  outputs:
+    membersBefore: $steps.reviewMembers.outputs.membersBefore
+    membersAfter: $steps.confirmAccess.outputs.membersAfter

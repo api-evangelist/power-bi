@@ -1,0 +1,121 @@
+arazzo: 1.0.1
+info:
+  title: Power BI Trigger a Dataset Refresh and Poll to Completion
+  summary: Kick off an on-demand dataset refresh and poll the refresh history until it reaches a terminal state.
+  description: >-
+    The most common Power BI automation pattern. Refreshing a dataset is
+    asynchronous: the refresh call returns 202 Accepted with no body and no
+    refresh identifier, so the only way to observe the outcome is to poll the
+    dataset's refresh history and read the most recent entry. This workflow
+    confirms the dataset is refreshable, triggers the refresh, and then polls
+    until the newest history entry leaves the "Unknown" (in progress) state,
+    surfacing the service exception JSON when the refresh fails. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: powerBiApi
+  url: ../openapi/power-bi-rest-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: dataset-refresh-poll
+  summary: Refresh a Power BI dataset and wait for the refresh to finish.
+  description: >-
+    Verifies the dataset supports refresh, issues an on-demand refresh, and
+    polls the refresh history until the run completes, fails, or is cancelled.
+  inputs:
+    type: object
+    required:
+    - datasetId
+    properties:
+      datasetId:
+        type: string
+        description: The identifier of the dataset to refresh.
+      refreshType:
+        type: string
+        description: >-
+          The type of refresh to run. One of Full, ClearValues, Calculate,
+          DataOnly, Automatic, or Defragment.
+        default: Full
+      commitMode:
+        type: string
+        description: Whether objects are committed in batches or only when complete. One of transactional or partialBatch.
+        default: transactional
+      retryCount:
+        type: integer
+        description: Number of times the refresh operation retries before failing.
+        default: 2
+  steps:
+  - stepId: confirmDataset
+    description: >-
+      Read the dataset to confirm it exists and that it is refreshable before
+      spending a refresh slot on it.
+    operationId: getDataset
+    parameters:
+    - name: datasetId
+      in: path
+      value: $inputs.datasetId
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.isRefreshable == true
+      type: jsonpath
+    outputs:
+      datasetName: $response.body#/name
+      isRefreshable: $response.body#/isRefreshable
+      targetStorageMode: $response.body#/targetStorageMode
+  - stepId: triggerRefresh
+    description: >-
+      Start an on-demand refresh. The API accepts the request and returns 202
+      with no body, so no refresh identifier is available from this step.
+    operationId: refreshDataset
+    parameters:
+    - name: datasetId
+      in: path
+      value: $inputs.datasetId
+    requestBody:
+      contentType: application/json
+      payload:
+        type: $inputs.refreshType
+        commitMode: $inputs.commitMode
+        retryCount: $inputs.retryCount
+    successCriteria:
+    - condition: $statusCode == 202
+  - stepId: pollRefresh
+    description: >-
+      Read the single most recent refresh history entry. The step only succeeds
+      once that entry has left the "Unknown" in-progress state; while the
+      refresh is still running the step retries on a fixed interval.
+    operationId: getRefreshHistory
+    parameters:
+    - name: datasetId
+      in: path
+      value: $inputs.datasetId
+    - name: "$top"
+      in: query
+      value: 1
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.value[0].status != "Unknown"
+      type: jsonpath
+    onFailure:
+    - name: refreshStillRunning
+      type: retry
+      stepId: pollRefresh
+      retryAfter: 30
+      retryLimit: 20
+    outputs:
+      finalStatus: $response.body#/value/0/status
+      requestId: $response.body#/value/0/requestId
+      refreshType: $response.body#/value/0/refreshType
+      startTime: $response.body#/value/0/startTime
+      endTime: $response.body#/value/0/endTime
+      serviceExceptionJson: $response.body#/value/0/serviceExceptionJson
+  outputs:
+    datasetName: $steps.confirmDataset.outputs.datasetName
+    finalStatus: $steps.pollRefresh.outputs.finalStatus
+    requestId: $steps.pollRefresh.outputs.requestId
+    startTime: $steps.pollRefresh.outputs.startTime
+    endTime: $steps.pollRefresh.outputs.endTime
+    serviceExceptionJson: $steps.pollRefresh.outputs.serviceExceptionJson

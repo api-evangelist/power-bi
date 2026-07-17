@@ -1,0 +1,97 @@
+arazzo: 1.0.1
+info:
+  title: Power BI Provision a Workspace and Grant Access
+  summary: Create a workspace, add a principal with a specific access right, and verify the resulting membership.
+  description: >-
+    The tenant onboarding pattern. New Power BI workspaces are created empty and
+    with only the caller as an administrator, so provisioning is only complete
+    once the intended principal has been granted an access right. This workflow
+    creates the workspace, grants access to a user, group, or service principal,
+    and reads the membership list back to prove the grant landed. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: powerBiApi
+  url: ../openapi/power-bi-rest-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: workspace-provision-access
+  summary: Create a workspace and grant a principal access to it.
+  description: >-
+    Creates a new workspace, adds a principal at the requested access right, and
+    confirms the membership by listing the workspace users.
+  inputs:
+    type: object
+    required:
+    - workspaceName
+    - userEmail
+    - groupUserAccessRight
+    properties:
+      workspaceName:
+        type: string
+        description: The display name for the new workspace.
+      userEmail:
+        type: string
+        description: The email address of the principal to grant access to.
+      groupUserAccessRight:
+        type: string
+        description: The access right to grant. One of Admin, Member, Contributor, or Viewer.
+        default: Member
+      principalType:
+        type: string
+        description: The kind of principal being granted access. One of User, Group, or App.
+        default: User
+  steps:
+  - stepId: createWorkspace
+    description: >-
+      Create the workspace. The service returns the generated workspace
+      identifier, which every subsequent group-scoped call depends on.
+    operationId: createGroup
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.workspaceName
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      groupId: $response.body#/id
+      groupName: $response.body#/name
+      isOnDedicatedCapacity: $response.body#/isOnDedicatedCapacity
+  - stepId: grantAccess
+    description: >-
+      Grant the principal the requested access right on the new workspace. The
+      call returns 200 with no body, so membership is verified by reading back.
+    operationId: addGroupUser
+    parameters:
+    - name: groupId
+      in: path
+      value: $steps.createWorkspace.outputs.groupId
+    requestBody:
+      contentType: application/json
+      payload:
+        emailAddress: $inputs.userEmail
+        groupUserAccessRight: $inputs.groupUserAccessRight
+        principalType: $inputs.principalType
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: verifyAccess
+    description: >-
+      List the workspace users to confirm the grant was applied and to capture
+      the resulting membership for the provisioning record.
+    operationId: getGroupUsers
+    parameters:
+    - name: groupId
+      in: path
+      value: $steps.createWorkspace.outputs.groupId
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.value.length > 0
+      type: jsonpath
+    outputs:
+      members: $response.body#/value
+  outputs:
+    groupId: $steps.createWorkspace.outputs.groupId
+    groupName: $steps.createWorkspace.outputs.groupName
+    members: $steps.verifyAccess.outputs.members

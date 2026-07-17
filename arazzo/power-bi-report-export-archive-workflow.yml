@@ -1,0 +1,83 @@
+arazzo: 1.0.1
+info:
+  title: Power BI Export a Report for Archive
+  summary: Capture a report's metadata and page structure, then download the underlying PBIX file.
+  description: >-
+    The backup and source-control pattern for Power BI content. Exporting the
+    PBIX on its own produces a binary with no context, so an archive that is
+    actually restorable also needs the report's dataset binding and its page
+    structure recorded alongside the file. This workflow reads the report
+    metadata, enumerates its pages, and then downloads the PBIX. The export
+    returns the file as a binary response body rather than JSON. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: powerBiApi
+  url: ../openapi/power-bi-rest-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: report-export-archive
+  summary: Archive a report as a PBIX file together with its metadata and pages.
+  description: >-
+    Reads a report's metadata and dataset binding, lists its pages, and exports
+    the PBIX binary so the report can be archived or committed to source control.
+  inputs:
+    type: object
+    required:
+    - reportId
+    properties:
+      reportId:
+        type: string
+        description: The identifier of the report to export.
+  steps:
+  - stepId: inspectReport
+    description: >-
+      Read the report metadata, capturing the dataset binding and modification
+      stamps that give the archived file its restore context.
+    operationId: getReport
+    parameters:
+    - name: reportId
+      in: path
+      value: $inputs.reportId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      reportName: $response.body#/name
+      datasetId: $response.body#/datasetId
+      reportType: $response.body#/reportType
+      modifiedDateTime: $response.body#/modifiedDateTime
+      modifiedBy: $response.body#/modifiedBy
+  - stepId: listPages
+    description: >-
+      Enumerate the report's pages and their display order, recording the
+      structure that the exported binary would otherwise leave opaque.
+    operationId: getPages
+    parameters:
+    - name: reportId
+      in: path
+      value: $inputs.reportId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      pages: $response.body#/value
+      firstPageName: $response.body#/value/0/name
+  - stepId: exportPbix
+    description: >-
+      Download the report as a PBIX file. The response body is the binary file
+      itself rather than a JSON document.
+    operationId: exportReport
+    parameters:
+    - name: reportId
+      in: path
+      value: $inputs.reportId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      exportedFile: $response.body
+  outputs:
+    reportName: $steps.inspectReport.outputs.reportName
+    datasetId: $steps.inspectReport.outputs.datasetId
+    modifiedDateTime: $steps.inspectReport.outputs.modifiedDateTime
+    pages: $steps.listPages.outputs.pages
+    exportedFile: $steps.exportPbix.outputs.exportedFile

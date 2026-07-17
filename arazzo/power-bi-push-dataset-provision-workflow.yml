@@ -1,0 +1,103 @@
+arazzo: 1.0.1
+info:
+  title: Power BI Create a Push Dataset and Verify Its Schema
+  summary: Provision a push-mode dataset with an inline table schema and read it back to confirm the row API is enabled.
+  description: >-
+    The onboarding step for any real-time or streaming Power BI integration.
+    A push dataset is created by posting a name, a default mode, and a full
+    table schema of typed columns; the service responds with the generated
+    dataset identifier. This workflow creates the dataset and immediately reads
+    it back to confirm the service enabled the add-rows API and provisioned the
+    dataset in push storage mode. Every step spells out its request inline so
+    the flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: powerBiApi
+  url: ../openapi/power-bi-rest-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: push-dataset-provision
+  summary: Create a push dataset and confirm it is ready to accept rows.
+  description: >-
+    Creates a dataset in Push mode with a single typed table, then reads the
+    created dataset back to verify addRowsAPIEnabled and the storage mode.
+  inputs:
+    type: object
+    required:
+    - datasetName
+    - tableName
+    - columns
+    properties:
+      datasetName:
+        type: string
+        description: The display name for the new dataset.
+      tableName:
+        type: string
+        description: The name of the table to create inside the dataset.
+      columns:
+        type: array
+        description: >-
+          The table's column definitions. Each entry requires a name and a
+          dataType of Int64, Double, Boolean, Datetime, String, or Decimal.
+        items:
+          type: object
+      defaultMode:
+        type: string
+        description: The dataset mode. One of Push, Streaming, or PushStreaming.
+        default: Push
+      defaultRetentionPolicy:
+        type: string
+        description: >-
+          The retention policy applied to the dataset. Use "basicFIFO" to keep
+          the most recent rows and discard the oldest.
+        default: basicFIFO
+  steps:
+  - stepId: createPushDataset
+    description: >-
+      Create the dataset with an inline table schema. The service generates and
+      returns the dataset identifier used by every downstream call.
+    operationId: createDataset
+    parameters:
+    - name: defaultRetentionPolicy
+      in: query
+      value: $inputs.defaultRetentionPolicy
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.datasetName
+        defaultMode: $inputs.defaultMode
+        tables:
+        - name: $inputs.tableName
+          columns: $inputs.columns
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      datasetId: $response.body#/id
+      datasetName: $response.body#/name
+  - stepId: verifyDataset
+    description: >-
+      Read the newly created dataset back and confirm the add-rows API is
+      enabled, which is what makes the dataset writable by a push integration.
+    operationId: getDataset
+    parameters:
+    - name: datasetId
+      in: path
+      value: $steps.createPushDataset.outputs.datasetId
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.addRowsAPIEnabled == true
+      type: jsonpath
+    outputs:
+      datasetId: $response.body#/id
+      addRowsAPIEnabled: $response.body#/addRowsAPIEnabled
+      targetStorageMode: $response.body#/targetStorageMode
+      configuredBy: $response.body#/configuredBy
+      createdDate: $response.body#/createdDate
+      webUrl: $response.body#/webUrl
+  outputs:
+    datasetId: $steps.verifyDataset.outputs.datasetId
+    addRowsAPIEnabled: $steps.verifyDataset.outputs.addRowsAPIEnabled
+    targetStorageMode: $steps.verifyDataset.outputs.targetStorageMode
+    webUrl: $steps.verifyDataset.outputs.webUrl
