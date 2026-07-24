@@ -1,0 +1,1229 @@
+openapi: 3.1.0
+info:
+  title: Power BI REST Dashboards Groups API
+  description: The Power BI REST API provides service endpoints for embedding, administration, governance, and user resources. It enables programmatic access to Power BI content including datasets, reports, dashboards, and workspaces (groups). The API uses Azure Active Directory (OAuth 2.0) for authentication and authorization.
+  version: '1.0'
+  contact:
+    name: Microsoft Power BI Support
+    url: https://powerbi.microsoft.com/en-us/support/
+  termsOfService: https://powerbi.microsoft.com/en-us/api-terms/
+  license:
+    name: Microsoft API License
+    url: https://powerbi.microsoft.com/en-us/terms-of-service/
+servers:
+- url: https://api.powerbi.com/v1.0/myorg
+  description: Power BI REST API - User context
+security:
+- bearerAuth: []
+tags:
+- name: Groups
+  description: Manage workspaces (groups) including listing, creating, deleting, and managing workspace users. Workspaces are containers for dashboards, reports, datasets, and dataflows.
+paths:
+  /groups:
+    get:
+      operationId: getGroups
+      summary: Power Bi List Workspaces
+      description: Returns a list of workspaces (groups) the user has access to. Each workspace includes its name, type, and whether it is read-only or on a dedicated capacity.
+      tags:
+      - Groups
+      parameters:
+      - name: $filter
+        in: query
+        description: OData filter expression to filter workspaces
+        schema:
+          type: string
+        example: example_value
+      - name: $top
+        in: query
+        description: Maximum number of workspaces to return
+        schema:
+          type: integer
+        example: 10
+      - name: $skip
+        in: query
+        description: Number of workspaces to skip
+        schema:
+          type: integer
+        example: 10
+      responses:
+        '200':
+          description: List of workspaces
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupList'
+              examples:
+                Getgroups200Example:
+                  summary: Default getGroups 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                    - id: abc123
+                      name: Example Title
+                      isReadOnly: true
+                      isOnDedicatedCapacity: true
+                      capacityId: '500123'
+                      type: Workspace
+                      state: Active
+                    '@odata.context': example_value
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getgroups401Example:
+                  summary: Default getGroups 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createGroup
+      summary: Power Bi Create a Workspace
+      description: Creates a new workspace (group). The workspace can be assigned to a Premium capacity for enhanced features and performance.
+      tags:
+      - Groups
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGroupRequest'
+            examples:
+              CreategroupRequestExample:
+                summary: Default createGroup request
+                x-microcks-default: true
+                value:
+                  name: Example Title
+      responses:
+        '200':
+          description: Workspace created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+              examples:
+                Creategroup200Example:
+                  summary: Default createGroup 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    name: Example Title
+                    isReadOnly: true
+                    isOnDedicatedCapacity: true
+                    capacityId: '500123'
+                    type: Workspace
+                    state: Active
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Creategroup401Example:
+                  summary: Default createGroup 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /groups/{groupId}:
+    delete:
+      operationId: deleteGroup
+      summary: Power Bi Delete a Workspace
+      description: Deletes the specified workspace. All content within the workspace including dashboards, reports, and datasets will be permanently removed.
+      tags:
+      - Groups
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      responses:
+        '200':
+          description: Workspace deleted successfully
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Deletegroup401Example:
+                  summary: Default deleteGroup 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+        '404':
+          description: Workspace not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Deletegroup404Example:
+                  summary: Default deleteGroup 404 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /groups/{groupId}/users:
+    get:
+      operationId: getGroupUsers
+      summary: Power Bi List Workspace Users
+      description: Returns a list of users who have access to the specified workspace, including their display name, email address, and access rights.
+      tags:
+      - Groups
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      responses:
+        '200':
+          description: List of workspace users
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupUserList'
+              examples:
+                Getgroupusers200Example:
+                  summary: Default getGroupUsers 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                    - emailAddress: user@example.com
+                      displayName: example_value
+                      identifier: example_value
+                      graphId: '500123'
+                      groupUserAccessRight: Admin
+                      principalType: User
+                    '@odata.context': example_value
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getgroupusers401Example:
+                  summary: Default getGroupUsers 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+        '404':
+          description: Workspace not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getgroupusers404Example:
+                  summary: Default getGroupUsers 404 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: addGroupUser
+      summary: Power Bi Add a Workspace User
+      description: Grants the specified user access to the workspace with the given access right (Admin, Member, Contributor, or Viewer).
+      tags:
+      - Groups
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupUser'
+            examples:
+              AddgroupuserRequestExample:
+                summary: Default addGroupUser request
+                x-microcks-default: true
+                value:
+                  emailAddress: user@example.com
+                  displayName: example_value
+                  identifier: example_value
+                  graphId: '500123'
+                  groupUserAccessRight: Admin
+                  principalType: User
+      responses:
+        '200':
+          description: User added to workspace
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Addgroupuser400Example:
+                  summary: Default addGroupUser 400 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Addgroupuser401Example:
+                  summary: Default addGroupUser 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /groups/{groupId}/users/{userId}:
+    put:
+      operationId: updateGroupUser
+      summary: Power Bi Update Workspace User Access
+      description: Updates the access right for the specified user in the workspace.
+      tags:
+      - Groups
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/userId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupUser'
+            examples:
+              UpdategroupuserRequestExample:
+                summary: Default updateGroupUser request
+                x-microcks-default: true
+                value:
+                  emailAddress: user@example.com
+                  displayName: example_value
+                  identifier: example_value
+                  graphId: '500123'
+                  groupUserAccessRight: Admin
+                  principalType: User
+      responses:
+        '200':
+          description: User access updated
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Updategroupuser401Example:
+                  summary: Default updateGroupUser 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteGroupUser
+      summary: Power Bi Remove a Workspace User
+      description: Removes the specified user from the workspace, revoking all access.
+      tags:
+      - Groups
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      - $ref: '#/components/parameters/userId'
+      responses:
+        '200':
+          description: User removed from workspace
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Deletegroupuser401Example:
+                  summary: Default deleteGroupUser 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /groups/{groupId}/datasets:
+    get:
+      operationId: getDatasetsInGroup
+      summary: Power Bi List Datasets in a Workspace
+      description: Returns a list of datasets from the specified workspace. This is similar to the My Workspace datasets endpoint but scoped to a specific workspace.
+      tags:
+      - Groups
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      responses:
+        '200':
+          description: List of datasets in the workspace
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatasetList'
+              examples:
+                Getdatasetsingroup200Example:
+                  summary: Default getDatasetsInGroup 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                    - id: abc123
+                      name: Example Title
+                      addRowsAPIEnabled: true
+                      configuredBy: example_value
+                      isRefreshable: true
+                      isEffectiveIdentityRequired: true
+                      isEffectiveIdentityRolesRequired: true
+                      isOnPremGatewayRequired: true
+                      targetStorageMode: Import
+                      createReportEmbedURL: https://www.example.com
+                      qnaEmbedURL: https://www.example.com
+                      webUrl: https://www.example.com
+                      createdDate: '2026-01-15T10:30:00Z'
+                      contentProviderType: example_value
+                    '@odata.context': example_value
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getdatasetsingroup401Example:
+                  summary: Default getDatasetsInGroup 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+        '404':
+          description: Workspace not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getdatasetsingroup404Example:
+                  summary: Default getDatasetsInGroup 404 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /groups/{groupId}/reports:
+    get:
+      operationId: getReportsInGroup
+      summary: Power Bi List Reports in a Workspace
+      description: Returns a list of reports from the specified workspace. Each report includes its metadata and embed information.
+      tags:
+      - Groups
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      responses:
+        '200':
+          description: List of reports in the workspace
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportList'
+              examples:
+                Getreportsingroup200Example:
+                  summary: Default getReportsInGroup 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                    - id: abc123
+                      name: Example Title
+                      datasetId: '500123'
+                      webUrl: https://www.example.com
+                      embedUrl: https://www.example.com
+                      reportType: PowerBIReport
+                      description: A sample description.
+                      createdDateTime: '2026-01-15T10:30:00Z'
+                      modifiedDateTime: '2026-01-15T10:30:00Z'
+                      modifiedBy: example_value
+                    '@odata.context': example_value
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getreportsingroup401Example:
+                  summary: Default getReportsInGroup 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+        '404':
+          description: Workspace not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getreportsingroup404Example:
+                  summary: Default getReportsInGroup 404 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /groups/{groupId}/dashboards:
+    get:
+      operationId: getDashboardsInGroup
+      summary: Power Bi List Dashboards in a Workspace
+      description: Returns a list of dashboards from the specified workspace.
+      tags:
+      - Groups
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      responses:
+        '200':
+          description: List of dashboards in the workspace
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DashboardList'
+              examples:
+                Getdashboardsingroup200Example:
+                  summary: Default getDashboardsInGroup 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                    - id: abc123
+                      displayName: example_value
+                      isReadOnly: true
+                      webUrl: https://www.example.com
+                      embedUrl: https://www.example.com
+                      dataClassification: example_value
+                    '@odata.context': example_value
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getdashboardsingroup401Example:
+                  summary: Default getDashboardsInGroup 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+        '404':
+          description: Workspace not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getdashboardsingroup404Example:
+                  summary: Default getDashboardsInGroup 404 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /groups/{groupId}/imports:
+    get:
+      operationId: getImportsInGroup
+      summary: Power Bi List Imports in a Workspace
+      description: Returns a list of import operations for the specified workspace, including their status and the type of content imported.
+      tags:
+      - Groups
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      responses:
+        '200':
+          description: List of imports
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImportList'
+              examples:
+                Getimportsingroup200Example:
+                  summary: Default getImportsInGroup 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                    - id: abc123
+                      name: Example Title
+                      importState: Publishing
+                      createdDateTime: '2026-01-15T10:30:00Z'
+                      updatedDateTime: '2026-01-15T10:30:00Z'
+                      reports: {}
+                      datasets: {}
+                    '@odata.context': example_value
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getimportsingroup401Example:
+                  summary: Default getImportsInGroup 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createImportInGroup
+      summary: Power Bi Import Content Into a Workspace
+      description: Imports a Power BI PBIX file, Excel workbook, or other supported content into the specified workspace. The file must be uploaded as multipart form data.
+      tags:
+      - Groups
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      - name: datasetDisplayName
+        in: query
+        required: true
+        description: Display name of the dataset
+        schema:
+          type: string
+        example: example_value
+      - name: nameConflict
+        in: query
+        description: Action to take if a dataset with the same name exists
+        schema:
+          type: string
+          enum:
+          - Ignore
+          - Abort
+          - Overwrite
+          - CreateOrOverwrite
+        example: Ignore
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: The file to import
+            examples:
+              CreateimportingroupRequestExample:
+                summary: Default createImportInGroup request
+                x-microcks-default: true
+                value:
+                  file: example_value
+      responses:
+        '200':
+          description: Import started
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Import'
+              examples:
+                Createimportingroup200Example:
+                  summary: Default createImportInGroup 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    name: Example Title
+                    importState: Publishing
+                    createdDateTime: '2026-01-15T10:30:00Z'
+                    updatedDateTime: '2026-01-15T10:30:00Z'
+                    reports:
+                    - id: abc123
+                      name: Example Title
+                      datasetId: '500123'
+                      webUrl: https://www.example.com
+                      embedUrl: https://www.example.com
+                      reportType: PowerBIReport
+                      description: A sample description.
+                      createdDateTime: '2026-01-15T10:30:00Z'
+                      modifiedDateTime: '2026-01-15T10:30:00Z'
+                      modifiedBy: example_value
+                    datasets:
+                    - id: abc123
+                      name: Example Title
+                      addRowsAPIEnabled: true
+                      configuredBy: example_value
+                      isRefreshable: true
+                      isEffectiveIdentityRequired: true
+                      isEffectiveIdentityRolesRequired: true
+                      isOnPremGatewayRequired: true
+                      targetStorageMode: Import
+                      createReportEmbedURL: https://www.example.com
+                      qnaEmbedURL: https://www.example.com
+                      webUrl: https://www.example.com
+                      createdDate: '2026-01-15T10:30:00Z'
+                      contentProviderType: example_value
+        '202':
+          description: Import accepted and processing
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Import'
+              examples:
+                Createimportingroup202Example:
+                  summary: Default createImportInGroup 202 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    name: Example Title
+                    importState: Publishing
+                    createdDateTime: '2026-01-15T10:30:00Z'
+                    updatedDateTime: '2026-01-15T10:30:00Z'
+                    reports:
+                    - id: abc123
+                      name: Example Title
+                      datasetId: '500123'
+                      webUrl: https://www.example.com
+                      embedUrl: https://www.example.com
+                      reportType: PowerBIReport
+                      description: A sample description.
+                      createdDateTime: '2026-01-15T10:30:00Z'
+                      modifiedDateTime: '2026-01-15T10:30:00Z'
+                      modifiedBy: example_value
+                    datasets:
+                    - id: abc123
+                      name: Example Title
+                      addRowsAPIEnabled: true
+                      configuredBy: example_value
+                      isRefreshable: true
+                      isEffectiveIdentityRequired: true
+                      isEffectiveIdentityRolesRequired: true
+                      isOnPremGatewayRequired: true
+                      targetStorageMode: Import
+                      createReportEmbedURL: https://www.example.com
+                      qnaEmbedURL: https://www.example.com
+                      webUrl: https://www.example.com
+                      createdDate: '2026-01-15T10:30:00Z'
+                      contentProviderType: example_value
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Createimportingroup401Example:
+                  summary: Default createImportInGroup 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    DatasetList:
+      type: object
+      description: A list of Power BI datasets
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dataset'
+          example: []
+        '@odata.context':
+          type: string
+          description: OData context URL
+          example: example_value
+    Import:
+      type: object
+      description: An import operation
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The unique identifier of the import
+          example: abc123
+        name:
+          type: string
+          description: The display name of the import
+          example: Example Title
+        importState:
+          type: string
+          description: The state of the import
+          enum:
+          - Publishing
+          - Succeeded
+          - Failed
+          example: Publishing
+        createdDateTime:
+          type: string
+          format: date-time
+          description: When the import was created
+          example: '2026-01-15T10:30:00Z'
+        updatedDateTime:
+          type: string
+          format: date-time
+          description: When the import was last updated
+          example: '2026-01-15T10:30:00Z'
+        reports:
+          type: array
+          description: Reports created by this import
+          items:
+            $ref: '#/components/schemas/Report'
+          example: []
+        datasets:
+          type: array
+          description: Datasets created by this import
+          items:
+            $ref: '#/components/schemas/Dataset'
+          example: []
+    Dashboard:
+      type: object
+      description: A Power BI dashboard
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The unique identifier of the dashboard
+          example: abc123
+        displayName:
+          type: string
+          description: The display name of the dashboard
+          example: example_value
+        isReadOnly:
+          type: boolean
+          description: Whether the dashboard is read-only
+          example: true
+        webUrl:
+          type: string
+          format: uri
+          description: The web URL of the dashboard
+          example: https://www.example.com
+        embedUrl:
+          type: string
+          format: uri
+          description: The embed URL for embedding the dashboard
+          example: https://www.example.com
+        dataClassification:
+          type: string
+          description: The data classification label
+          example: example_value
+    GroupUserList:
+      type: object
+      description: A list of workspace users
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupUser'
+          example: []
+        '@odata.context':
+          type: string
+          example: example_value
+    CreateGroupRequest:
+      type: object
+      required:
+      - name
+      description: Request body for creating a workspace
+      properties:
+        name:
+          type: string
+          description: The display name of the new workspace
+          example: Example Title
+    ReportList:
+      type: object
+      description: A list of Power BI reports
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Report'
+          example: []
+        '@odata.context':
+          type: string
+          example: example_value
+    GroupList:
+      type: object
+      description: A list of Power BI workspaces
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
+          example: []
+        '@odata.context':
+          type: string
+          example: example_value
+    GroupUser:
+      type: object
+      required:
+      - emailAddress
+      - groupUserAccessRight
+      description: A user in a Power BI workspace
+      properties:
+        emailAddress:
+          type: string
+          format: email
+          description: The email address of the user
+          example: user@example.com
+        displayName:
+          type: string
+          description: The display name of the user
+          example: example_value
+        identifier:
+          type: string
+          description: The object ID of the user
+          example: example_value
+        graphId:
+          type: string
+          description: The Microsoft Graph ID of the user
+          example: '500123'
+        groupUserAccessRight:
+          type: string
+          description: The access right of the user in the workspace
+          enum:
+          - Admin
+          - Member
+          - Contributor
+          - Viewer
+          example: Admin
+        principalType:
+          type: string
+          description: The principal type
+          enum:
+          - User
+          - Group
+          - App
+          example: User
+    Report:
+      type: object
+      description: A Power BI report
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The unique identifier of the report
+          example: abc123
+        name:
+          type: string
+          description: The display name of the report
+          example: Example Title
+        datasetId:
+          type: string
+          format: uuid
+          description: The ID of the dataset associated with this report
+          example: '500123'
+        webUrl:
+          type: string
+          format: uri
+          description: The web URL of the report
+          example: https://www.example.com
+        embedUrl:
+          type: string
+          format: uri
+          description: The embed URL for embedding the report in applications
+          example: https://www.example.com
+        reportType:
+          type: string
+          description: The type of the report
+          enum:
+          - PowerBIReport
+          - PaginatedReport
+          example: PowerBIReport
+        description:
+          type: string
+          description: The report description
+          example: A sample description.
+        createdDateTime:
+          type: string
+          format: date-time
+          description: When the report was created
+          example: '2026-01-15T10:30:00Z'
+        modifiedDateTime:
+          type: string
+          format: date-time
+          description: When the report was last modified
+          example: '2026-01-15T10:30:00Z'
+        modifiedBy:
+          type: string
+          description: The user who last modified the report
+          example: example_value
+    DashboardList:
+      type: object
+      description: A list of Power BI dashboards
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dashboard'
+          example: []
+        '@odata.context':
+          type: string
+          example: example_value
+    ErrorResponse:
+      type: object
+      description: Error response from the Power BI REST API
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Machine-readable error code
+            message:
+              type: string
+              description: Human-readable error message
+            details:
+              type: array
+              description: Additional error details
+              items:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  target:
+                    type: string
+          example: example_value
+    Dataset:
+      type: object
+      description: A Power BI dataset representing a data model
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The unique identifier of the dataset
+          example: abc123
+        name:
+          type: string
+          description: The display name of the dataset
+          example: Example Title
+        addRowsAPIEnabled:
+          type: boolean
+          description: Whether the push API is enabled for this dataset
+          example: true
+        configuredBy:
+          type: string
+          description: The user who configured the dataset
+          example: example_value
+        isRefreshable:
+          type: boolean
+          description: Whether the dataset can be refreshed
+          example: true
+        isEffectiveIdentityRequired:
+          type: boolean
+          description: Whether effective identity is required for embedding
+          example: true
+        isEffectiveIdentityRolesRequired:
+          type: boolean
+          description: Whether RLS roles are required for embedding
+          example: true
+        isOnPremGatewayRequired:
+          type: boolean
+          description: Whether an on-premises gateway is required
+          example: true
+        targetStorageMode:
+          type: string
+          description: The storage mode of the dataset
+          enum:
+          - Import
+          - DirectQuery
+          - Dual
+          - PushDataset
+          example: Import
+        createReportEmbedURL:
+          type: string
+          format: uri
+          description: URL to create an embedded report on this dataset
+          example: https://www.example.com
+        qnaEmbedURL:
+          type: string
+          format: uri
+          description: URL for the Q&A embedded experience
+          example: https://www.example.com
+        webUrl:
+          type: string
+          format: uri
+          description: The web URL of the dataset
+          example: https://www.example.com
+        createdDate:
+          type: string
+          format: date-time
+          description: The date and time the dataset was created
+          example: '2026-01-15T10:30:00Z'
+        contentProviderType:
+          type: string
+          description: The content provider type
+          example: example_value
+    Group:
+      type: object
+      description: A Power BI workspace (group)
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The unique identifier of the workspace
+          example: abc123
+        name:
+          type: string
+          description: The display name of the workspace
+          example: Example Title
+        isReadOnly:
+          type: boolean
+          description: Whether the workspace is read-only
+          example: true
+        isOnDedicatedCapacity:
+          type: boolean
+          description: Whether the workspace is on a dedicated capacity
+          example: true
+        capacityId:
+          type: string
+          format: uuid
+          description: The capacity ID if on a dedicated capacity
+          example: '500123'
+        type:
+          type: string
+          description: The workspace type
+          enum:
+          - Workspace
+          - Group
+          - PersonalGroup
+          example: Workspace
+        state:
+          type: string
+          description: The workspace state
+          enum:
+          - Active
+          - Deleted
+          - Removing
+          example: Active
+    ImportList:
+      type: object
+      description: A list of import operations
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Import'
+          example: []
+        '@odata.context':
+          type: string
+          example: example_value
+  parameters:
+    userId:
+      name: userId
+      in: path
+      required: true
+      description: The email address or object ID of the user
+      schema:
+        type: string
+    groupId:
+      name: groupId
+      in: path
+      required: true
+      description: The unique identifier of the workspace (group)
+      schema:
+        type: string
+        format: uuid
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Azure Active Directory OAuth 2.0 access token. Obtain a token by registering an Azure AD application and requesting the Power BI Service scope (https://analysis.windows.net/powerbi/api/.default).
+externalDocs:
+  description: Power BI REST API Reference
+  url: https://learn.microsoft.com/en-us/rest/api/power-bi/

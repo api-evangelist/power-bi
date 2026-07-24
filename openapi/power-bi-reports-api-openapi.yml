@@ -1,0 +1,699 @@
+openapi: 3.1.0
+info:
+  title: Power BI REST Dashboards Reports API
+  description: The Power BI REST API provides service endpoints for embedding, administration, governance, and user resources. It enables programmatic access to Power BI content including datasets, reports, dashboards, and workspaces (groups). The API uses Azure Active Directory (OAuth 2.0) for authentication and authorization.
+  version: '1.0'
+  contact:
+    name: Microsoft Power BI Support
+    url: https://powerbi.microsoft.com/en-us/support/
+  termsOfService: https://powerbi.microsoft.com/en-us/api-terms/
+  license:
+    name: Microsoft API License
+    url: https://powerbi.microsoft.com/en-us/terms-of-service/
+servers:
+- url: https://api.powerbi.com/v1.0/myorg
+  description: Power BI REST API - User context
+security:
+- bearerAuth: []
+tags:
+- name: Reports
+  description: Manage reports including listing, cloning, exporting, rebinding, and deleting reports. Reports are visual presentations of data from datasets.
+paths:
+  /reports:
+    get:
+      operationId: getReports
+      summary: Power Bi List Reports
+      description: Returns a list of reports from the user's My Workspace. Each report includes metadata such as name, the associated dataset, web URL, and embed URL for embedding scenarios.
+      tags:
+      - Reports
+      responses:
+        '200':
+          description: List of reports
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportList'
+              examples:
+                Getreports200Example:
+                  summary: Default getReports 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                    - id: abc123
+                      name: Example Title
+                      datasetId: '500123'
+                      webUrl: https://www.example.com
+                      embedUrl: https://www.example.com
+                      reportType: PowerBIReport
+                      description: A sample description.
+                      createdDateTime: '2026-01-15T10:30:00Z'
+                      modifiedDateTime: '2026-01-15T10:30:00Z'
+                      modifiedBy: example_value
+                    '@odata.context': example_value
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getreports401Example:
+                  summary: Default getReports 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /reports/{reportId}:
+    get:
+      operationId: getReport
+      summary: Power Bi Get a Report
+      description: Returns the specified report from the user's My Workspace, including its name, dataset binding, web URL, and embed URL.
+      tags:
+      - Reports
+      parameters:
+      - $ref: '#/components/parameters/reportId'
+      responses:
+        '200':
+          description: Report details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+              examples:
+                Getreport200Example:
+                  summary: Default getReport 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    name: Example Title
+                    datasetId: '500123'
+                    webUrl: https://www.example.com
+                    embedUrl: https://www.example.com
+                    reportType: PowerBIReport
+                    description: A sample description.
+                    createdDateTime: '2026-01-15T10:30:00Z'
+                    modifiedDateTime: '2026-01-15T10:30:00Z'
+                    modifiedBy: example_value
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getreport401Example:
+                  summary: Default getReport 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+        '404':
+          description: Report not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getreport404Example:
+                  summary: Default getReport 404 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteReport
+      summary: Power Bi Delete a Report
+      description: Deletes the specified report from the user's My Workspace. This does not delete the underlying dataset.
+      tags:
+      - Reports
+      parameters:
+      - $ref: '#/components/parameters/reportId'
+      responses:
+        '200':
+          description: Report deleted successfully
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Deletereport401Example:
+                  summary: Default deleteReport 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+        '404':
+          description: Report not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Deletereport404Example:
+                  summary: Default deleteReport 404 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /reports/{reportId}/Clone:
+    post:
+      operationId: cloneReport
+      summary: Power Bi Clone a Report
+      description: Clones the specified report from the user's My Workspace. The clone can be placed in a different workspace and optionally rebound to a different dataset.
+      tags:
+      - Reports
+      parameters:
+      - $ref: '#/components/parameters/reportId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CloneReportRequest'
+            examples:
+              ClonereportRequestExample:
+                summary: Default cloneReport request
+                x-microcks-default: true
+                value:
+                  name: Example Title
+                  targetModelId: '500123'
+                  targetWorkspaceId: '500123'
+      responses:
+        '200':
+          description: Cloned report
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+              examples:
+                Clonereport200Example:
+                  summary: Default cloneReport 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    name: Example Title
+                    datasetId: '500123'
+                    webUrl: https://www.example.com
+                    embedUrl: https://www.example.com
+                    reportType: PowerBIReport
+                    description: A sample description.
+                    createdDateTime: '2026-01-15T10:30:00Z'
+                    modifiedDateTime: '2026-01-15T10:30:00Z'
+                    modifiedBy: example_value
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Clonereport400Example:
+                  summary: Default cloneReport 400 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Clonereport401Example:
+                  summary: Default cloneReport 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /reports/{reportId}/Rebind:
+    post:
+      operationId: rebindReport
+      summary: Power Bi Rebind a Report to a Dataset
+      description: Rebinds the specified report to a different dataset. The target dataset must have the same schema as the current dataset.
+      tags:
+      - Reports
+      parameters:
+      - $ref: '#/components/parameters/reportId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RebindReportRequest'
+            examples:
+              RebindreportRequestExample:
+                summary: Default rebindReport request
+                x-microcks-default: true
+                value:
+                  datasetId: '500123'
+      responses:
+        '200':
+          description: Report rebound successfully
+        '400':
+          description: Invalid request - incompatible dataset
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Rebindreport400Example:
+                  summary: Default rebindReport 400 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Rebindreport401Example:
+                  summary: Default rebindReport 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /reports/{reportId}/Export:
+    get:
+      operationId: exportReport
+      summary: Power Bi Export a Report
+      description: Exports the specified report as a PBIX file. Only reports created from PBIX files can be exported. Reports created from the Power BI service are not supported.
+      tags:
+      - Reports
+      parameters:
+      - $ref: '#/components/parameters/reportId'
+      responses:
+        '200':
+          description: Report PBIX file
+          content:
+            application/zip:
+              schema:
+                type: string
+                format: binary
+              examples:
+                Exportreport200Example:
+                  summary: Default exportReport 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Exportreport401Example:
+                  summary: Default exportReport 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+        '404':
+          description: Report not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Exportreport404Example:
+                  summary: Default exportReport 404 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /reports/{reportId}/pages:
+    get:
+      operationId: getPages
+      summary: Power Bi Get Report Pages
+      description: Returns a list of pages within the specified report. Each page includes its name, display name, and order within the report.
+      tags:
+      - Reports
+      parameters:
+      - $ref: '#/components/parameters/reportId'
+      responses:
+        '200':
+          description: List of report pages
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageList'
+              examples:
+                Getpages200Example:
+                  summary: Default getPages 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                    - name: Example Title
+                      displayName: example_value
+                      order: 10
+                    '@odata.context': example_value
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getpages401Example:
+                  summary: Default getPages 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+        '404':
+          description: Report not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getpages404Example:
+                  summary: Default getPages 404 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /groups/{groupId}/reports:
+    get:
+      operationId: getReportsInGroup
+      summary: Power Bi List Reports in a Workspace
+      description: Returns a list of reports from the specified workspace. Each report includes its metadata and embed information.
+      tags:
+      - Reports
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      responses:
+        '200':
+          description: List of reports in the workspace
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportList'
+              examples:
+                Getreportsingroup200Example:
+                  summary: Default getReportsInGroup 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                    - id: abc123
+                      name: Example Title
+                      datasetId: '500123'
+                      webUrl: https://www.example.com
+                      embedUrl: https://www.example.com
+                      reportType: PowerBIReport
+                      description: A sample description.
+                      createdDateTime: '2026-01-15T10:30:00Z'
+                      modifiedDateTime: '2026-01-15T10:30:00Z'
+                      modifiedBy: example_value
+                    '@odata.context': example_value
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getreportsingroup401Example:
+                  summary: Default getReportsInGroup 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+        '404':
+          description: Workspace not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getreportsingroup404Example:
+                  summary: Default getReportsInGroup 404 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    CloneReportRequest:
+      type: object
+      required:
+      - name
+      description: Request body for cloning a report
+      properties:
+        name:
+          type: string
+          description: The name for the cloned report
+          example: Example Title
+        targetModelId:
+          type: string
+          format: uuid
+          description: Optional dataset ID to rebind the cloned report to
+          example: '500123'
+        targetWorkspaceId:
+          type: string
+          format: uuid
+          description: Optional workspace ID for the cloned report
+          example: '500123'
+    RebindReportRequest:
+      type: object
+      required:
+      - datasetId
+      description: Request body for rebinding a report to a different dataset
+      properties:
+        datasetId:
+          type: string
+          format: uuid
+          description: The ID of the target dataset
+          example: '500123'
+    ErrorResponse:
+      type: object
+      description: Error response from the Power BI REST API
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Machine-readable error code
+            message:
+              type: string
+              description: Human-readable error message
+            details:
+              type: array
+              description: Additional error details
+              items:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  target:
+                    type: string
+          example: example_value
+    Report:
+      type: object
+      description: A Power BI report
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The unique identifier of the report
+          example: abc123
+        name:
+          type: string
+          description: The display name of the report
+          example: Example Title
+        datasetId:
+          type: string
+          format: uuid
+          description: The ID of the dataset associated with this report
+          example: '500123'
+        webUrl:
+          type: string
+          format: uri
+          description: The web URL of the report
+          example: https://www.example.com
+        embedUrl:
+          type: string
+          format: uri
+          description: The embed URL for embedding the report in applications
+          example: https://www.example.com
+        reportType:
+          type: string
+          description: The type of the report
+          enum:
+          - PowerBIReport
+          - PaginatedReport
+          example: PowerBIReport
+        description:
+          type: string
+          description: The report description
+          example: A sample description.
+        createdDateTime:
+          type: string
+          format: date-time
+          description: When the report was created
+          example: '2026-01-15T10:30:00Z'
+        modifiedDateTime:
+          type: string
+          format: date-time
+          description: When the report was last modified
+          example: '2026-01-15T10:30:00Z'
+        modifiedBy:
+          type: string
+          description: The user who last modified the report
+          example: example_value
+    Page:
+      type: object
+      description: A page within a Power BI report
+      properties:
+        name:
+          type: string
+          description: The internal name of the page
+          example: Example Title
+        displayName:
+          type: string
+          description: The display name shown in the report
+          example: example_value
+        order:
+          type: integer
+          description: The order of the page within the report
+          example: 10
+    ReportList:
+      type: object
+      description: A list of Power BI reports
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Report'
+          example: []
+        '@odata.context':
+          type: string
+          example: example_value
+    PageList:
+      type: object
+      description: A list of report pages
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Page'
+          example: []
+        '@odata.context':
+          type: string
+          example: example_value
+  parameters:
+    reportId:
+      name: reportId
+      in: path
+      required: true
+      description: The unique identifier of the report
+      schema:
+        type: string
+        format: uuid
+    groupId:
+      name: groupId
+      in: path
+      required: true
+      description: The unique identifier of the workspace (group)
+      schema:
+        type: string
+        format: uuid
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Azure Active Directory OAuth 2.0 access token. Obtain a token by registering an Azure AD application and requesting the Power BI Service scope (https://analysis.windows.net/powerbi/api/.default).
+externalDocs:
+  description: Power BI REST API Reference
+  url: https://learn.microsoft.com/en-us/rest/api/power-bi/

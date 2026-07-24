@@ -1,0 +1,441 @@
+openapi: 3.1.0
+info:
+  title: Power BI REST Dashboards Imports API
+  description: The Power BI REST API provides service endpoints for embedding, administration, governance, and user resources. It enables programmatic access to Power BI content including datasets, reports, dashboards, and workspaces (groups). The API uses Azure Active Directory (OAuth 2.0) for authentication and authorization.
+  version: '1.0'
+  contact:
+    name: Microsoft Power BI Support
+    url: https://powerbi.microsoft.com/en-us/support/
+  termsOfService: https://powerbi.microsoft.com/en-us/api-terms/
+  license:
+    name: Microsoft API License
+    url: https://powerbi.microsoft.com/en-us/terms-of-service/
+servers:
+- url: https://api.powerbi.com/v1.0/myorg
+  description: Power BI REST API - User context
+security:
+- bearerAuth: []
+tags:
+- name: Imports
+  description: Import Power BI content such as PBIX files, Excel workbooks, and RDL reports into workspaces.
+paths:
+  /groups/{groupId}/imports:
+    get:
+      operationId: getImportsInGroup
+      summary: Power Bi List Imports in a Workspace
+      description: Returns a list of import operations for the specified workspace, including their status and the type of content imported.
+      tags:
+      - Imports
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      responses:
+        '200':
+          description: List of imports
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImportList'
+              examples:
+                Getimportsingroup200Example:
+                  summary: Default getImportsInGroup 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                    - id: abc123
+                      name: Example Title
+                      importState: Publishing
+                      createdDateTime: '2026-01-15T10:30:00Z'
+                      updatedDateTime: '2026-01-15T10:30:00Z'
+                      reports: {}
+                      datasets: {}
+                    '@odata.context': example_value
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getimportsingroup401Example:
+                  summary: Default getImportsInGroup 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createImportInGroup
+      summary: Power Bi Import Content Into a Workspace
+      description: Imports a Power BI PBIX file, Excel workbook, or other supported content into the specified workspace. The file must be uploaded as multipart form data.
+      tags:
+      - Imports
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      - name: datasetDisplayName
+        in: query
+        required: true
+        description: Display name of the dataset
+        schema:
+          type: string
+        example: example_value
+      - name: nameConflict
+        in: query
+        description: Action to take if a dataset with the same name exists
+        schema:
+          type: string
+          enum:
+          - Ignore
+          - Abort
+          - Overwrite
+          - CreateOrOverwrite
+        example: Ignore
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: The file to import
+            examples:
+              CreateimportingroupRequestExample:
+                summary: Default createImportInGroup request
+                x-microcks-default: true
+                value:
+                  file: example_value
+      responses:
+        '200':
+          description: Import started
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Import'
+              examples:
+                Createimportingroup200Example:
+                  summary: Default createImportInGroup 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    name: Example Title
+                    importState: Publishing
+                    createdDateTime: '2026-01-15T10:30:00Z'
+                    updatedDateTime: '2026-01-15T10:30:00Z'
+                    reports:
+                    - id: abc123
+                      name: Example Title
+                      datasetId: '500123'
+                      webUrl: https://www.example.com
+                      embedUrl: https://www.example.com
+                      reportType: PowerBIReport
+                      description: A sample description.
+                      createdDateTime: '2026-01-15T10:30:00Z'
+                      modifiedDateTime: '2026-01-15T10:30:00Z'
+                      modifiedBy: example_value
+                    datasets:
+                    - id: abc123
+                      name: Example Title
+                      addRowsAPIEnabled: true
+                      configuredBy: example_value
+                      isRefreshable: true
+                      isEffectiveIdentityRequired: true
+                      isEffectiveIdentityRolesRequired: true
+                      isOnPremGatewayRequired: true
+                      targetStorageMode: Import
+                      createReportEmbedURL: https://www.example.com
+                      qnaEmbedURL: https://www.example.com
+                      webUrl: https://www.example.com
+                      createdDate: '2026-01-15T10:30:00Z'
+                      contentProviderType: example_value
+        '202':
+          description: Import accepted and processing
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Import'
+              examples:
+                Createimportingroup202Example:
+                  summary: Default createImportInGroup 202 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    name: Example Title
+                    importState: Publishing
+                    createdDateTime: '2026-01-15T10:30:00Z'
+                    updatedDateTime: '2026-01-15T10:30:00Z'
+                    reports:
+                    - id: abc123
+                      name: Example Title
+                      datasetId: '500123'
+                      webUrl: https://www.example.com
+                      embedUrl: https://www.example.com
+                      reportType: PowerBIReport
+                      description: A sample description.
+                      createdDateTime: '2026-01-15T10:30:00Z'
+                      modifiedDateTime: '2026-01-15T10:30:00Z'
+                      modifiedBy: example_value
+                    datasets:
+                    - id: abc123
+                      name: Example Title
+                      addRowsAPIEnabled: true
+                      configuredBy: example_value
+                      isRefreshable: true
+                      isEffectiveIdentityRequired: true
+                      isEffectiveIdentityRolesRequired: true
+                      isOnPremGatewayRequired: true
+                      targetStorageMode: Import
+                      createReportEmbedURL: https://www.example.com
+                      qnaEmbedURL: https://www.example.com
+                      webUrl: https://www.example.com
+                      createdDate: '2026-01-15T10:30:00Z'
+                      contentProviderType: example_value
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Createimportingroup401Example:
+                  summary: Default createImportInGroup 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Import:
+      type: object
+      description: An import operation
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The unique identifier of the import
+          example: abc123
+        name:
+          type: string
+          description: The display name of the import
+          example: Example Title
+        importState:
+          type: string
+          description: The state of the import
+          enum:
+          - Publishing
+          - Succeeded
+          - Failed
+          example: Publishing
+        createdDateTime:
+          type: string
+          format: date-time
+          description: When the import was created
+          example: '2026-01-15T10:30:00Z'
+        updatedDateTime:
+          type: string
+          format: date-time
+          description: When the import was last updated
+          example: '2026-01-15T10:30:00Z'
+        reports:
+          type: array
+          description: Reports created by this import
+          items:
+            $ref: '#/components/schemas/Report'
+          example: []
+        datasets:
+          type: array
+          description: Datasets created by this import
+          items:
+            $ref: '#/components/schemas/Dataset'
+          example: []
+    ErrorResponse:
+      type: object
+      description: Error response from the Power BI REST API
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Machine-readable error code
+            message:
+              type: string
+              description: Human-readable error message
+            details:
+              type: array
+              description: Additional error details
+              items:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  target:
+                    type: string
+          example: example_value
+    Report:
+      type: object
+      description: A Power BI report
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The unique identifier of the report
+          example: abc123
+        name:
+          type: string
+          description: The display name of the report
+          example: Example Title
+        datasetId:
+          type: string
+          format: uuid
+          description: The ID of the dataset associated with this report
+          example: '500123'
+        webUrl:
+          type: string
+          format: uri
+          description: The web URL of the report
+          example: https://www.example.com
+        embedUrl:
+          type: string
+          format: uri
+          description: The embed URL for embedding the report in applications
+          example: https://www.example.com
+        reportType:
+          type: string
+          description: The type of the report
+          enum:
+          - PowerBIReport
+          - PaginatedReport
+          example: PowerBIReport
+        description:
+          type: string
+          description: The report description
+          example: A sample description.
+        createdDateTime:
+          type: string
+          format: date-time
+          description: When the report was created
+          example: '2026-01-15T10:30:00Z'
+        modifiedDateTime:
+          type: string
+          format: date-time
+          description: When the report was last modified
+          example: '2026-01-15T10:30:00Z'
+        modifiedBy:
+          type: string
+          description: The user who last modified the report
+          example: example_value
+    Dataset:
+      type: object
+      description: A Power BI dataset representing a data model
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The unique identifier of the dataset
+          example: abc123
+        name:
+          type: string
+          description: The display name of the dataset
+          example: Example Title
+        addRowsAPIEnabled:
+          type: boolean
+          description: Whether the push API is enabled for this dataset
+          example: true
+        configuredBy:
+          type: string
+          description: The user who configured the dataset
+          example: example_value
+        isRefreshable:
+          type: boolean
+          description: Whether the dataset can be refreshed
+          example: true
+        isEffectiveIdentityRequired:
+          type: boolean
+          description: Whether effective identity is required for embedding
+          example: true
+        isEffectiveIdentityRolesRequired:
+          type: boolean
+          description: Whether RLS roles are required for embedding
+          example: true
+        isOnPremGatewayRequired:
+          type: boolean
+          description: Whether an on-premises gateway is required
+          example: true
+        targetStorageMode:
+          type: string
+          description: The storage mode of the dataset
+          enum:
+          - Import
+          - DirectQuery
+          - Dual
+          - PushDataset
+          example: Import
+        createReportEmbedURL:
+          type: string
+          format: uri
+          description: URL to create an embedded report on this dataset
+          example: https://www.example.com
+        qnaEmbedURL:
+          type: string
+          format: uri
+          description: URL for the Q&A embedded experience
+          example: https://www.example.com
+        webUrl:
+          type: string
+          format: uri
+          description: The web URL of the dataset
+          example: https://www.example.com
+        createdDate:
+          type: string
+          format: date-time
+          description: The date and time the dataset was created
+          example: '2026-01-15T10:30:00Z'
+        contentProviderType:
+          type: string
+          description: The content provider type
+          example: example_value
+    ImportList:
+      type: object
+      description: A list of import operations
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Import'
+          example: []
+        '@odata.context':
+          type: string
+          example: example_value
+  parameters:
+    groupId:
+      name: groupId
+      in: path
+      required: true
+      description: The unique identifier of the workspace (group)
+      schema:
+        type: string
+        format: uuid
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Azure Active Directory OAuth 2.0 access token. Obtain a token by registering an Azure AD application and requesting the Power BI Service scope (https://analysis.windows.net/powerbi/api/.default).
+externalDocs:
+  description: Power BI REST API Reference
+  url: https://learn.microsoft.com/en-us/rest/api/power-bi/

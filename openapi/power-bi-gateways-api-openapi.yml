@@ -1,0 +1,320 @@
+openapi: 3.1.0
+info:
+  title: Power BI REST Dashboards Gateways API
+  description: The Power BI REST API provides service endpoints for embedding, administration, governance, and user resources. It enables programmatic access to Power BI content including datasets, reports, dashboards, and workspaces (groups). The API uses Azure Active Directory (OAuth 2.0) for authentication and authorization.
+  version: '1.0'
+  contact:
+    name: Microsoft Power BI Support
+    url: https://powerbi.microsoft.com/en-us/support/
+  termsOfService: https://powerbi.microsoft.com/en-us/api-terms/
+  license:
+    name: Microsoft API License
+    url: https://powerbi.microsoft.com/en-us/terms-of-service/
+servers:
+- url: https://api.powerbi.com/v1.0/myorg
+  description: Power BI REST API - User context
+security:
+- bearerAuth: []
+tags:
+- name: Gateways
+  description: Manage on-premises data gateways and their data sources for connecting to on-premises data.
+paths:
+  /gateways:
+    get:
+      operationId: getGateways
+      summary: Power Bi List Gateways
+      description: Returns a list of on-premises data gateways that the user has permissions to administer. Each gateway includes its cluster information and public key for credential encryption.
+      tags:
+      - Gateways
+      responses:
+        '200':
+          description: List of gateways
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GatewayList'
+              examples:
+                Getgateways200Example:
+                  summary: Default getGateways 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                    - id: abc123
+                      name: Example Title
+                      type: Resource
+                      publicKey: {}
+                      gatewayAnnotation: example_value
+                    '@odata.context': example_value
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getgateways401Example:
+                  summary: Default getGateways 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /gateways/{gatewayId}:
+    get:
+      operationId: getGateway
+      summary: Power Bi Get a Gateway
+      description: Returns the specified on-premises data gateway.
+      tags:
+      - Gateways
+      parameters:
+      - $ref: '#/components/parameters/gatewayId'
+      responses:
+        '200':
+          description: Gateway details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Gateway'
+              examples:
+                Getgateway200Example:
+                  summary: Default getGateway 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    name: Example Title
+                    type: Resource
+                    publicKey:
+                      exponent: example_value
+                      modulus: example_value
+                    gatewayAnnotation: example_value
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getgateway401Example:
+                  summary: Default getGateway 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+        '404':
+          description: Gateway not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getgateway404Example:
+                  summary: Default getGateway 404 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /gateways/{gatewayId}/datasources:
+    get:
+      operationId: getGatewayDatasources
+      summary: Power Bi List Gateway Data Sources
+      description: Returns a list of data sources configured on the specified gateway.
+      tags:
+      - Gateways
+      parameters:
+      - $ref: '#/components/parameters/gatewayId'
+      responses:
+        '200':
+          description: List of data sources
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GatewayDatasourceList'
+              examples:
+                Getgatewaydatasources200Example:
+                  summary: Default getGatewayDatasources 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                    - id: abc123
+                      gatewayId: '500123'
+                      datasourceType: example_value
+                      connectionDetails: example_value
+                      credentialType: Basic
+                      datasourceName: example_value
+                    '@odata.context': example_value
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getgatewaydatasources401Example:
+                  summary: Default getGatewayDatasources 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    GatewayList:
+      type: object
+      description: A list of gateways
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Gateway'
+          example: []
+        '@odata.context':
+          type: string
+          example: example_value
+    GatewayDatasource:
+      type: object
+      description: A data source on a gateway
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The unique identifier of the data source
+          example: abc123
+        gatewayId:
+          type: string
+          format: uuid
+          description: The gateway this data source belongs to
+          example: '500123'
+        datasourceType:
+          type: string
+          description: The type of data source
+          example: example_value
+        connectionDetails:
+          type: string
+          description: JSON string with connection details
+          example: example_value
+        credentialType:
+          type: string
+          description: The credential type used for authentication
+          enum:
+          - Basic
+          - Windows
+          - Anonymous
+          - OAuth2
+          - Key
+          example: Basic
+        datasourceName:
+          type: string
+          description: The display name of the data source
+          example: example_value
+    ErrorResponse:
+      type: object
+      description: Error response from the Power BI REST API
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Machine-readable error code
+            message:
+              type: string
+              description: Human-readable error message
+            details:
+              type: array
+              description: Additional error details
+              items:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  target:
+                    type: string
+          example: example_value
+    GatewayDatasourceList:
+      type: object
+      description: A list of gateway data sources
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/GatewayDatasource'
+          example: []
+        '@odata.context':
+          type: string
+          example: example_value
+    Gateway:
+      type: object
+      description: An on-premises data gateway
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The unique identifier of the gateway
+          example: abc123
+        name:
+          type: string
+          description: The display name of the gateway
+          example: Example Title
+        type:
+          type: string
+          description: The type of gateway
+          enum:
+          - Resource
+          - Personal
+          example: Resource
+        publicKey:
+          type: object
+          description: The public key for encrypting credentials
+          properties:
+            exponent:
+              type: string
+              description: The RSA exponent
+            modulus:
+              type: string
+              description: The RSA modulus
+          example: example_value
+        gatewayAnnotation:
+          type: string
+          description: Gateway metadata annotation
+          example: example_value
+  parameters:
+    gatewayId:
+      name: gatewayId
+      in: path
+      required: true
+      description: The unique identifier of the gateway
+      schema:
+        type: string
+        format: uuid
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Azure Active Directory OAuth 2.0 access token. Obtain a token by registering an Azure AD application and requesting the Power BI Service scope (https://analysis.windows.net/powerbi/api/.default).
+externalDocs:
+  description: Power BI REST API Reference
+  url: https://learn.microsoft.com/en-us/rest/api/power-bi/

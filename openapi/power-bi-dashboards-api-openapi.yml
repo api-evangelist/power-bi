@@ -1,0 +1,560 @@
+openapi: 3.1.0
+info:
+  title: Power BI REST Dashboards API
+  description: The Power BI REST API provides service endpoints for embedding, administration, governance, and user resources. It enables programmatic access to Power BI content including datasets, reports, dashboards, and workspaces (groups). The API uses Azure Active Directory (OAuth 2.0) for authentication and authorization.
+  version: '1.0'
+  contact:
+    name: Microsoft Power BI Support
+    url: https://powerbi.microsoft.com/en-us/support/
+  termsOfService: https://powerbi.microsoft.com/en-us/api-terms/
+  license:
+    name: Microsoft API License
+    url: https://powerbi.microsoft.com/en-us/terms-of-service/
+servers:
+- url: https://api.powerbi.com/v1.0/myorg
+  description: Power BI REST API - User context
+security:
+- bearerAuth: []
+tags:
+- name: Dashboards
+  description: Manage dashboards including listing, creating, and retrieving tiles. Dashboards are single-page canvases with pinned visualizations.
+paths:
+  /dashboards:
+    get:
+      operationId: getDashboards
+      summary: Power Bi List Dashboards
+      description: Returns a list of dashboards from the user's My Workspace. Each dashboard includes its name, web URL, embed URL, and whether it is read-only.
+      tags:
+      - Dashboards
+      responses:
+        '200':
+          description: List of dashboards
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DashboardList'
+              examples:
+                Getdashboards200Example:
+                  summary: Default getDashboards 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                    - id: abc123
+                      displayName: example_value
+                      isReadOnly: true
+                      webUrl: https://www.example.com
+                      embedUrl: https://www.example.com
+                      dataClassification: example_value
+                    '@odata.context': example_value
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getdashboards401Example:
+                  summary: Default getDashboards 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createDashboard
+      summary: Power Bi Create a Dashboard
+      description: Creates a new empty dashboard in the user's My Workspace. After creating the dashboard, use tile pinning to add content.
+      tags:
+      - Dashboards
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDashboardRequest'
+            examples:
+              CreatedashboardRequestExample:
+                summary: Default createDashboard request
+                x-microcks-default: true
+                value:
+                  name: Example Title
+      responses:
+        '201':
+          description: Dashboard created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dashboard'
+              examples:
+                Createdashboard201Example:
+                  summary: Default createDashboard 201 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    displayName: example_value
+                    isReadOnly: true
+                    webUrl: https://www.example.com
+                    embedUrl: https://www.example.com
+                    dataClassification: example_value
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Createdashboard401Example:
+                  summary: Default createDashboard 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /dashboards/{dashboardId}:
+    get:
+      operationId: getDashboard
+      summary: Power Bi Get a Dashboard
+      description: Returns the specified dashboard from the user's My Workspace, including its name, embed URL, and configuration.
+      tags:
+      - Dashboards
+      parameters:
+      - $ref: '#/components/parameters/dashboardId'
+      responses:
+        '200':
+          description: Dashboard details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dashboard'
+              examples:
+                Getdashboard200Example:
+                  summary: Default getDashboard 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    displayName: example_value
+                    isReadOnly: true
+                    webUrl: https://www.example.com
+                    embedUrl: https://www.example.com
+                    dataClassification: example_value
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getdashboard401Example:
+                  summary: Default getDashboard 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+        '404':
+          description: Dashboard not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getdashboard404Example:
+                  summary: Default getDashboard 404 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /dashboards/{dashboardId}/tiles:
+    get:
+      operationId: getTiles
+      summary: Power Bi Get Dashboard Tiles
+      description: Returns a list of tiles within the specified dashboard. Each tile represents a pinned visualization and includes its embed URL, report and dataset references, and configuration.
+      tags:
+      - Dashboards
+      parameters:
+      - $ref: '#/components/parameters/dashboardId'
+      responses:
+        '200':
+          description: List of tiles
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TileList'
+              examples:
+                Gettiles200Example:
+                  summary: Default getTiles 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                    - id: abc123
+                      title: Example Title
+                      subTitle: example_value
+                      embedUrl: https://www.example.com
+                      embedData: example_value
+                      reportId: '500123'
+                      datasetId: '500123'
+                      rowSpan: 10
+                      colSpan: 10
+                    '@odata.context': example_value
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Gettiles401Example:
+                  summary: Default getTiles 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+        '404':
+          description: Dashboard not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Gettiles404Example:
+                  summary: Default getTiles 404 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /dashboards/{dashboardId}/tiles/{tileId}:
+    get:
+      operationId: getTile
+      summary: Power Bi Get a Dashboard Tile
+      description: Returns the specified tile from the specified dashboard, including its embed URL and configuration details.
+      tags:
+      - Dashboards
+      parameters:
+      - $ref: '#/components/parameters/dashboardId'
+      - $ref: '#/components/parameters/tileId'
+      responses:
+        '200':
+          description: Tile details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tile'
+              examples:
+                Gettile200Example:
+                  summary: Default getTile 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    title: Example Title
+                    subTitle: example_value
+                    embedUrl: https://www.example.com
+                    embedData: example_value
+                    reportId: '500123'
+                    datasetId: '500123'
+                    rowSpan: 10
+                    colSpan: 10
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Gettile401Example:
+                  summary: Default getTile 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+        '404':
+          description: Tile not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Gettile404Example:
+                  summary: Default getTile 404 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /groups/{groupId}/dashboards:
+    get:
+      operationId: getDashboardsInGroup
+      summary: Power Bi List Dashboards in a Workspace
+      description: Returns a list of dashboards from the specified workspace.
+      tags:
+      - Dashboards
+      parameters:
+      - $ref: '#/components/parameters/groupId'
+      responses:
+        '200':
+          description: List of dashboards in the workspace
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DashboardList'
+              examples:
+                Getdashboardsingroup200Example:
+                  summary: Default getDashboardsInGroup 200 response
+                  x-microcks-default: true
+                  value:
+                    value:
+                    - id: abc123
+                      displayName: example_value
+                      isReadOnly: true
+                      webUrl: https://www.example.com
+                      embedUrl: https://www.example.com
+                      dataClassification: example_value
+                    '@odata.context': example_value
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getdashboardsingroup401Example:
+                  summary: Default getDashboardsInGroup 401 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+        '404':
+          description: Workspace not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                Getdashboardsingroup404Example:
+                  summary: Default getDashboardsInGroup 404 response
+                  x-microcks-default: true
+                  value:
+                    error:
+                      code: example_value
+                      message: example_value
+                      details:
+                      - message: example_value
+                        target: example_value
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    tileId:
+      name: tileId
+      in: path
+      required: true
+      description: The unique identifier of the tile
+      schema:
+        type: string
+        format: uuid
+    groupId:
+      name: groupId
+      in: path
+      required: true
+      description: The unique identifier of the workspace (group)
+      schema:
+        type: string
+        format: uuid
+    dashboardId:
+      name: dashboardId
+      in: path
+      required: true
+      description: The unique identifier of the dashboard
+      schema:
+        type: string
+        format: uuid
+  schemas:
+    Dashboard:
+      type: object
+      description: A Power BI dashboard
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The unique identifier of the dashboard
+          example: abc123
+        displayName:
+          type: string
+          description: The display name of the dashboard
+          example: example_value
+        isReadOnly:
+          type: boolean
+          description: Whether the dashboard is read-only
+          example: true
+        webUrl:
+          type: string
+          format: uri
+          description: The web URL of the dashboard
+          example: https://www.example.com
+        embedUrl:
+          type: string
+          format: uri
+          description: The embed URL for embedding the dashboard
+          example: https://www.example.com
+        dataClassification:
+          type: string
+          description: The data classification label
+          example: example_value
+    ErrorResponse:
+      type: object
+      description: Error response from the Power BI REST API
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Machine-readable error code
+            message:
+              type: string
+              description: Human-readable error message
+            details:
+              type: array
+              description: Additional error details
+              items:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  target:
+                    type: string
+          example: example_value
+    DashboardList:
+      type: object
+      description: A list of Power BI dashboards
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dashboard'
+          example: []
+        '@odata.context':
+          type: string
+          example: example_value
+    TileList:
+      type: object
+      description: A list of dashboard tiles
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tile'
+          example: []
+        '@odata.context':
+          type: string
+          example: example_value
+    CreateDashboardRequest:
+      type: object
+      required:
+      - name
+      description: Request body for creating a dashboard
+      properties:
+        name:
+          type: string
+          description: The display name of the new dashboard
+          example: Example Title
+    Tile:
+      type: object
+      description: A tile on a Power BI dashboard
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The unique identifier of the tile
+          example: abc123
+        title:
+          type: string
+          description: The display title of the tile
+          example: Example Title
+        subTitle:
+          type: string
+          description: The subtitle of the tile
+          example: example_value
+        embedUrl:
+          type: string
+          format: uri
+          description: The embed URL for the tile
+          example: https://www.example.com
+        embedData:
+          type: string
+          description: Additional embed data for the tile
+          example: example_value
+        reportId:
+          type: string
+          format: uuid
+          description: The ID of the report the tile is pinned from
+          example: '500123'
+        datasetId:
+          type: string
+          format: uuid
+          description: The ID of the dataset used by this tile
+          example: '500123'
+        rowSpan:
+          type: integer
+          description: The number of rows the tile spans
+          example: 10
+        colSpan:
+          type: integer
+          description: The number of columns the tile spans
+          example: 10
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Azure Active Directory OAuth 2.0 access token. Obtain a token by registering an Azure AD application and requesting the Power BI Service scope (https://analysis.windows.net/powerbi/api/.default).
+externalDocs:
+  description: Power BI REST API Reference
+  url: https://learn.microsoft.com/en-us/rest/api/power-bi/
