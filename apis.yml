@@ -3,6 +3,19 @@ description: >-
   Microsoft Power BI is a business analytics service that delivers insights to enable fast, informed decisions. It
   provides interactive visualizations and business intelligence capabilities with an interface simple enough for end
   users to create their own reports and dashboards.
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://powerbi.microsoft.com/pictures/shared/social/social-default-image.png
 url: https://powerbi.microsoft.com
 created: '2024'
@@ -19,152 +32,293 @@ tags:
   - Reporting
   - Visualization
 apis:
-  - name: Power BI REST API
-    description: The Power BI REST API provides service endpoints for embedding, administration, governance, and user resources.
-    image: https://powerbi.microsoft.com/pictures/shared/social/social-default-image.png
-    humanURL: https://docs.microsoft.com/en-us/rest/api/power-bi/
-    baseURL: https://api.powerbi.com
-    tags:
-      - Dashboards
-      - Datasets
-      - Embeddings
-      - Reports
-      - REST
-    properties:
-      - type: Documentation
-        url: https://docs.microsoft.com/en-us/rest/api/power-bi/
-      - type: OpenAPI
-        url: >-
-          https://raw.githubusercontent.com/Azure/azure-rest-api-specs/main/specification/powerbi/data-plane/Microsoft.PowerBI/stable/v1.0/powerbi.json
-      - type: OpenAPI
-        url: openapi/power-bi-rest-api-openapi.yml
-      - type: JSONLD
-        url: json-ld/power-bi-rest-context.jsonld
-      - type: Authentication
-        url: https://docs.microsoft.com/en-us/power-bi/developer/embedded/get-azuread-access-token
-      - type: GettingStarted
-        url: https://docs.microsoft.com/en-us/power-bi/developer/embedded/embedding-content
-      - type: RateLimits
-        url: https://docs.microsoft.com/en-us/power-bi/developer/automation/api-rest-api-limitations
-      - type: SDKs
-        url: https://docs.microsoft.com/en-us/javascript/api/overview/powerbi/
-        title: JavaScript SDK
-      - type: ChangeLog
-        url: https://docs.microsoft.com/en-us/power-bi/developer/embedded/embedded-analytics-power-bi-changelog
-      - type: Troubleshooting
-        url: https://learn.microsoft.com/en-us/power-bi/developer/embedded/troubleshoot-rest-api
-  - name: Power BI Embedded
-    description: >-
-      Azure service that enables ISVs and developers to embed Power BI visuals, reports, and dashboards into their
-      applications.
-    image: https://powerbi.microsoft.com/pictures/shared/social/social-default-image.png
-    humanURL: https://azure.microsoft.com/en-us/services/power-bi-embedded/
-    baseURL: https://api.powerbi.com
-    tags:
-      - Azure
-      - Embedded
-      - Integration
-    properties:
-      - type: Documentation
-        url: https://docs.microsoft.com/en-us/power-bi/developer/embedded/
-      - type: Pricing
-        url: https://azure.microsoft.com/en-us/pricing/details/power-bi-embedded/
-      - type: Sandbox
-        url: https://playground.powerbi.com/
-      - type: CodeExamples
-        url: https://github.com/Microsoft/PowerBI-Developer-Samples
-      - type: APIReference
-        url: https://learn.microsoft.com/en-us/rest/api/power-bi-embedded/
-      - type: GettingStarted
-        url: https://learn.microsoft.com/en-us/power-bi/developer/embedded/embed-organization-app
-      - type: Authentication
-        url: https://learn.microsoft.com/en-us/power-bi/developer/embedded/embed-tokens
-      - type: SDKs
-        url: https://learn.microsoft.com/en-us/javascript/api/overview/powerbi/embedded-analytics-client-api
-        title: JavaScript SDK
-      - type: SDKs
-        url: https://github.com/microsoft/PowerBI-CSharp
-        title: .NET SDK
-  - name: Power BI Management API
-    description: API for managing Power BI capacity, workspaces, and tenant settings.
-    image: https://powerbi.microsoft.com/pictures/shared/social/social-default-image.png
-    humanURL: https://docs.microsoft.com/en-us/rest/api/power-bi/admin
-    baseURL: https://api.powerbi.com/v1.0/myorg/admin
-    tags:
-      - Administration
-      - Governance
-      - Management
-    properties:
-      - type: Documentation
-        url: https://docs.microsoft.com/en-us/rest/api/power-bi/admin
-      - type: Authentication
-        url: https://docs.microsoft.com/en-us/power-bi/admin/service-admin-reference
-      - type: GettingStarted
-        url: https://learn.microsoft.com/en-us/power-bi/admin/service-admin-health
-  - name: Power BI Push Datasets API
-    description: >-
-      The Push Datasets API enables real-time data streaming by allowing applications to create push datasets and post
-      rows of data directly into Power BI datasets.
-    image: https://powerbi.microsoft.com/pictures/shared/social/social-default-image.png
-    humanURL: https://learn.microsoft.com/en-us/rest/api/power-bi/push-datasets
-    baseURL: https://api.powerbi.com
-    tags:
-      - Datasets
-      - Push
-      - Real-Time
-      - Streaming
-    properties:
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/rest/api/power-bi/push-datasets
-      - type: RateLimits
-        url: https://learn.microsoft.com/en-us/power-bi/developer/embedded/push-datasets-limitations
-      - type: Authentication
-        url: https://learn.microsoft.com/en-us/power-bi/developer/embedded/get-azuread-access-token
-  - name: Power BI Report Server REST API
-    description: >-
-      The Power BI Report Server REST API provides programmatic access to report server catalog objects such as folders,
-      reports, KPIs, data sources, datasets, refresh plans, and subscriptions.
-    image: https://powerbi.microsoft.com/pictures/shared/social/social-default-image.png
-    humanURL: https://learn.microsoft.com/en-us/rest/api/power-bi-report/
-    baseURL: https://api.powerbi.com
-    tags:
-      - On-Premises
-      - Report Server
-      - Reports
-      - SSRS
-    properties:
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/rest/api/power-bi-report/
-      - type: GettingStarted
-        url: https://learn.microsoft.com/en-us/power-bi/report-server/rest-api
-      - type: ChangeLog
-        url: https://learn.microsoft.com/en-us/power-bi/report-server/changelog
-      - type: ReleaseNotes
-        url: https://learn.microsoft.com/en-us/power-bi/report-server/whats-new
-  - name: Power BI Visuals API
-    description: >-
-      The Power BI Visuals API enables developers to create custom visuals that can be used in Power BI reports and
-      dashboards, extending the built-in visualization capabilities.
-    image: https://powerbi.microsoft.com/pictures/shared/social/social-default-image.png
-    humanURL: https://learn.microsoft.com/en-us/power-bi/developer/visuals/
-    baseURL: https://api.powerbi.com
-    tags:
-      - Charts
-      - Custom Visuals
-      - Visualization
-      - Visuals
-    properties:
-      - type: Documentation
-        url: https://learn.microsoft.com/en-us/power-bi/developer/visuals/
-      - type: APIReference
-        url: https://learn.microsoft.com/en-us/power-bi/developer/visuals/visual-api
-      - type: GettingStarted
-        url: https://learn.microsoft.com/en-us/power-bi/developer/visuals/develop-power-bi-visuals
-      - type: ChangeLog
-        url: https://learn.microsoft.com/en-us/power-bi/developer/visuals/changelog
-      - type: Authentication
-        url: https://learn.microsoft.com/en-us/power-bi/developer/visuals/authentication-api
+- name: Power BI Embedded
+  description: >-
+    Azure service that enables ISVs and developers to embed Power BI visuals, reports, and dashboards
+    into their applications.
+  image: https://powerbi.microsoft.com/pictures/shared/social/social-default-image.png
+  humanURL: https://azure.microsoft.com/en-us/services/power-bi-embedded/
+  baseURL: https://api.powerbi.com
+  tags:
+  - Azure
+  - Embedded
+  - Integration
+  properties:
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/power-bi/developer/embedded/
+  - type: Pricing
+    url: https://azure.microsoft.com/en-us/pricing/details/power-bi-embedded/
+  - type: Sandbox
+    url: https://playground.powerbi.com/
+  - type: CodeExamples
+    url: https://github.com/Microsoft/PowerBI-Developer-Samples
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi-embedded/
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/power-bi/developer/embedded/embed-organization-app
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/power-bi/developer/embedded/embed-tokens
+  - type: SDKs
+    url: >-
+      https://learn.microsoft.com/en-us/javascript/api/overview/powerbi/embedded-analytics-client-api
+    title: JavaScript SDK
+  - type: SDKs
+    url: https://github.com/microsoft/PowerBI-CSharp
+    title: .NET SDK
+- name: Power BI Management API
+  description: API for managing Power BI capacity, workspaces, and tenant settings.
+  image: https://powerbi.microsoft.com/pictures/shared/social/social-default-image.png
+  humanURL: https://docs.microsoft.com/en-us/rest/api/power-bi/admin
+  baseURL: https://api.powerbi.com/v1.0/myorg/admin
+  tags:
+  - Administration
+  - Governance
+  - Management
+  properties:
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/rest/api/power-bi/admin
+  - type: Authentication
+    url: https://docs.microsoft.com/en-us/power-bi/admin/service-admin-reference
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/power-bi/admin/service-admin-health
+- name: Power BI Push Datasets API
+  description: >-
+    The Push Datasets API enables real-time data streaming by allowing applications to create push datasets
+    and post rows of data directly into Power BI datasets.
+  image: https://powerbi.microsoft.com/pictures/shared/social/social-default-image.png
+  humanURL: https://learn.microsoft.com/en-us/rest/api/power-bi/push-datasets
+  baseURL: https://api.powerbi.com
+  tags:
+  - Datasets
+  - Push
+  - Real-Time
+  - Streaming
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/push-datasets
+  - type: RateLimits
+    url: https://learn.microsoft.com/en-us/power-bi/developer/embedded/push-datasets-limitations
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/power-bi/developer/embedded/get-azuread-access-token
+- name: Power BI Report Server REST API
+  description: >-
+    The Power BI Report Server REST API provides programmatic access to report server catalog objects
+    such as folders, reports, KPIs, data sources, datasets, refresh plans, and subscriptions.
+  image: https://powerbi.microsoft.com/pictures/shared/social/social-default-image.png
+  humanURL: https://learn.microsoft.com/en-us/rest/api/power-bi-report/
+  baseURL: https://api.powerbi.com
+  tags:
+  - On-Premises
+  - Report Server
+  - Reports
+  - SSRS
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi-report/
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/power-bi/report-server/rest-api
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/power-bi/report-server/changelog
+  - type: ReleaseNotes
+    url: https://learn.microsoft.com/en-us/power-bi/report-server/whats-new
+- name: Power BI Visuals API
+  description: >-
+    The Power BI Visuals API enables developers to create custom visuals that can be used in Power BI
+    reports and dashboards, extending the built-in visualization capabilities.
+  image: https://powerbi.microsoft.com/pictures/shared/social/social-default-image.png
+  humanURL: https://learn.microsoft.com/en-us/power-bi/developer/visuals/
+  baseURL: https://api.powerbi.com
+  tags:
+  - Charts
+  - Custom Visuals
+  - Visualization
+  - Visuals
+  properties:
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/power-bi/developer/visuals/
+  - type: APIReference
+    url: https://learn.microsoft.com/en-us/power-bi/developer/visuals/visual-api
+  - type: GettingStarted
+    url: https://learn.microsoft.com/en-us/power-bi/developer/visuals/develop-power-bi-visuals
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/power-bi/developer/visuals/changelog
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/power-bi/developer/visuals/authentication-api
+- aid: power-bi:power-bi-dashboards-api
+  name: Power BI Dashboards API
+  description: >-
+    Manage dashboards including listing, creating, and retrieving tiles. Dashboards are single-page canvases
+    with pinned visualizations.
+  humanURL: https://docs.microsoft.com/en-us/rest/api/power-bi/
+  baseURL: https://api.powerbi.com
+  tags:
+  - Dashboards
+  properties:
+  - type: OpenAPI
+    url: openapi/power-bi-dashboards-api-openapi.yml
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/rest/api/power-bi/
+  - type: JSONLD
+    url: json-ld/power-bi-rest-context.jsonld
+  - type: Authentication
+    url: https://docs.microsoft.com/en-us/power-bi/developer/embedded/get-azuread-access-token
+  - type: GettingStarted
+    url: https://docs.microsoft.com/en-us/power-bi/developer/embedded/embedding-content
+  - type: RateLimits
+    url: https://docs.microsoft.com/en-us/power-bi/developer/automation/api-rest-api-limitations
+  - type: SDKs
+    url: https://docs.microsoft.com/en-us/javascript/api/overview/powerbi/
+  - type: ChangeLog
+    url: >-
+      https://docs.microsoft.com/en-us/power-bi/developer/embedded/embedded-analytics-power-bi-changelog
+  - type: Troubleshooting
+    url: https://learn.microsoft.com/en-us/power-bi/developer/embedded/troubleshoot-rest-api
+- aid: power-bi:power-bi-datasets-api
+  name: Power BI Datasets API
+  description: >-
+    Manage datasets including creating, updating, refreshing, and deleting datasets. Datasets represent
+    the data model behind Power BI reports.
+  humanURL: https://docs.microsoft.com/en-us/rest/api/power-bi/
+  baseURL: https://api.powerbi.com
+  tags:
+  - Datasets
+  properties:
+  - type: OpenAPI
+    url: openapi/power-bi-datasets-api-openapi.yml
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/rest/api/power-bi/
+  - type: JSONLD
+    url: json-ld/power-bi-rest-context.jsonld
+  - type: Authentication
+    url: https://docs.microsoft.com/en-us/power-bi/developer/embedded/get-azuread-access-token
+  - type: GettingStarted
+    url: https://docs.microsoft.com/en-us/power-bi/developer/embedded/embedding-content
+  - type: RateLimits
+    url: https://docs.microsoft.com/en-us/power-bi/developer/automation/api-rest-api-limitations
+  - type: SDKs
+    url: https://docs.microsoft.com/en-us/javascript/api/overview/powerbi/
+  - type: ChangeLog
+    url: >-
+      https://docs.microsoft.com/en-us/power-bi/developer/embedded/embedded-analytics-power-bi-changelog
+  - type: Troubleshooting
+    url: https://learn.microsoft.com/en-us/power-bi/developer/embedded/troubleshoot-rest-api
+- aid: power-bi:power-bi-gateways-api
+  name: Power BI Gateways API
+  description: >-
+    Manage on-premises data gateways and their data sources for connecting to on-premises data.
+  humanURL: https://docs.microsoft.com/en-us/rest/api/power-bi/
+  baseURL: https://api.powerbi.com
+  tags:
+  - Gateways
+  properties:
+  - type: OpenAPI
+    url: openapi/power-bi-gateways-api-openapi.yml
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/rest/api/power-bi/
+  - type: JSONLD
+    url: json-ld/power-bi-rest-context.jsonld
+  - type: Authentication
+    url: https://docs.microsoft.com/en-us/power-bi/developer/embedded/get-azuread-access-token
+  - type: GettingStarted
+    url: https://docs.microsoft.com/en-us/power-bi/developer/embedded/embedding-content
+  - type: RateLimits
+    url: https://docs.microsoft.com/en-us/power-bi/developer/automation/api-rest-api-limitations
+  - type: SDKs
+    url: https://docs.microsoft.com/en-us/javascript/api/overview/powerbi/
+  - type: ChangeLog
+    url: >-
+      https://docs.microsoft.com/en-us/power-bi/developer/embedded/embedded-analytics-power-bi-changelog
+  - type: Troubleshooting
+    url: https://learn.microsoft.com/en-us/power-bi/developer/embedded/troubleshoot-rest-api
+- aid: power-bi:power-bi-groups-api
+  name: Power BI Groups API
+  description: >-
+    Manage workspaces (groups) including listing, creating, deleting, and managing workspace users. Workspaces
+    are containers for dashboards, reports, datasets, and dataflows.
+  humanURL: https://docs.microsoft.com/en-us/rest/api/power-bi/
+  baseURL: https://api.powerbi.com
+  tags:
+  - Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/power-bi-groups-api-openapi.yml
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/rest/api/power-bi/
+  - type: JSONLD
+    url: json-ld/power-bi-rest-context.jsonld
+  - type: Authentication
+    url: https://docs.microsoft.com/en-us/power-bi/developer/embedded/get-azuread-access-token
+  - type: GettingStarted
+    url: https://docs.microsoft.com/en-us/power-bi/developer/embedded/embedding-content
+  - type: RateLimits
+    url: https://docs.microsoft.com/en-us/power-bi/developer/automation/api-rest-api-limitations
+  - type: SDKs
+    url: https://docs.microsoft.com/en-us/javascript/api/overview/powerbi/
+  - type: ChangeLog
+    url: >-
+      https://docs.microsoft.com/en-us/power-bi/developer/embedded/embedded-analytics-power-bi-changelog
+  - type: Troubleshooting
+    url: https://learn.microsoft.com/en-us/power-bi/developer/embedded/troubleshoot-rest-api
+- aid: power-bi:power-bi-imports-api
+  name: Power BI Imports API
+  description: >-
+    Import Power BI content such as PBIX files, Excel workbooks, and RDL reports into workspaces.
+  humanURL: https://docs.microsoft.com/en-us/rest/api/power-bi/
+  baseURL: https://api.powerbi.com
+  tags:
+  - Imports
+  properties:
+  - type: OpenAPI
+    url: openapi/power-bi-imports-api-openapi.yml
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/rest/api/power-bi/
+  - type: JSONLD
+    url: json-ld/power-bi-rest-context.jsonld
+  - type: Authentication
+    url: https://docs.microsoft.com/en-us/power-bi/developer/embedded/get-azuread-access-token
+  - type: GettingStarted
+    url: https://docs.microsoft.com/en-us/power-bi/developer/embedded/embedding-content
+  - type: RateLimits
+    url: https://docs.microsoft.com/en-us/power-bi/developer/automation/api-rest-api-limitations
+  - type: SDKs
+    url: https://docs.microsoft.com/en-us/javascript/api/overview/powerbi/
+  - type: ChangeLog
+    url: >-
+      https://docs.microsoft.com/en-us/power-bi/developer/embedded/embedded-analytics-power-bi-changelog
+  - type: Troubleshooting
+    url: https://learn.microsoft.com/en-us/power-bi/developer/embedded/troubleshoot-rest-api
+- aid: power-bi:power-bi-reports-api
+  name: Power BI Reports API
+  description: >-
+    Manage reports including listing, cloning, exporting, rebinding, and deleting reports. Reports are
+    visual presentations of data from datasets.
+  humanURL: https://docs.microsoft.com/en-us/rest/api/power-bi/
+  baseURL: https://api.powerbi.com
+  tags:
+  - Reports
+  properties:
+  - type: OpenAPI
+    url: openapi/power-bi-reports-api-openapi.yml
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/rest/api/power-bi/
+  - type: JSONLD
+    url: json-ld/power-bi-rest-context.jsonld
+  - type: Authentication
+    url: https://docs.microsoft.com/en-us/power-bi/developer/embedded/get-azuread-access-token
+  - type: GettingStarted
+    url: https://docs.microsoft.com/en-us/power-bi/developer/embedded/embedding-content
+  - type: RateLimits
+    url: https://docs.microsoft.com/en-us/power-bi/developer/automation/api-rest-api-limitations
+  - type: SDKs
+    url: https://docs.microsoft.com/en-us/javascript/api/overview/powerbi/
+  - type: ChangeLog
+    url: >-
+      https://docs.microsoft.com/en-us/power-bi/developer/embedded/embedded-analytics-power-bi-changelog
+  - type: Troubleshooting
+    url: https://learn.microsoft.com/en-us/power-bi/developer/embedded/troubleshoot-rest-api
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/power-bi/overview
   - type: AgenticAccess
     url: agentic-access/power-bi-agentic-access.yml
   - type: DomainSecurity
