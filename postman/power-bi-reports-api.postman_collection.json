@@ -1,0 +1,1628 @@
+{
+  "info": {
+    "_postman_id": "a7647fa0-6e36-40e7-b2a3-b5d0ac6d2ffa",
+    "name": "Power BI REST Dashboards Reports API",
+    "description": "The Power BI REST API provides service endpoints for embedding, administration, governance, and user resources. It enables programmatic access to Power BI content including datasets, reports, dashboards, and workspaces (groups). The API uses Azure Active Directory (OAuth 2.0) for authentication and authorization.\n\nContact Support:\n Name: Microsoft Power BI Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:39:53.000Z",
+    "updatedAt": "2026-07-28T02:39:53.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a7647fa0-6e36-40e7-b2a3-b5d0ac6d2ffa"
+  },
+  "item": [
+    {
+      "name": "reports",
+      "item": [
+        {
+          "name": "{reportId}",
+          "item": [
+            {
+              "name": "Clone",
+              "item": [
+                {
+                  "name": "Power Bi Clone a Report",
+                  "id": "c53bc0bc-5a7d-4d17-bafa-1b3280271b33",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"targetModelId\": \"<uuid>\",\n  \"targetWorkspaceId\": \"<uuid>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/reports/:reportId/Clone",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reports",
+                        ":reportId",
+                        "Clone"
+                      ],
+                      "variable": [
+                        {
+                          "id": "746ec1f9-2a0b-4032-ab5a-11a4c714c248",
+                          "key": "reportId",
+                          "value": "<uuid>",
+                          "description": "(Required) The unique identifier of the report"
+                        }
+                      ]
+                    },
+                    "description": "Clones the specified report from the user's My Workspace. The clone can be placed in a different workspace and optionally rebound to a different dataset."
+                  },
+                  "response": [
+                    {
+                      "id": "abad11a3-e6b5-40cd-8c42-aefaa26f0cb6",
+                      "name": "Cloned report",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"targetModelId\": \"<uuid>\",\n  \"targetWorkspaceId\": \"<uuid>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/reports/:reportId/Clone",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reports",
+                            ":reportId",
+                            "Clone"
+                          ],
+                          "variable": [
+                            {
+                              "key": "reportId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"datasetId\": \"<uuid>\",\n  \"webUrl\": \"<uri>\",\n  \"embedUrl\": \"<uri>\",\n  \"reportType\": \"PowerBIReport\",\n  \"description\": \"<string>\",\n  \"createdDateTime\": \"<dateTime>\",\n  \"modifiedDateTime\": \"<dateTime>\",\n  \"modifiedBy\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:54.000Z",
+                      "updatedAt": "2026-07-28T02:39:54.000Z",
+                      "uid": "35240-abad11a3-e6b5-40cd-8c42-aefaa26f0cb6"
+                    },
+                    {
+                      "id": "849147b8-d935-4d6d-9efb-ad28c33642fd",
+                      "name": "Invalid request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"targetModelId\": \"<uuid>\",\n  \"targetWorkspaceId\": \"<uuid>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/reports/:reportId/Clone",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reports",
+                            ":reportId",
+                            "Clone"
+                          ],
+                          "variable": [
+                            {
+                              "key": "reportId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:54.000Z",
+                      "updatedAt": "2026-07-28T02:39:54.000Z",
+                      "uid": "35240-849147b8-d935-4d6d-9efb-ad28c33642fd"
+                    },
+                    {
+                      "id": "e7f62156-4d7a-4c69-ab92-ae56e0636008",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"targetModelId\": \"<uuid>\",\n  \"targetWorkspaceId\": \"<uuid>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/reports/:reportId/Clone",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reports",
+                            ":reportId",
+                            "Clone"
+                          ],
+                          "variable": [
+                            {
+                              "key": "reportId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:54.000Z",
+                      "updatedAt": "2026-07-28T02:39:54.000Z",
+                      "uid": "35240-e7f62156-4d7a-4c69-ab92-ae56e0636008"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:39:54.000Z",
+                  "updatedAt": "2026-07-28T02:39:54.000Z",
+                  "uid": "35240-c53bc0bc-5a7d-4d17-bafa-1b3280271b33"
+                }
+              ],
+              "id": "dca57c37-cb3d-4a24-aa0a-8335f7057d81",
+              "createdAt": "2026-07-28T02:39:53.000Z",
+              "updatedAt": "2026-07-28T02:39:53.000Z",
+              "uid": "35240-dca57c37-cb3d-4a24-aa0a-8335f7057d81"
+            },
+            {
+              "name": "Rebind",
+              "item": [
+                {
+                  "name": "Power Bi Rebind a Report to a Dataset",
+                  "id": "1ecb4310-0d9d-4b70-befe-62bdf40a9f5d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"datasetId\": \"<uuid>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/reports/:reportId/Rebind",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reports",
+                        ":reportId",
+                        "Rebind"
+                      ],
+                      "variable": [
+                        {
+                          "id": "0289f06f-ec31-4667-aef7-e5995c4f4e1a",
+                          "key": "reportId",
+                          "value": "<uuid>",
+                          "description": "(Required) The unique identifier of the report"
+                        }
+                      ]
+                    },
+                    "description": "Rebinds the specified report to a different dataset. The target dataset must have the same schema as the current dataset."
+                  },
+                  "response": [
+                    {
+                      "id": "6baf9b79-b1d0-4d19-82a6-0ac55a0288f9",
+                      "name": "Report rebound successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"datasetId\": \"<uuid>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/reports/:reportId/Rebind",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reports",
+                            ":reportId",
+                            "Rebind"
+                          ],
+                          "variable": [
+                            {
+                              "key": "reportId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:39:54.000Z",
+                      "updatedAt": "2026-07-28T02:39:54.000Z",
+                      "uid": "35240-6baf9b79-b1d0-4d19-82a6-0ac55a0288f9"
+                    },
+                    {
+                      "id": "8dff7027-b098-4d88-a84a-2b86da5fa5d0",
+                      "name": "Invalid request - incompatible dataset",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"datasetId\": \"<uuid>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/reports/:reportId/Rebind",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reports",
+                            ":reportId",
+                            "Rebind"
+                          ],
+                          "variable": [
+                            {
+                              "key": "reportId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:54.000Z",
+                      "updatedAt": "2026-07-28T02:39:54.000Z",
+                      "uid": "35240-8dff7027-b098-4d88-a84a-2b86da5fa5d0"
+                    },
+                    {
+                      "id": "95daa979-36a8-4299-9448-443687a6a7f6",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"datasetId\": \"<uuid>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/reports/:reportId/Rebind",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reports",
+                            ":reportId",
+                            "Rebind"
+                          ],
+                          "variable": [
+                            {
+                              "key": "reportId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:54.000Z",
+                      "updatedAt": "2026-07-28T02:39:54.000Z",
+                      "uid": "35240-95daa979-36a8-4299-9448-443687a6a7f6"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:39:54.000Z",
+                  "updatedAt": "2026-07-28T02:39:54.000Z",
+                  "uid": "35240-1ecb4310-0d9d-4b70-befe-62bdf40a9f5d"
+                }
+              ],
+              "id": "42c1bbec-c2a7-472b-8440-02ad52e119a5",
+              "createdAt": "2026-07-28T02:39:53.000Z",
+              "updatedAt": "2026-07-28T02:39:53.000Z",
+              "uid": "35240-42c1bbec-c2a7-472b-8440-02ad52e119a5"
+            },
+            {
+              "name": "Export",
+              "item": [
+                {
+                  "name": "Power Bi Export a Report",
+                  "id": "4aea599c-a599-4803-abf4-d888f6f2544a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/zip"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reports/:reportId/Export",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reports",
+                        ":reportId",
+                        "Export"
+                      ],
+                      "variable": [
+                        {
+                          "id": "aca5e022-0507-4e22-8db9-ce18b07e2e91",
+                          "key": "reportId",
+                          "value": "<uuid>",
+                          "description": "(Required) The unique identifier of the report"
+                        }
+                      ]
+                    },
+                    "description": "Exports the specified report as a PBIX file. Only reports created from PBIX files can be exported. Reports created from the Power BI service are not supported."
+                  },
+                  "response": [
+                    {
+                      "id": "3c930d1f-3753-4d76-9547-b09dacad5519",
+                      "name": "Report PBIX file",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/zip"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/reports/:reportId/Export",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reports",
+                            ":reportId",
+                            "Export"
+                          ],
+                          "variable": [
+                            {
+                              "key": "reportId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/zip"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "<binary>",
+                      "createdAt": "2026-07-28T02:39:54.000Z",
+                      "updatedAt": "2026-07-28T02:39:54.000Z",
+                      "uid": "35240-3c930d1f-3753-4d76-9547-b09dacad5519"
+                    },
+                    {
+                      "id": "02e005a4-911f-472b-b6e2-7900dd738eec",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/reports/:reportId/Export",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reports",
+                            ":reportId",
+                            "Export"
+                          ],
+                          "variable": [
+                            {
+                              "key": "reportId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:54.000Z",
+                      "updatedAt": "2026-07-28T02:39:54.000Z",
+                      "uid": "35240-02e005a4-911f-472b-b6e2-7900dd738eec"
+                    },
+                    {
+                      "id": "a1268b41-7c15-45cd-b81b-f0de9dbd6d58",
+                      "name": "Report not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/reports/:reportId/Export",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reports",
+                            ":reportId",
+                            "Export"
+                          ],
+                          "variable": [
+                            {
+                              "key": "reportId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:54.000Z",
+                      "updatedAt": "2026-07-28T02:39:54.000Z",
+                      "uid": "35240-a1268b41-7c15-45cd-b81b-f0de9dbd6d58"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:39:54.000Z",
+                  "updatedAt": "2026-07-28T02:39:54.000Z",
+                  "uid": "35240-4aea599c-a599-4803-abf4-d888f6f2544a"
+                }
+              ],
+              "id": "56b0de9a-04ff-42cf-92fb-91f6f41d231b",
+              "createdAt": "2026-07-28T02:39:53.000Z",
+              "updatedAt": "2026-07-28T02:39:53.000Z",
+              "uid": "35240-56b0de9a-04ff-42cf-92fb-91f6f41d231b"
+            },
+            {
+              "name": "pages",
+              "item": [
+                {
+                  "name": "Power Bi Get Report Pages",
+                  "id": "49f14c86-c235-4fd6-a0ae-c6913ab4cd53",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reports/:reportId/pages",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reports",
+                        ":reportId",
+                        "pages"
+                      ],
+                      "variable": [
+                        {
+                          "id": "ae27b65f-09f9-43b0-8907-4f4906b86b71",
+                          "key": "reportId",
+                          "value": "<uuid>",
+                          "description": "(Required) The unique identifier of the report"
+                        }
+                      ]
+                    },
+                    "description": "Returns a list of pages within the specified report. Each page includes its name, display name, and order within the report."
+                  },
+                  "response": [
+                    {
+                      "id": "4a5550c6-95cf-4283-9936-8ff50bca8d3b",
+                      "name": "List of report pages",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/reports/:reportId/pages",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reports",
+                            ":reportId",
+                            "pages"
+                          ],
+                          "variable": [
+                            {
+                              "key": "reportId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": [\n    {\n      \"name\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"order\": \"<integer>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"displayName\": \"<string>\",\n      \"order\": \"<integer>\"\n    }\n  ],\n  \"@odata.context\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:54.000Z",
+                      "updatedAt": "2026-07-28T02:39:54.000Z",
+                      "uid": "35240-4a5550c6-95cf-4283-9936-8ff50bca8d3b"
+                    },
+                    {
+                      "id": "d9666c1c-c0e0-4403-93eb-216f2f6901d3",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/reports/:reportId/pages",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reports",
+                            ":reportId",
+                            "pages"
+                          ],
+                          "variable": [
+                            {
+                              "key": "reportId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:54.000Z",
+                      "updatedAt": "2026-07-28T02:39:54.000Z",
+                      "uid": "35240-d9666c1c-c0e0-4403-93eb-216f2f6901d3"
+                    },
+                    {
+                      "id": "6dd87898-d8e1-45f9-85df-d311470fca1d",
+                      "name": "Report not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/reports/:reportId/pages",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reports",
+                            ":reportId",
+                            "pages"
+                          ],
+                          "variable": [
+                            {
+                              "key": "reportId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:54.000Z",
+                      "updatedAt": "2026-07-28T02:39:54.000Z",
+                      "uid": "35240-6dd87898-d8e1-45f9-85df-d311470fca1d"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:39:54.000Z",
+                  "updatedAt": "2026-07-28T02:39:54.000Z",
+                  "uid": "35240-49f14c86-c235-4fd6-a0ae-c6913ab4cd53"
+                }
+              ],
+              "id": "1c0372b1-70ae-4cc9-be25-92a8c38145fc",
+              "createdAt": "2026-07-28T02:39:53.000Z",
+              "updatedAt": "2026-07-28T02:39:53.000Z",
+              "uid": "35240-1c0372b1-70ae-4cc9-be25-92a8c38145fc"
+            },
+            {
+              "name": "Power Bi Get a Report",
+              "id": "696afd69-dda1-418c-b025-83120b7b22b3",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/reports/:reportId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reports",
+                    ":reportId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "a368a82c-ad49-495f-b3fc-5621869b7e87",
+                      "key": "reportId",
+                      "value": "<uuid>",
+                      "description": "(Required) The unique identifier of the report"
+                    }
+                  ]
+                },
+                "description": "Returns the specified report from the user's My Workspace, including its name, dataset binding, web URL, and embed URL."
+              },
+              "response": [
+                {
+                  "id": "da6f7f2e-b199-4665-821a-8004db38e588",
+                  "name": "Report details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reports/:reportId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reports",
+                        ":reportId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "reportId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"datasetId\": \"<uuid>\",\n  \"webUrl\": \"<uri>\",\n  \"embedUrl\": \"<uri>\",\n  \"reportType\": \"PowerBIReport\",\n  \"description\": \"<string>\",\n  \"createdDateTime\": \"<dateTime>\",\n  \"modifiedDateTime\": \"<dateTime>\",\n  \"modifiedBy\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:54.000Z",
+                  "updatedAt": "2026-07-28T02:39:54.000Z",
+                  "uid": "35240-da6f7f2e-b199-4665-821a-8004db38e588"
+                },
+                {
+                  "id": "4066995d-ecce-429d-80a2-4b2790b3e957",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reports/:reportId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reports",
+                        ":reportId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "reportId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T02:39:54.000Z",
+                  "updatedAt": "2026-07-28T02:39:54.000Z",
+                  "uid": "35240-4066995d-ecce-429d-80a2-4b2790b3e957"
+                },
+                {
+                  "id": "30b3e859-d900-4734-a963-d02de47c5e71",
+                  "name": "Report not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reports/:reportId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reports",
+                        ":reportId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "reportId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T02:39:54.000Z",
+                  "updatedAt": "2026-07-28T02:39:54.000Z",
+                  "uid": "35240-30b3e859-d900-4734-a963-d02de47c5e71"
+                }
+              ],
+              "createdAt": "2026-07-28T02:39:54.000Z",
+              "updatedAt": "2026-07-28T02:39:54.000Z",
+              "uid": "35240-696afd69-dda1-418c-b025-83120b7b22b3"
+            },
+            {
+              "name": "Power Bi Delete a Report",
+              "id": "40bc6102-feed-41f7-a86b-da8bfab6c2df",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/reports/:reportId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reports",
+                    ":reportId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "b0141435-8337-49c1-bb16-f320391ca031",
+                      "key": "reportId",
+                      "value": "<uuid>",
+                      "description": "(Required) The unique identifier of the report"
+                    }
+                  ]
+                },
+                "description": "Deletes the specified report from the user's My Workspace. This does not delete the underlying dataset."
+              },
+              "response": [
+                {
+                  "id": "081faff8-704c-44d4-a53a-dec606be3438",
+                  "name": "Report deleted successfully",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reports/:reportId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reports",
+                        ":reportId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "reportId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:39:54.000Z",
+                  "updatedAt": "2026-07-28T02:39:54.000Z",
+                  "uid": "35240-081faff8-704c-44d4-a53a-dec606be3438"
+                },
+                {
+                  "id": "044558ac-cffd-4e90-aff5-637e0953abee",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reports/:reportId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reports",
+                        ":reportId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "reportId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T02:39:54.000Z",
+                  "updatedAt": "2026-07-28T02:39:54.000Z",
+                  "uid": "35240-044558ac-cffd-4e90-aff5-637e0953abee"
+                },
+                {
+                  "id": "0123cd50-6df3-4af8-bf83-c6431a7eaa77",
+                  "name": "Report not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reports/:reportId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reports",
+                        ":reportId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "reportId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T02:39:54.000Z",
+                  "updatedAt": "2026-07-28T02:39:54.000Z",
+                  "uid": "35240-0123cd50-6df3-4af8-bf83-c6431a7eaa77"
+                }
+              ],
+              "createdAt": "2026-07-28T02:39:54.000Z",
+              "updatedAt": "2026-07-28T02:39:54.000Z",
+              "uid": "35240-40bc6102-feed-41f7-a86b-da8bfab6c2df"
+            }
+          ],
+          "id": "651c89ba-f22e-4a3f-8496-09bbe563153c",
+          "createdAt": "2026-07-28T02:39:53.000Z",
+          "updatedAt": "2026-07-28T02:39:53.000Z",
+          "uid": "35240-651c89ba-f22e-4a3f-8496-09bbe563153c"
+        },
+        {
+          "name": "Power Bi List Reports",
+          "id": "6aa3f5c4-a003-4f3d-9eea-3009b09e66be",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/reports",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "reports"
+              ]
+            },
+            "description": "Returns a list of reports from the user's My Workspace. Each report includes metadata such as name, the associated dataset, web URL, and embed URL for embedding scenarios."
+          },
+          "response": [
+            {
+              "id": "d38373e4-c335-4889-a6ab-0fd5a9db3f5a",
+              "name": "List of reports",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/reports",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reports"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"value\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"datasetId\": \"<uuid>\",\n      \"webUrl\": \"<uri>\",\n      \"embedUrl\": \"<uri>\",\n      \"reportType\": \"PaginatedReport\",\n      \"description\": \"<string>\",\n      \"createdDateTime\": \"<dateTime>\",\n      \"modifiedDateTime\": \"<dateTime>\",\n      \"modifiedBy\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"datasetId\": \"<uuid>\",\n      \"webUrl\": \"<uri>\",\n      \"embedUrl\": \"<uri>\",\n      \"reportType\": \"PowerBIReport\",\n      \"description\": \"<string>\",\n      \"createdDateTime\": \"<dateTime>\",\n      \"modifiedDateTime\": \"<dateTime>\",\n      \"modifiedBy\": \"<string>\"\n    }\n  ],\n  \"@odata.context\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:54.000Z",
+              "updatedAt": "2026-07-28T02:39:54.000Z",
+              "uid": "35240-d38373e4-c335-4889-a6ab-0fd5a9db3f5a"
+            },
+            {
+              "id": "1ed19b6d-923f-42c3-a148-bd75acbf2d5a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/reports",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reports"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:39:54.000Z",
+              "updatedAt": "2026-07-28T02:39:54.000Z",
+              "uid": "35240-1ed19b6d-923f-42c3-a148-bd75acbf2d5a"
+            }
+          ],
+          "createdAt": "2026-07-28T02:39:54.000Z",
+          "updatedAt": "2026-07-28T02:39:54.000Z",
+          "uid": "35240-6aa3f5c4-a003-4f3d-9eea-3009b09e66be"
+        }
+      ],
+      "id": "eb7b1cad-43d1-4a59-b1da-cb25ed8ae85e",
+      "createdAt": "2026-07-28T02:39:53.000Z",
+      "updatedAt": "2026-07-28T02:39:53.000Z",
+      "uid": "35240-eb7b1cad-43d1-4a59-b1da-cb25ed8ae85e"
+    },
+    {
+      "name": "groups",
+      "item": [
+        {
+          "name": "{groupId}",
+          "item": [
+            {
+              "name": "reports",
+              "item": [
+                {
+                  "name": "Power Bi List Reports in a Workspace",
+                  "id": "a13fcabd-3408-4092-82fa-15e34f5c7db0",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/:groupId/reports",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        ":groupId",
+                        "reports"
+                      ],
+                      "variable": [
+                        {
+                          "id": "3ff49878-cb38-4c59-aabb-d9645579604e",
+                          "key": "groupId",
+                          "value": "<uuid>",
+                          "description": "(Required) The unique identifier of the workspace (group)"
+                        }
+                      ]
+                    },
+                    "description": "Returns a list of reports from the specified workspace. Each report includes its metadata and embed information."
+                  },
+                  "response": [
+                    {
+                      "id": "052ea54c-c9a3-4190-bd0b-bf9440e8f6ec",
+                      "name": "List of reports in the workspace",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/reports",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "reports"
+                          ],
+                          "variable": [
+                            {
+                              "key": "groupId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"datasetId\": \"<uuid>\",\n      \"webUrl\": \"<uri>\",\n      \"embedUrl\": \"<uri>\",\n      \"reportType\": \"PaginatedReport\",\n      \"description\": \"<string>\",\n      \"createdDateTime\": \"<dateTime>\",\n      \"modifiedDateTime\": \"<dateTime>\",\n      \"modifiedBy\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"datasetId\": \"<uuid>\",\n      \"webUrl\": \"<uri>\",\n      \"embedUrl\": \"<uri>\",\n      \"reportType\": \"PowerBIReport\",\n      \"description\": \"<string>\",\n      \"createdDateTime\": \"<dateTime>\",\n      \"modifiedDateTime\": \"<dateTime>\",\n      \"modifiedBy\": \"<string>\"\n    }\n  ],\n  \"@odata.context\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:54.000Z",
+                      "updatedAt": "2026-07-28T02:39:54.000Z",
+                      "uid": "35240-052ea54c-c9a3-4190-bd0b-bf9440e8f6ec"
+                    },
+                    {
+                      "id": "783394f6-e27d-4c08-9c03-c4dce17ef4da",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/reports",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "reports"
+                          ],
+                          "variable": [
+                            {
+                              "key": "groupId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:54.000Z",
+                      "updatedAt": "2026-07-28T02:39:54.000Z",
+                      "uid": "35240-783394f6-e27d-4c08-9c03-c4dce17ef4da"
+                    },
+                    {
+                      "id": "f4548a90-d2fa-488c-908b-bef7df56310e",
+                      "name": "Workspace not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/reports",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "reports"
+                          ],
+                          "variable": [
+                            {
+                              "key": "groupId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:54.000Z",
+                      "updatedAt": "2026-07-28T02:39:54.000Z",
+                      "uid": "35240-f4548a90-d2fa-488c-908b-bef7df56310e"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:39:54.000Z",
+                  "updatedAt": "2026-07-28T02:39:54.000Z",
+                  "uid": "35240-a13fcabd-3408-4092-82fa-15e34f5c7db0"
+                }
+              ],
+              "id": "209a838d-d43e-4dcb-9b1f-e7d509ac3896",
+              "createdAt": "2026-07-28T02:39:53.000Z",
+              "updatedAt": "2026-07-28T02:39:53.000Z",
+              "uid": "35240-209a838d-d43e-4dcb-9b1f-e7d509ac3896"
+            }
+          ],
+          "id": "5deaa950-20af-4bae-a467-52fa5095975d",
+          "createdAt": "2026-07-28T02:39:53.000Z",
+          "updatedAt": "2026-07-28T02:39:53.000Z",
+          "uid": "35240-5deaa950-20af-4bae-a467-52fa5095975d"
+        }
+      ],
+      "id": "2ca8aec2-a2c3-428c-83e4-7287f9636e2f",
+      "createdAt": "2026-07-28T02:39:53.000Z",
+      "updatedAt": "2026-07-28T02:39:53.000Z",
+      "uid": "35240-2ca8aec2-a2c3-428c-83e4-7287f9636e2f"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.powerbi.com/v1.0/myorg"
+    }
+  ]
+}

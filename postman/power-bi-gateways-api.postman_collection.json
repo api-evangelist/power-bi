@@ -1,0 +1,495 @@
+{
+  "info": {
+    "_postman_id": "a3e09daf-669b-466e-ad3f-e62024f00eec",
+    "name": "Power BI REST Dashboards Gateways API",
+    "description": "The Power BI REST API provides service endpoints for embedding, administration, governance, and user resources. It enables programmatic access to Power BI content including datasets, reports, dashboards, and workspaces (groups). The API uses Azure Active Directory (OAuth 2.0) for authentication and authorization.\n\nContact Support:\n Name: Microsoft Power BI Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:39:43.000Z",
+    "updatedAt": "2026-07-28T02:39:43.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a3e09daf-669b-466e-ad3f-e62024f00eec"
+  },
+  "item": [
+    {
+      "name": "gateways",
+      "item": [
+        {
+          "name": "{gatewayId}",
+          "item": [
+            {
+              "name": "datasources",
+              "item": [
+                {
+                  "name": "Power Bi List Gateway Data Sources",
+                  "id": "b342e246-0d3e-4b3d-9427-0f516328985e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/gateways/:gatewayId/datasources",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "gateways",
+                        ":gatewayId",
+                        "datasources"
+                      ],
+                      "variable": [
+                        {
+                          "id": "baca709e-2a6d-4ec3-8518-5ae466f1c7bc",
+                          "key": "gatewayId",
+                          "value": "<uuid>",
+                          "description": "(Required) The unique identifier of the gateway"
+                        }
+                      ]
+                    },
+                    "description": "Returns a list of data sources configured on the specified gateway."
+                  },
+                  "response": [
+                    {
+                      "id": "a01f967a-c69a-4d52-b807-491e0f784cc3",
+                      "name": "List of data sources",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/gateways/:gatewayId/datasources",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "gateways",
+                            ":gatewayId",
+                            "datasources"
+                          ],
+                          "variable": [
+                            {
+                              "key": "gatewayId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": [\n    {\n      \"id\": \"<uuid>\",\n      \"gatewayId\": \"<uuid>\",\n      \"datasourceType\": \"<string>\",\n      \"connectionDetails\": \"<string>\",\n      \"credentialType\": \"Basic\",\n      \"datasourceName\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"gatewayId\": \"<uuid>\",\n      \"datasourceType\": \"<string>\",\n      \"connectionDetails\": \"<string>\",\n      \"credentialType\": \"Anonymous\",\n      \"datasourceName\": \"<string>\"\n    }\n  ],\n  \"@odata.context\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:43.000Z",
+                      "updatedAt": "2026-07-28T02:39:43.000Z",
+                      "uid": "35240-a01f967a-c69a-4d52-b807-491e0f784cc3"
+                    },
+                    {
+                      "id": "561d58aa-15d3-4c51-9640-4a651b41eef4",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/gateways/:gatewayId/datasources",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "gateways",
+                            ":gatewayId",
+                            "datasources"
+                          ],
+                          "variable": [
+                            {
+                              "key": "gatewayId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:43.000Z",
+                      "updatedAt": "2026-07-28T02:39:43.000Z",
+                      "uid": "35240-561d58aa-15d3-4c51-9640-4a651b41eef4"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:39:43.000Z",
+                  "updatedAt": "2026-07-28T02:39:43.000Z",
+                  "uid": "35240-b342e246-0d3e-4b3d-9427-0f516328985e"
+                }
+              ],
+              "id": "b34f92b7-b54f-4d0c-9f03-b0aaaaf8e823",
+              "createdAt": "2026-07-28T02:39:43.000Z",
+              "updatedAt": "2026-07-28T02:39:43.000Z",
+              "uid": "35240-b34f92b7-b54f-4d0c-9f03-b0aaaaf8e823"
+            },
+            {
+              "name": "Power Bi Get a Gateway",
+              "id": "2a7339d6-c15e-45b0-8d53-46a682df5d59",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/gateways/:gatewayId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "gateways",
+                    ":gatewayId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "ddc438aa-4b23-40d4-8aa0-19fcc6cc7e62",
+                      "key": "gatewayId",
+                      "value": "<uuid>",
+                      "description": "(Required) The unique identifier of the gateway"
+                    }
+                  ]
+                },
+                "description": "Returns the specified on-premises data gateway."
+              },
+              "response": [
+                {
+                  "id": "5e4a769a-59b1-467c-9b31-3335e953b323",
+                  "name": "Gateway details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/gateways/:gatewayId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "gateways",
+                        ":gatewayId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "gatewayId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"type\": \"Resource\",\n  \"publicKey\": {\n    \"exponent\": \"<string>\",\n    \"modulus\": \"<string>\"\n  },\n  \"gatewayAnnotation\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:43.000Z",
+                  "updatedAt": "2026-07-28T02:39:43.000Z",
+                  "uid": "35240-5e4a769a-59b1-467c-9b31-3335e953b323"
+                },
+                {
+                  "id": "d242b0bd-6f98-49ab-8a09-3f3dd65afb16",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/gateways/:gatewayId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "gateways",
+                        ":gatewayId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "gatewayId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T02:39:43.000Z",
+                  "updatedAt": "2026-07-28T02:39:43.000Z",
+                  "uid": "35240-d242b0bd-6f98-49ab-8a09-3f3dd65afb16"
+                },
+                {
+                  "id": "d5d557dc-908a-4360-8c33-5b2540242e5b",
+                  "name": "Gateway not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/gateways/:gatewayId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "gateways",
+                        ":gatewayId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "gatewayId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T02:39:43.000Z",
+                  "updatedAt": "2026-07-28T02:39:43.000Z",
+                  "uid": "35240-d5d557dc-908a-4360-8c33-5b2540242e5b"
+                }
+              ],
+              "createdAt": "2026-07-28T02:39:43.000Z",
+              "updatedAt": "2026-07-28T02:39:43.000Z",
+              "uid": "35240-2a7339d6-c15e-45b0-8d53-46a682df5d59"
+            }
+          ],
+          "id": "2db987fb-d82e-4978-b9d6-aa83456837af",
+          "createdAt": "2026-07-28T02:39:43.000Z",
+          "updatedAt": "2026-07-28T02:39:43.000Z",
+          "uid": "35240-2db987fb-d82e-4978-b9d6-aa83456837af"
+        },
+        {
+          "name": "Power Bi List Gateways",
+          "id": "0415de31-dcdf-44eb-8f8f-09e47dbbab6e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/gateways",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "gateways"
+              ]
+            },
+            "description": "Returns a list of on-premises data gateways that the user has permissions to administer. Each gateway includes its cluster information and public key for credential encryption."
+          },
+          "response": [
+            {
+              "id": "3276ba8c-07d2-4a3c-bb33-b53bc33f0de1",
+              "name": "List of gateways",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/gateways",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "gateways"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"value\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"type\": \"Resource\",\n      \"publicKey\": {\n        \"exponent\": \"<string>\",\n        \"modulus\": \"<string>\"\n      },\n      \"gatewayAnnotation\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"type\": \"Resource\",\n      \"publicKey\": {\n        \"exponent\": \"<string>\",\n        \"modulus\": \"<string>\"\n      },\n      \"gatewayAnnotation\": \"<string>\"\n    }\n  ],\n  \"@odata.context\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:43.000Z",
+              "updatedAt": "2026-07-28T02:39:43.000Z",
+              "uid": "35240-3276ba8c-07d2-4a3c-bb33-b53bc33f0de1"
+            },
+            {
+              "id": "82553194-8e5c-4b26-a270-0def324963e0",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/gateways",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "gateways"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:39:43.000Z",
+              "updatedAt": "2026-07-28T02:39:43.000Z",
+              "uid": "35240-82553194-8e5c-4b26-a270-0def324963e0"
+            }
+          ],
+          "createdAt": "2026-07-28T02:39:43.000Z",
+          "updatedAt": "2026-07-28T02:39:43.000Z",
+          "uid": "35240-0415de31-dcdf-44eb-8f8f-09e47dbbab6e"
+        }
+      ],
+      "id": "dfd828f0-2555-4396-806a-d59842846c0a",
+      "createdAt": "2026-07-28T02:39:43.000Z",
+      "updatedAt": "2026-07-28T02:39:43.000Z",
+      "uid": "35240-dfd828f0-2555-4396-806a-d59842846c0a"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.powerbi.com/v1.0/myorg"
+    }
+  ]
+}

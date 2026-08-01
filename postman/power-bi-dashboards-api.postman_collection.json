@@ -1,0 +1,1132 @@
+{
+  "info": {
+    "_postman_id": "e1a1d615-84c9-4ffe-8ef9-a6dac1935099",
+    "name": "Power BI REST Dashboards API",
+    "description": "The Power BI REST API provides service endpoints for embedding, administration, governance, and user resources. It enables programmatic access to Power BI content including datasets, reports, dashboards, and workspaces (groups). The API uses Azure Active Directory (OAuth 2.0) for authentication and authorization.\n\nContact Support:\n Name: Microsoft Power BI Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:39:40.000Z",
+    "updatedAt": "2026-07-28T02:39:41.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e1a1d615-84c9-4ffe-8ef9-a6dac1935099"
+  },
+  "item": [
+    {
+      "name": "dashboards",
+      "item": [
+        {
+          "name": "{dashboardId}",
+          "item": [
+            {
+              "name": "tiles",
+              "item": [
+                {
+                  "name": "{tileId}",
+                  "item": [
+                    {
+                      "name": "Power Bi Get a Dashboard Tile",
+                      "id": "2b9da42c-d3b8-46f0-9071-78126c22ea65",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/dashboards/:dashboardId/tiles/:tileId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "dashboards",
+                            ":dashboardId",
+                            "tiles",
+                            ":tileId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "6d6e15b9-c3a0-4c05-9f8f-e6c128ce2e5b",
+                              "key": "dashboardId",
+                              "value": "<uuid>",
+                              "description": "(Required) The unique identifier of the dashboard"
+                            },
+                            {
+                              "id": "d69a7b9b-0e8f-4fd8-a5ab-c29958393550",
+                              "key": "tileId",
+                              "value": "<uuid>",
+                              "description": "(Required) The unique identifier of the tile"
+                            }
+                          ]
+                        },
+                        "description": "Returns the specified tile from the specified dashboard, including its embed URL and configuration details."
+                      },
+                      "response": [
+                        {
+                          "id": "21d458f8-5de1-4f91-9583-fd4359fe4767",
+                          "name": "Tile details",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/dashboards/:dashboardId/tiles/:tileId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "dashboards",
+                                ":dashboardId",
+                                "tiles",
+                                ":tileId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "dashboardId"
+                                },
+                                {
+                                  "key": "tileId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<uuid>\",\n  \"title\": \"<string>\",\n  \"subTitle\": \"<string>\",\n  \"embedUrl\": \"<uri>\",\n  \"embedData\": \"<string>\",\n  \"reportId\": \"<uuid>\",\n  \"datasetId\": \"<uuid>\",\n  \"rowSpan\": \"<integer>\",\n  \"colSpan\": \"<integer>\"\n}",
+                          "createdAt": "2026-07-28T02:39:41.000Z",
+                          "updatedAt": "2026-07-28T02:39:41.000Z",
+                          "uid": "35240-21d458f8-5de1-4f91-9583-fd4359fe4767"
+                        },
+                        {
+                          "id": "93c6005c-f882-42cf-b31b-6e18eb823800",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/dashboards/:dashboardId/tiles/:tileId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "dashboards",
+                                ":dashboardId",
+                                "tiles",
+                                ":tileId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "dashboardId"
+                                },
+                                {
+                                  "key": "tileId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                          "createdAt": "2026-07-28T02:39:41.000Z",
+                          "updatedAt": "2026-07-28T02:39:41.000Z",
+                          "uid": "35240-93c6005c-f882-42cf-b31b-6e18eb823800"
+                        },
+                        {
+                          "id": "38661c6e-22e4-45f8-8a2a-7a58f9e31085",
+                          "name": "Tile not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/dashboards/:dashboardId/tiles/:tileId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "dashboards",
+                                ":dashboardId",
+                                "tiles",
+                                ":tileId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "dashboardId"
+                                },
+                                {
+                                  "key": "tileId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                          "createdAt": "2026-07-28T02:39:41.000Z",
+                          "updatedAt": "2026-07-28T02:39:41.000Z",
+                          "uid": "35240-38661c6e-22e4-45f8-8a2a-7a58f9e31085"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:39:41.000Z",
+                      "updatedAt": "2026-07-28T02:39:41.000Z",
+                      "uid": "35240-2b9da42c-d3b8-46f0-9071-78126c22ea65"
+                    }
+                  ],
+                  "id": "748a3921-6596-478d-b599-46ba1a771479",
+                  "createdAt": "2026-07-28T02:39:41.000Z",
+                  "updatedAt": "2026-07-28T02:39:41.000Z",
+                  "uid": "35240-748a3921-6596-478d-b599-46ba1a771479"
+                },
+                {
+                  "name": "Power Bi Get Dashboard Tiles",
+                  "id": "c6feaf55-5a55-4dc6-b1ad-c2288e18ba9c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/dashboards/:dashboardId/tiles",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "dashboards",
+                        ":dashboardId",
+                        "tiles"
+                      ],
+                      "variable": [
+                        {
+                          "id": "a33ad5f0-81aa-497f-aa58-ce97c3e3e7b3",
+                          "key": "dashboardId",
+                          "value": "<uuid>",
+                          "description": "(Required) The unique identifier of the dashboard"
+                        }
+                      ]
+                    },
+                    "description": "Returns a list of tiles within the specified dashboard. Each tile represents a pinned visualization and includes its embed URL, report and dataset references, and configuration."
+                  },
+                  "response": [
+                    {
+                      "id": "f622ed20-7179-4b27-ac85-4de64d167f5d",
+                      "name": "List of tiles",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/dashboards/:dashboardId/tiles",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "dashboards",
+                            ":dashboardId",
+                            "tiles"
+                          ],
+                          "variable": [
+                            {
+                              "key": "dashboardId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": [\n    {\n      \"id\": \"<uuid>\",\n      \"title\": \"<string>\",\n      \"subTitle\": \"<string>\",\n      \"embedUrl\": \"<uri>\",\n      \"embedData\": \"<string>\",\n      \"reportId\": \"<uuid>\",\n      \"datasetId\": \"<uuid>\",\n      \"rowSpan\": \"<integer>\",\n      \"colSpan\": \"<integer>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"title\": \"<string>\",\n      \"subTitle\": \"<string>\",\n      \"embedUrl\": \"<uri>\",\n      \"embedData\": \"<string>\",\n      \"reportId\": \"<uuid>\",\n      \"datasetId\": \"<uuid>\",\n      \"rowSpan\": \"<integer>\",\n      \"colSpan\": \"<integer>\"\n    }\n  ],\n  \"@odata.context\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:41.000Z",
+                      "updatedAt": "2026-07-28T02:39:41.000Z",
+                      "uid": "35240-f622ed20-7179-4b27-ac85-4de64d167f5d"
+                    },
+                    {
+                      "id": "77173d97-38b6-4bfb-b56c-05ce33a8771d",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/dashboards/:dashboardId/tiles",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "dashboards",
+                            ":dashboardId",
+                            "tiles"
+                          ],
+                          "variable": [
+                            {
+                              "key": "dashboardId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:41.000Z",
+                      "updatedAt": "2026-07-28T02:39:41.000Z",
+                      "uid": "35240-77173d97-38b6-4bfb-b56c-05ce33a8771d"
+                    },
+                    {
+                      "id": "eecd89d5-6bde-4212-8a89-a24a5407d188",
+                      "name": "Dashboard not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/dashboards/:dashboardId/tiles",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "dashboards",
+                            ":dashboardId",
+                            "tiles"
+                          ],
+                          "variable": [
+                            {
+                              "key": "dashboardId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:41.000Z",
+                      "updatedAt": "2026-07-28T02:39:41.000Z",
+                      "uid": "35240-eecd89d5-6bde-4212-8a89-a24a5407d188"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:39:41.000Z",
+                  "updatedAt": "2026-07-28T02:39:41.000Z",
+                  "uid": "35240-c6feaf55-5a55-4dc6-b1ad-c2288e18ba9c"
+                }
+              ],
+              "id": "e6cbab3e-9425-40eb-b5c8-5e3d346392e9",
+              "createdAt": "2026-07-28T02:39:41.000Z",
+              "updatedAt": "2026-07-28T02:39:41.000Z",
+              "uid": "35240-e6cbab3e-9425-40eb-b5c8-5e3d346392e9"
+            },
+            {
+              "name": "Power Bi Get a Dashboard",
+              "id": "bf0e26ef-1f52-4d6e-8aed-e98378649ac6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/dashboards/:dashboardId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "dashboards",
+                    ":dashboardId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "6d753ca2-bb7b-4bcc-a45e-db46b191db9e",
+                      "key": "dashboardId",
+                      "value": "<uuid>",
+                      "description": "(Required) The unique identifier of the dashboard"
+                    }
+                  ]
+                },
+                "description": "Returns the specified dashboard from the user's My Workspace, including its name, embed URL, and configuration."
+              },
+              "response": [
+                {
+                  "id": "77f77c56-6c3e-464c-8474-6d795b36d197",
+                  "name": "Dashboard details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/dashboards/:dashboardId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "dashboards",
+                        ":dashboardId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "dashboardId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<uuid>\",\n  \"displayName\": \"<string>\",\n  \"isReadOnly\": \"<boolean>\",\n  \"webUrl\": \"<uri>\",\n  \"embedUrl\": \"<uri>\",\n  \"dataClassification\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:41.000Z",
+                  "updatedAt": "2026-07-28T02:39:41.000Z",
+                  "uid": "35240-77f77c56-6c3e-464c-8474-6d795b36d197"
+                },
+                {
+                  "id": "edd01d2f-6f7e-4bd7-8459-6c0bae815dd9",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/dashboards/:dashboardId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "dashboards",
+                        ":dashboardId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "dashboardId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T02:39:41.000Z",
+                  "updatedAt": "2026-07-28T02:39:41.000Z",
+                  "uid": "35240-edd01d2f-6f7e-4bd7-8459-6c0bae815dd9"
+                },
+                {
+                  "id": "a725347d-ddf7-4b74-93b6-1fca27321dc5",
+                  "name": "Dashboard not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/dashboards/:dashboardId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "dashboards",
+                        ":dashboardId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "dashboardId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T02:39:41.000Z",
+                  "updatedAt": "2026-07-28T02:39:41.000Z",
+                  "uid": "35240-a725347d-ddf7-4b74-93b6-1fca27321dc5"
+                }
+              ],
+              "createdAt": "2026-07-28T02:39:41.000Z",
+              "updatedAt": "2026-07-28T02:39:41.000Z",
+              "uid": "35240-bf0e26ef-1f52-4d6e-8aed-e98378649ac6"
+            }
+          ],
+          "id": "c7472c84-dd52-433e-94ca-ce9f31e30d1f",
+          "createdAt": "2026-07-28T02:39:41.000Z",
+          "updatedAt": "2026-07-28T02:39:41.000Z",
+          "uid": "35240-c7472c84-dd52-433e-94ca-ce9f31e30d1f"
+        },
+        {
+          "name": "Power Bi List Dashboards",
+          "id": "d4c27932-b597-47b4-a9a6-72107748e389",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/dashboards",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "dashboards"
+              ]
+            },
+            "description": "Returns a list of dashboards from the user's My Workspace. Each dashboard includes its name, web URL, embed URL, and whether it is read-only."
+          },
+          "response": [
+            {
+              "id": "6082cdf6-3049-40bf-9044-cdc7fc9db0ac",
+              "name": "List of dashboards",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/dashboards",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "dashboards"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"value\": [\n    {\n      \"id\": \"<uuid>\",\n      \"displayName\": \"<string>\",\n      \"isReadOnly\": \"<boolean>\",\n      \"webUrl\": \"<uri>\",\n      \"embedUrl\": \"<uri>\",\n      \"dataClassification\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"displayName\": \"<string>\",\n      \"isReadOnly\": \"<boolean>\",\n      \"webUrl\": \"<uri>\",\n      \"embedUrl\": \"<uri>\",\n      \"dataClassification\": \"<string>\"\n    }\n  ],\n  \"@odata.context\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:41.000Z",
+              "updatedAt": "2026-07-28T02:39:41.000Z",
+              "uid": "35240-6082cdf6-3049-40bf-9044-cdc7fc9db0ac"
+            },
+            {
+              "id": "4e56d183-1c09-4f0a-b173-92533478510c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/dashboards",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "dashboards"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:39:41.000Z",
+              "updatedAt": "2026-07-28T02:39:41.000Z",
+              "uid": "35240-4e56d183-1c09-4f0a-b173-92533478510c"
+            }
+          ],
+          "createdAt": "2026-07-28T02:39:41.000Z",
+          "updatedAt": "2026-07-28T02:39:41.000Z",
+          "uid": "35240-d4c27932-b597-47b4-a9a6-72107748e389"
+        },
+        {
+          "name": "Power Bi Create a Dashboard",
+          "id": "fd7f5a60-70a1-46ca-8217-e04046943b25",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/dashboards",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "dashboards"
+              ]
+            },
+            "description": "Creates a new empty dashboard in the user's My Workspace. After creating the dashboard, use tile pinning to add content."
+          },
+          "response": [
+            {
+              "id": "078463e5-3335-4d28-ba63-5fa12e3d7da8",
+              "name": "Dashboard created successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/dashboards",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "dashboards"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<uuid>\",\n  \"displayName\": \"<string>\",\n  \"isReadOnly\": \"<boolean>\",\n  \"webUrl\": \"<uri>\",\n  \"embedUrl\": \"<uri>\",\n  \"dataClassification\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:41.000Z",
+              "updatedAt": "2026-07-28T02:39:41.000Z",
+              "uid": "35240-078463e5-3335-4d28-ba63-5fa12e3d7da8"
+            },
+            {
+              "id": "65c96483-e0db-4e90-9062-5a38ec72b247",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/dashboards",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "dashboards"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:39:41.000Z",
+              "updatedAt": "2026-07-28T02:39:41.000Z",
+              "uid": "35240-65c96483-e0db-4e90-9062-5a38ec72b247"
+            }
+          ],
+          "createdAt": "2026-07-28T02:39:41.000Z",
+          "updatedAt": "2026-07-28T02:39:41.000Z",
+          "uid": "35240-fd7f5a60-70a1-46ca-8217-e04046943b25"
+        }
+      ],
+      "id": "a019a515-e4dc-4fbb-9d46-5113e62f0aca",
+      "createdAt": "2026-07-28T02:39:41.000Z",
+      "updatedAt": "2026-07-28T02:39:41.000Z",
+      "uid": "35240-a019a515-e4dc-4fbb-9d46-5113e62f0aca"
+    },
+    {
+      "name": "groups",
+      "item": [
+        {
+          "name": "{groupId}",
+          "item": [
+            {
+              "name": "dashboards",
+              "item": [
+                {
+                  "name": "Power Bi List Dashboards in a Workspace",
+                  "id": "400e1353-42af-4cb2-9cc4-e6e5469a2a63",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/:groupId/dashboards",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        ":groupId",
+                        "dashboards"
+                      ],
+                      "variable": [
+                        {
+                          "id": "02b61ce6-327e-40a5-9b2b-fef08ca3ba97",
+                          "key": "groupId",
+                          "value": "<uuid>",
+                          "description": "(Required) The unique identifier of the workspace (group)"
+                        }
+                      ]
+                    },
+                    "description": "Returns a list of dashboards from the specified workspace."
+                  },
+                  "response": [
+                    {
+                      "id": "2e694269-bb0c-4266-a840-5b113151ba57",
+                      "name": "List of dashboards in the workspace",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/dashboards",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "dashboards"
+                          ],
+                          "variable": [
+                            {
+                              "key": "groupId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": [\n    {\n      \"id\": \"<uuid>\",\n      \"displayName\": \"<string>\",\n      \"isReadOnly\": \"<boolean>\",\n      \"webUrl\": \"<uri>\",\n      \"embedUrl\": \"<uri>\",\n      \"dataClassification\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"displayName\": \"<string>\",\n      \"isReadOnly\": \"<boolean>\",\n      \"webUrl\": \"<uri>\",\n      \"embedUrl\": \"<uri>\",\n      \"dataClassification\": \"<string>\"\n    }\n  ],\n  \"@odata.context\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:41.000Z",
+                      "updatedAt": "2026-07-28T02:39:41.000Z",
+                      "uid": "35240-2e694269-bb0c-4266-a840-5b113151ba57"
+                    },
+                    {
+                      "id": "1abd8a74-f980-48e0-b7d0-9184af90b5b9",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/dashboards",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "dashboards"
+                          ],
+                          "variable": [
+                            {
+                              "key": "groupId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:41.000Z",
+                      "updatedAt": "2026-07-28T02:39:41.000Z",
+                      "uid": "35240-1abd8a74-f980-48e0-b7d0-9184af90b5b9"
+                    },
+                    {
+                      "id": "12fea0e8-49f0-4ba4-b5d7-03d6b3d6f1e5",
+                      "name": "Workspace not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/dashboards",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "dashboards"
+                          ],
+                          "variable": [
+                            {
+                              "key": "groupId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:41.000Z",
+                      "updatedAt": "2026-07-28T02:39:41.000Z",
+                      "uid": "35240-12fea0e8-49f0-4ba4-b5d7-03d6b3d6f1e5"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:39:41.000Z",
+                  "updatedAt": "2026-07-28T02:39:41.000Z",
+                  "uid": "35240-400e1353-42af-4cb2-9cc4-e6e5469a2a63"
+                }
+              ],
+              "id": "e8727123-773a-49d4-8dd4-9ab0828c85a0",
+              "createdAt": "2026-07-28T02:39:41.000Z",
+              "updatedAt": "2026-07-28T02:39:41.000Z",
+              "uid": "35240-e8727123-773a-49d4-8dd4-9ab0828c85a0"
+            }
+          ],
+          "id": "2e86a7db-d9b4-4822-9941-435589ce4e45",
+          "createdAt": "2026-07-28T02:39:41.000Z",
+          "updatedAt": "2026-07-28T02:39:41.000Z",
+          "uid": "35240-2e86a7db-d9b4-4822-9941-435589ce4e45"
+        }
+      ],
+      "id": "066ff643-b886-40eb-9e9a-f2b54ddcd2fc",
+      "createdAt": "2026-07-28T02:39:41.000Z",
+      "updatedAt": "2026-07-28T02:39:41.000Z",
+      "uid": "35240-066ff643-b886-40eb-9e9a-f2b54ddcd2fc"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.powerbi.com/v1.0/myorg"
+    }
+  ]
+}

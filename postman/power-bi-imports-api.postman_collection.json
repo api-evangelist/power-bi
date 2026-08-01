@@ -1,0 +1,489 @@
+{
+  "info": {
+    "_postman_id": "d5e22760-d55c-439f-ae85-cf7b1ee7db2f",
+    "name": "Power BI REST Dashboards Imports API",
+    "description": "The Power BI REST API provides service endpoints for embedding, administration, governance, and user resources. It enables programmatic access to Power BI content including datasets, reports, dashboards, and workspaces (groups). The API uses Azure Active Directory (OAuth 2.0) for authentication and authorization.\n\nContact Support:\n Name: Microsoft Power BI Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:39:50.000Z",
+    "updatedAt": "2026-07-28T02:39:50.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d5e22760-d55c-439f-ae85-cf7b1ee7db2f"
+  },
+  "item": [
+    {
+      "name": "groups",
+      "item": [
+        {
+          "name": "{groupId}",
+          "item": [
+            {
+              "name": "imports",
+              "item": [
+                {
+                  "name": "Power Bi List Imports in a Workspace",
+                  "id": "64fbad4a-ac3b-40b1-98df-eb3c06c94f57",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/:groupId/imports",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        ":groupId",
+                        "imports"
+                      ],
+                      "variable": [
+                        {
+                          "id": "78f771d2-1381-4047-aec8-80b6c5452ec0",
+                          "key": "groupId",
+                          "value": "<uuid>",
+                          "description": "(Required) The unique identifier of the workspace (group)"
+                        }
+                      ]
+                    },
+                    "description": "Returns a list of import operations for the specified workspace, including their status and the type of content imported."
+                  },
+                  "response": [
+                    {
+                      "id": "87d3d4ce-36e0-4042-a42a-dc63bc648d71",
+                      "name": "List of imports",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/imports",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "imports"
+                          ],
+                          "variable": [
+                            {
+                              "key": "groupId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"importState\": \"Failed\",\n      \"createdDateTime\": \"<dateTime>\",\n      \"updatedDateTime\": \"<dateTime>\",\n      \"reports\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"datasetId\": \"<uuid>\",\n          \"webUrl\": \"<uri>\",\n          \"embedUrl\": \"<uri>\",\n          \"reportType\": \"PowerBIReport\",\n          \"description\": \"<string>\",\n          \"createdDateTime\": \"<dateTime>\",\n          \"modifiedDateTime\": \"<dateTime>\",\n          \"modifiedBy\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"datasetId\": \"<uuid>\",\n          \"webUrl\": \"<uri>\",\n          \"embedUrl\": \"<uri>\",\n          \"reportType\": \"PaginatedReport\",\n          \"description\": \"<string>\",\n          \"createdDateTime\": \"<dateTime>\",\n          \"modifiedDateTime\": \"<dateTime>\",\n          \"modifiedBy\": \"<string>\"\n        }\n      ],\n      \"datasets\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"addRowsAPIEnabled\": \"<boolean>\",\n          \"configuredBy\": \"<string>\",\n          \"isRefreshable\": \"<boolean>\",\n          \"isEffectiveIdentityRequired\": \"<boolean>\",\n          \"isEffectiveIdentityRolesRequired\": \"<boolean>\",\n          \"isOnPremGatewayRequired\": \"<boolean>\",\n          \"targetStorageMode\": \"DirectQuery\",\n          \"createReportEmbedURL\": \"<uri>\",\n          \"qnaEmbedURL\": \"<uri>\",\n          \"webUrl\": \"<uri>\",\n          \"createdDate\": \"<dateTime>\",\n          \"contentProviderType\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"addRowsAPIEnabled\": \"<boolean>\",\n          \"configuredBy\": \"<string>\",\n          \"isRefreshable\": \"<boolean>\",\n          \"isEffectiveIdentityRequired\": \"<boolean>\",\n          \"isEffectiveIdentityRolesRequired\": \"<boolean>\",\n          \"isOnPremGatewayRequired\": \"<boolean>\",\n          \"targetStorageMode\": \"DirectQuery\",\n          \"createReportEmbedURL\": \"<uri>\",\n          \"qnaEmbedURL\": \"<uri>\",\n          \"webUrl\": \"<uri>\",\n          \"createdDate\": \"<dateTime>\",\n          \"contentProviderType\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"importState\": \"Failed\",\n      \"createdDateTime\": \"<dateTime>\",\n      \"updatedDateTime\": \"<dateTime>\",\n      \"reports\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"datasetId\": \"<uuid>\",\n          \"webUrl\": \"<uri>\",\n          \"embedUrl\": \"<uri>\",\n          \"reportType\": \"PaginatedReport\",\n          \"description\": \"<string>\",\n          \"createdDateTime\": \"<dateTime>\",\n          \"modifiedDateTime\": \"<dateTime>\",\n          \"modifiedBy\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"datasetId\": \"<uuid>\",\n          \"webUrl\": \"<uri>\",\n          \"embedUrl\": \"<uri>\",\n          \"reportType\": \"PaginatedReport\",\n          \"description\": \"<string>\",\n          \"createdDateTime\": \"<dateTime>\",\n          \"modifiedDateTime\": \"<dateTime>\",\n          \"modifiedBy\": \"<string>\"\n        }\n      ],\n      \"datasets\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"addRowsAPIEnabled\": \"<boolean>\",\n          \"configuredBy\": \"<string>\",\n          \"isRefreshable\": \"<boolean>\",\n          \"isEffectiveIdentityRequired\": \"<boolean>\",\n          \"isEffectiveIdentityRolesRequired\": \"<boolean>\",\n          \"isOnPremGatewayRequired\": \"<boolean>\",\n          \"targetStorageMode\": \"Dual\",\n          \"createReportEmbedURL\": \"<uri>\",\n          \"qnaEmbedURL\": \"<uri>\",\n          \"webUrl\": \"<uri>\",\n          \"createdDate\": \"<dateTime>\",\n          \"contentProviderType\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"addRowsAPIEnabled\": \"<boolean>\",\n          \"configuredBy\": \"<string>\",\n          \"isRefreshable\": \"<boolean>\",\n          \"isEffectiveIdentityRequired\": \"<boolean>\",\n          \"isEffectiveIdentityRolesRequired\": \"<boolean>\",\n          \"isOnPremGatewayRequired\": \"<boolean>\",\n          \"targetStorageMode\": \"PushDataset\",\n          \"createReportEmbedURL\": \"<uri>\",\n          \"qnaEmbedURL\": \"<uri>\",\n          \"webUrl\": \"<uri>\",\n          \"createdDate\": \"<dateTime>\",\n          \"contentProviderType\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"@odata.context\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:50.000Z",
+                      "updatedAt": "2026-07-28T02:39:50.000Z",
+                      "uid": "35240-87d3d4ce-36e0-4042-a42a-dc63bc648d71"
+                    },
+                    {
+                      "id": "5a817f46-4d33-4f95-b2a4-56ec64a3bfb2",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/imports",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "imports"
+                          ],
+                          "variable": [
+                            {
+                              "key": "groupId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:50.000Z",
+                      "updatedAt": "2026-07-28T02:39:50.000Z",
+                      "uid": "35240-5a817f46-4d33-4f95-b2a4-56ec64a3bfb2"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:39:50.000Z",
+                  "updatedAt": "2026-07-28T02:39:50.000Z",
+                  "uid": "35240-64fbad4a-ac3b-40b1-98df-eb3c06c94f57"
+                },
+                {
+                  "name": "Power Bi Import Content Into a Workspace",
+                  "id": "7e58a5f4-09cd-427b-bb62-ded83a078d28",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "The file to import",
+                          "key": "file",
+                          "type": "file",
+                          "value": null
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/:groupId/imports?datasetDisplayName=<string>&nameConflict=CreateOrOverwrite",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        ":groupId",
+                        "imports"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Display name of the dataset",
+                          "key": "datasetDisplayName",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Action to take if a dataset with the same name exists",
+                          "key": "nameConflict",
+                          "value": "CreateOrOverwrite"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "57b0df0e-2727-4207-a871-07f560b14e9b",
+                          "key": "groupId",
+                          "value": "<uuid>",
+                          "description": "(Required) The unique identifier of the workspace (group)"
+                        }
+                      ]
+                    },
+                    "description": "Imports a Power BI PBIX file, Excel workbook, or other supported content into the specified workspace. The file must be uploaded as multipart form data."
+                  },
+                  "response": [
+                    {
+                      "id": "aec2f6c9-d407-4bff-a694-434fae1954bc",
+                      "name": "Import started",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "The file to import",
+                              "key": "file",
+                              "type": "file"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/imports?datasetDisplayName=<string>&nameConflict=CreateOrOverwrite",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "imports"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Display name of the dataset",
+                              "key": "datasetDisplayName",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Action to take if a dataset with the same name exists",
+                              "key": "nameConflict",
+                              "value": "CreateOrOverwrite"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "groupId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"importState\": \"Publishing\",\n  \"createdDateTime\": \"<dateTime>\",\n  \"updatedDateTime\": \"<dateTime>\",\n  \"reports\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"datasetId\": \"<uuid>\",\n      \"webUrl\": \"<uri>\",\n      \"embedUrl\": \"<uri>\",\n      \"reportType\": \"PowerBIReport\",\n      \"description\": \"<string>\",\n      \"createdDateTime\": \"<dateTime>\",\n      \"modifiedDateTime\": \"<dateTime>\",\n      \"modifiedBy\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"datasetId\": \"<uuid>\",\n      \"webUrl\": \"<uri>\",\n      \"embedUrl\": \"<uri>\",\n      \"reportType\": \"PaginatedReport\",\n      \"description\": \"<string>\",\n      \"createdDateTime\": \"<dateTime>\",\n      \"modifiedDateTime\": \"<dateTime>\",\n      \"modifiedBy\": \"<string>\"\n    }\n  ],\n  \"datasets\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"addRowsAPIEnabled\": \"<boolean>\",\n      \"configuredBy\": \"<string>\",\n      \"isRefreshable\": \"<boolean>\",\n      \"isEffectiveIdentityRequired\": \"<boolean>\",\n      \"isEffectiveIdentityRolesRequired\": \"<boolean>\",\n      \"isOnPremGatewayRequired\": \"<boolean>\",\n      \"targetStorageMode\": \"Dual\",\n      \"createReportEmbedURL\": \"<uri>\",\n      \"qnaEmbedURL\": \"<uri>\",\n      \"webUrl\": \"<uri>\",\n      \"createdDate\": \"<dateTime>\",\n      \"contentProviderType\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"addRowsAPIEnabled\": \"<boolean>\",\n      \"configuredBy\": \"<string>\",\n      \"isRefreshable\": \"<boolean>\",\n      \"isEffectiveIdentityRequired\": \"<boolean>\",\n      \"isEffectiveIdentityRolesRequired\": \"<boolean>\",\n      \"isOnPremGatewayRequired\": \"<boolean>\",\n      \"targetStorageMode\": \"Import\",\n      \"createReportEmbedURL\": \"<uri>\",\n      \"qnaEmbedURL\": \"<uri>\",\n      \"webUrl\": \"<uri>\",\n      \"createdDate\": \"<dateTime>\",\n      \"contentProviderType\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:39:50.000Z",
+                      "updatedAt": "2026-07-28T02:39:50.000Z",
+                      "uid": "35240-aec2f6c9-d407-4bff-a694-434fae1954bc"
+                    },
+                    {
+                      "id": "e3bf5a8d-d489-4747-af54-dcda918e72e2",
+                      "name": "Import accepted and processing",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "The file to import",
+                              "key": "file",
+                              "type": "file"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/imports?datasetDisplayName=<string>&nameConflict=CreateOrOverwrite",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "imports"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Display name of the dataset",
+                              "key": "datasetDisplayName",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Action to take if a dataset with the same name exists",
+                              "key": "nameConflict",
+                              "value": "CreateOrOverwrite"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "groupId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Accepted",
+                      "code": 202,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"importState\": \"Publishing\",\n  \"createdDateTime\": \"<dateTime>\",\n  \"updatedDateTime\": \"<dateTime>\",\n  \"reports\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"datasetId\": \"<uuid>\",\n      \"webUrl\": \"<uri>\",\n      \"embedUrl\": \"<uri>\",\n      \"reportType\": \"PowerBIReport\",\n      \"description\": \"<string>\",\n      \"createdDateTime\": \"<dateTime>\",\n      \"modifiedDateTime\": \"<dateTime>\",\n      \"modifiedBy\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"datasetId\": \"<uuid>\",\n      \"webUrl\": \"<uri>\",\n      \"embedUrl\": \"<uri>\",\n      \"reportType\": \"PaginatedReport\",\n      \"description\": \"<string>\",\n      \"createdDateTime\": \"<dateTime>\",\n      \"modifiedDateTime\": \"<dateTime>\",\n      \"modifiedBy\": \"<string>\"\n    }\n  ],\n  \"datasets\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"addRowsAPIEnabled\": \"<boolean>\",\n      \"configuredBy\": \"<string>\",\n      \"isRefreshable\": \"<boolean>\",\n      \"isEffectiveIdentityRequired\": \"<boolean>\",\n      \"isEffectiveIdentityRolesRequired\": \"<boolean>\",\n      \"isOnPremGatewayRequired\": \"<boolean>\",\n      \"targetStorageMode\": \"Dual\",\n      \"createReportEmbedURL\": \"<uri>\",\n      \"qnaEmbedURL\": \"<uri>\",\n      \"webUrl\": \"<uri>\",\n      \"createdDate\": \"<dateTime>\",\n      \"contentProviderType\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"addRowsAPIEnabled\": \"<boolean>\",\n      \"configuredBy\": \"<string>\",\n      \"isRefreshable\": \"<boolean>\",\n      \"isEffectiveIdentityRequired\": \"<boolean>\",\n      \"isEffectiveIdentityRolesRequired\": \"<boolean>\",\n      \"isOnPremGatewayRequired\": \"<boolean>\",\n      \"targetStorageMode\": \"Import\",\n      \"createReportEmbedURL\": \"<uri>\",\n      \"qnaEmbedURL\": \"<uri>\",\n      \"webUrl\": \"<uri>\",\n      \"createdDate\": \"<dateTime>\",\n      \"contentProviderType\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:39:50.000Z",
+                      "updatedAt": "2026-07-28T02:39:50.000Z",
+                      "uid": "35240-e3bf5a8d-d489-4747-af54-dcda918e72e2"
+                    },
+                    {
+                      "id": "c97d7b32-4ccf-4a81-832f-e6307fd63264",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "The file to import",
+                              "key": "file",
+                              "type": "file"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/imports?datasetDisplayName=<string>&nameConflict=CreateOrOverwrite",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "imports"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Display name of the dataset",
+                              "key": "datasetDisplayName",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Action to take if a dataset with the same name exists",
+                              "key": "nameConflict",
+                              "value": "CreateOrOverwrite"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "groupId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:50.000Z",
+                      "updatedAt": "2026-07-28T02:39:50.000Z",
+                      "uid": "35240-c97d7b32-4ccf-4a81-832f-e6307fd63264"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:39:50.000Z",
+                  "updatedAt": "2026-07-28T02:39:50.000Z",
+                  "uid": "35240-7e58a5f4-09cd-427b-bb62-ded83a078d28"
+                }
+              ],
+              "id": "3574f6b2-1db3-4295-b51e-e211abf12060",
+              "createdAt": "2026-07-28T02:39:50.000Z",
+              "updatedAt": "2026-07-28T02:39:50.000Z",
+              "uid": "35240-3574f6b2-1db3-4295-b51e-e211abf12060"
+            }
+          ],
+          "id": "b7ef3299-0adb-42f0-8c82-7d575c75d49d",
+          "createdAt": "2026-07-28T02:39:50.000Z",
+          "updatedAt": "2026-07-28T02:39:50.000Z",
+          "uid": "35240-b7ef3299-0adb-42f0-8c82-7d575c75d49d"
+        }
+      ],
+      "id": "347cfb34-4e98-4a55-a9e2-0542a1544984",
+      "createdAt": "2026-07-28T02:39:50.000Z",
+      "updatedAt": "2026-07-28T02:39:50.000Z",
+      "uid": "35240-347cfb34-4e98-4a55-a9e2-0542a1544984"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.powerbi.com/v1.0/myorg"
+    }
+  ]
+}

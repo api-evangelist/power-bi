@@ -1,0 +1,24 @@
+{
+  "provider": "power-bi",
+  "sources": [
+    "power-bi-dashboards-api-openapi.yml",
+    "power-bi-datasets-api-openapi.yml",
+    "power-bi-gateways-api-openapi.yml",
+    "power-bi-groups-api-openapi.yml",
+    "power-bi-imports-api-openapi.yml",
+    "power-bi-reports-api-openapi.yml"
+  ],
+  "outputs": [
+    "power-bi-dashboards-api-openapi.yml",
+    "power-bi-datasets-api-openapi.yml",
+    "power-bi-gateways-api-openapi.yml",
+    "power-bi-groups-api-openapi.yml",
+    "power-bi-imports-api-openapi.yml",
+    "power-bi-reports-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

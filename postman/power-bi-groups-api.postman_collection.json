@@ -1,0 +1,2351 @@
+{
+  "info": {
+    "_postman_id": "b772038a-7042-45ae-843e-89b61ca44ccb",
+    "name": "Power BI REST Dashboards Groups API",
+    "description": "The Power BI REST API provides service endpoints for embedding, administration, governance, and user resources. It enables programmatic access to Power BI content including datasets, reports, dashboards, and workspaces (groups). The API uses Azure Active Directory (OAuth 2.0) for authentication and authorization.\n\nContact Support:\n Name: Microsoft Power BI Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:39:48.000Z",
+    "updatedAt": "2026-07-28T02:39:49.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b772038a-7042-45ae-843e-89b61ca44ccb"
+  },
+  "item": [
+    {
+      "name": "groups",
+      "item": [
+        {
+          "name": "{groupId}",
+          "item": [
+            {
+              "name": "users",
+              "item": [
+                {
+                  "name": "{userId}",
+                  "item": [
+                    {
+                      "name": "Power Bi Update Workspace User Access",
+                      "id": "060b1d3e-c9b1-44df-9997-d1e20c4313e4",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"emailAddress\": \"<email>\",\n  \"groupUserAccessRight\": \"Contributor\",\n  \"displayName\": \"<string>\",\n  \"identifier\": \"<string>\",\n  \"graphId\": \"<string>\",\n  \"principalType\": \"User\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/users/:userId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "users",
+                            ":userId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "3983dd16-dd67-4f71-91e2-c5782fbc8f3d",
+                              "key": "groupId",
+                              "value": "<uuid>",
+                              "description": "(Required) The unique identifier of the workspace (group)"
+                            },
+                            {
+                              "id": "829ec4ff-a4c4-40d5-ae55-d49c61b118d1",
+                              "key": "userId",
+                              "value": "<string>",
+                              "description": "(Required) The email address or object ID of the user"
+                            }
+                          ]
+                        },
+                        "description": "Updates the access right for the specified user in the workspace."
+                      },
+                      "response": [
+                        {
+                          "id": "23e088ce-1f2a-4e1e-b25a-fc2f51af3e22",
+                          "name": "User access updated",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"emailAddress\": \"<email>\",\n  \"groupUserAccessRight\": \"Contributor\",\n  \"displayName\": \"<string>\",\n  \"identifier\": \"<string>\",\n  \"graphId\": \"<string>\",\n  \"principalType\": \"User\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/groups/:groupId/users/:userId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "groups",
+                                ":groupId",
+                                "users",
+                                ":userId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "groupId"
+                                },
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:39:49.000Z",
+                          "updatedAt": "2026-07-28T02:39:49.000Z",
+                          "uid": "35240-23e088ce-1f2a-4e1e-b25a-fc2f51af3e22"
+                        },
+                        {
+                          "id": "3924bdf3-7a01-41b3-830c-bb901ebe3e1d",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"emailAddress\": \"<email>\",\n  \"groupUserAccessRight\": \"Contributor\",\n  \"displayName\": \"<string>\",\n  \"identifier\": \"<string>\",\n  \"graphId\": \"<string>\",\n  \"principalType\": \"User\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/groups/:groupId/users/:userId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "groups",
+                                ":groupId",
+                                "users",
+                                ":userId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "groupId"
+                                },
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                          "createdAt": "2026-07-28T02:39:49.000Z",
+                          "updatedAt": "2026-07-28T02:39:49.000Z",
+                          "uid": "35240-3924bdf3-7a01-41b3-830c-bb901ebe3e1d"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:39:49.000Z",
+                      "updatedAt": "2026-07-28T02:39:49.000Z",
+                      "uid": "35240-060b1d3e-c9b1-44df-9997-d1e20c4313e4"
+                    },
+                    {
+                      "name": "Power Bi Remove a Workspace User",
+                      "id": "89dbd457-356e-4652-a483-22177ac4f331",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/users/:userId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "users",
+                            ":userId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "830d9ab8-0c72-410b-afb8-f558e73f7b5a",
+                              "key": "groupId",
+                              "value": "<uuid>",
+                              "description": "(Required) The unique identifier of the workspace (group)"
+                            },
+                            {
+                              "id": "42027eca-98ff-4587-8540-fd342b6ed468",
+                              "key": "userId",
+                              "value": "<string>",
+                              "description": "(Required) The email address or object ID of the user"
+                            }
+                          ]
+                        },
+                        "description": "Removes the specified user from the workspace, revoking all access."
+                      },
+                      "response": [
+                        {
+                          "id": "d8fdc8f4-c78b-4fac-8c8e-a2664a13baf3",
+                          "name": "User removed from workspace",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/groups/:groupId/users/:userId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "groups",
+                                ":groupId",
+                                "users",
+                                ":userId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "groupId"
+                                },
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T02:39:49.000Z",
+                          "updatedAt": "2026-07-28T02:39:49.000Z",
+                          "uid": "35240-d8fdc8f4-c78b-4fac-8c8e-a2664a13baf3"
+                        },
+                        {
+                          "id": "c6c72bfb-d476-4a48-b294-cf1242b6c754",
+                          "name": "Unauthorized",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/groups/:groupId/users/:userId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "groups",
+                                ":groupId",
+                                "users",
+                                ":userId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "groupId"
+                                },
+                                {
+                                  "key": "userId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                          "createdAt": "2026-07-28T02:39:49.000Z",
+                          "updatedAt": "2026-07-28T02:39:49.000Z",
+                          "uid": "35240-c6c72bfb-d476-4a48-b294-cf1242b6c754"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T02:39:49.000Z",
+                      "updatedAt": "2026-07-28T02:39:49.000Z",
+                      "uid": "35240-89dbd457-356e-4652-a483-22177ac4f331"
+                    }
+                  ],
+                  "id": "7fdb2543-63dd-469c-aabc-947ceff338e3",
+                  "createdAt": "2026-07-28T02:39:49.000Z",
+                  "updatedAt": "2026-07-28T02:39:49.000Z",
+                  "uid": "35240-7fdb2543-63dd-469c-aabc-947ceff338e3"
+                },
+                {
+                  "name": "Power Bi List Workspace Users",
+                  "id": "d369ca05-43a6-4b6c-803c-39dc1e92c99f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/:groupId/users",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        ":groupId",
+                        "users"
+                      ],
+                      "variable": [
+                        {
+                          "id": "3960c08f-7ef8-4767-ad04-110700817380",
+                          "key": "groupId",
+                          "value": "<uuid>",
+                          "description": "(Required) The unique identifier of the workspace (group)"
+                        }
+                      ]
+                    },
+                    "description": "Returns a list of users who have access to the specified workspace, including their display name, email address, and access rights."
+                  },
+                  "response": [
+                    {
+                      "id": "bb939769-e238-4d09-904e-87b63b56401e",
+                      "name": "List of workspace users",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/users",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "users"
+                          ],
+                          "variable": [
+                            {
+                              "key": "groupId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": [\n    {\n      \"emailAddress\": \"<email>\",\n      \"groupUserAccessRight\": \"Contributor\",\n      \"displayName\": \"<string>\",\n      \"identifier\": \"<string>\",\n      \"graphId\": \"<string>\",\n      \"principalType\": \"User\"\n    },\n    {\n      \"emailAddress\": \"<email>\",\n      \"groupUserAccessRight\": \"Viewer\",\n      \"displayName\": \"<string>\",\n      \"identifier\": \"<string>\",\n      \"graphId\": \"<string>\",\n      \"principalType\": \"Group\"\n    }\n  ],\n  \"@odata.context\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:49.000Z",
+                      "updatedAt": "2026-07-28T02:39:49.000Z",
+                      "uid": "35240-bb939769-e238-4d09-904e-87b63b56401e"
+                    },
+                    {
+                      "id": "524e0784-74b5-4eaf-8d5d-0e934983ef96",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/users",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "users"
+                          ],
+                          "variable": [
+                            {
+                              "key": "groupId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:49.000Z",
+                      "updatedAt": "2026-07-28T02:39:49.000Z",
+                      "uid": "35240-524e0784-74b5-4eaf-8d5d-0e934983ef96"
+                    },
+                    {
+                      "id": "51dbdf78-7e2e-4658-8e28-10bae010c952",
+                      "name": "Workspace not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/users",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "users"
+                          ],
+                          "variable": [
+                            {
+                              "key": "groupId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:49.000Z",
+                      "updatedAt": "2026-07-28T02:39:49.000Z",
+                      "uid": "35240-51dbdf78-7e2e-4658-8e28-10bae010c952"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:39:49.000Z",
+                  "updatedAt": "2026-07-28T02:39:49.000Z",
+                  "uid": "35240-d369ca05-43a6-4b6c-803c-39dc1e92c99f"
+                },
+                {
+                  "name": "Power Bi Add a Workspace User",
+                  "id": "e6e14675-5e92-4246-83a0-9e91c190b070",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"emailAddress\": \"<email>\",\n  \"groupUserAccessRight\": \"Contributor\",\n  \"displayName\": \"<string>\",\n  \"identifier\": \"<string>\",\n  \"graphId\": \"<string>\",\n  \"principalType\": \"User\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/:groupId/users",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        ":groupId",
+                        "users"
+                      ],
+                      "variable": [
+                        {
+                          "id": "3120613c-d02e-4c34-b880-68463e72112a",
+                          "key": "groupId",
+                          "value": "<uuid>",
+                          "description": "(Required) The unique identifier of the workspace (group)"
+                        }
+                      ]
+                    },
+                    "description": "Grants the specified user access to the workspace with the given access right (Admin, Member, Contributor, or Viewer)."
+                  },
+                  "response": [
+                    {
+                      "id": "f234f626-5115-49aa-a674-f9a852d13465",
+                      "name": "User added to workspace",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"emailAddress\": \"<email>\",\n  \"groupUserAccessRight\": \"Contributor\",\n  \"displayName\": \"<string>\",\n  \"identifier\": \"<string>\",\n  \"graphId\": \"<string>\",\n  \"principalType\": \"User\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/users",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "users"
+                          ],
+                          "variable": [
+                            {
+                              "key": "groupId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:39:49.000Z",
+                      "updatedAt": "2026-07-28T02:39:49.000Z",
+                      "uid": "35240-f234f626-5115-49aa-a674-f9a852d13465"
+                    },
+                    {
+                      "id": "5cad35d8-de9d-4003-b9c0-e1132a812f26",
+                      "name": "Invalid request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"emailAddress\": \"<email>\",\n  \"groupUserAccessRight\": \"Contributor\",\n  \"displayName\": \"<string>\",\n  \"identifier\": \"<string>\",\n  \"graphId\": \"<string>\",\n  \"principalType\": \"User\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/users",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "users"
+                          ],
+                          "variable": [
+                            {
+                              "key": "groupId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:49.000Z",
+                      "updatedAt": "2026-07-28T02:39:49.000Z",
+                      "uid": "35240-5cad35d8-de9d-4003-b9c0-e1132a812f26"
+                    },
+                    {
+                      "id": "65542ff9-8498-4b2a-b60f-924959d81d67",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"emailAddress\": \"<email>\",\n  \"groupUserAccessRight\": \"Contributor\",\n  \"displayName\": \"<string>\",\n  \"identifier\": \"<string>\",\n  \"graphId\": \"<string>\",\n  \"principalType\": \"User\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/users",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "users"
+                          ],
+                          "variable": [
+                            {
+                              "key": "groupId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:49.000Z",
+                      "updatedAt": "2026-07-28T02:39:49.000Z",
+                      "uid": "35240-65542ff9-8498-4b2a-b60f-924959d81d67"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:39:49.000Z",
+                  "updatedAt": "2026-07-28T02:39:49.000Z",
+                  "uid": "35240-e6e14675-5e92-4246-83a0-9e91c190b070"
+                }
+              ],
+              "id": "6eb85517-5c74-4dbb-bb04-7db1c614b6eb",
+              "createdAt": "2026-07-28T02:39:49.000Z",
+              "updatedAt": "2026-07-28T02:39:49.000Z",
+              "uid": "35240-6eb85517-5c74-4dbb-bb04-7db1c614b6eb"
+            },
+            {
+              "name": "datasets",
+              "item": [
+                {
+                  "name": "Power Bi List Datasets in a Workspace",
+                  "id": "95b575cc-7bdd-4188-8d77-e75572946d41",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/:groupId/datasets",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        ":groupId",
+                        "datasets"
+                      ],
+                      "variable": [
+                        {
+                          "id": "415e869f-d3ba-419f-afa7-72a61366968c",
+                          "key": "groupId",
+                          "value": "<uuid>",
+                          "description": "(Required) The unique identifier of the workspace (group)"
+                        }
+                      ]
+                    },
+                    "description": "Returns a list of datasets from the specified workspace. This is similar to the My Workspace datasets endpoint but scoped to a specific workspace."
+                  },
+                  "response": [
+                    {
+                      "id": "6a8b4c32-3f60-497b-a08f-46c967cc23ce",
+                      "name": "List of datasets in the workspace",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/datasets",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "datasets"
+                          ],
+                          "variable": [
+                            {
+                              "key": "groupId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"addRowsAPIEnabled\": \"<boolean>\",\n      \"configuredBy\": \"<string>\",\n      \"isRefreshable\": \"<boolean>\",\n      \"isEffectiveIdentityRequired\": \"<boolean>\",\n      \"isEffectiveIdentityRolesRequired\": \"<boolean>\",\n      \"isOnPremGatewayRequired\": \"<boolean>\",\n      \"targetStorageMode\": \"PushDataset\",\n      \"createReportEmbedURL\": \"<uri>\",\n      \"qnaEmbedURL\": \"<uri>\",\n      \"webUrl\": \"<uri>\",\n      \"createdDate\": \"<dateTime>\",\n      \"contentProviderType\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"addRowsAPIEnabled\": \"<boolean>\",\n      \"configuredBy\": \"<string>\",\n      \"isRefreshable\": \"<boolean>\",\n      \"isEffectiveIdentityRequired\": \"<boolean>\",\n      \"isEffectiveIdentityRolesRequired\": \"<boolean>\",\n      \"isOnPremGatewayRequired\": \"<boolean>\",\n      \"targetStorageMode\": \"PushDataset\",\n      \"createReportEmbedURL\": \"<uri>\",\n      \"qnaEmbedURL\": \"<uri>\",\n      \"webUrl\": \"<uri>\",\n      \"createdDate\": \"<dateTime>\",\n      \"contentProviderType\": \"<string>\"\n    }\n  ],\n  \"@odata.context\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:49.000Z",
+                      "updatedAt": "2026-07-28T02:39:49.000Z",
+                      "uid": "35240-6a8b4c32-3f60-497b-a08f-46c967cc23ce"
+                    },
+                    {
+                      "id": "052f7211-7fe4-4055-9c51-41876e120bec",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/datasets",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "datasets"
+                          ],
+                          "variable": [
+                            {
+                              "key": "groupId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:49.000Z",
+                      "updatedAt": "2026-07-28T02:39:49.000Z",
+                      "uid": "35240-052f7211-7fe4-4055-9c51-41876e120bec"
+                    },
+                    {
+                      "id": "71ab6758-ce06-432c-a76b-e77f9a4ef0c1",
+                      "name": "Workspace not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/datasets",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "datasets"
+                          ],
+                          "variable": [
+                            {
+                              "key": "groupId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:49.000Z",
+                      "updatedAt": "2026-07-28T02:39:49.000Z",
+                      "uid": "35240-71ab6758-ce06-432c-a76b-e77f9a4ef0c1"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:39:49.000Z",
+                  "updatedAt": "2026-07-28T02:39:49.000Z",
+                  "uid": "35240-95b575cc-7bdd-4188-8d77-e75572946d41"
+                }
+              ],
+              "id": "933fec72-b3a5-43f2-8258-703d9f2b0502",
+              "createdAt": "2026-07-28T02:39:49.000Z",
+              "updatedAt": "2026-07-28T02:39:49.000Z",
+              "uid": "35240-933fec72-b3a5-43f2-8258-703d9f2b0502"
+            },
+            {
+              "name": "reports",
+              "item": [
+                {
+                  "name": "Power Bi List Reports in a Workspace",
+                  "id": "3391e18c-4136-487e-82d1-dc02691fac79",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/:groupId/reports",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        ":groupId",
+                        "reports"
+                      ],
+                      "variable": [
+                        {
+                          "id": "9b8d513c-c327-4ed9-8626-439143b3f156",
+                          "key": "groupId",
+                          "value": "<uuid>",
+                          "description": "(Required) The unique identifier of the workspace (group)"
+                        }
+                      ]
+                    },
+                    "description": "Returns a list of reports from the specified workspace. Each report includes its metadata and embed information."
+                  },
+                  "response": [
+                    {
+                      "id": "a344c6e0-a88b-4c9e-a7cb-0873898b4791",
+                      "name": "List of reports in the workspace",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/reports",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "reports"
+                          ],
+                          "variable": [
+                            {
+                              "key": "groupId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"datasetId\": \"<uuid>\",\n      \"webUrl\": \"<uri>\",\n      \"embedUrl\": \"<uri>\",\n      \"reportType\": \"PaginatedReport\",\n      \"description\": \"<string>\",\n      \"createdDateTime\": \"<dateTime>\",\n      \"modifiedDateTime\": \"<dateTime>\",\n      \"modifiedBy\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"datasetId\": \"<uuid>\",\n      \"webUrl\": \"<uri>\",\n      \"embedUrl\": \"<uri>\",\n      \"reportType\": \"PaginatedReport\",\n      \"description\": \"<string>\",\n      \"createdDateTime\": \"<dateTime>\",\n      \"modifiedDateTime\": \"<dateTime>\",\n      \"modifiedBy\": \"<string>\"\n    }\n  ],\n  \"@odata.context\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:49.000Z",
+                      "updatedAt": "2026-07-28T02:39:49.000Z",
+                      "uid": "35240-a344c6e0-a88b-4c9e-a7cb-0873898b4791"
+                    },
+                    {
+                      "id": "2a646003-6b28-4acf-ac4f-ea2279804782",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/reports",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "reports"
+                          ],
+                          "variable": [
+                            {
+                              "key": "groupId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:49.000Z",
+                      "updatedAt": "2026-07-28T02:39:49.000Z",
+                      "uid": "35240-2a646003-6b28-4acf-ac4f-ea2279804782"
+                    },
+                    {
+                      "id": "4cd56baf-ff50-4dad-90e3-adb2a29fcb8d",
+                      "name": "Workspace not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/reports",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "reports"
+                          ],
+                          "variable": [
+                            {
+                              "key": "groupId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:49.000Z",
+                      "updatedAt": "2026-07-28T02:39:49.000Z",
+                      "uid": "35240-4cd56baf-ff50-4dad-90e3-adb2a29fcb8d"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:39:49.000Z",
+                  "updatedAt": "2026-07-28T02:39:49.000Z",
+                  "uid": "35240-3391e18c-4136-487e-82d1-dc02691fac79"
+                }
+              ],
+              "id": "0f275ca3-d3dc-476a-9c02-5021427de418",
+              "createdAt": "2026-07-28T02:39:49.000Z",
+              "updatedAt": "2026-07-28T02:39:49.000Z",
+              "uid": "35240-0f275ca3-d3dc-476a-9c02-5021427de418"
+            },
+            {
+              "name": "dashboards",
+              "item": [
+                {
+                  "name": "Power Bi List Dashboards in a Workspace",
+                  "id": "74a9939e-f3ac-4e33-a3cb-ada040e688dd",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/:groupId/dashboards",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        ":groupId",
+                        "dashboards"
+                      ],
+                      "variable": [
+                        {
+                          "id": "70dd6204-83d6-49ae-9f23-28dbd5085c68",
+                          "key": "groupId",
+                          "value": "<uuid>",
+                          "description": "(Required) The unique identifier of the workspace (group)"
+                        }
+                      ]
+                    },
+                    "description": "Returns a list of dashboards from the specified workspace."
+                  },
+                  "response": [
+                    {
+                      "id": "bef64e61-279c-4e49-aae8-2c25f5ec394e",
+                      "name": "List of dashboards in the workspace",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/dashboards",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "dashboards"
+                          ],
+                          "variable": [
+                            {
+                              "key": "groupId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": [\n    {\n      \"id\": \"<uuid>\",\n      \"displayName\": \"<string>\",\n      \"isReadOnly\": \"<boolean>\",\n      \"webUrl\": \"<uri>\",\n      \"embedUrl\": \"<uri>\",\n      \"dataClassification\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"displayName\": \"<string>\",\n      \"isReadOnly\": \"<boolean>\",\n      \"webUrl\": \"<uri>\",\n      \"embedUrl\": \"<uri>\",\n      \"dataClassification\": \"<string>\"\n    }\n  ],\n  \"@odata.context\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:49.000Z",
+                      "updatedAt": "2026-07-28T02:39:49.000Z",
+                      "uid": "35240-bef64e61-279c-4e49-aae8-2c25f5ec394e"
+                    },
+                    {
+                      "id": "a7c8a8bf-bd46-4e87-8658-28f567bc13a7",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/dashboards",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "dashboards"
+                          ],
+                          "variable": [
+                            {
+                              "key": "groupId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:49.000Z",
+                      "updatedAt": "2026-07-28T02:39:49.000Z",
+                      "uid": "35240-a7c8a8bf-bd46-4e87-8658-28f567bc13a7"
+                    },
+                    {
+                      "id": "698d689b-4697-418b-9acb-394715f89998",
+                      "name": "Workspace not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/dashboards",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "dashboards"
+                          ],
+                          "variable": [
+                            {
+                              "key": "groupId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:49.000Z",
+                      "updatedAt": "2026-07-28T02:39:49.000Z",
+                      "uid": "35240-698d689b-4697-418b-9acb-394715f89998"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:39:49.000Z",
+                  "updatedAt": "2026-07-28T02:39:49.000Z",
+                  "uid": "35240-74a9939e-f3ac-4e33-a3cb-ada040e688dd"
+                }
+              ],
+              "id": "2a363018-1e43-41f4-8b10-f1a9407a827f",
+              "createdAt": "2026-07-28T02:39:49.000Z",
+              "updatedAt": "2026-07-28T02:39:49.000Z",
+              "uid": "35240-2a363018-1e43-41f4-8b10-f1a9407a827f"
+            },
+            {
+              "name": "imports",
+              "item": [
+                {
+                  "name": "Power Bi List Imports in a Workspace",
+                  "id": "7bfdcdc0-f4ed-4fc8-a498-6a151dc12eb3",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/:groupId/imports",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        ":groupId",
+                        "imports"
+                      ],
+                      "variable": [
+                        {
+                          "id": "3ff44d26-2d8f-43c2-bc2a-4171400d083d",
+                          "key": "groupId",
+                          "value": "<uuid>",
+                          "description": "(Required) The unique identifier of the workspace (group)"
+                        }
+                      ]
+                    },
+                    "description": "Returns a list of import operations for the specified workspace, including their status and the type of content imported."
+                  },
+                  "response": [
+                    {
+                      "id": "37628c10-312a-4046-a618-5a0eab43cc31",
+                      "name": "List of imports",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/imports",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "imports"
+                          ],
+                          "variable": [
+                            {
+                              "key": "groupId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"importState\": \"Succeeded\",\n      \"createdDateTime\": \"<dateTime>\",\n      \"updatedDateTime\": \"<dateTime>\",\n      \"reports\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"datasetId\": \"<uuid>\",\n          \"webUrl\": \"<uri>\",\n          \"embedUrl\": \"<uri>\",\n          \"reportType\": \"PaginatedReport\",\n          \"description\": \"<string>\",\n          \"createdDateTime\": \"<dateTime>\",\n          \"modifiedDateTime\": \"<dateTime>\",\n          \"modifiedBy\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"datasetId\": \"<uuid>\",\n          \"webUrl\": \"<uri>\",\n          \"embedUrl\": \"<uri>\",\n          \"reportType\": \"PowerBIReport\",\n          \"description\": \"<string>\",\n          \"createdDateTime\": \"<dateTime>\",\n          \"modifiedDateTime\": \"<dateTime>\",\n          \"modifiedBy\": \"<string>\"\n        }\n      ],\n      \"datasets\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"addRowsAPIEnabled\": \"<boolean>\",\n          \"configuredBy\": \"<string>\",\n          \"isRefreshable\": \"<boolean>\",\n          \"isEffectiveIdentityRequired\": \"<boolean>\",\n          \"isEffectiveIdentityRolesRequired\": \"<boolean>\",\n          \"isOnPremGatewayRequired\": \"<boolean>\",\n          \"targetStorageMode\": \"Import\",\n          \"createReportEmbedURL\": \"<uri>\",\n          \"qnaEmbedURL\": \"<uri>\",\n          \"webUrl\": \"<uri>\",\n          \"createdDate\": \"<dateTime>\",\n          \"contentProviderType\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"addRowsAPIEnabled\": \"<boolean>\",\n          \"configuredBy\": \"<string>\",\n          \"isRefreshable\": \"<boolean>\",\n          \"isEffectiveIdentityRequired\": \"<boolean>\",\n          \"isEffectiveIdentityRolesRequired\": \"<boolean>\",\n          \"isOnPremGatewayRequired\": \"<boolean>\",\n          \"targetStorageMode\": \"Import\",\n          \"createReportEmbedURL\": \"<uri>\",\n          \"qnaEmbedURL\": \"<uri>\",\n          \"webUrl\": \"<uri>\",\n          \"createdDate\": \"<dateTime>\",\n          \"contentProviderType\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"importState\": \"Publishing\",\n      \"createdDateTime\": \"<dateTime>\",\n      \"updatedDateTime\": \"<dateTime>\",\n      \"reports\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"datasetId\": \"<uuid>\",\n          \"webUrl\": \"<uri>\",\n          \"embedUrl\": \"<uri>\",\n          \"reportType\": \"PaginatedReport\",\n          \"description\": \"<string>\",\n          \"createdDateTime\": \"<dateTime>\",\n          \"modifiedDateTime\": \"<dateTime>\",\n          \"modifiedBy\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"datasetId\": \"<uuid>\",\n          \"webUrl\": \"<uri>\",\n          \"embedUrl\": \"<uri>\",\n          \"reportType\": \"PaginatedReport\",\n          \"description\": \"<string>\",\n          \"createdDateTime\": \"<dateTime>\",\n          \"modifiedDateTime\": \"<dateTime>\",\n          \"modifiedBy\": \"<string>\"\n        }\n      ],\n      \"datasets\": [\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"addRowsAPIEnabled\": \"<boolean>\",\n          \"configuredBy\": \"<string>\",\n          \"isRefreshable\": \"<boolean>\",\n          \"isEffectiveIdentityRequired\": \"<boolean>\",\n          \"isEffectiveIdentityRolesRequired\": \"<boolean>\",\n          \"isOnPremGatewayRequired\": \"<boolean>\",\n          \"targetStorageMode\": \"PushDataset\",\n          \"createReportEmbedURL\": \"<uri>\",\n          \"qnaEmbedURL\": \"<uri>\",\n          \"webUrl\": \"<uri>\",\n          \"createdDate\": \"<dateTime>\",\n          \"contentProviderType\": \"<string>\"\n        },\n        {\n          \"id\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"addRowsAPIEnabled\": \"<boolean>\",\n          \"configuredBy\": \"<string>\",\n          \"isRefreshable\": \"<boolean>\",\n          \"isEffectiveIdentityRequired\": \"<boolean>\",\n          \"isEffectiveIdentityRolesRequired\": \"<boolean>\",\n          \"isOnPremGatewayRequired\": \"<boolean>\",\n          \"targetStorageMode\": \"DirectQuery\",\n          \"createReportEmbedURL\": \"<uri>\",\n          \"qnaEmbedURL\": \"<uri>\",\n          \"webUrl\": \"<uri>\",\n          \"createdDate\": \"<dateTime>\",\n          \"contentProviderType\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"@odata.context\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:49.000Z",
+                      "updatedAt": "2026-07-28T02:39:49.000Z",
+                      "uid": "35240-37628c10-312a-4046-a618-5a0eab43cc31"
+                    },
+                    {
+                      "id": "19de3c87-c6a8-4e10-bc2e-013f03c54e16",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/imports",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "imports"
+                          ],
+                          "variable": [
+                            {
+                              "key": "groupId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:49.000Z",
+                      "updatedAt": "2026-07-28T02:39:49.000Z",
+                      "uid": "35240-19de3c87-c6a8-4e10-bc2e-013f03c54e16"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:39:49.000Z",
+                  "updatedAt": "2026-07-28T02:39:49.000Z",
+                  "uid": "35240-7bfdcdc0-f4ed-4fc8-a498-6a151dc12eb3"
+                },
+                {
+                  "name": "Power Bi Import Content Into a Workspace",
+                  "id": "cd83ea01-ce0e-43b8-a56f-1f38702b6317",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "description": "The file to import",
+                          "key": "file",
+                          "type": "file",
+                          "value": null
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/:groupId/imports?datasetDisplayName=<string>&nameConflict=Overwrite",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        ":groupId",
+                        "imports"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Display name of the dataset",
+                          "key": "datasetDisplayName",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Action to take if a dataset with the same name exists",
+                          "key": "nameConflict",
+                          "value": "Overwrite"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "253b42aa-d56a-4261-8433-3fbae16af032",
+                          "key": "groupId",
+                          "value": "<uuid>",
+                          "description": "(Required) The unique identifier of the workspace (group)"
+                        }
+                      ]
+                    },
+                    "description": "Imports a Power BI PBIX file, Excel workbook, or other supported content into the specified workspace. The file must be uploaded as multipart form data."
+                  },
+                  "response": [
+                    {
+                      "id": "21182761-8f3e-4bad-8337-d15915e6b6a9",
+                      "name": "Import started",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "The file to import",
+                              "key": "file",
+                              "type": "file"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/imports?datasetDisplayName=<string>&nameConflict=Overwrite",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "imports"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Display name of the dataset",
+                              "key": "datasetDisplayName",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Action to take if a dataset with the same name exists",
+                              "key": "nameConflict",
+                              "value": "Overwrite"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "groupId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"importState\": \"Succeeded\",\n  \"createdDateTime\": \"<dateTime>\",\n  \"updatedDateTime\": \"<dateTime>\",\n  \"reports\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"datasetId\": \"<uuid>\",\n      \"webUrl\": \"<uri>\",\n      \"embedUrl\": \"<uri>\",\n      \"reportType\": \"PowerBIReport\",\n      \"description\": \"<string>\",\n      \"createdDateTime\": \"<dateTime>\",\n      \"modifiedDateTime\": \"<dateTime>\",\n      \"modifiedBy\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"datasetId\": \"<uuid>\",\n      \"webUrl\": \"<uri>\",\n      \"embedUrl\": \"<uri>\",\n      \"reportType\": \"PowerBIReport\",\n      \"description\": \"<string>\",\n      \"createdDateTime\": \"<dateTime>\",\n      \"modifiedDateTime\": \"<dateTime>\",\n      \"modifiedBy\": \"<string>\"\n    }\n  ],\n  \"datasets\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"addRowsAPIEnabled\": \"<boolean>\",\n      \"configuredBy\": \"<string>\",\n      \"isRefreshable\": \"<boolean>\",\n      \"isEffectiveIdentityRequired\": \"<boolean>\",\n      \"isEffectiveIdentityRolesRequired\": \"<boolean>\",\n      \"isOnPremGatewayRequired\": \"<boolean>\",\n      \"targetStorageMode\": \"DirectQuery\",\n      \"createReportEmbedURL\": \"<uri>\",\n      \"qnaEmbedURL\": \"<uri>\",\n      \"webUrl\": \"<uri>\",\n      \"createdDate\": \"<dateTime>\",\n      \"contentProviderType\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"addRowsAPIEnabled\": \"<boolean>\",\n      \"configuredBy\": \"<string>\",\n      \"isRefreshable\": \"<boolean>\",\n      \"isEffectiveIdentityRequired\": \"<boolean>\",\n      \"isEffectiveIdentityRolesRequired\": \"<boolean>\",\n      \"isOnPremGatewayRequired\": \"<boolean>\",\n      \"targetStorageMode\": \"PushDataset\",\n      \"createReportEmbedURL\": \"<uri>\",\n      \"qnaEmbedURL\": \"<uri>\",\n      \"webUrl\": \"<uri>\",\n      \"createdDate\": \"<dateTime>\",\n      \"contentProviderType\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:39:49.000Z",
+                      "updatedAt": "2026-07-28T02:39:49.000Z",
+                      "uid": "35240-21182761-8f3e-4bad-8337-d15915e6b6a9"
+                    },
+                    {
+                      "id": "28fb4230-17e1-4c3f-a9d4-821d721044c7",
+                      "name": "Import accepted and processing",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "The file to import",
+                              "key": "file",
+                              "type": "file"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/imports?datasetDisplayName=<string>&nameConflict=Overwrite",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "imports"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Display name of the dataset",
+                              "key": "datasetDisplayName",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Action to take if a dataset with the same name exists",
+                              "key": "nameConflict",
+                              "value": "Overwrite"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "groupId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Accepted",
+                      "code": 202,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"importState\": \"Succeeded\",\n  \"createdDateTime\": \"<dateTime>\",\n  \"updatedDateTime\": \"<dateTime>\",\n  \"reports\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"datasetId\": \"<uuid>\",\n      \"webUrl\": \"<uri>\",\n      \"embedUrl\": \"<uri>\",\n      \"reportType\": \"PowerBIReport\",\n      \"description\": \"<string>\",\n      \"createdDateTime\": \"<dateTime>\",\n      \"modifiedDateTime\": \"<dateTime>\",\n      \"modifiedBy\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"datasetId\": \"<uuid>\",\n      \"webUrl\": \"<uri>\",\n      \"embedUrl\": \"<uri>\",\n      \"reportType\": \"PowerBIReport\",\n      \"description\": \"<string>\",\n      \"createdDateTime\": \"<dateTime>\",\n      \"modifiedDateTime\": \"<dateTime>\",\n      \"modifiedBy\": \"<string>\"\n    }\n  ],\n  \"datasets\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"addRowsAPIEnabled\": \"<boolean>\",\n      \"configuredBy\": \"<string>\",\n      \"isRefreshable\": \"<boolean>\",\n      \"isEffectiveIdentityRequired\": \"<boolean>\",\n      \"isEffectiveIdentityRolesRequired\": \"<boolean>\",\n      \"isOnPremGatewayRequired\": \"<boolean>\",\n      \"targetStorageMode\": \"DirectQuery\",\n      \"createReportEmbedURL\": \"<uri>\",\n      \"qnaEmbedURL\": \"<uri>\",\n      \"webUrl\": \"<uri>\",\n      \"createdDate\": \"<dateTime>\",\n      \"contentProviderType\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"addRowsAPIEnabled\": \"<boolean>\",\n      \"configuredBy\": \"<string>\",\n      \"isRefreshable\": \"<boolean>\",\n      \"isEffectiveIdentityRequired\": \"<boolean>\",\n      \"isEffectiveIdentityRolesRequired\": \"<boolean>\",\n      \"isOnPremGatewayRequired\": \"<boolean>\",\n      \"targetStorageMode\": \"PushDataset\",\n      \"createReportEmbedURL\": \"<uri>\",\n      \"qnaEmbedURL\": \"<uri>\",\n      \"webUrl\": \"<uri>\",\n      \"createdDate\": \"<dateTime>\",\n      \"contentProviderType\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T02:39:49.000Z",
+                      "updatedAt": "2026-07-28T02:39:49.000Z",
+                      "uid": "35240-28fb4230-17e1-4c3f-a9d4-821d721044c7"
+                    },
+                    {
+                      "id": "4d2ad773-1fd3-4540-a0e1-0309ac2cdc06",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "description": "The file to import",
+                              "key": "file",
+                              "type": "file"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/imports?datasetDisplayName=<string>&nameConflict=Overwrite",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "imports"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Display name of the dataset",
+                              "key": "datasetDisplayName",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Action to take if a dataset with the same name exists",
+                              "key": "nameConflict",
+                              "value": "Overwrite"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "groupId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:49.000Z",
+                      "updatedAt": "2026-07-28T02:39:49.000Z",
+                      "uid": "35240-4d2ad773-1fd3-4540-a0e1-0309ac2cdc06"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:39:49.000Z",
+                  "updatedAt": "2026-07-28T02:39:49.000Z",
+                  "uid": "35240-cd83ea01-ce0e-43b8-a56f-1f38702b6317"
+                }
+              ],
+              "id": "a3eb27f6-2f80-48b1-840f-00810cc7c770",
+              "createdAt": "2026-07-28T02:39:49.000Z",
+              "updatedAt": "2026-07-28T02:39:49.000Z",
+              "uid": "35240-a3eb27f6-2f80-48b1-840f-00810cc7c770"
+            },
+            {
+              "name": "Power Bi Delete a Workspace",
+              "id": "1714d3b8-76b0-4308-a8b7-0ddcfa705306",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/groups/:groupId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "groups",
+                    ":groupId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "32919884-883d-42d0-8d54-2ecc27f16650",
+                      "key": "groupId",
+                      "value": "<uuid>",
+                      "description": "(Required) The unique identifier of the workspace (group)"
+                    }
+                  ]
+                },
+                "description": "Deletes the specified workspace. All content within the workspace including dashboards, reports, and datasets will be permanently removed."
+              },
+              "response": [
+                {
+                  "id": "2c5faa69-0607-402b-b76e-7e2e5c91c34a",
+                  "name": "Workspace deleted successfully",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/:groupId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        ":groupId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "groupId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:39:49.000Z",
+                  "updatedAt": "2026-07-28T02:39:49.000Z",
+                  "uid": "35240-2c5faa69-0607-402b-b76e-7e2e5c91c34a"
+                },
+                {
+                  "id": "15568a50-af66-4949-8501-3747e656bf99",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/:groupId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        ":groupId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "groupId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T02:39:49.000Z",
+                  "updatedAt": "2026-07-28T02:39:49.000Z",
+                  "uid": "35240-15568a50-af66-4949-8501-3747e656bf99"
+                },
+                {
+                  "id": "1be72c10-dc39-4a2e-9aa4-163d65bf3a7e",
+                  "name": "Workspace not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/:groupId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        ":groupId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "groupId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T02:39:49.000Z",
+                  "updatedAt": "2026-07-28T02:39:49.000Z",
+                  "uid": "35240-1be72c10-dc39-4a2e-9aa4-163d65bf3a7e"
+                }
+              ],
+              "createdAt": "2026-07-28T02:39:49.000Z",
+              "updatedAt": "2026-07-28T02:39:49.000Z",
+              "uid": "35240-1714d3b8-76b0-4308-a8b7-0ddcfa705306"
+            }
+          ],
+          "id": "a897e6e2-21d7-4dd6-a536-a8264e96e577",
+          "createdAt": "2026-07-28T02:39:49.000Z",
+          "updatedAt": "2026-07-28T02:39:49.000Z",
+          "uid": "35240-a897e6e2-21d7-4dd6-a536-a8264e96e577"
+        },
+        {
+          "name": "Power Bi List Workspaces",
+          "id": "8742c195-896d-4696-bbdf-20b02838f651",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/groups?$filter=<string>&$top=<integer>&$skip=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "groups"
+              ],
+              "query": [
+                {
+                  "description": "OData filter expression to filter workspaces",
+                  "key": "$filter",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Maximum number of workspaces to return",
+                  "key": "$top",
+                  "value": "<integer>"
+                },
+                {
+                  "description": "Number of workspaces to skip",
+                  "key": "$skip",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Returns a list of workspaces (groups) the user has access to. Each workspace includes its name, type, and whether it is read-only or on a dedicated capacity."
+          },
+          "response": [
+            {
+              "id": "95d114aa-c498-43d6-a30a-b9b9db88fd28",
+              "name": "List of workspaces",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/groups?$filter=<string>&$top=<integer>&$skip=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "groups"
+                  ],
+                  "query": [
+                    {
+                      "description": "OData filter expression to filter workspaces",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of workspaces to return",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of workspaces to skip",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"value\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"isReadOnly\": \"<boolean>\",\n      \"isOnDedicatedCapacity\": \"<boolean>\",\n      \"capacityId\": \"<uuid>\",\n      \"type\": \"PersonalGroup\",\n      \"state\": \"Deleted\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"isReadOnly\": \"<boolean>\",\n      \"isOnDedicatedCapacity\": \"<boolean>\",\n      \"capacityId\": \"<uuid>\",\n      \"type\": \"Workspace\",\n      \"state\": \"Active\"\n    }\n  ],\n  \"@odata.context\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:49.000Z",
+              "updatedAt": "2026-07-28T02:39:49.000Z",
+              "uid": "35240-95d114aa-c498-43d6-a30a-b9b9db88fd28"
+            },
+            {
+              "id": "ca689acc-a56b-4ca5-8aa5-ae2e731bccab",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/groups?$filter=<string>&$top=<integer>&$skip=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "groups"
+                  ],
+                  "query": [
+                    {
+                      "description": "OData filter expression to filter workspaces",
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of workspaces to return",
+                      "key": "$top",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of workspaces to skip",
+                      "key": "$skip",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:39:49.000Z",
+              "updatedAt": "2026-07-28T02:39:49.000Z",
+              "uid": "35240-ca689acc-a56b-4ca5-8aa5-ae2e731bccab"
+            }
+          ],
+          "createdAt": "2026-07-28T02:39:49.000Z",
+          "updatedAt": "2026-07-28T02:39:49.000Z",
+          "uid": "35240-8742c195-896d-4696-bbdf-20b02838f651"
+        },
+        {
+          "name": "Power Bi Create a Workspace",
+          "id": "853f768d-79b8-4527-8e1d-24348ffcad70",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/groups",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "groups"
+              ]
+            },
+            "description": "Creates a new workspace (group). The workspace can be assigned to a Premium capacity for enhanced features and performance."
+          },
+          "response": [
+            {
+              "id": "143475e9-a6b0-4962-934c-3175b9bc97a3",
+              "name": "Workspace created successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/groups",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "groups"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"isReadOnly\": \"<boolean>\",\n  \"isOnDedicatedCapacity\": \"<boolean>\",\n  \"capacityId\": \"<uuid>\",\n  \"type\": \"Group\",\n  \"state\": \"Removing\"\n}",
+              "createdAt": "2026-07-28T02:39:49.000Z",
+              "updatedAt": "2026-07-28T02:39:49.000Z",
+              "uid": "35240-143475e9-a6b0-4962-934c-3175b9bc97a3"
+            },
+            {
+              "id": "601c6f06-2e82-4d05-9173-1cd2820f37d1",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/groups",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "groups"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:39:49.000Z",
+              "updatedAt": "2026-07-28T02:39:49.000Z",
+              "uid": "35240-601c6f06-2e82-4d05-9173-1cd2820f37d1"
+            }
+          ],
+          "createdAt": "2026-07-28T02:39:49.000Z",
+          "updatedAt": "2026-07-28T02:39:49.000Z",
+          "uid": "35240-853f768d-79b8-4527-8e1d-24348ffcad70"
+        }
+      ],
+      "id": "920be8a9-c89e-4ff1-8662-3e16cfa65a58",
+      "createdAt": "2026-07-28T02:39:49.000Z",
+      "updatedAt": "2026-07-28T02:39:49.000Z",
+      "uid": "35240-920be8a9-c89e-4ff1-8662-3e16cfa65a58"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.powerbi.com/v1.0/myorg"
+    }
+  ]
+}

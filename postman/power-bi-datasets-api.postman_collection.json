@@ -1,0 +1,2081 @@
+{
+  "info": {
+    "_postman_id": "2c76b181-88d9-4f48-bdfa-e380e4eb36bc",
+    "name": "Power BI REST Dashboards Datasets API",
+    "description": "The Power BI REST API provides service endpoints for embedding, administration, governance, and user resources. It enables programmatic access to Power BI content including datasets, reports, dashboards, and workspaces (groups). The API uses Azure Active Directory (OAuth 2.0) for authentication and authorization.\n\nContact Support:\n Name: Microsoft Power BI Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:39:42.000Z",
+    "updatedAt": "2026-07-28T02:39:42.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2c76b181-88d9-4f48-bdfa-e380e4eb36bc"
+  },
+  "item": [
+    {
+      "name": "datasets",
+      "item": [
+        {
+          "name": "{datasetId}",
+          "item": [
+            {
+              "name": "refreshes",
+              "item": [
+                {
+                  "name": "Power Bi Get Refresh History",
+                  "id": "1aa9b080-f232-45e2-b92a-d0dbc704f7d3",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/datasets/:datasetId/refreshes?$top=10",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "datasets",
+                        ":datasetId",
+                        "refreshes"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of refresh entries to return",
+                          "key": "$top",
+                          "value": "10"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "feee553f-25b0-4887-9e85-1e3b1eeb552a",
+                          "key": "datasetId",
+                          "value": "<uuid>",
+                          "description": "(Required) The unique identifier of the dataset"
+                        }
+                      ]
+                    },
+                    "description": "Returns the refresh history for the specified dataset. The response includes the status, start time, and end time of each refresh operation."
+                  },
+                  "response": [
+                    {
+                      "id": "25e1075c-821a-45c8-a859-f756ec41df9b",
+                      "name": "List of refresh entries",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/datasets/:datasetId/refreshes?$top=10",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "datasets",
+                            ":datasetId",
+                            "refreshes"
+                          ],
+                          "query": [
+                            {
+                              "description": "Maximum number of refresh entries to return",
+                              "key": "$top",
+                              "value": "10"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "datasetId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": [\n    {\n      \"requestId\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"refreshType\": \"ViaApi\",\n      \"startTime\": \"<dateTime>\",\n      \"endTime\": \"<dateTime>\",\n      \"status\": \"Completed\",\n      \"serviceExceptionJson\": \"<string>\"\n    },\n    {\n      \"requestId\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"refreshType\": \"OnDemand\",\n      \"startTime\": \"<dateTime>\",\n      \"endTime\": \"<dateTime>\",\n      \"status\": \"Completed\",\n      \"serviceExceptionJson\": \"<string>\"\n    }\n  ],\n  \"@odata.context\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:42.000Z",
+                      "updatedAt": "2026-07-28T02:39:42.000Z",
+                      "uid": "35240-25e1075c-821a-45c8-a859-f756ec41df9b"
+                    },
+                    {
+                      "id": "2b053223-fd01-43f0-8443-19783e58e054",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/datasets/:datasetId/refreshes?$top=10",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "datasets",
+                            ":datasetId",
+                            "refreshes"
+                          ],
+                          "query": [
+                            {
+                              "description": "Maximum number of refresh entries to return",
+                              "key": "$top",
+                              "value": "10"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "datasetId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:42.000Z",
+                      "updatedAt": "2026-07-28T02:39:42.000Z",
+                      "uid": "35240-2b053223-fd01-43f0-8443-19783e58e054"
+                    },
+                    {
+                      "id": "8706fb8a-7918-4191-b7ab-6ecac9537ac6",
+                      "name": "Dataset not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/datasets/:datasetId/refreshes?$top=10",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "datasets",
+                            ":datasetId",
+                            "refreshes"
+                          ],
+                          "query": [
+                            {
+                              "description": "Maximum number of refresh entries to return",
+                              "key": "$top",
+                              "value": "10"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "datasetId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:42.000Z",
+                      "updatedAt": "2026-07-28T02:39:42.000Z",
+                      "uid": "35240-8706fb8a-7918-4191-b7ab-6ecac9537ac6"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:39:42.000Z",
+                  "updatedAt": "2026-07-28T02:39:42.000Z",
+                  "uid": "35240-1aa9b080-f232-45e2-b92a-d0dbc704f7d3"
+                },
+                {
+                  "name": "Power Bi Trigger a Dataset Refresh",
+                  "id": "aab32864-e4cc-400f-971c-e15c8c76cb36",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"type\": \"Automatic\",\n  \"commitMode\": \"transactional\",\n  \"maxParallelism\": \"<integer>\",\n  \"retryCount\": \"<integer>\",\n  \"objects\": [\n    {\n      \"table\": \"<string>\",\n      \"partition\": \"<string>\"\n    },\n    {\n      \"table\": \"<string>\",\n      \"partition\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/datasets/:datasetId/refreshes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "datasets",
+                        ":datasetId",
+                        "refreshes"
+                      ],
+                      "variable": [
+                        {
+                          "id": "6f11afee-c2a6-421b-bd4d-8916c55840b7",
+                          "key": "datasetId",
+                          "value": "<uuid>",
+                          "description": "(Required) The unique identifier of the dataset"
+                        }
+                      ]
+                    },
+                    "description": "Triggers a refresh for the specified dataset. For enhanced refresh capabilities, include a request body specifying tables, partitions, or the type of refresh."
+                  },
+                  "response": [
+                    {
+                      "id": "9ea24a54-6c04-40cf-a923-5289d693d9eb",
+                      "name": "Refresh triggered successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"type\": \"Automatic\",\n  \"commitMode\": \"transactional\",\n  \"maxParallelism\": \"<integer>\",\n  \"retryCount\": \"<integer>\",\n  \"objects\": [\n    {\n      \"table\": \"<string>\",\n      \"partition\": \"<string>\"\n    },\n    {\n      \"table\": \"<string>\",\n      \"partition\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/datasets/:datasetId/refreshes",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "datasets",
+                            ":datasetId",
+                            "refreshes"
+                          ],
+                          "variable": [
+                            {
+                              "key": "datasetId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Accepted",
+                      "code": 202,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:39:42.000Z",
+                      "updatedAt": "2026-07-28T02:39:42.000Z",
+                      "uid": "35240-9ea24a54-6c04-40cf-a923-5289d693d9eb"
+                    },
+                    {
+                      "id": "dd7b60eb-d0f0-4e3b-b933-e9eea5934cb4",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"type\": \"Automatic\",\n  \"commitMode\": \"transactional\",\n  \"maxParallelism\": \"<integer>\",\n  \"retryCount\": \"<integer>\",\n  \"objects\": [\n    {\n      \"table\": \"<string>\",\n      \"partition\": \"<string>\"\n    },\n    {\n      \"table\": \"<string>\",\n      \"partition\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/datasets/:datasetId/refreshes",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "datasets",
+                            ":datasetId",
+                            "refreshes"
+                          ],
+                          "variable": [
+                            {
+                              "key": "datasetId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:42.000Z",
+                      "updatedAt": "2026-07-28T02:39:42.000Z",
+                      "uid": "35240-dd7b60eb-d0f0-4e3b-b933-e9eea5934cb4"
+                    },
+                    {
+                      "id": "4f1a3407-83c5-4990-b604-2f94e0fc2116",
+                      "name": "Dataset not found",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"type\": \"Automatic\",\n  \"commitMode\": \"transactional\",\n  \"maxParallelism\": \"<integer>\",\n  \"retryCount\": \"<integer>\",\n  \"objects\": [\n    {\n      \"table\": \"<string>\",\n      \"partition\": \"<string>\"\n    },\n    {\n      \"table\": \"<string>\",\n      \"partition\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/datasets/:datasetId/refreshes",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "datasets",
+                            ":datasetId",
+                            "refreshes"
+                          ],
+                          "variable": [
+                            {
+                              "key": "datasetId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:42.000Z",
+                      "updatedAt": "2026-07-28T02:39:42.000Z",
+                      "uid": "35240-4f1a3407-83c5-4990-b604-2f94e0fc2116"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:39:42.000Z",
+                  "updatedAt": "2026-07-28T02:39:42.000Z",
+                  "uid": "35240-aab32864-e4cc-400f-971c-e15c8c76cb36"
+                }
+              ],
+              "id": "5d51dde6-df1e-4114-9255-ad00e0fa9b97",
+              "createdAt": "2026-07-28T02:39:42.000Z",
+              "updatedAt": "2026-07-28T02:39:42.000Z",
+              "uid": "35240-5d51dde6-df1e-4114-9255-ad00e0fa9b97"
+            },
+            {
+              "name": "datasources",
+              "item": [
+                {
+                  "name": "Power Bi Get Data Sources",
+                  "id": "198e81d8-ff42-4128-854b-740c4c1840a4",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/datasets/:datasetId/datasources",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "datasets",
+                        ":datasetId",
+                        "datasources"
+                      ],
+                      "variable": [
+                        {
+                          "id": "6bdb17c2-939a-402a-8301-81e9cb63fa3b",
+                          "key": "datasetId",
+                          "value": "<uuid>",
+                          "description": "(Required) The unique identifier of the dataset"
+                        }
+                      ]
+                    },
+                    "description": "Returns a list of data sources for the specified dataset. Each data source includes connection details such as the server, database, and data source type."
+                  },
+                  "response": [
+                    {
+                      "id": "d3e8b9b3-013f-4750-875b-b648eec5aa53",
+                      "name": "List of data sources",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/datasets/:datasetId/datasources",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "datasets",
+                            ":datasetId",
+                            "datasources"
+                          ],
+                          "variable": [
+                            {
+                              "key": "datasetId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": [\n    {\n      \"datasourceType\": \"<string>\",\n      \"connectionDetails\": {\n        \"server\": \"<string>\",\n        \"database\": \"<string>\",\n        \"url\": \"<string>\",\n        \"path\": \"<string>\"\n      },\n      \"datasourceId\": \"<uuid>\",\n      \"gatewayId\": \"<uuid>\"\n    },\n    {\n      \"datasourceType\": \"<string>\",\n      \"connectionDetails\": {\n        \"server\": \"<string>\",\n        \"database\": \"<string>\",\n        \"url\": \"<string>\",\n        \"path\": \"<string>\"\n      },\n      \"datasourceId\": \"<uuid>\",\n      \"gatewayId\": \"<uuid>\"\n    }\n  ],\n  \"@odata.context\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:42.000Z",
+                      "updatedAt": "2026-07-28T02:39:42.000Z",
+                      "uid": "35240-d3e8b9b3-013f-4750-875b-b648eec5aa53"
+                    },
+                    {
+                      "id": "4f5651d7-b958-43a1-9a54-6605de210c75",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/datasets/:datasetId/datasources",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "datasets",
+                            ":datasetId",
+                            "datasources"
+                          ],
+                          "variable": [
+                            {
+                              "key": "datasetId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:42.000Z",
+                      "updatedAt": "2026-07-28T02:39:42.000Z",
+                      "uid": "35240-4f5651d7-b958-43a1-9a54-6605de210c75"
+                    },
+                    {
+                      "id": "928ec23b-86e8-4093-abec-b3d9238257ea",
+                      "name": "Dataset not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/datasets/:datasetId/datasources",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "datasets",
+                            ":datasetId",
+                            "datasources"
+                          ],
+                          "variable": [
+                            {
+                              "key": "datasetId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:42.000Z",
+                      "updatedAt": "2026-07-28T02:39:42.000Z",
+                      "uid": "35240-928ec23b-86e8-4093-abec-b3d9238257ea"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:39:42.000Z",
+                  "updatedAt": "2026-07-28T02:39:42.000Z",
+                  "uid": "35240-198e81d8-ff42-4128-854b-740c4c1840a4"
+                }
+              ],
+              "id": "d73781da-79f2-47da-b527-283c75d1e7b9",
+              "createdAt": "2026-07-28T02:39:42.000Z",
+              "updatedAt": "2026-07-28T02:39:42.000Z",
+              "uid": "35240-d73781da-79f2-47da-b527-283c75d1e7b9"
+            },
+            {
+              "name": "parameters",
+              "item": [
+                {
+                  "name": "Power Bi Get Dataset Parameters",
+                  "id": "7ef0f68f-77d8-47ae-80d8-9c04e71e2fa0",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/datasets/:datasetId/parameters",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "datasets",
+                        ":datasetId",
+                        "parameters"
+                      ],
+                      "variable": [
+                        {
+                          "id": "0625ce1a-adf6-4e09-9771-f7aa73bdefa4",
+                          "key": "datasetId",
+                          "value": "<uuid>",
+                          "description": "(Required) The unique identifier of the dataset"
+                        }
+                      ]
+                    },
+                    "description": "Returns a list of parameters for the specified dataset. Parameters allow dynamic configuration of data source connections and query behavior."
+                  },
+                  "response": [
+                    {
+                      "id": "bf9af7ff-0f35-40bb-9ba8-cdce2af41b41",
+                      "name": "List of parameters",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/datasets/:datasetId/parameters",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "datasets",
+                            ":datasetId",
+                            "parameters"
+                          ],
+                          "variable": [
+                            {
+                              "key": "datasetId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"currentValue\": \"<string>\",\n      \"isRequired\": \"<boolean>\",\n      \"suggestedValues\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"currentValue\": \"<string>\",\n      \"isRequired\": \"<boolean>\",\n      \"suggestedValues\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"@odata.context\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:42.000Z",
+                      "updatedAt": "2026-07-28T02:39:42.000Z",
+                      "uid": "35240-bf9af7ff-0f35-40bb-9ba8-cdce2af41b41"
+                    },
+                    {
+                      "id": "180ce0da-b94c-43b5-85a7-d3167dedc8cd",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/datasets/:datasetId/parameters",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "datasets",
+                            ":datasetId",
+                            "parameters"
+                          ],
+                          "variable": [
+                            {
+                              "key": "datasetId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:42.000Z",
+                      "updatedAt": "2026-07-28T02:39:42.000Z",
+                      "uid": "35240-180ce0da-b94c-43b5-85a7-d3167dedc8cd"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:39:42.000Z",
+                  "updatedAt": "2026-07-28T02:39:42.000Z",
+                  "uid": "35240-7ef0f68f-77d8-47ae-80d8-9c04e71e2fa0"
+                },
+                {
+                  "name": "Power Bi Update Dataset Parameters",
+                  "id": "23ac8a2f-b95d-4189-b336-7309065b871c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"updateDetails\": [\n    {\n      \"name\": \"<string>\",\n      \"newValue\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"newValue\": \"<string>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/datasets/:datasetId/parameters",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "datasets",
+                        ":datasetId",
+                        "parameters"
+                      ],
+                      "variable": [
+                        {
+                          "id": "ec2882ae-ac9b-4b5c-a6ce-77db34c56664",
+                          "key": "datasetId",
+                          "value": "<uuid>",
+                          "description": "(Required) The unique identifier of the dataset"
+                        }
+                      ]
+                    },
+                    "description": "Updates the values of one or more parameters for the specified dataset. After updating parameters, a dataset refresh is required for the new values to take effect."
+                  },
+                  "response": [
+                    {
+                      "id": "7d8f7ec1-dae4-4d1c-8f57-93c3c4514490",
+                      "name": "Parameters updated successfully",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"updateDetails\": [\n    {\n      \"name\": \"<string>\",\n      \"newValue\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"newValue\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/datasets/:datasetId/parameters",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "datasets",
+                            ":datasetId",
+                            "parameters"
+                          ],
+                          "variable": [
+                            {
+                              "key": "datasetId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T02:39:42.000Z",
+                      "updatedAt": "2026-07-28T02:39:42.000Z",
+                      "uid": "35240-7d8f7ec1-dae4-4d1c-8f57-93c3c4514490"
+                    },
+                    {
+                      "id": "4f56e0c3-4bd9-4a79-984e-61d510d550bc",
+                      "name": "Invalid parameter values",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"updateDetails\": [\n    {\n      \"name\": \"<string>\",\n      \"newValue\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"newValue\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/datasets/:datasetId/parameters",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "datasets",
+                            ":datasetId",
+                            "parameters"
+                          ],
+                          "variable": [
+                            {
+                              "key": "datasetId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:42.000Z",
+                      "updatedAt": "2026-07-28T02:39:42.000Z",
+                      "uid": "35240-4f56e0c3-4bd9-4a79-984e-61d510d550bc"
+                    },
+                    {
+                      "id": "69904a94-85fb-4143-96e4-b0a97ee8d5a6",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"updateDetails\": [\n    {\n      \"name\": \"<string>\",\n      \"newValue\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"newValue\": \"<string>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/datasets/:datasetId/parameters",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "datasets",
+                            ":datasetId",
+                            "parameters"
+                          ],
+                          "variable": [
+                            {
+                              "key": "datasetId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:42.000Z",
+                      "updatedAt": "2026-07-28T02:39:42.000Z",
+                      "uid": "35240-69904a94-85fb-4143-96e4-b0a97ee8d5a6"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:39:42.000Z",
+                  "updatedAt": "2026-07-28T02:39:42.000Z",
+                  "uid": "35240-23ac8a2f-b95d-4189-b336-7309065b871c"
+                }
+              ],
+              "id": "f88650b0-e42e-4ad4-b13c-3a9ae300853b",
+              "createdAt": "2026-07-28T02:39:42.000Z",
+              "updatedAt": "2026-07-28T02:39:42.000Z",
+              "uid": "35240-f88650b0-e42e-4ad4-b13c-3a9ae300853b"
+            },
+            {
+              "name": "Power Bi Get a Dataset",
+              "id": "f157cf1f-2ef4-4ed6-80dd-60767eeb36a8",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/datasets/:datasetId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "datasets",
+                    ":datasetId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "2debafd6-0eaa-4977-8a5b-bb9050431754",
+                      "key": "datasetId",
+                      "value": "<uuid>",
+                      "description": "(Required) The unique identifier of the dataset"
+                    }
+                  ]
+                },
+                "description": "Returns the specified dataset from the user's My Workspace, including its configuration, tables, and data source details."
+              },
+              "response": [
+                {
+                  "id": "c805a1e6-0ba2-4ea2-8bd0-a84233fc359d",
+                  "name": "Dataset details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/datasets/:datasetId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "datasets",
+                        ":datasetId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "datasetId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"addRowsAPIEnabled\": \"<boolean>\",\n  \"configuredBy\": \"<string>\",\n  \"isRefreshable\": \"<boolean>\",\n  \"isEffectiveIdentityRequired\": \"<boolean>\",\n  \"isEffectiveIdentityRolesRequired\": \"<boolean>\",\n  \"isOnPremGatewayRequired\": \"<boolean>\",\n  \"targetStorageMode\": \"DirectQuery\",\n  \"createReportEmbedURL\": \"<uri>\",\n  \"qnaEmbedURL\": \"<uri>\",\n  \"webUrl\": \"<uri>\",\n  \"createdDate\": \"<dateTime>\",\n  \"contentProviderType\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:39:42.000Z",
+                  "updatedAt": "2026-07-28T02:39:42.000Z",
+                  "uid": "35240-c805a1e6-0ba2-4ea2-8bd0-a84233fc359d"
+                },
+                {
+                  "id": "06abff06-9b62-4a69-8805-577c723de4e8",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/datasets/:datasetId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "datasets",
+                        ":datasetId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "datasetId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T02:39:42.000Z",
+                  "updatedAt": "2026-07-28T02:39:42.000Z",
+                  "uid": "35240-06abff06-9b62-4a69-8805-577c723de4e8"
+                },
+                {
+                  "id": "506d1b4e-1e98-46f7-afb6-c305135c19a1",
+                  "name": "Dataset not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/datasets/:datasetId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "datasets",
+                        ":datasetId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "datasetId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T02:39:42.000Z",
+                  "updatedAt": "2026-07-28T02:39:42.000Z",
+                  "uid": "35240-506d1b4e-1e98-46f7-afb6-c305135c19a1"
+                }
+              ],
+              "createdAt": "2026-07-28T02:39:42.000Z",
+              "updatedAt": "2026-07-28T02:39:42.000Z",
+              "uid": "35240-f157cf1f-2ef4-4ed6-80dd-60767eeb36a8"
+            },
+            {
+              "name": "Power Bi Delete a Dataset",
+              "id": "94ae1e6f-2458-489c-9deb-ec1b67c7116e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/datasets/:datasetId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "datasets",
+                    ":datasetId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "64bde333-c1e2-44e0-a35a-9dac9e57dba9",
+                      "key": "datasetId",
+                      "value": "<uuid>",
+                      "description": "(Required) The unique identifier of the dataset"
+                    }
+                  ]
+                },
+                "description": "Deletes the specified dataset from the user's My Workspace. This also deletes all reports and dashboard tiles that are built on the dataset."
+              },
+              "response": [
+                {
+                  "id": "e80809a7-748c-45dd-8018-c390cd4c0419",
+                  "name": "Dataset deleted successfully",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/datasets/:datasetId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "datasets",
+                        ":datasetId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "datasetId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:39:42.000Z",
+                  "updatedAt": "2026-07-28T02:39:42.000Z",
+                  "uid": "35240-e80809a7-748c-45dd-8018-c390cd4c0419"
+                },
+                {
+                  "id": "862c2fcb-f991-4e91-bc65-e196be29d207",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/datasets/:datasetId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "datasets",
+                        ":datasetId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "datasetId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T02:39:42.000Z",
+                  "updatedAt": "2026-07-28T02:39:42.000Z",
+                  "uid": "35240-862c2fcb-f991-4e91-bc65-e196be29d207"
+                },
+                {
+                  "id": "ae2d56c5-dd18-4df3-828a-45d4ec6d0011",
+                  "name": "Dataset not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/datasets/:datasetId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "datasets",
+                        ":datasetId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "datasetId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T02:39:42.000Z",
+                  "updatedAt": "2026-07-28T02:39:42.000Z",
+                  "uid": "35240-ae2d56c5-dd18-4df3-828a-45d4ec6d0011"
+                }
+              ],
+              "createdAt": "2026-07-28T02:39:42.000Z",
+              "updatedAt": "2026-07-28T02:39:42.000Z",
+              "uid": "35240-94ae1e6f-2458-489c-9deb-ec1b67c7116e"
+            }
+          ],
+          "id": "99731a54-cbc4-465c-bf60-f4dc74a88e54",
+          "createdAt": "2026-07-28T02:39:42.000Z",
+          "updatedAt": "2026-07-28T02:39:42.000Z",
+          "uid": "35240-99731a54-cbc4-465c-bf60-f4dc74a88e54"
+        },
+        {
+          "name": "Power Bi List Datasets",
+          "id": "4b41223f-a84c-4056-8712-e6cb5a62760d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/datasets",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "datasets"
+              ]
+            },
+            "description": "Returns a list of datasets from the user's My Workspace. Each dataset includes metadata such as name, configuration settings, and whether it is a push dataset or refreshable."
+          },
+          "response": [
+            {
+              "id": "70624cde-c81c-47ba-bd85-2150ab9fad45",
+              "name": "List of datasets",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/datasets",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "datasets"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"value\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"addRowsAPIEnabled\": \"<boolean>\",\n      \"configuredBy\": \"<string>\",\n      \"isRefreshable\": \"<boolean>\",\n      \"isEffectiveIdentityRequired\": \"<boolean>\",\n      \"isEffectiveIdentityRolesRequired\": \"<boolean>\",\n      \"isOnPremGatewayRequired\": \"<boolean>\",\n      \"targetStorageMode\": \"PushDataset\",\n      \"createReportEmbedURL\": \"<uri>\",\n      \"qnaEmbedURL\": \"<uri>\",\n      \"webUrl\": \"<uri>\",\n      \"createdDate\": \"<dateTime>\",\n      \"contentProviderType\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"addRowsAPIEnabled\": \"<boolean>\",\n      \"configuredBy\": \"<string>\",\n      \"isRefreshable\": \"<boolean>\",\n      \"isEffectiveIdentityRequired\": \"<boolean>\",\n      \"isEffectiveIdentityRolesRequired\": \"<boolean>\",\n      \"isOnPremGatewayRequired\": \"<boolean>\",\n      \"targetStorageMode\": \"Dual\",\n      \"createReportEmbedURL\": \"<uri>\",\n      \"qnaEmbedURL\": \"<uri>\",\n      \"webUrl\": \"<uri>\",\n      \"createdDate\": \"<dateTime>\",\n      \"contentProviderType\": \"<string>\"\n    }\n  ],\n  \"@odata.context\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:42.000Z",
+              "updatedAt": "2026-07-28T02:39:42.000Z",
+              "uid": "35240-70624cde-c81c-47ba-bd85-2150ab9fad45"
+            },
+            {
+              "id": "8276181b-8708-4e51-83ae-17bbd3c8f366",
+              "name": "Unauthorized - missing or invalid access token",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/datasets",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "datasets"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:39:42.000Z",
+              "updatedAt": "2026-07-28T02:39:42.000Z",
+              "uid": "35240-8276181b-8708-4e51-83ae-17bbd3c8f366"
+            }
+          ],
+          "createdAt": "2026-07-28T02:39:42.000Z",
+          "updatedAt": "2026-07-28T02:39:42.000Z",
+          "uid": "35240-4b41223f-a84c-4056-8712-e6cb5a62760d"
+        },
+        {
+          "name": "Power Bi Create a Push Dataset",
+          "id": "b7456074-2540-4b66-9b2b-703126487ea3",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"tables\": [\n    {\n      \"name\": \"<string>\",\n      \"columns\": [\n        {\n          \"name\": \"<string>\",\n          \"dataType\": \"Decimal\",\n          \"formatString\": \"<string>\",\n          \"sortByColumn\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"dataType\": \"Boolean\",\n          \"formatString\": \"<string>\",\n          \"sortByColumn\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        }\n      ],\n      \"measures\": [\n        {\n          \"name\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"formatString\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"formatString\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"columns\": [\n        {\n          \"name\": \"<string>\",\n          \"dataType\": \"Boolean\",\n          \"formatString\": \"<string>\",\n          \"sortByColumn\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"dataType\": \"Boolean\",\n          \"formatString\": \"<string>\",\n          \"sortByColumn\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        }\n      ],\n      \"measures\": [\n        {\n          \"name\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"formatString\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"formatString\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        }\n      ]\n    }\n  ],\n  \"defaultMode\": \"Streaming\",\n  \"relationships\": [\n    {\n      \"name\": \"<string>\",\n      \"fromTable\": \"<string>\",\n      \"fromColumn\": \"<string>\",\n      \"toTable\": \"<string>\",\n      \"toColumn\": \"<string>\",\n      \"crossFilteringBehavior\": \"BothDirections\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"fromTable\": \"<string>\",\n      \"fromColumn\": \"<string>\",\n      \"toTable\": \"<string>\",\n      \"toColumn\": \"<string>\",\n      \"crossFilteringBehavior\": \"Automatic\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/datasets?defaultRetentionPolicy=basicFIFO",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "datasets"
+              ],
+              "query": [
+                {
+                  "description": "The default retention policy for the dataset",
+                  "key": "defaultRetentionPolicy",
+                  "value": "basicFIFO"
+                }
+              ]
+            },
+            "description": "Creates a new push dataset in the user's My Workspace. Push datasets allow applications to push data directly into Power BI in real time without needing a data source or scheduled refresh."
+          },
+          "response": [
+            {
+              "id": "9772ba72-d647-409a-a383-80d33c2e7113",
+              "name": "Dataset created successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"tables\": [\n    {\n      \"name\": \"<string>\",\n      \"columns\": [\n        {\n          \"name\": \"<string>\",\n          \"dataType\": \"Decimal\",\n          \"formatString\": \"<string>\",\n          \"sortByColumn\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"dataType\": \"Boolean\",\n          \"formatString\": \"<string>\",\n          \"sortByColumn\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        }\n      ],\n      \"measures\": [\n        {\n          \"name\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"formatString\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"formatString\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"columns\": [\n        {\n          \"name\": \"<string>\",\n          \"dataType\": \"Boolean\",\n          \"formatString\": \"<string>\",\n          \"sortByColumn\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"dataType\": \"Boolean\",\n          \"formatString\": \"<string>\",\n          \"sortByColumn\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        }\n      ],\n      \"measures\": [\n        {\n          \"name\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"formatString\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"formatString\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        }\n      ]\n    }\n  ],\n  \"defaultMode\": \"Streaming\",\n  \"relationships\": [\n    {\n      \"name\": \"<string>\",\n      \"fromTable\": \"<string>\",\n      \"fromColumn\": \"<string>\",\n      \"toTable\": \"<string>\",\n      \"toColumn\": \"<string>\",\n      \"crossFilteringBehavior\": \"BothDirections\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"fromTable\": \"<string>\",\n      \"fromColumn\": \"<string>\",\n      \"toTable\": \"<string>\",\n      \"toColumn\": \"<string>\",\n      \"crossFilteringBehavior\": \"Automatic\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/datasets?defaultRetentionPolicy=basicFIFO",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "datasets"
+                  ],
+                  "query": [
+                    {
+                      "description": "The default retention policy for the dataset",
+                      "key": "defaultRetentionPolicy",
+                      "value": "basicFIFO"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"addRowsAPIEnabled\": \"<boolean>\",\n  \"configuredBy\": \"<string>\",\n  \"isRefreshable\": \"<boolean>\",\n  \"isEffectiveIdentityRequired\": \"<boolean>\",\n  \"isEffectiveIdentityRolesRequired\": \"<boolean>\",\n  \"isOnPremGatewayRequired\": \"<boolean>\",\n  \"targetStorageMode\": \"DirectQuery\",\n  \"createReportEmbedURL\": \"<uri>\",\n  \"qnaEmbedURL\": \"<uri>\",\n  \"webUrl\": \"<uri>\",\n  \"createdDate\": \"<dateTime>\",\n  \"contentProviderType\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T02:39:42.000Z",
+              "updatedAt": "2026-07-28T02:39:42.000Z",
+              "uid": "35240-9772ba72-d647-409a-a383-80d33c2e7113"
+            },
+            {
+              "id": "c8555c9f-9b9d-4a9a-b787-a617616f274c",
+              "name": "Invalid request body",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"tables\": [\n    {\n      \"name\": \"<string>\",\n      \"columns\": [\n        {\n          \"name\": \"<string>\",\n          \"dataType\": \"Decimal\",\n          \"formatString\": \"<string>\",\n          \"sortByColumn\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"dataType\": \"Boolean\",\n          \"formatString\": \"<string>\",\n          \"sortByColumn\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        }\n      ],\n      \"measures\": [\n        {\n          \"name\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"formatString\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"formatString\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"columns\": [\n        {\n          \"name\": \"<string>\",\n          \"dataType\": \"Boolean\",\n          \"formatString\": \"<string>\",\n          \"sortByColumn\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"dataType\": \"Boolean\",\n          \"formatString\": \"<string>\",\n          \"sortByColumn\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        }\n      ],\n      \"measures\": [\n        {\n          \"name\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"formatString\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"formatString\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        }\n      ]\n    }\n  ],\n  \"defaultMode\": \"Streaming\",\n  \"relationships\": [\n    {\n      \"name\": \"<string>\",\n      \"fromTable\": \"<string>\",\n      \"fromColumn\": \"<string>\",\n      \"toTable\": \"<string>\",\n      \"toColumn\": \"<string>\",\n      \"crossFilteringBehavior\": \"BothDirections\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"fromTable\": \"<string>\",\n      \"fromColumn\": \"<string>\",\n      \"toTable\": \"<string>\",\n      \"toColumn\": \"<string>\",\n      \"crossFilteringBehavior\": \"Automatic\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/datasets?defaultRetentionPolicy=basicFIFO",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "datasets"
+                  ],
+                  "query": [
+                    {
+                      "description": "The default retention policy for the dataset",
+                      "key": "defaultRetentionPolicy",
+                      "value": "basicFIFO"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:39:42.000Z",
+              "updatedAt": "2026-07-28T02:39:42.000Z",
+              "uid": "35240-c8555c9f-9b9d-4a9a-b787-a617616f274c"
+            },
+            {
+              "id": "3baf8ada-3718-4d0b-b47b-d16a82091f36",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"tables\": [\n    {\n      \"name\": \"<string>\",\n      \"columns\": [\n        {\n          \"name\": \"<string>\",\n          \"dataType\": \"Decimal\",\n          \"formatString\": \"<string>\",\n          \"sortByColumn\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"dataType\": \"Boolean\",\n          \"formatString\": \"<string>\",\n          \"sortByColumn\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        }\n      ],\n      \"measures\": [\n        {\n          \"name\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"formatString\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"formatString\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"columns\": [\n        {\n          \"name\": \"<string>\",\n          \"dataType\": \"Boolean\",\n          \"formatString\": \"<string>\",\n          \"sortByColumn\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"dataType\": \"Boolean\",\n          \"formatString\": \"<string>\",\n          \"sortByColumn\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        }\n      ],\n      \"measures\": [\n        {\n          \"name\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"formatString\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"formatString\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        }\n      ]\n    }\n  ],\n  \"defaultMode\": \"Streaming\",\n  \"relationships\": [\n    {\n      \"name\": \"<string>\",\n      \"fromTable\": \"<string>\",\n      \"fromColumn\": \"<string>\",\n      \"toTable\": \"<string>\",\n      \"toColumn\": \"<string>\",\n      \"crossFilteringBehavior\": \"BothDirections\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"fromTable\": \"<string>\",\n      \"fromColumn\": \"<string>\",\n      \"toTable\": \"<string>\",\n      \"toColumn\": \"<string>\",\n      \"crossFilteringBehavior\": \"Automatic\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/datasets?defaultRetentionPolicy=basicFIFO",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "datasets"
+                  ],
+                  "query": [
+                    {
+                      "description": "The default retention policy for the dataset",
+                      "key": "defaultRetentionPolicy",
+                      "value": "basicFIFO"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:39:42.000Z",
+              "updatedAt": "2026-07-28T02:39:42.000Z",
+              "uid": "35240-3baf8ada-3718-4d0b-b47b-d16a82091f36"
+            },
+            {
+              "id": "604a3e22-1e10-4a3e-84f0-567511169ca7",
+              "name": "Dataset name conflict",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"tables\": [\n    {\n      \"name\": \"<string>\",\n      \"columns\": [\n        {\n          \"name\": \"<string>\",\n          \"dataType\": \"Decimal\",\n          \"formatString\": \"<string>\",\n          \"sortByColumn\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"dataType\": \"Boolean\",\n          \"formatString\": \"<string>\",\n          \"sortByColumn\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        }\n      ],\n      \"measures\": [\n        {\n          \"name\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"formatString\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"formatString\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        }\n      ]\n    },\n    {\n      \"name\": \"<string>\",\n      \"columns\": [\n        {\n          \"name\": \"<string>\",\n          \"dataType\": \"Boolean\",\n          \"formatString\": \"<string>\",\n          \"sortByColumn\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"dataType\": \"Boolean\",\n          \"formatString\": \"<string>\",\n          \"sortByColumn\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        }\n      ],\n      \"measures\": [\n        {\n          \"name\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"formatString\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        },\n        {\n          \"name\": \"<string>\",\n          \"expression\": \"<string>\",\n          \"formatString\": \"<string>\",\n          \"isHidden\": \"<boolean>\"\n        }\n      ]\n    }\n  ],\n  \"defaultMode\": \"Streaming\",\n  \"relationships\": [\n    {\n      \"name\": \"<string>\",\n      \"fromTable\": \"<string>\",\n      \"fromColumn\": \"<string>\",\n      \"toTable\": \"<string>\",\n      \"toColumn\": \"<string>\",\n      \"crossFilteringBehavior\": \"BothDirections\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"fromTable\": \"<string>\",\n      \"fromColumn\": \"<string>\",\n      \"toTable\": \"<string>\",\n      \"toColumn\": \"<string>\",\n      \"crossFilteringBehavior\": \"Automatic\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/datasets?defaultRetentionPolicy=basicFIFO",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "datasets"
+                  ],
+                  "query": [
+                    {
+                      "description": "The default retention policy for the dataset",
+                      "key": "defaultRetentionPolicy",
+                      "value": "basicFIFO"
+                    }
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T02:39:42.000Z",
+              "updatedAt": "2026-07-28T02:39:42.000Z",
+              "uid": "35240-604a3e22-1e10-4a3e-84f0-567511169ca7"
+            }
+          ],
+          "createdAt": "2026-07-28T02:39:42.000Z",
+          "updatedAt": "2026-07-28T02:39:42.000Z",
+          "uid": "35240-b7456074-2540-4b66-9b2b-703126487ea3"
+        }
+      ],
+      "id": "b4724227-d96c-4d36-806b-9ade697bc70f",
+      "createdAt": "2026-07-28T02:39:42.000Z",
+      "updatedAt": "2026-07-28T02:39:42.000Z",
+      "uid": "35240-b4724227-d96c-4d36-806b-9ade697bc70f"
+    },
+    {
+      "name": "groups",
+      "item": [
+        {
+          "name": "{groupId}",
+          "item": [
+            {
+              "name": "datasets",
+              "item": [
+                {
+                  "name": "Power Bi List Datasets in a Workspace",
+                  "id": "d64e0d78-943d-43ec-85ed-24c142ccc627",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/:groupId/datasets",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        ":groupId",
+                        "datasets"
+                      ],
+                      "variable": [
+                        {
+                          "id": "d6bb8daa-7185-4a23-9825-6e2dc3642211",
+                          "key": "groupId",
+                          "value": "<uuid>",
+                          "description": "(Required) The unique identifier of the workspace (group)"
+                        }
+                      ]
+                    },
+                    "description": "Returns a list of datasets from the specified workspace. This is similar to the My Workspace datasets endpoint but scoped to a specific workspace."
+                  },
+                  "response": [
+                    {
+                      "id": "9c5c6628-ae1f-4959-9c6c-8925a74f0240",
+                      "name": "List of datasets in the workspace",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/datasets",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "datasets"
+                          ],
+                          "variable": [
+                            {
+                              "key": "groupId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"value\": [\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"addRowsAPIEnabled\": \"<boolean>\",\n      \"configuredBy\": \"<string>\",\n      \"isRefreshable\": \"<boolean>\",\n      \"isEffectiveIdentityRequired\": \"<boolean>\",\n      \"isEffectiveIdentityRolesRequired\": \"<boolean>\",\n      \"isOnPremGatewayRequired\": \"<boolean>\",\n      \"targetStorageMode\": \"PushDataset\",\n      \"createReportEmbedURL\": \"<uri>\",\n      \"qnaEmbedURL\": \"<uri>\",\n      \"webUrl\": \"<uri>\",\n      \"createdDate\": \"<dateTime>\",\n      \"contentProviderType\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"addRowsAPIEnabled\": \"<boolean>\",\n      \"configuredBy\": \"<string>\",\n      \"isRefreshable\": \"<boolean>\",\n      \"isEffectiveIdentityRequired\": \"<boolean>\",\n      \"isEffectiveIdentityRolesRequired\": \"<boolean>\",\n      \"isOnPremGatewayRequired\": \"<boolean>\",\n      \"targetStorageMode\": \"Dual\",\n      \"createReportEmbedURL\": \"<uri>\",\n      \"qnaEmbedURL\": \"<uri>\",\n      \"webUrl\": \"<uri>\",\n      \"createdDate\": \"<dateTime>\",\n      \"contentProviderType\": \"<string>\"\n    }\n  ],\n  \"@odata.context\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T02:39:42.000Z",
+                      "updatedAt": "2026-07-28T02:39:42.000Z",
+                      "uid": "35240-9c5c6628-ae1f-4959-9c6c-8925a74f0240"
+                    },
+                    {
+                      "id": "b535579b-e418-4386-b8fd-2a7f8181e3a1",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/datasets",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "datasets"
+                          ],
+                          "variable": [
+                            {
+                              "key": "groupId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:42.000Z",
+                      "updatedAt": "2026-07-28T02:39:42.000Z",
+                      "uid": "35240-b535579b-e418-4386-b8fd-2a7f8181e3a1"
+                    },
+                    {
+                      "id": "52c80bea-1cdc-4450-8bdd-36e2b6287f04",
+                      "name": "Workspace not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/groups/:groupId/datasets",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "groups",
+                            ":groupId",
+                            "datasets"
+                          ],
+                          "variable": [
+                            {
+                              "key": "groupId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"error\": {\n    \"code\": \"<string>\",\n    \"message\": \"<string>\",\n    \"details\": [\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      },\n      {\n        \"message\": \"<string>\",\n        \"target\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T02:39:42.000Z",
+                      "updatedAt": "2026-07-28T02:39:42.000Z",
+                      "uid": "35240-52c80bea-1cdc-4450-8bdd-36e2b6287f04"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T02:39:42.000Z",
+                  "updatedAt": "2026-07-28T02:39:42.000Z",
+                  "uid": "35240-d64e0d78-943d-43ec-85ed-24c142ccc627"
+                }
+              ],
+              "id": "f290f4d9-02ce-4539-b5d2-4cb0c357e699",
+              "createdAt": "2026-07-28T02:39:42.000Z",
+              "updatedAt": "2026-07-28T02:39:42.000Z",
+              "uid": "35240-f290f4d9-02ce-4539-b5d2-4cb0c357e699"
+            }
+          ],
+          "id": "c2d37604-6f7c-4d3b-9fb2-e5679f8336f3",
+          "createdAt": "2026-07-28T02:39:42.000Z",
+          "updatedAt": "2026-07-28T02:39:42.000Z",
+          "uid": "35240-c2d37604-6f7c-4d3b-9fb2-e5679f8336f3"
+        }
+      ],
+      "id": "c6678052-ec26-4f6d-84ff-d56d1ebd2430",
+      "createdAt": "2026-07-28T02:39:42.000Z",
+      "updatedAt": "2026-07-28T02:39:42.000Z",
+      "uid": "35240-c6678052-ec26-4f6d-84ff-d56d1ebd2430"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.powerbi.com/v1.0/myorg"
+    }
+  ]
+}
