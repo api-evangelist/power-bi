@@ -20,7 +20,7 @@ image: https://powerbi.microsoft.com/pictures/shared/social/social-default-image
 url: https://powerbi.microsoft.com
 created: '2024'
 modified: '2026-06-20'
-specificationVersion: '0.18'
+specificationVersion: '0.23'
 type: Index
 access: 3rd-Party
 position: Consumer
