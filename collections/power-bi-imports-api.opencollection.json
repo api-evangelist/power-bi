@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Power BI REST Dashboards Imports API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Imports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Power Bi List Imports in a Workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/groups/:groupId/imports",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the workspace (group)"
+              }
+            ]
+          },
+          "docs": "Returns a list of import operations for the specified workspace, including their status and the type of content imported."
+        },
+        {
+          "info": {
+            "name": "Power Bi Import Content Into a Workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.powerbi.com/v1.0/myorg/groups/:groupId/imports",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the workspace (group)"
+              },
+              {
+                "name": "datasetDisplayName",
+                "value": "example_value",
+                "type": "query",
+                "description": "Display name of the dataset"
+              },
+              {
+                "name": "nameConflict",
+                "value": "Ignore",
+                "type": "query",
+                "description": "Action to take if a dataset with the same name exists"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Imports a Power BI PBIX file, Excel workbook, or other supported content into the specified workspace. The file must be uploaded as multipart form data."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

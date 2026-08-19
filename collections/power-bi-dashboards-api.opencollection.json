@@ -1,0 +1,132 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Power BI REST Dashboards API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Dashboards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Power Bi List Dashboards",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/dashboards"
+          },
+          "docs": "Returns a list of dashboards from the user's My Workspace. Each dashboard includes its name, web URL, embed URL, and whether it is read-only."
+        },
+        {
+          "info": {
+            "name": "Power Bi Create a Dashboard",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.powerbi.com/v1.0/myorg/dashboards",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new empty dashboard in the user's My Workspace. After creating the dashboard, use tile pinning to add content."
+        },
+        {
+          "info": {
+            "name": "Power Bi Get a Dashboard",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/dashboards/:dashboardId",
+            "params": [
+              {
+                "name": "dashboardId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the dashboard"
+              }
+            ]
+          },
+          "docs": "Returns the specified dashboard from the user's My Workspace, including its name, embed URL, and configuration."
+        },
+        {
+          "info": {
+            "name": "Power Bi Get Dashboard Tiles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/dashboards/:dashboardId/tiles",
+            "params": [
+              {
+                "name": "dashboardId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the dashboard"
+              }
+            ]
+          },
+          "docs": "Returns a list of tiles within the specified dashboard. Each tile represents a pinned visualization and includes its embed URL, report and dataset references, and configuration."
+        },
+        {
+          "info": {
+            "name": "Power Bi Get a Dashboard Tile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/dashboards/:dashboardId/tiles/:tileId",
+            "params": [
+              {
+                "name": "dashboardId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the dashboard"
+              },
+              {
+                "name": "tileId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the tile"
+              }
+            ]
+          },
+          "docs": "Returns the specified tile from the specified dashboard, including its embed URL and configuration details."
+        },
+        {
+          "info": {
+            "name": "Power Bi List Dashboards in a Workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/groups/:groupId/dashboards",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the workspace (group)"
+              }
+            ]
+          },
+          "docs": "Returns a list of dashboards from the specified workspace."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

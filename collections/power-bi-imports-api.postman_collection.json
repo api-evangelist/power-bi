@@ -1,0 +1,486 @@
+{
+  "item": [
+    {
+      "id": "0fae21ee-5225-4e0d-9e11-36ac4cb8c858",
+      "name": "Imports",
+      "description": {
+        "content": "Import Power BI content such as PBIX files, Excel workbooks, and RDL reports into workspaces.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5c80d244-ab8a-4f57-8e52-71bdfb9ea7d0",
+          "name": "Power Bi List Imports in a Workspace",
+          "request": {
+            "name": "Power Bi List Imports in a Workspace",
+            "description": {
+              "content": "Returns a list of import operations for the specified workspace, including their status and the type of content imported.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "groups",
+                ":groupId",
+                "imports"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "groupId",
+                  "description": "(Required) The unique identifier of the workspace (group)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ee3c0fe7-4978-4a3d-8b89-468c28eb5649",
+              "name": "List of imports",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups",
+                    ":groupId",
+                    "imports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "groupId",
+                      "description": "(Required) The unique identifier of the workspace (group)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"id\": \"abc123\",\n      \"name\": \"Example Title\",\n      \"importState\": \"Publishing\",\n      \"createdDateTime\": \"2026-01-15T10:30:00Z\",\n      \"updatedDateTime\": \"2026-01-15T10:30:00Z\",\n      \"reports\": {},\n      \"datasets\": {}\n    }\n  ],\n  \"@odata.context\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b5890f20-3d87-4214-8ee0-dedc5370de72",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups",
+                    ":groupId",
+                    "imports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "groupId",
+                      "description": "(Required) The unique identifier of the workspace (group)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"example_value\",\n    \"message\": \"example_value\",\n    \"details\": [\n      {\n        \"message\": \"example_value\",\n        \"target\": \"example_value\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c9d2a639-3274-48c0-831e-dff3b155f687",
+          "name": "Power Bi Import Content Into a Workspace",
+          "request": {
+            "name": "Power Bi Import Content Into a Workspace",
+            "description": {
+              "content": "Imports a Power BI PBIX file, Excel workbook, or other supported content into the specified workspace. The file must be uploaded as multipart form data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "groups",
+                ":groupId",
+                "imports"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "datasetDisplayName",
+                  "value": "<string>",
+                  "description": "(Required) Display name of the dataset"
+                },
+                {
+                  "disabled": false,
+                  "key": "nameConflict",
+                  "value": "<string>",
+                  "description": "Action to take if a dataset with the same name exists"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "groupId",
+                  "description": "(Required) The unique identifier of the workspace (group)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "The file to import"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "352037ca-afb1-41a8-bc18-6fffb575631f",
+              "name": "Import started",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups",
+                    ":groupId",
+                    "imports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "datasetDisplayName",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "nameConflict",
+                      "value": "Ignore"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "groupId",
+                      "description": "(Required) The unique identifier of the workspace (group)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "The file to import",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "type": "file"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"abc123\",\n  \"name\": \"Example Title\",\n  \"importState\": \"Publishing\",\n  \"createdDateTime\": \"2026-01-15T10:30:00Z\",\n  \"updatedDateTime\": \"2026-01-15T10:30:00Z\",\n  \"reports\": [\n    {\n      \"id\": \"abc123\",\n      \"name\": \"Example Title\",\n      \"datasetId\": \"500123\",\n      \"webUrl\": \"https://www.example.com\",\n      \"embedUrl\": \"https://www.example.com\",\n      \"reportType\": \"PowerBIReport\",\n      \"description\": \"A sample description.\",\n      \"createdDateTime\": \"2026-01-15T10:30:00Z\",\n      \"modifiedDateTime\": \"2026-01-15T10:30:00Z\",\n      \"modifiedBy\": \"example_value\"\n    }\n  ],\n  \"datasets\": [\n    {\n      \"id\": \"abc123\",\n      \"name\": \"Example Title\",\n      \"addRowsAPIEnabled\": true,\n      \"configuredBy\": \"example_value\",\n      \"isRefreshable\": true,\n      \"isEffectiveIdentityRequired\": true,\n      \"isEffectiveIdentityRolesRequired\": true,\n      \"isOnPremGatewayRequired\": true,\n      \"targetStorageMode\": \"Import\",\n      \"createReportEmbedURL\": \"https://www.example.com\",\n      \"qnaEmbedURL\": \"https://www.example.com\",\n      \"webUrl\": \"https://www.example.com\",\n      \"createdDate\": \"2026-01-15T10:30:00Z\",\n      \"contentProviderType\": \"example_value\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "803660c2-3c99-4a9f-859c-3ebb5fe185b6",
+              "name": "Import accepted and processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups",
+                    ":groupId",
+                    "imports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "datasetDisplayName",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "nameConflict",
+                      "value": "Ignore"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "groupId",
+                      "description": "(Required) The unique identifier of the workspace (group)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "The file to import",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "type": "file"
+                    }
+                  ]
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"abc123\",\n  \"name\": \"Example Title\",\n  \"importState\": \"Publishing\",\n  \"createdDateTime\": \"2026-01-15T10:30:00Z\",\n  \"updatedDateTime\": \"2026-01-15T10:30:00Z\",\n  \"reports\": [\n    {\n      \"id\": \"abc123\",\n      \"name\": \"Example Title\",\n      \"datasetId\": \"500123\",\n      \"webUrl\": \"https://www.example.com\",\n      \"embedUrl\": \"https://www.example.com\",\n      \"reportType\": \"PowerBIReport\",\n      \"description\": \"A sample description.\",\n      \"createdDateTime\": \"2026-01-15T10:30:00Z\",\n      \"modifiedDateTime\": \"2026-01-15T10:30:00Z\",\n      \"modifiedBy\": \"example_value\"\n    }\n  ],\n  \"datasets\": [\n    {\n      \"id\": \"abc123\",\n      \"name\": \"Example Title\",\n      \"addRowsAPIEnabled\": true,\n      \"configuredBy\": \"example_value\",\n      \"isRefreshable\": true,\n      \"isEffectiveIdentityRequired\": true,\n      \"isEffectiveIdentityRolesRequired\": true,\n      \"isOnPremGatewayRequired\": true,\n      \"targetStorageMode\": \"Import\",\n      \"createReportEmbedURL\": \"https://www.example.com\",\n      \"qnaEmbedURL\": \"https://www.example.com\",\n      \"webUrl\": \"https://www.example.com\",\n      \"createdDate\": \"2026-01-15T10:30:00Z\",\n      \"contentProviderType\": \"example_value\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7b256fc2-499d-4c05-8eef-6c6d6c38d24b",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups",
+                    ":groupId",
+                    "imports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "datasetDisplayName",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "nameConflict",
+                      "value": "Ignore"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "groupId",
+                      "description": "(Required) The unique identifier of the workspace (group)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "The file to import",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "type": "file"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"example_value\",\n    \"message\": \"example_value\",\n    \"details\": [\n      {\n        \"message\": \"example_value\",\n        \"target\": \"example_value\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.powerbi.com/v1.0/myorg",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9be74f16-af27-4b5e-9efd-2b7974bc81bf",
+    "name": "Power BI REST Dashboards Imports API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Power BI REST API provides service endpoints for embedding, administration, governance, and user resources. It enables programmatic access to Power BI content including datasets, reports, dashboards, and workspaces (groups). The API uses Azure Active Directory (OAuth 2.0) for authentication and authorization.\n\nContact Support:\n Name: Microsoft Power BI Support",
+      "type": "text/plain"
+    }
+  }
+}

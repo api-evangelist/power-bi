@@ -1,0 +1,176 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Power BI REST Dashboards Reports API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Power Bi List Reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/reports"
+          },
+          "docs": "Returns a list of reports from the user's My Workspace. Each report includes metadata such as name, the associated dataset, web URL, and embed URL for embedding scenarios."
+        },
+        {
+          "info": {
+            "name": "Power Bi Get a Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/reports/:reportId",
+            "params": [
+              {
+                "name": "reportId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the report"
+              }
+            ]
+          },
+          "docs": "Returns the specified report from the user's My Workspace, including its name, dataset binding, web URL, and embed URL."
+        },
+        {
+          "info": {
+            "name": "Power Bi Delete a Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.powerbi.com/v1.0/myorg/reports/:reportId",
+            "params": [
+              {
+                "name": "reportId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the report"
+              }
+            ]
+          },
+          "docs": "Deletes the specified report from the user's My Workspace. This does not delete the underlying dataset."
+        },
+        {
+          "info": {
+            "name": "Power Bi Clone a Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.powerbi.com/v1.0/myorg/reports/:reportId/Clone",
+            "params": [
+              {
+                "name": "reportId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the report"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Clones the specified report from the user's My Workspace. The clone can be placed in a different workspace and optionally rebound to a different dataset."
+        },
+        {
+          "info": {
+            "name": "Power Bi Rebind a Report to a Dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.powerbi.com/v1.0/myorg/reports/:reportId/Rebind",
+            "params": [
+              {
+                "name": "reportId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the report"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Rebinds the specified report to a different dataset. The target dataset must have the same schema as the current dataset."
+        },
+        {
+          "info": {
+            "name": "Power Bi Export a Report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/reports/:reportId/Export",
+            "params": [
+              {
+                "name": "reportId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the report"
+              }
+            ]
+          },
+          "docs": "Exports the specified report as a PBIX file. Only reports created from PBIX files can be exported. Reports created from the Power BI service are not supported."
+        },
+        {
+          "info": {
+            "name": "Power Bi Get Report Pages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/reports/:reportId/pages",
+            "params": [
+              {
+                "name": "reportId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the report"
+              }
+            ]
+          },
+          "docs": "Returns a list of pages within the specified report. Each page includes its name, display name, and order within the report."
+        },
+        {
+          "info": {
+            "name": "Power Bi List Reports in a Workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/groups/:groupId/reports",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the workspace (group)"
+              }
+            ]
+          },
+          "docs": "Returns a list of reports from the specified workspace. Each report includes its metadata and embed information."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

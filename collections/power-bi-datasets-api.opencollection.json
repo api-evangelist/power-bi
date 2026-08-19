@@ -1,0 +1,224 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Power BI REST Dashboards Datasets API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Datasets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Power Bi List Datasets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/datasets"
+          },
+          "docs": "Returns a list of datasets from the user's My Workspace. Each dataset includes metadata such as name, configuration settings, and whether it is a push dataset or refreshable."
+        },
+        {
+          "info": {
+            "name": "Power Bi Create a Push Dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.powerbi.com/v1.0/myorg/datasets",
+            "params": [
+              {
+                "name": "defaultRetentionPolicy",
+                "value": "None",
+                "type": "query",
+                "description": "The default retention policy for the dataset"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new push dataset in the user's My Workspace. Push datasets allow applications to push data directly into Power BI in real time without needing a data source or scheduled refresh."
+        },
+        {
+          "info": {
+            "name": "Power Bi Get a Dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/datasets/:datasetId",
+            "params": [
+              {
+                "name": "datasetId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the dataset"
+              }
+            ]
+          },
+          "docs": "Returns the specified dataset from the user's My Workspace, including its configuration, tables, and data source details."
+        },
+        {
+          "info": {
+            "name": "Power Bi Delete a Dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.powerbi.com/v1.0/myorg/datasets/:datasetId",
+            "params": [
+              {
+                "name": "datasetId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the dataset"
+              }
+            ]
+          },
+          "docs": "Deletes the specified dataset from the user's My Workspace. This also deletes all reports and dashboard tiles that are built on the dataset."
+        },
+        {
+          "info": {
+            "name": "Power Bi Get Refresh History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/datasets/:datasetId/refreshes",
+            "params": [
+              {
+                "name": "datasetId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the dataset"
+              },
+              {
+                "name": "$top",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of refresh entries to return"
+              }
+            ]
+          },
+          "docs": "Returns the refresh history for the specified dataset. The response includes the status, start time, and end time of each refresh operation."
+        },
+        {
+          "info": {
+            "name": "Power Bi Trigger a Dataset Refresh",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.powerbi.com/v1.0/myorg/datasets/:datasetId/refreshes",
+            "params": [
+              {
+                "name": "datasetId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the dataset"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Triggers a refresh for the specified dataset. For enhanced refresh capabilities, include a request body specifying tables, partitions, or the type of refresh."
+        },
+        {
+          "info": {
+            "name": "Power Bi Get Data Sources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/datasets/:datasetId/datasources",
+            "params": [
+              {
+                "name": "datasetId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the dataset"
+              }
+            ]
+          },
+          "docs": "Returns a list of data sources for the specified dataset. Each data source includes connection details such as the server, database, and data source type."
+        },
+        {
+          "info": {
+            "name": "Power Bi Get Dataset Parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/datasets/:datasetId/parameters",
+            "params": [
+              {
+                "name": "datasetId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the dataset"
+              }
+            ]
+          },
+          "docs": "Returns a list of parameters for the specified dataset. Parameters allow dynamic configuration of data source connections and query behavior."
+        },
+        {
+          "info": {
+            "name": "Power Bi Update Dataset Parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.powerbi.com/v1.0/myorg/datasets/:datasetId/parameters",
+            "params": [
+              {
+                "name": "datasetId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the dataset"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the values of one or more parameters for the specified dataset. After updating parameters, a dataset refresh is required for the new values to take effect."
+        },
+        {
+          "info": {
+            "name": "Power Bi List Datasets in a Workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/groups/:groupId/datasets",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the workspace (group)"
+              }
+            ]
+          },
+          "docs": "Returns a list of datasets from the specified workspace. This is similar to the My Workspace datasets endpoint but scoped to a specific workspace."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,73 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Power BI REST Dashboards Gateways API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Gateways",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Power Bi List Gateways",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/gateways"
+          },
+          "docs": "Returns a list of on-premises data gateways that the user has permissions to administer. Each gateway includes its cluster information and public key for credential encryption."
+        },
+        {
+          "info": {
+            "name": "Power Bi Get a Gateway",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/gateways/:gatewayId",
+            "params": [
+              {
+                "name": "gatewayId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the gateway"
+              }
+            ]
+          },
+          "docs": "Returns the specified on-premises data gateway."
+        },
+        {
+          "info": {
+            "name": "Power Bi List Gateway Data Sources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/gateways/:gatewayId/datasources",
+            "params": [
+              {
+                "name": "gatewayId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the gateway"
+              }
+            ]
+          },
+          "docs": "Returns a list of data sources configured on the specified gateway."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

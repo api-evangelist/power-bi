@@ -2,193 +2,198 @@ generated: '2026-06-20'
 method: derived
 status: candidate
 source: openapi/power-bi-rest-api-openapi.yml
-notes: >-
-  No official first-party hosted Power BI MCP server was found on Microsoft docs or the
-  MCP registries at harvest time. The following is a candidate tool list derived one-to-one
-  from the Power BI REST API OpenAPI operations, for building an MCP server over the API.
+notes: No official first-party hosted Power BI MCP server was found on Microsoft docs or the MCP registries
+  at harvest time. The following is a candidate tool list derived one-to-one from the Power BI REST API
+  OpenAPI operations, for building an MCP server over the API.
 server:
   name: power-bi
   transport: http
   base_url: https://api.powerbi.com/v1.0/myorg
   auth: Azure AD OAuth 2.0 bearer token (resource https://analysis.windows.net/powerbi/api)
 tools:
-  - name: get_datasets
-    description: "Power Bi List Datasets"
-    method: GET
-    path: /datasets
-    source_operation: openapi/power-bi-rest-api-openapi.yml#getDatasets
-  - name: create_dataset
-    description: "Power Bi Create a Push Dataset"
-    method: POST
-    path: /datasets
-    source_operation: openapi/power-bi-rest-api-openapi.yml#createDataset
-  - name: get_dataset
-    description: "Power Bi Get a Dataset"
-    method: GET
-    path: /datasets/{datasetId}
-    source_operation: openapi/power-bi-rest-api-openapi.yml#getDataset
-  - name: delete_dataset
-    description: "Power Bi Delete a Dataset"
-    method: DELETE
-    path: /datasets/{datasetId}
-    source_operation: openapi/power-bi-rest-api-openapi.yml#deleteDataset
-  - name: get_refresh_history
-    description: "Power Bi Get Refresh History"
-    method: GET
-    path: /datasets/{datasetId}/refreshes
-    source_operation: openapi/power-bi-rest-api-openapi.yml#getRefreshHistory
-  - name: refresh_dataset
-    description: "Power Bi Trigger a Dataset Refresh"
-    method: POST
-    path: /datasets/{datasetId}/refreshes
-    source_operation: openapi/power-bi-rest-api-openapi.yml#refreshDataset
-  - name: get_datasources
-    description: "Power Bi Get Data Sources"
-    method: GET
-    path: /datasets/{datasetId}/datasources
-    source_operation: openapi/power-bi-rest-api-openapi.yml#getDatasources
-  - name: get_parameters
-    description: "Power Bi Get Dataset Parameters"
-    method: GET
-    path: /datasets/{datasetId}/parameters
-    source_operation: openapi/power-bi-rest-api-openapi.yml#getParameters
-  - name: update_parameters
-    description: "Power Bi Update Dataset Parameters"
-    method: POST
-    path: /datasets/{datasetId}/parameters
-    source_operation: openapi/power-bi-rest-api-openapi.yml#updateParameters
-  - name: get_reports
-    description: "Power Bi List Reports"
-    method: GET
-    path: /reports
-    source_operation: openapi/power-bi-rest-api-openapi.yml#getReports
-  - name: get_report
-    description: "Power Bi Get a Report"
-    method: GET
-    path: /reports/{reportId}
-    source_operation: openapi/power-bi-rest-api-openapi.yml#getReport
-  - name: delete_report
-    description: "Power Bi Delete a Report"
-    method: DELETE
-    path: /reports/{reportId}
-    source_operation: openapi/power-bi-rest-api-openapi.yml#deleteReport
-  - name: clone_report
-    description: "Power Bi Clone a Report"
-    method: POST
-    path: /reports/{reportId}/Clone
-    source_operation: openapi/power-bi-rest-api-openapi.yml#cloneReport
-  - name: rebind_report
-    description: "Power Bi Rebind a Report to a Dataset"
-    method: POST
-    path: /reports/{reportId}/Rebind
-    source_operation: openapi/power-bi-rest-api-openapi.yml#rebindReport
-  - name: export_report
-    description: "Power Bi Export a Report"
-    method: GET
-    path: /reports/{reportId}/Export
-    source_operation: openapi/power-bi-rest-api-openapi.yml#exportReport
-  - name: get_pages
-    description: "Power Bi Get Report Pages"
-    method: GET
-    path: /reports/{reportId}/pages
-    source_operation: openapi/power-bi-rest-api-openapi.yml#getPages
-  - name: get_dashboards
-    description: "Power Bi List Dashboards"
-    method: GET
-    path: /dashboards
-    source_operation: openapi/power-bi-rest-api-openapi.yml#getDashboards
-  - name: create_dashboard
-    description: "Power Bi Create a Dashboard"
-    method: POST
-    path: /dashboards
-    source_operation: openapi/power-bi-rest-api-openapi.yml#createDashboard
-  - name: get_dashboard
-    description: "Power Bi Get a Dashboard"
-    method: GET
-    path: /dashboards/{dashboardId}
-    source_operation: openapi/power-bi-rest-api-openapi.yml#getDashboard
-  - name: get_tiles
-    description: "Power Bi Get Dashboard Tiles"
-    method: GET
-    path: /dashboards/{dashboardId}/tiles
-    source_operation: openapi/power-bi-rest-api-openapi.yml#getTiles
-  - name: get_tile
-    description: "Power Bi Get a Dashboard Tile"
-    method: GET
-    path: /dashboards/{dashboardId}/tiles/{tileId}
-    source_operation: openapi/power-bi-rest-api-openapi.yml#getTile
-  - name: get_groups
-    description: "Power Bi List Workspaces"
-    method: GET
-    path: /groups
-    source_operation: openapi/power-bi-rest-api-openapi.yml#getGroups
-  - name: create_group
-    description: "Power Bi Create a Workspace"
-    method: POST
-    path: /groups
-    source_operation: openapi/power-bi-rest-api-openapi.yml#createGroup
-  - name: delete_group
-    description: "Power Bi Delete a Workspace"
-    method: DELETE
-    path: /groups/{groupId}
-    source_operation: openapi/power-bi-rest-api-openapi.yml#deleteGroup
-  - name: get_group_users
-    description: "Power Bi List Workspace Users"
-    method: GET
-    path: /groups/{groupId}/users
-    source_operation: openapi/power-bi-rest-api-openapi.yml#getGroupUsers
-  - name: add_group_user
-    description: "Power Bi Add a Workspace User"
-    method: POST
-    path: /groups/{groupId}/users
-    source_operation: openapi/power-bi-rest-api-openapi.yml#addGroupUser
-  - name: update_group_user
-    description: "Power Bi Update Workspace User Access"
-    method: PUT
-    path: /groups/{groupId}/users/{userId}
-    source_operation: openapi/power-bi-rest-api-openapi.yml#updateGroupUser
-  - name: delete_group_user
-    description: "Power Bi Remove a Workspace User"
-    method: DELETE
-    path: /groups/{groupId}/users/{userId}
-    source_operation: openapi/power-bi-rest-api-openapi.yml#deleteGroupUser
-  - name: get_datasets_in_group
-    description: "Power Bi List Datasets in a Workspace"
-    method: GET
-    path: /groups/{groupId}/datasets
-    source_operation: openapi/power-bi-rest-api-openapi.yml#getDatasetsInGroup
-  - name: get_reports_in_group
-    description: "Power Bi List Reports in a Workspace"
-    method: GET
-    path: /groups/{groupId}/reports
-    source_operation: openapi/power-bi-rest-api-openapi.yml#getReportsInGroup
-  - name: get_dashboards_in_group
-    description: "Power Bi List Dashboards in a Workspace"
-    method: GET
-    path: /groups/{groupId}/dashboards
-    source_operation: openapi/power-bi-rest-api-openapi.yml#getDashboardsInGroup
-  - name: get_imports_in_group
-    description: "Power Bi List Imports in a Workspace"
-    method: GET
-    path: /groups/{groupId}/imports
-    source_operation: openapi/power-bi-rest-api-openapi.yml#getImportsInGroup
-  - name: create_import_in_group
-    description: "Power Bi Import Content Into a Workspace"
-    method: POST
-    path: /groups/{groupId}/imports
-    source_operation: openapi/power-bi-rest-api-openapi.yml#createImportInGroup
-  - name: get_gateways
-    description: "Power Bi List Gateways"
-    method: GET
-    path: /gateways
-    source_operation: openapi/power-bi-rest-api-openapi.yml#getGateways
-  - name: get_gateway
-    description: "Power Bi Get a Gateway"
-    method: GET
-    path: /gateways/{gatewayId}
-    source_operation: openapi/power-bi-rest-api-openapi.yml#getGateway
-  - name: get_gateway_datasources
-    description: "Power Bi List Gateway Data Sources"
-    method: GET
-    path: /gateways/{gatewayId}/datasources
-    source_operation: openapi/power-bi-rest-api-openapi.yml#getGatewayDatasources
+- name: get_datasets
+  description: Power Bi List Datasets
+  method: GET
+  path: /datasets
+  source_operation: openapi/power-bi-rest-api-openapi.yml#getDatasets
+- name: create_dataset
+  description: Power Bi Create a Push Dataset
+  method: POST
+  path: /datasets
+  source_operation: openapi/power-bi-rest-api-openapi.yml#createDataset
+- name: get_dataset
+  description: Power Bi Get a Dataset
+  method: GET
+  path: /datasets/{datasetId}
+  source_operation: openapi/power-bi-rest-api-openapi.yml#getDataset
+- name: delete_dataset
+  description: Power Bi Delete a Dataset
+  method: DELETE
+  path: /datasets/{datasetId}
+  source_operation: openapi/power-bi-rest-api-openapi.yml#deleteDataset
+- name: get_refresh_history
+  description: Power Bi Get Refresh History
+  method: GET
+  path: /datasets/{datasetId}/refreshes
+  source_operation: openapi/power-bi-rest-api-openapi.yml#getRefreshHistory
+- name: refresh_dataset
+  description: Power Bi Trigger a Dataset Refresh
+  method: POST
+  path: /datasets/{datasetId}/refreshes
+  source_operation: openapi/power-bi-rest-api-openapi.yml#refreshDataset
+- name: get_datasources
+  description: Power Bi Get Data Sources
+  method: GET
+  path: /datasets/{datasetId}/datasources
+  source_operation: openapi/power-bi-rest-api-openapi.yml#getDatasources
+- name: get_parameters
+  description: Power Bi Get Dataset Parameters
+  method: GET
+  path: /datasets/{datasetId}/parameters
+  source_operation: openapi/power-bi-rest-api-openapi.yml#getParameters
+- name: update_parameters
+  description: Power Bi Update Dataset Parameters
+  method: POST
+  path: /datasets/{datasetId}/parameters
+  source_operation: openapi/power-bi-rest-api-openapi.yml#updateParameters
+- name: get_reports
+  description: Power Bi List Reports
+  method: GET
+  path: /reports
+  source_operation: openapi/power-bi-rest-api-openapi.yml#getReports
+- name: get_report
+  description: Power Bi Get a Report
+  method: GET
+  path: /reports/{reportId}
+  source_operation: openapi/power-bi-rest-api-openapi.yml#getReport
+- name: delete_report
+  description: Power Bi Delete a Report
+  method: DELETE
+  path: /reports/{reportId}
+  source_operation: openapi/power-bi-rest-api-openapi.yml#deleteReport
+- name: clone_report
+  description: Power Bi Clone a Report
+  method: POST
+  path: /reports/{reportId}/Clone
+  source_operation: openapi/power-bi-rest-api-openapi.yml#cloneReport
+- name: rebind_report
+  description: Power Bi Rebind a Report to a Dataset
+  method: POST
+  path: /reports/{reportId}/Rebind
+  source_operation: openapi/power-bi-rest-api-openapi.yml#rebindReport
+- name: export_report
+  description: Power Bi Export a Report
+  method: GET
+  path: /reports/{reportId}/Export
+  source_operation: openapi/power-bi-rest-api-openapi.yml#exportReport
+- name: get_pages
+  description: Power Bi Get Report Pages
+  method: GET
+  path: /reports/{reportId}/pages
+  source_operation: openapi/power-bi-rest-api-openapi.yml#getPages
+- name: get_dashboards
+  description: Power Bi List Dashboards
+  method: GET
+  path: /dashboards
+  source_operation: openapi/power-bi-rest-api-openapi.yml#getDashboards
+- name: create_dashboard
+  description: Power Bi Create a Dashboard
+  method: POST
+  path: /dashboards
+  source_operation: openapi/power-bi-rest-api-openapi.yml#createDashboard
+- name: get_dashboard
+  description: Power Bi Get a Dashboard
+  method: GET
+  path: /dashboards/{dashboardId}
+  source_operation: openapi/power-bi-rest-api-openapi.yml#getDashboard
+- name: get_tiles
+  description: Power Bi Get Dashboard Tiles
+  method: GET
+  path: /dashboards/{dashboardId}/tiles
+  source_operation: openapi/power-bi-rest-api-openapi.yml#getTiles
+- name: get_tile
+  description: Power Bi Get a Dashboard Tile
+  method: GET
+  path: /dashboards/{dashboardId}/tiles/{tileId}
+  source_operation: openapi/power-bi-rest-api-openapi.yml#getTile
+- name: get_groups
+  description: Power Bi List Workspaces
+  method: GET
+  path: /groups
+  source_operation: openapi/power-bi-rest-api-openapi.yml#getGroups
+- name: create_group
+  description: Power Bi Create a Workspace
+  method: POST
+  path: /groups
+  source_operation: openapi/power-bi-rest-api-openapi.yml#createGroup
+- name: delete_group
+  description: Power Bi Delete a Workspace
+  method: DELETE
+  path: /groups/{groupId}
+  source_operation: openapi/power-bi-rest-api-openapi.yml#deleteGroup
+- name: get_group_users
+  description: Power Bi List Workspace Users
+  method: GET
+  path: /groups/{groupId}/users
+  source_operation: openapi/power-bi-rest-api-openapi.yml#getGroupUsers
+- name: add_group_user
+  description: Power Bi Add a Workspace User
+  method: POST
+  path: /groups/{groupId}/users
+  source_operation: openapi/power-bi-rest-api-openapi.yml#addGroupUser
+- name: update_group_user
+  description: Power Bi Update Workspace User Access
+  method: PUT
+  path: /groups/{groupId}/users/{userId}
+  source_operation: openapi/power-bi-rest-api-openapi.yml#updateGroupUser
+- name: delete_group_user
+  description: Power Bi Remove a Workspace User
+  method: DELETE
+  path: /groups/{groupId}/users/{userId}
+  source_operation: openapi/power-bi-rest-api-openapi.yml#deleteGroupUser
+- name: get_datasets_in_group
+  description: Power Bi List Datasets in a Workspace
+  method: GET
+  path: /groups/{groupId}/datasets
+  source_operation: openapi/power-bi-rest-api-openapi.yml#getDatasetsInGroup
+- name: get_reports_in_group
+  description: Power Bi List Reports in a Workspace
+  method: GET
+  path: /groups/{groupId}/reports
+  source_operation: openapi/power-bi-rest-api-openapi.yml#getReportsInGroup
+- name: get_dashboards_in_group
+  description: Power Bi List Dashboards in a Workspace
+  method: GET
+  path: /groups/{groupId}/dashboards
+  source_operation: openapi/power-bi-rest-api-openapi.yml#getDashboardsInGroup
+- name: get_imports_in_group
+  description: Power Bi List Imports in a Workspace
+  method: GET
+  path: /groups/{groupId}/imports
+  source_operation: openapi/power-bi-rest-api-openapi.yml#getImportsInGroup
+- name: create_import_in_group
+  description: Power Bi Import Content Into a Workspace
+  method: POST
+  path: /groups/{groupId}/imports
+  source_operation: openapi/power-bi-rest-api-openapi.yml#createImportInGroup
+- name: get_gateways
+  description: Power Bi List Gateways
+  method: GET
+  path: /gateways
+  source_operation: openapi/power-bi-rest-api-openapi.yml#getGateways
+- name: get_gateway
+  description: Power Bi Get a Gateway
+  method: GET
+  path: /gateways/{gatewayId}
+  source_operation: openapi/power-bi-rest-api-openapi.yml#getGateway
+- name: get_gateway_datasources
+  description: Power Bi List Gateway Data Sources
+  method: GET
+  path: /gateways/{gatewayId}/datasources
+  source_operation: openapi/power-bi-rest-api-openapi.yml#getGatewayDatasources
+deployment:
+  mode: none
+  verified: derived
+  tools: 36
+  checked: '2026-08-12'
+  source: catalog MCP census

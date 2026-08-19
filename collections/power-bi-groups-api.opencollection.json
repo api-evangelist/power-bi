@@ -1,0 +1,302 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Power BI REST Dashboards Groups API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Power Bi List Workspaces",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/groups",
+            "params": [
+              {
+                "name": "$filter",
+                "value": "example_value",
+                "type": "query",
+                "description": "OData filter expression to filter workspaces"
+              },
+              {
+                "name": "$top",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of workspaces to return"
+              },
+              {
+                "name": "$skip",
+                "value": "10",
+                "type": "query",
+                "description": "Number of workspaces to skip"
+              }
+            ]
+          },
+          "docs": "Returns a list of workspaces (groups) the user has access to. Each workspace includes its name, type, and whether it is read-only or on a dedicated capacity."
+        },
+        {
+          "info": {
+            "name": "Power Bi Create a Workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.powerbi.com/v1.0/myorg/groups",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new workspace (group). The workspace can be assigned to a Premium capacity for enhanced features and performance."
+        },
+        {
+          "info": {
+            "name": "Power Bi Delete a Workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.powerbi.com/v1.0/myorg/groups/:groupId",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the workspace (group)"
+              }
+            ]
+          },
+          "docs": "Deletes the specified workspace. All content within the workspace including dashboards, reports, and datasets will be permanently removed."
+        },
+        {
+          "info": {
+            "name": "Power Bi List Workspace Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/groups/:groupId/users",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the workspace (group)"
+              }
+            ]
+          },
+          "docs": "Returns a list of users who have access to the specified workspace, including their display name, email address, and access rights."
+        },
+        {
+          "info": {
+            "name": "Power Bi Add a Workspace User",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.powerbi.com/v1.0/myorg/groups/:groupId/users",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the workspace (group)"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Grants the specified user access to the workspace with the given access right (Admin, Member, Contributor, or Viewer)."
+        },
+        {
+          "info": {
+            "name": "Power Bi Update Workspace User Access",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.powerbi.com/v1.0/myorg/groups/:groupId/users/:userId",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the workspace (group)"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The email address or object ID of the user"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the access right for the specified user in the workspace."
+        },
+        {
+          "info": {
+            "name": "Power Bi Remove a Workspace User",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.powerbi.com/v1.0/myorg/groups/:groupId/users/:userId",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the workspace (group)"
+              },
+              {
+                "name": "userId",
+                "value": "",
+                "type": "path",
+                "description": "The email address or object ID of the user"
+              }
+            ]
+          },
+          "docs": "Removes the specified user from the workspace, revoking all access."
+        },
+        {
+          "info": {
+            "name": "Power Bi List Datasets in a Workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/groups/:groupId/datasets",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the workspace (group)"
+              }
+            ]
+          },
+          "docs": "Returns a list of datasets from the specified workspace. This is similar to the My Workspace datasets endpoint but scoped to a specific workspace."
+        },
+        {
+          "info": {
+            "name": "Power Bi List Reports in a Workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/groups/:groupId/reports",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the workspace (group)"
+              }
+            ]
+          },
+          "docs": "Returns a list of reports from the specified workspace. Each report includes its metadata and embed information."
+        },
+        {
+          "info": {
+            "name": "Power Bi List Dashboards in a Workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/groups/:groupId/dashboards",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the workspace (group)"
+              }
+            ]
+          },
+          "docs": "Returns a list of dashboards from the specified workspace."
+        },
+        {
+          "info": {
+            "name": "Power Bi List Imports in a Workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.powerbi.com/v1.0/myorg/groups/:groupId/imports",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the workspace (group)"
+              }
+            ]
+          },
+          "docs": "Returns a list of import operations for the specified workspace, including their status and the type of content imported."
+        },
+        {
+          "info": {
+            "name": "Power Bi Import Content Into a Workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.powerbi.com/v1.0/myorg/groups/:groupId/imports",
+            "params": [
+              {
+                "name": "groupId",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the workspace (group)"
+              },
+              {
+                "name": "datasetDisplayName",
+                "value": "example_value",
+                "type": "query",
+                "description": "Display name of the dataset"
+              },
+              {
+                "name": "nameConflict",
+                "value": "Ignore",
+                "type": "query",
+                "description": "Action to take if a dataset with the same name exists"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Imports a Power BI PBIX file, Excel workbook, or other supported content into the specified workspace. The file must be uploaded as multipart form data."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
