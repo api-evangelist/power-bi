@@ -238,6 +238,8 @@ apis:
   humanURL: https://docs.microsoft.com/en-us/rest/api/power-bi/
   baseURL: https://api.powerbi.com
   tags:
+  - Group
+  tags_raw:
   - Groups
   properties:
   - type: OpenAPI
