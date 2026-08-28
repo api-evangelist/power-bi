@@ -3,6 +3,19 @@ description: >-
   Microsoft Power BI is a business analytics service that delivers insights to enable fast, informed decisions. It
   provides interactive visualizations and business intelligence capabilities with an interface simple enough for end
   users to create their own reports and dashboards.
+deliveryModel:
+  model: unknown
+  open_source: unknown
+  commercial: true
+  callable_host: true
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  - pricing
+  - repository-unlicensed
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
@@ -319,6 +332,19 @@ apis:
   - type: Troubleshooting
     url: https://learn.microsoft.com/en-us/power-bi/developer/embedded/troubleshoot-rest-api
 common:
+  - type: CapabilityMap
+    url: capabilities/power-bi-capability-edges.yml
+    name: Power BI Business Capability Map
+  - type: IssueTracker
+    url: https://github.com/Microsoft/PowerBI-JavaScript/issues
+  - type: Releases
+    url: https://github.com/Microsoft/PowerBI-JavaScript/releases
+  - type: SecurityPolicy
+    url: https://github.com/microsoft/PowerBI-JavaScript/blob/master/SECURITY.md
+  - type: CodeOfConduct
+    url: https://github.com/microsoft/.github/blob/main/CODE_OF_CONDUCT.md
+  - type: ContributionGuide
+    url: https://github.com/microsoft/PowerBI-JavaScript/blob/master/CONTRIBUTING.md
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/power-bi/overview
   - type: AgenticAccess
