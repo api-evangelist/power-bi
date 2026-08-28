@@ -12,8 +12,8 @@ info:
     opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: powerBiApi
-  url: ../openapi/power-bi-rest-api-openapi.yml
+- name: groupsApi
+  url: ../openapi/power-bi-groups-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: workspace-provision-access

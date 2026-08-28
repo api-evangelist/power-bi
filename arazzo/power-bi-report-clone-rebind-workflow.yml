@@ -13,8 +13,8 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: powerBiApi
-  url: ../openapi/power-bi-rest-api-openapi.yml
+- name: reportsApi
+  url: ../openapi/power-bi-reports-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: report-clone-rebind
