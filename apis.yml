@@ -1,8 +1,5 @@
 name: Power BI
-description: >-
-  Microsoft Power BI is a business analytics service that delivers insights to enable fast, informed decisions. It
-  provides interactive visualizations and business intelligence capabilities with an interface simple enough for end
-  users to create their own reports and dashboards.
+description: Microsoft Power BI is a business analytics service that delivers insights to enable fast, informed decisions. It provides interactive visualizations and business intelligence capabilities with an interface simple enough for end users to create their own reports and dashboards.
 deliveryModel:
   model: unknown
   open_source: unknown
@@ -38,17 +35,15 @@ type: Index
 access: 3rd-Party
 position: Consuming
 tags:
-  - Analytics
-  - Business Intelligence
-  - Dashboards
-  - Data Analysis
-  - Reporting
-  - Visualization
+- Analytics
+- Business Intelligence
+- Dashboards
+- Data Analysis
+- Reporting
+- Visualization
 apis:
 - name: Power BI Embedded
-  description: >-
-    Azure service that enables ISVs and developers to embed Power BI visuals, reports, and dashboards
-    into their applications.
+  description: Azure service that enables ISVs and developers to embed Power BI visuals, reports, and dashboards into their applications.
   image: https://powerbi.microsoft.com/pictures/shared/social/social-default-image.png
   humanURL: https://azure.microsoft.com/en-us/services/power-bi-embedded/
   baseURL: https://api.powerbi.com
@@ -72,8 +67,7 @@ apis:
   - type: Authentication
     url: https://learn.microsoft.com/en-us/power-bi/developer/embedded/embed-tokens
   - type: SDKs
-    url: >-
-      https://learn.microsoft.com/en-us/javascript/api/overview/powerbi/embedded-analytics-client-api
+    url: https://learn.microsoft.com/en-us/javascript/api/overview/powerbi/embedded-analytics-client-api
     title: JavaScript SDK
   - type: SDKs
     url: https://github.com/microsoft/PowerBI-CSharp
@@ -95,9 +89,7 @@ apis:
   - type: GettingStarted
     url: https://learn.microsoft.com/en-us/power-bi/admin/service-admin-health
 - name: Power BI Push Datasets API
-  description: >-
-    The Push Datasets API enables real-time data streaming by allowing applications to create push datasets
-    and post rows of data directly into Power BI datasets.
+  description: The Push Datasets API enables real-time data streaming by allowing applications to create push datasets and post rows of data directly into Power BI datasets.
   image: https://powerbi.microsoft.com/pictures/shared/social/social-default-image.png
   humanURL: https://learn.microsoft.com/en-us/rest/api/power-bi/push-datasets
   baseURL: https://api.powerbi.com
@@ -114,9 +106,7 @@ apis:
   - type: Authentication
     url: https://learn.microsoft.com/en-us/power-bi/developer/embedded/get-azuread-access-token
 - name: Power BI Report Server REST API
-  description: >-
-    The Power BI Report Server REST API provides programmatic access to report server catalog objects
-    such as folders, reports, KPIs, data sources, datasets, refresh plans, and subscriptions.
+  description: The Power BI Report Server REST API provides programmatic access to report server catalog objects such as folders, reports, KPIs, data sources, datasets, refresh plans, and subscriptions.
   image: https://powerbi.microsoft.com/pictures/shared/social/social-default-image.png
   humanURL: https://learn.microsoft.com/en-us/rest/api/power-bi-report/
   baseURL: https://api.powerbi.com
@@ -135,9 +125,7 @@ apis:
   - type: ReleaseNotes
     url: https://learn.microsoft.com/en-us/power-bi/report-server/whats-new
 - name: Power BI Visuals API
-  description: >-
-    The Power BI Visuals API enables developers to create custom visuals that can be used in Power BI
-    reports and dashboards, extending the built-in visualization capabilities.
+  description: The Power BI Visuals API enables developers to create custom visuals that can be used in Power BI reports and dashboards, extending the built-in visualization capabilities.
   image: https://powerbi.microsoft.com/pictures/shared/social/social-default-image.png
   humanURL: https://learn.microsoft.com/en-us/power-bi/developer/visuals/
   baseURL: https://api.powerbi.com
@@ -159,9 +147,7 @@ apis:
     url: https://learn.microsoft.com/en-us/power-bi/developer/visuals/authentication-api
 - aid: power-bi:power-bi-dashboards-api
   name: Power BI Dashboards API
-  description: >-
-    Manage dashboards including listing, creating, and retrieving tiles. Dashboards are single-page canvases
-    with pinned visualizations.
+  description: Manage dashboards including listing, creating, and retrieving tiles. Dashboards are single-page canvases with pinned visualizations.
   humanURL: https://docs.microsoft.com/en-us/rest/api/power-bi/
   baseURL: https://api.powerbi.com
   tags:
@@ -182,15 +168,12 @@ apis:
   - type: SDKs
     url: https://docs.microsoft.com/en-us/javascript/api/overview/powerbi/
   - type: ChangeLog
-    url: >-
-      https://docs.microsoft.com/en-us/power-bi/developer/embedded/embedded-analytics-power-bi-changelog
+    url: https://docs.microsoft.com/en-us/power-bi/developer/embedded/embedded-analytics-power-bi-changelog
   - type: Troubleshooting
     url: https://learn.microsoft.com/en-us/power-bi/developer/embedded/troubleshoot-rest-api
 - aid: power-bi:power-bi-datasets-api
   name: Power BI Datasets API
-  description: >-
-    Manage datasets including creating, updating, refreshing, and deleting datasets. Datasets represent
-    the data model behind Power BI reports.
+  description: Manage datasets including creating, updating, refreshing, and deleting datasets. Datasets represent the data model behind Power BI reports.
   humanURL: https://docs.microsoft.com/en-us/rest/api/power-bi/
   baseURL: https://api.powerbi.com
   tags:
@@ -211,14 +194,12 @@ apis:
   - type: SDKs
     url: https://docs.microsoft.com/en-us/javascript/api/overview/powerbi/
   - type: ChangeLog
-    url: >-
-      https://docs.microsoft.com/en-us/power-bi/developer/embedded/embedded-analytics-power-bi-changelog
+    url: https://docs.microsoft.com/en-us/power-bi/developer/embedded/embedded-analytics-power-bi-changelog
   - type: Troubleshooting
     url: https://learn.microsoft.com/en-us/power-bi/developer/embedded/troubleshoot-rest-api
 - aid: power-bi:power-bi-gateways-api
   name: Power BI Gateways API
-  description: >-
-    Manage on-premises data gateways and their data sources for connecting to on-premises data.
+  description: Manage on-premises data gateways and their data sources for connecting to on-premises data.
   humanURL: https://docs.microsoft.com/en-us/rest/api/power-bi/
   baseURL: https://api.powerbi.com
   tags:
@@ -239,15 +220,12 @@ apis:
   - type: SDKs
     url: https://docs.microsoft.com/en-us/javascript/api/overview/powerbi/
   - type: ChangeLog
-    url: >-
-      https://docs.microsoft.com/en-us/power-bi/developer/embedded/embedded-analytics-power-bi-changelog
+    url: https://docs.microsoft.com/en-us/power-bi/developer/embedded/embedded-analytics-power-bi-changelog
   - type: Troubleshooting
     url: https://learn.microsoft.com/en-us/power-bi/developer/embedded/troubleshoot-rest-api
 - aid: power-bi:power-bi-groups-api
   name: Power BI Groups API
-  description: >-
-    Manage workspaces (groups) including listing, creating, deleting, and managing workspace users. Workspaces
-    are containers for dashboards, reports, datasets, and dataflows.
+  description: Manage workspaces (groups) including listing, creating, deleting, and managing workspace users. Workspaces are containers for dashboards, reports, datasets, and dataflows.
   humanURL: https://docs.microsoft.com/en-us/rest/api/power-bi/
   baseURL: https://api.powerbi.com
   tags:
@@ -270,14 +248,12 @@ apis:
   - type: SDKs
     url: https://docs.microsoft.com/en-us/javascript/api/overview/powerbi/
   - type: ChangeLog
-    url: >-
-      https://docs.microsoft.com/en-us/power-bi/developer/embedded/embedded-analytics-power-bi-changelog
+    url: https://docs.microsoft.com/en-us/power-bi/developer/embedded/embedded-analytics-power-bi-changelog
   - type: Troubleshooting
     url: https://learn.microsoft.com/en-us/power-bi/developer/embedded/troubleshoot-rest-api
 - aid: power-bi:power-bi-imports-api
   name: Power BI Imports API
-  description: >-
-    Import Power BI content such as PBIX files, Excel workbooks, and RDL reports into workspaces.
+  description: Import Power BI content such as PBIX files, Excel workbooks, and RDL reports into workspaces.
   humanURL: https://docs.microsoft.com/en-us/rest/api/power-bi/
   baseURL: https://api.powerbi.com
   tags:
@@ -298,15 +274,12 @@ apis:
   - type: SDKs
     url: https://docs.microsoft.com/en-us/javascript/api/overview/powerbi/
   - type: ChangeLog
-    url: >-
-      https://docs.microsoft.com/en-us/power-bi/developer/embedded/embedded-analytics-power-bi-changelog
+    url: https://docs.microsoft.com/en-us/power-bi/developer/embedded/embedded-analytics-power-bi-changelog
   - type: Troubleshooting
     url: https://learn.microsoft.com/en-us/power-bi/developer/embedded/troubleshoot-rest-api
 - aid: power-bi:power-bi-reports-api
   name: Power BI Reports API
-  description: >-
-    Manage reports including listing, cloning, exporting, rebinding, and deleting reports. Reports are
-    visual presentations of data from datasets.
+  description: Manage reports including listing, cloning, exporting, rebinding, and deleting reports. Reports are visual presentations of data from datasets.
   humanURL: https://docs.microsoft.com/en-us/rest/api/power-bi/
   baseURL: https://api.powerbi.com
   tags:
@@ -327,209 +300,369 @@ apis:
   - type: SDKs
     url: https://docs.microsoft.com/en-us/javascript/api/overview/powerbi/
   - type: ChangeLog
-    url: >-
-      https://docs.microsoft.com/en-us/power-bi/developer/embedded/embedded-analytics-power-bi-changelog
+    url: https://docs.microsoft.com/en-us/power-bi/developer/embedded/embedded-analytics-power-bi-changelog
   - type: Troubleshooting
     url: https://learn.microsoft.com/en-us/power-bi/developer/embedded/troubleshoot-rest-api
-common:
-  - type: Website
-    url: https://www.microsoft.com/
-  - type: CapabilityMap
-    url: capabilities/power-bi-capability-edges.yml
-    name: Power BI Business Capability Map
-  - type: IssueTracker
-    url: https://github.com/Microsoft/PowerBI-JavaScript/issues
-  - type: Releases
-    url: https://github.com/Microsoft/PowerBI-JavaScript/releases
-  - type: SecurityPolicy
-    url: https://github.com/microsoft/PowerBI-JavaScript/blob/master/SECURITY.md
-  - type: CodeOfConduct
-    url: https://github.com/microsoft/.github/blob/main/CODE_OF_CONDUCT.md
-  - type: ContributionGuide
-    url: https://github.com/microsoft/PowerBI-JavaScript/blob/master/CONTRIBUTING.md
-  - type: PostmanWorkspace
-    url: https://www.postman.com/kinlaneapi/power-bi/overview
-  - type: AgenticAccess
-    url: agentic-access/power-bi-agentic-access.yml
-  - type: DomainSecurity
-    url: security/power-bi-domain-security.yml
-  - type: Authentication
-    url: authentication/power-bi-authentication.yml
-  - type: Packages
-    url: packages/power-bi-packages.yml
-  - type: WellKnown
-    url: well-known/power-bi-well-known.yml
-  - type: SecurityTxt
-    url: well-known/power-bi-security.txt
-  - type: X-MCPServerCandidate
-    url: mcp/power-bi-mcp.yml
-    note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
-  - type: LLMsTxt
-    url: llms/power-bi-llms.txt
-  - type: Overlay
-    url: overlays/power-bi-rest-api-overlay.yaml
-  - type: Conformance
-    url: conformance/power-bi-conformance.yml
-  - type: ErrorCatalog
-    url: errors/power-bi-problem-types.yml
-  - type: Lifecycle
-    url: lifecycle/power-bi-lifecycle.yml
-  - type: OAuthScopes
-    url: scopes/power-bi-scopes.yml
-  - type: VulnerabilityDisclosure
-    url: security/power-bi-vulnerability-disclosure.yml
-  - type: TrustCenter
-    url: security/power-bi-trust-center.yml
-  - type: Sandbox
-    url: sandbox/power-bi-sandbox.yml
-  - type: Conventions
-    url: conventions/power-bi-conventions.yml
-  - type: ChangeLog
-    url: changelog/power-bi-changelog.yml
-  - type: CLI
-    url: cli/power-bi-cli.yml
-  - type: Components
-    url: components/power-bi-components.yml
-  - type: DataModel
-    url: data-model/power-bi-data-model.yml
-  - name: Agent Skills
-    url: https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/AI-Powered-Power-BI-reporting-From-design-to-deployment-with/ba-p/5190703
-    type: AgentSkills
-  - type: Portal
-    url: https://app.powerbi.com
-  - type: DeveloperPortal
-    url: https://powerbi.microsoft.com/en-us/developers/
-  - type: Blog
-    url: https://powerbi.microsoft.com/en-us/blog/
-  - type: Support
-    url: https://powerbi.microsoft.com/en-us/support/
-  - type: StatusPage
-    url: https://powerbi.microsoft.com/en-us/status/
-  - type: TermsOfService
-    url: https://powerbi.microsoft.com/en-us/terms-of-service/
-  - type: PrivacyPolicy
-    url: https://privacy.microsoft.com/en-us/privacystatement
-  - type: GitHubRepository
-    url: https://github.com/Microsoft/PowerBI-JavaScript
-  - type: GitHubRepository
-    url: https://github.com/microsoft/PowerBI-Developer-Samples
-    title: Developer Samples
-  - type: LinkedIn
-    url: https://www.linkedin.com/showcase/microsoft-power-bi/
-  - type: X
-    url: https://twitter.com/MSPowerBI
-  - type: YouTube
-    url: https://www.youtube.com/user/mspowerbi
+- aid: microsoft-power-bi:embedded-api
+  name: Power BI Embedded API
+  tags:
+  - Business Intelligence
+  - Embedded Analytics
+  - White Label
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  baseURL: https://api.powerbi.com/v1.0/myorg/
+  humanURL: https://learn.microsoft.com/en-us/power-bi/developer/embedded/
+  properties:
+  - url: https://learn.microsoft.com/en-us/power-bi/developer/embedded/
+    type: Documentation
+  description: Power BI Embedded enables developers to embed interactive Power BI reports, dashboards, and tiles into custom applications. It provides client-side JavaScript APIs for rendering and interacting with embedded content, supporting scenarios like white-label analytics, custom filtering, and programmatic report navigation.
+- aid: microsoft-power-bi:microsoft-power-bi-apps-api
+  name: Microsoft Power BI Apps API
+  description: The Apps API from Microsoft Power BI — 1 operation(s) for apps.
+  humanURL: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  baseURL: https://api.powerbi.com/v1.0/myorg/
+  tags:
+  - Application
+  tags_raw:
+  - Apps
+  properties:
+  - type: OpenAPI
+    url: openapi/power-bi-apps-api-openapi.yml
   - type: Documentation
-    url: https://learn.microsoft.com/en-us/power-bi/
-  - type: Pricing
-    url: https://www.microsoft.com/en-us/power-platform/products/power-bi/pricing
-  - type: Signup
-    url: https://app.powerbi.com/signupredirect?pbi_source=web
-  - type: Login
-    url: https://app.powerbi.com/signin
-  - type: ReleaseNotes
-    url: https://learn.microsoft.com/en-us/power-bi/fundamentals/whats-new
-  - type: StackOverflow
-    url: https://stackoverflow.com/questions/tagged/powerbi
-  - type: JSONLD
-    url: json-ld/power-bi-context.jsonld
-  - type: JSONSchema
-    url: json-schema/power-bi-dataset-schema.json
-  - type: JSONSchema
-    url: json-schema/power-bi-report-schema.json
-  - type: SDKs
-    url: https://github.com/microsoft/PowerBI-CSharp
-    title: .NET SDK
-  - type: Features
-    data:
-      - name: Interactive Dashboards
-        description: Create and share interactive dashboards with real-time data visualizations and drill-down capabilities.
-      - name: Natural Language Queries
-        description: Ask questions about your data in plain English and get instant visualizations with Q&A.
-      - name: Data Connectivity
-        description: Connect to hundreds of data sources including databases, cloud services, files, and streaming data.
-      - name: Embedded Analytics
-        description: Embed Power BI reports and dashboards into custom applications using REST APIs and JavaScript SDK.
-      - name: Paginated Reports
-        description: Create pixel-perfect, print-ready reports designed for printing or PDF generation.
-      - name: Real-Time Streaming
-        description: Push real-time data to dashboards with streaming datasets and live tile updates.
-      - name: Row-Level Security
-        description: Control data access at the row level based on user identity and roles.
-      - name: Dataflows
-        description: Self-service data preparation with Power Query Online for creating reusable data transformation logic.
-  - type: UseCases
-    data:
-      - name: Executive Dashboards
-        description: Provide C-suite executives with real-time KPI dashboards for data-driven decision making.
-      - name: Sales Analytics
-        description: Track sales performance, pipeline metrics, and revenue forecasting with interactive reports.
-      - name: Financial Reporting
-        description: Automate financial reporting with scheduled refreshes and pixel-perfect paginated reports.
-      - name: Embedded Analytics for ISVs
-        description: Embed Power BI visualizations into SaaS applications to provide analytics to end customers.
-      - name: IoT Monitoring
-        description: Visualize real-time IoT sensor data with streaming datasets and live dashboard tiles.
-      - name: HR Analytics
-        description: Analyze workforce metrics, retention rates, and employee engagement across the organization.
-  - type: Integrations
-    data:
-      - name: Microsoft Teams
-        description: View and interact with Power BI reports directly within Microsoft Teams channels and chats.
-      - name: Excel
-        description: Analyze Power BI datasets in Excel with connected tables and PivotTables.
-      - name: SharePoint
-        description: Embed Power BI reports in SharePoint Online pages for enterprise-wide distribution.
-      - name: Azure Synapse Analytics
-        description: Connect to Azure Synapse workspaces for big data analytics and data warehousing.
-      - name: Dynamics 365
-        description: Pre-built analytics templates and data connectors for Dynamics 365 business applications.
-      - name: Power Automate
-        description: Trigger automated workflows based on Power BI data alerts and refresh events.
-      - name: Azure Active Directory
-        description: Enterprise authentication and authorization with Azure AD for secure API access.
-      - name: Salesforce
-        description: Connect to Salesforce data with native connectors for CRM analytics and reporting.
-  - type: Arazzo
-    url: arazzo/power-bi-dataset-refresh-poll-workflow.yml
-    name: Power BI Trigger a Dataset Refresh and Poll to Completion
-  - type: Arazzo
-    url: arazzo/power-bi-push-dataset-provision-workflow.yml
-    name: Power BI Create a Push Dataset and Verify Its Schema
-  - type: Arazzo
-    url: arazzo/power-bi-parameter-update-refresh-workflow.yml
-    name: Power BI Update Dataset Parameters and Refresh
-  - type: Arazzo
-    url: arazzo/power-bi-report-clone-rebind-workflow.yml
-    name: Power BI Clone a Report and Rebind It to Another Dataset
-  - type: Arazzo
-    url: arazzo/power-bi-workspace-provision-access-workflow.yml
-    name: Power BI Provision a Workspace and Grant Access
-  - type: Arazzo
-    url: arazzo/power-bi-pbix-import-publish-workflow.yml
-    name: Power BI Import a PBIX and Poll Until Published
-  - type: Arazzo
-    url: arazzo/power-bi-workspace-content-inventory-workflow.yml
-    name: 'Power BI Inventory a Workspace''s Content'
-  - type: Arazzo
-    url: arazzo/power-bi-gateway-datasource-audit-workflow.yml
-    name: Power BI Audit Gateway-Bound Datasources
-  - type: Arazzo
-    url: arazzo/power-bi-dashboard-tile-embed-workflow.yml
-    name: Power BI Resolve a Dashboard Tile for Embedding
-  - type: Arazzo
-    url: arazzo/power-bi-report-export-archive-workflow.yml
-    name: Power BI Export a Report for Archive
-  - type: Arazzo
-    url: arazzo/power-bi-dataset-decommission-workflow.yml
-    name: Power BI Decommission a Dataset After Clearing Dependents
-  - type: Arazzo
-    url: arazzo/power-bi-workspace-access-review-workflow.yml
-    name: Power BI Review and Adjust Workspace Access
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/datasets
+- aid: microsoft-power-bi:microsoft-power-bi-capacities-api
+  name: Microsoft Power BI Capacities API
+  description: The Capacities API from Microsoft Power BI — 1 operation(s) for capacities.
+  humanURL: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  baseURL: https://api.powerbi.com/v1.0/myorg/
+  tags:
+  - Capacities
+  properties:
+  - type: OpenAPI
+    url: openapi/power-bi-capacities-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/datasets
+- aid: microsoft-power-bi:microsoft-power-bi-dashboards-api
+  name: Microsoft Power BI Dashboards API
+  description: The Dashboards API from Microsoft Power BI — 2 operation(s) for dashboards.
+  humanURL: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  baseURL: https://api.powerbi.com/v1.0/myorg/
+  tags:
+  - Dashboards
+  properties:
+  - type: OpenAPI
+    url: openapi/power-bi-dashboards-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/datasets
+- aid: microsoft-power-bi:microsoft-power-bi-dataflows-api
+  name: Microsoft Power BI Dataflows API
+  description: The Dataflows API from Microsoft Power BI — 1 operation(s) for dataflows.
+  humanURL: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  baseURL: https://api.powerbi.com/v1.0/myorg/
+  tags:
+  - Dataflows
+  properties:
+  - type: OpenAPI
+    url: openapi/power-bi-dataflows-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/datasets
+- aid: microsoft-power-bi:microsoft-power-bi-datasets-api
+  name: Microsoft Power BI Datasets API
+  description: The Datasets API from Microsoft Power BI — 5 operation(s) for datasets.
+  humanURL: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  baseURL: https://api.powerbi.com/v1.0/myorg/
+  tags:
+  - Datasets
+  properties:
+  - type: OpenAPI
+    url: openapi/power-bi-datasets-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/datasets
+- aid: microsoft-power-bi:microsoft-power-bi-embedtoken-api
+  name: Microsoft Power BI EmbedToken API
+  description: The EmbedToken API from Microsoft Power BI — 1 operation(s) for embedtoken.
+  humanURL: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  baseURL: https://api.powerbi.com/v1.0/myorg/
+  tags:
+  - EmbedToken
+  properties:
+  - type: OpenAPI
+    url: openapi/power-bi-embedtoken-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/datasets
+- aid: microsoft-power-bi:microsoft-power-bi-gateways-api
+  name: Microsoft Power BI Gateways API
+  description: The Gateways API from Microsoft Power BI — 1 operation(s) for gateways.
+  humanURL: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  baseURL: https://api.powerbi.com/v1.0/myorg/
+  tags:
+  - Gateways
+  properties:
+  - type: OpenAPI
+    url: openapi/power-bi-gateways-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/datasets
+- aid: microsoft-power-bi:microsoft-power-bi-groups-api
+  name: Microsoft Power BI Groups API
+  description: The Groups API from Microsoft Power BI — 2 operation(s) for groups.
+  humanURL: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  baseURL: https://api.powerbi.com/v1.0/myorg/
+  tags:
+  - Group
+  tags_raw:
+  - Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/power-bi-groups-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/datasets
+- aid: microsoft-power-bi:microsoft-power-bi-imports-api
+  name: Microsoft Power BI Imports API
+  description: The Imports API from Microsoft Power BI — 1 operation(s) for imports.
+  humanURL: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  baseURL: https://api.powerbi.com/v1.0/myorg/
+  tags:
+  - Imports
+  properties:
+  - type: OpenAPI
+    url: openapi/power-bi-imports-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/datasets
+- aid: microsoft-power-bi:microsoft-power-bi-reports-api
+  name: Microsoft Power BI Reports API
+  description: The Reports API from Microsoft Power BI — 5 operation(s) for reports.
+  humanURL: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  baseURL: https://api.powerbi.com/v1.0/myorg/
+  tags:
+  - Reports
+  properties:
+  - type: OpenAPI
+    url: openapi/power-bi-reports-api-openapi.yml
+  - type: Documentation
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/
+  - type: Reference
+    url: https://learn.microsoft.com/en-us/rest/api/power-bi/datasets
+common:
+- type: GitHubOrganization
+  url: https://github.com/microsoft
+- type: Community
+  url: https://community.fabric.microsoft.com/t5/Power-BI-forums/ct-p/pbi_english
+- type: Website
+  url: https://www.microsoft.com/
+- type: CapabilityMap
+  url: capabilities/power-bi-capability-edges.yml
+  name: Power BI Business Capability Map
+- type: IssueTracker
+  url: https://github.com/Microsoft/PowerBI-JavaScript/issues
+- type: Releases
+  url: https://github.com/Microsoft/PowerBI-JavaScript/releases
+- type: SecurityPolicy
+  url: https://github.com/microsoft/PowerBI-JavaScript/blob/master/SECURITY.md
+- type: CodeOfConduct
+  url: https://github.com/microsoft/.github/blob/main/CODE_OF_CONDUCT.md
+- type: ContributionGuide
+  url: https://github.com/microsoft/PowerBI-JavaScript/blob/master/CONTRIBUTING.md
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/power-bi/overview
+- type: AgenticAccess
+  url: agentic-access/power-bi-agentic-access.yml
+- type: DomainSecurity
+  url: security/power-bi-domain-security.yml
+- type: Authentication
+  url: authentication/power-bi-authentication.yml
+- type: Packages
+  url: packages/power-bi-packages.yml
+- type: WellKnown
+  url: well-known/power-bi-well-known.yml
+- type: SecurityTxt
+  url: well-known/power-bi-security.txt
+- type: X-MCPServerCandidate
+  url: mcp/power-bi-mcp.yml
+  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
+- type: LLMsTxt
+  url: llms/power-bi-llms.txt
+- type: Overlay
+  url: overlays/power-bi-rest-api-overlay.yaml
+- type: Conformance
+  url: conformance/power-bi-conformance.yml
+- type: ErrorCatalog
+  url: errors/power-bi-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/power-bi-lifecycle.yml
+- type: OAuthScopes
+  url: scopes/power-bi-scopes.yml
+- type: VulnerabilityDisclosure
+  url: security/power-bi-vulnerability-disclosure.yml
+- type: TrustCenter
+  url: security/power-bi-trust-center.yml
+- type: Sandbox
+  url: sandbox/power-bi-sandbox.yml
+- type: Conventions
+  url: conventions/power-bi-conventions.yml
+- type: ChangeLog
+  url: changelog/power-bi-changelog.yml
+- type: CLI
+  url: cli/power-bi-cli.yml
+- type: Components
+  url: components/power-bi-components.yml
+- type: DataModel
+  url: data-model/power-bi-data-model.yml
+- name: Agent Skills
+  url: https://community.fabric.microsoft.com/t5/Power-BI-Updates-Blog/AI-Powered-Power-BI-reporting-From-design-to-deployment-with/ba-p/5190703
+  type: AgentSkills
+- type: Portal
+  url: https://app.powerbi.com
+- type: DeveloperPortal
+  url: https://powerbi.microsoft.com/en-us/developers/
+- type: Blog
+  url: https://powerbi.microsoft.com/en-us/blog/
+- type: Support
+  url: https://powerbi.microsoft.com/en-us/support/
+- type: StatusPage
+  url: https://powerbi.microsoft.com/en-us/status/
+- type: TermsOfService
+  url: https://powerbi.microsoft.com/en-us/terms-of-service/
+- type: PrivacyPolicy
+  url: https://privacy.microsoft.com/en-us/privacystatement
+- type: GitHubRepository
+  url: https://github.com/Microsoft/PowerBI-JavaScript
+- type: GitHubRepository
+  url: https://github.com/microsoft/PowerBI-Developer-Samples
+  title: Developer Samples
+- type: LinkedIn
+  url: https://www.linkedin.com/showcase/microsoft-power-bi/
+- type: X
+  url: https://twitter.com/MSPowerBI
+- type: YouTube
+  url: https://www.youtube.com/user/mspowerbi
+- type: Documentation
+  url: https://learn.microsoft.com/en-us/power-bi/
+- type: Pricing
+  url: https://www.microsoft.com/en-us/power-platform/products/power-bi/pricing
+- type: Signup
+  url: https://app.powerbi.com/signupredirect?pbi_source=web
+- type: Login
+  url: https://app.powerbi.com/signin
+- type: ReleaseNotes
+  url: https://learn.microsoft.com/en-us/power-bi/fundamentals/whats-new
+- type: StackOverflow
+  url: https://stackoverflow.com/questions/tagged/powerbi
+- type: JSONLD
+  url: json-ld/power-bi-context.jsonld
+- type: JSONSchema
+  url: json-schema/power-bi-dataset-schema.json
+- type: JSONSchema
+  url: json-schema/power-bi-report-schema.json
+- type: SDKs
+  url: https://github.com/microsoft/PowerBI-CSharp
+  title: .NET SDK
+- type: Features
+  data:
+  - name: Interactive Dashboards
+    description: Create and share interactive dashboards with real-time data visualizations and drill-down capabilities.
+  - name: Natural Language Queries
+    description: Ask questions about your data in plain English and get instant visualizations with Q&A.
+  - name: Data Connectivity
+    description: Connect to hundreds of data sources including databases, cloud services, files, and streaming data.
+  - name: Embedded Analytics
+    description: Embed Power BI reports and dashboards into custom applications using REST APIs and JavaScript SDK.
+  - name: Paginated Reports
+    description: Create pixel-perfect, print-ready reports designed for printing or PDF generation.
+  - name: Real-Time Streaming
+    description: Push real-time data to dashboards with streaming datasets and live tile updates.
+  - name: Row-Level Security
+    description: Control data access at the row level based on user identity and roles.
+  - name: Dataflows
+    description: Self-service data preparation with Power Query Online for creating reusable data transformation logic.
+- type: UseCases
+  data:
+  - name: Executive Dashboards
+    description: Provide C-suite executives with real-time KPI dashboards for data-driven decision making.
+  - name: Sales Analytics
+    description: Track sales performance, pipeline metrics, and revenue forecasting with interactive reports.
+  - name: Financial Reporting
+    description: Automate financial reporting with scheduled refreshes and pixel-perfect paginated reports.
+  - name: Embedded Analytics for ISVs
+    description: Embed Power BI visualizations into SaaS applications to provide analytics to end customers.
+  - name: IoT Monitoring
+    description: Visualize real-time IoT sensor data with streaming datasets and live dashboard tiles.
+  - name: HR Analytics
+    description: Analyze workforce metrics, retention rates, and employee engagement across the organization.
+- type: Integrations
+  data:
+  - name: Microsoft Teams
+    description: View and interact with Power BI reports directly within Microsoft Teams channels and chats.
+  - name: Excel
+    description: Analyze Power BI datasets in Excel with connected tables and PivotTables.
+  - name: SharePoint
+    description: Embed Power BI reports in SharePoint Online pages for enterprise-wide distribution.
+  - name: Azure Synapse Analytics
+    description: Connect to Azure Synapse workspaces for big data analytics and data warehousing.
+  - name: Dynamics 365
+    description: Pre-built analytics templates and data connectors for Dynamics 365 business applications.
+  - name: Power Automate
+    description: Trigger automated workflows based on Power BI data alerts and refresh events.
+  - name: Azure Active Directory
+    description: Enterprise authentication and authorization with Azure AD for secure API access.
+  - name: Salesforce
+    description: Connect to Salesforce data with native connectors for CRM analytics and reporting.
+- type: Arazzo
+  url: arazzo/power-bi-dataset-refresh-poll-workflow.yml
+  name: Power BI Trigger a Dataset Refresh and Poll to Completion
+- type: Arazzo
+  url: arazzo/power-bi-push-dataset-provision-workflow.yml
+  name: Power BI Create a Push Dataset and Verify Its Schema
+- type: Arazzo
+  url: arazzo/power-bi-parameter-update-refresh-workflow.yml
+  name: Power BI Update Dataset Parameters and Refresh
+- type: Arazzo
+  url: arazzo/power-bi-report-clone-rebind-workflow.yml
+  name: Power BI Clone a Report and Rebind It to Another Dataset
+- type: Arazzo
+  url: arazzo/power-bi-workspace-provision-access-workflow.yml
+  name: Power BI Provision a Workspace and Grant Access
+- type: Arazzo
+  url: arazzo/power-bi-pbix-import-publish-workflow.yml
+  name: Power BI Import a PBIX and Poll Until Published
+- type: Arazzo
+  url: arazzo/power-bi-workspace-content-inventory-workflow.yml
+  name: Power BI Inventory a Workspace's Content
+- type: Arazzo
+  url: arazzo/power-bi-gateway-datasource-audit-workflow.yml
+  name: Power BI Audit Gateway-Bound Datasources
+- type: Arazzo
+  url: arazzo/power-bi-dashboard-tile-embed-workflow.yml
+  name: Power BI Resolve a Dashboard Tile for Embedding
+- type: Arazzo
+  url: arazzo/power-bi-report-export-archive-workflow.yml
+  name: Power BI Export a Report for Archive
+- type: Arazzo
+  url: arazzo/power-bi-dataset-decommission-workflow.yml
+  name: Power BI Decommission a Dataset After Clearing Dependents
+- type: Arazzo
+  url: arazzo/power-bi-workspace-access-review-workflow.yml
+  name: Power BI Review and Adjust Workspace Access
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
-    url: https://apievangelist.com
-x-parent: microsoft
+- FN: Kin Lane
+  email: kin@apievangelist.com
+  url: https://apievangelist.com
+x-parent: power-platform
 x-relationship: product
