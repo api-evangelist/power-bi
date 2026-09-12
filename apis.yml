@@ -332,6 +332,8 @@ apis:
   - type: Troubleshooting
     url: https://learn.microsoft.com/en-us/power-bi/developer/embedded/troubleshoot-rest-api
 common:
+  - type: Website
+    url: https://www.microsoft.com/
   - type: CapabilityMap
     url: capabilities/power-bi-capability-edges.yml
     name: Power BI Business Capability Map
@@ -529,3 +531,5 @@ maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
     url: https://apievangelist.com
+x-parent: microsoft
+x-relationship: product

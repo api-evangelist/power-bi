@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Power BI REST Dashboards Gateways API
   description: The Power BI REST API provides service endpoints for embedding, administration, governance, and user resources. It enables programmatic access to Power BI content including datasets, reports, dashboards, and workspaces (groups). The API uses Azure Active Directory (OAuth 2.0) for authentication and authorization.
@@ -181,18 +181,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    GatewayList:
-      type: object
-      description: A list of gateways
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Gateway'
-          example: []
-        '@odata.context':
-          type: string
-          example: example_value
     GatewayDatasource:
       type: object
       description: A data source on a gateway
@@ -228,30 +216,6 @@ components:
         datasourceName:
           type: string
           description: The display name of the data source
-          example: example_value
-    ErrorResponse:
-      type: object
-      description: Error response from the Power BI REST API
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Machine-readable error code
-            message:
-              type: string
-              description: Human-readable error message
-            details:
-              type: array
-              description: Additional error details
-              items:
-                type: object
-                properties:
-                  message:
-                    type: string
-                  target:
-                    type: string
           example: example_value
     GatewayDatasourceList:
       type: object
@@ -299,6 +263,42 @@ components:
         gatewayAnnotation:
           type: string
           description: Gateway metadata annotation
+          example: example_value
+    GatewayList:
+      type: object
+      description: A list of gateways
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Gateway'
+          example: []
+        '@odata.context':
+          type: string
+          example: example_value
+    ErrorResponse:
+      type: object
+      description: Error response from the Power BI REST API
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Machine-readable error code
+            message:
+              type: string
+              description: Human-readable error message
+            details:
+              type: array
+              description: Additional error details
+              items:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  target:
+                    type: string
           example: example_value
   parameters:
     gatewayId:

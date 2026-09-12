@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Power BI REST Dashboards Imports API
   description: The Power BI REST API provides service endpoints for embedding, administration, governance, and user resources. It enables programmatic access to Power BI content including datasets, reports, dashboards, and workspaces (groups). The API uses Azure Active Directory (OAuth 2.0) for authentication and authorization.
@@ -262,6 +262,18 @@ components:
           items:
             $ref: '#/components/schemas/Dataset'
           example: []
+    ImportList:
+      type: object
+      description: A list of import operations
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Import'
+          example: []
+        '@odata.context':
+          type: string
+          example: example_value
     ErrorResponse:
       type: object
       description: Error response from the Power BI REST API
@@ -285,59 +297,6 @@ components:
                     type: string
                   target:
                     type: string
-          example: example_value
-    Report:
-      type: object
-      description: A Power BI report
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: The unique identifier of the report
-          example: abc123
-        name:
-          type: string
-          description: The display name of the report
-          example: Example Title
-        datasetId:
-          type: string
-          format: uuid
-          description: The ID of the dataset associated with this report
-          example: '500123'
-        webUrl:
-          type: string
-          format: uri
-          description: The web URL of the report
-          example: https://www.example.com
-        embedUrl:
-          type: string
-          format: uri
-          description: The embed URL for embedding the report in applications
-          example: https://www.example.com
-        reportType:
-          type: string
-          description: The type of the report
-          enum:
-          - PowerBIReport
-          - PaginatedReport
-          example: PowerBIReport
-        description:
-          type: string
-          description: The report description
-          example: A sample description.
-        createdDateTime:
-          type: string
-          format: date-time
-          description: When the report was created
-          example: '2026-01-15T10:30:00Z'
-        modifiedDateTime:
-          type: string
-          format: date-time
-          description: When the report was last modified
-          example: '2026-01-15T10:30:00Z'
-        modifiedBy:
-          type: string
-          description: The user who last modified the report
           example: example_value
     Dataset:
       type: object
@@ -409,17 +368,58 @@ components:
           type: string
           description: The content provider type
           example: example_value
-    ImportList:
+    Report:
       type: object
-      description: A list of import operations
+      description: A Power BI report
       properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Import'
-          example: []
-        '@odata.context':
+        id:
           type: string
+          format: uuid
+          description: The unique identifier of the report
+          example: abc123
+        name:
+          type: string
+          description: The display name of the report
+          example: Example Title
+        datasetId:
+          type: string
+          format: uuid
+          description: The ID of the dataset associated with this report
+          example: '500123'
+        webUrl:
+          type: string
+          format: uri
+          description: The web URL of the report
+          example: https://www.example.com
+        embedUrl:
+          type: string
+          format: uri
+          description: The embed URL for embedding the report in applications
+          example: https://www.example.com
+        reportType:
+          type: string
+          description: The type of the report
+          enum:
+          - PowerBIReport
+          - PaginatedReport
+          example: PowerBIReport
+        description:
+          type: string
+          description: The report description
+          example: A sample description.
+        createdDateTime:
+          type: string
+          format: date-time
+          description: When the report was created
+          example: '2026-01-15T10:30:00Z'
+        modifiedDateTime:
+          type: string
+          format: date-time
+          description: When the report was last modified
+          example: '2026-01-15T10:30:00Z'
+        modifiedBy:
+          type: string
+          description: The user who last modified the report
           example: example_value
   parameters:
     groupId:

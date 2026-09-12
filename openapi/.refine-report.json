@@ -19,6 +19,14 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "power-bi-dashboards-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "power-bi-datasets-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "power-bi-gateways-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "power-bi-groups-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "power-bi-imports-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "power-bi-reports-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }

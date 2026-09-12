@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Power BI REST Dashboards Reports API
   description: The Power BI REST API provides service endpoints for embedding, administration, governance, and user resources. It enables programmatic access to Power BI content including datasets, reports, dashboards, and workspaces (groups). The API uses Azure Active Directory (OAuth 2.0) for authentication and authorization.
@@ -523,26 +523,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    CloneReportRequest:
-      type: object
-      required:
-      - name
-      description: Request body for cloning a report
-      properties:
-        name:
-          type: string
-          description: The name for the cloned report
-          example: Example Title
-        targetModelId:
-          type: string
-          format: uuid
-          description: Optional dataset ID to rebind the cloned report to
-          example: '500123'
-        targetWorkspaceId:
-          type: string
-          format: uuid
-          description: Optional workspace ID for the cloned report
-          example: '500123'
     RebindReportRequest:
       type: object
       required:
@@ -554,6 +534,18 @@ components:
           format: uuid
           description: The ID of the target dataset
           example: '500123'
+    PageList:
+      type: object
+      description: A list of report pages
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Page'
+          example: []
+        '@odata.context':
+          type: string
+          example: example_value
     ErrorResponse:
       type: object
       description: Error response from the Power BI REST API
@@ -578,6 +570,38 @@ components:
                   target:
                     type: string
           example: example_value
+    ReportList:
+      type: object
+      description: A list of Power BI reports
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Report'
+          example: []
+        '@odata.context':
+          type: string
+          example: example_value
+    CloneReportRequest:
+      type: object
+      required:
+      - name
+      description: Request body for cloning a report
+      properties:
+        name:
+          type: string
+          description: The name for the cloned report
+          example: Example Title
+        targetModelId:
+          type: string
+          format: uuid
+          description: Optional dataset ID to rebind the cloned report to
+          example: '500123'
+        targetWorkspaceId:
+          type: string
+          format: uuid
+          description: Optional workspace ID for the cloned report
+          example: '500123'
     Report:
       type: object
       description: A Power BI report
@@ -647,30 +671,6 @@ components:
           type: integer
           description: The order of the page within the report
           example: 10
-    ReportList:
-      type: object
-      description: A list of Power BI reports
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Report'
-          example: []
-        '@odata.context':
-          type: string
-          example: example_value
-    PageList:
-      type: object
-      description: A list of report pages
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Page'
-          example: []
-        '@odata.context':
-          type: string
-          example: example_value
   parameters:
     reportId:
       name: reportId

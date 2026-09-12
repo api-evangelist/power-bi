@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Power BI REST Dashboards API
   description: The Power BI REST API provides service endpoints for embedding, administration, governance, and user resources. It enables programmatic access to Power BI content including datasets, reports, dashboards, and workspaces (groups). The API uses Azure Active Directory (OAuth 2.0) for authentication and authorization.
@@ -416,37 +416,6 @@ components:
         type: string
         format: uuid
   schemas:
-    Dashboard:
-      type: object
-      description: A Power BI dashboard
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: The unique identifier of the dashboard
-          example: abc123
-        displayName:
-          type: string
-          description: The display name of the dashboard
-          example: example_value
-        isReadOnly:
-          type: boolean
-          description: Whether the dashboard is read-only
-          example: true
-        webUrl:
-          type: string
-          format: uri
-          description: The web URL of the dashboard
-          example: https://www.example.com
-        embedUrl:
-          type: string
-          format: uri
-          description: The embed URL for embedding the dashboard
-          example: https://www.example.com
-        dataClassification:
-          type: string
-          description: The data classification label
-          example: example_value
     ErrorResponse:
       type: object
       description: Error response from the Power BI REST API
@@ -471,18 +440,6 @@ components:
                   target:
                     type: string
           example: example_value
-    DashboardList:
-      type: object
-      description: A list of Power BI dashboards
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Dashboard'
-          example: []
-        '@odata.context':
-          type: string
-          example: example_value
     TileList:
       type: object
       description: A list of dashboard tiles
@@ -505,6 +462,18 @@ components:
           type: string
           description: The display name of the new dashboard
           example: Example Title
+    DashboardList:
+      type: object
+      description: A list of Power BI dashboards
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dashboard'
+          example: []
+        '@odata.context':
+          type: string
+          example: example_value
     Tile:
       type: object
       description: A tile on a Power BI dashboard
@@ -549,6 +518,37 @@ components:
           type: integer
           description: The number of columns the tile spans
           example: 10
+    Dashboard:
+      type: object
+      description: A Power BI dashboard
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The unique identifier of the dashboard
+          example: abc123
+        displayName:
+          type: string
+          description: The display name of the dashboard
+          example: example_value
+        isReadOnly:
+          type: boolean
+          description: Whether the dashboard is read-only
+          example: true
+        webUrl:
+          type: string
+          format: uri
+          description: The web URL of the dashboard
+          example: https://www.example.com
+        embedUrl:
+          type: string
+          format: uri
+          description: The embed URL for embedding the dashboard
+          example: https://www.example.com
+        dataClassification:
+          type: string
+          description: The data classification label
+          example: example_value
   securitySchemes:
     bearerAuth:
       type: http
