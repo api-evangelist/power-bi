@@ -258,6 +258,8 @@ apis:
   humanURL: https://docs.microsoft.com/en-us/rest/api/power-bi/
   baseURL: https://api.powerbi.com
   tags:
+  - Import
+  tags_raw:
   - Imports
   properties:
   - type: OpenAPI
@@ -439,6 +441,8 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/rest/api/power-bi/
   baseURL: https://api.powerbi.com/v1.0/myorg/
   tags:
+  - Import
+  tags_raw:
   - Imports
   properties:
   - type: OpenAPI
