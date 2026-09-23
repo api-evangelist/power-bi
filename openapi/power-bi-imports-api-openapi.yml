@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Power BI REST Dashboards Imports API
+  title: Power BI REST Imports API
   description: The Power BI REST API provides service endpoints for embedding, administration, governance, and user resources. It enables programmatic access to Power BI content including datasets, reports, dashboards, and workspaces (groups). The API uses Azure Active Directory (OAuth 2.0) for authentication and authorization.
   version: '1.0'
   contact:
@@ -219,84 +219,58 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    Import:
+    Report:
       type: object
-      description: An import operation
+      description: A Power BI report
       properties:
         id:
           type: string
           format: uuid
-          description: The unique identifier of the import
+          description: The unique identifier of the report
           example: abc123
         name:
           type: string
-          description: The display name of the import
+          description: The display name of the report
           example: Example Title
-        importState:
+        datasetId:
           type: string
-          description: The state of the import
+          format: uuid
+          description: The ID of the dataset associated with this report
+          example: '500123'
+        webUrl:
+          type: string
+          format: uri
+          description: The web URL of the report
+          example: https://www.example.com
+        embedUrl:
+          type: string
+          format: uri
+          description: The embed URL for embedding the report in applications
+          example: https://www.example.com
+        reportType:
+          type: string
+          description: The type of the report
           enum:
-          - Publishing
-          - Succeeded
-          - Failed
-          example: Publishing
+          - PowerBIReport
+          - PaginatedReport
+          example: PowerBIReport
+        description:
+          type: string
+          description: The report description
+          example: A sample description.
         createdDateTime:
           type: string
           format: date-time
-          description: When the import was created
+          description: When the report was created
           example: '2026-01-15T10:30:00Z'
-        updatedDateTime:
+        modifiedDateTime:
           type: string
           format: date-time
-          description: When the import was last updated
+          description: When the report was last modified
           example: '2026-01-15T10:30:00Z'
-        reports:
-          type: array
-          description: Reports created by this import
-          items:
-            $ref: '#/components/schemas/Report'
-          example: []
-        datasets:
-          type: array
-          description: Datasets created by this import
-          items:
-            $ref: '#/components/schemas/Dataset'
-          example: []
-    ImportList:
-      type: object
-      description: A list of import operations
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Import'
-          example: []
-        '@odata.context':
+        modifiedBy:
           type: string
-          example: example_value
-    ErrorResponse:
-      type: object
-      description: Error response from the Power BI REST API
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Machine-readable error code
-            message:
-              type: string
-              description: Human-readable error message
-            details:
-              type: array
-              description: Additional error details
-              items:
-                type: object
-                properties:
-                  message:
-                    type: string
-                  target:
-                    type: string
+          description: The user who last modified the report
           example: example_value
     Dataset:
       type: object
@@ -368,59 +342,85 @@ components:
           type: string
           description: The content provider type
           example: example_value
-    Report:
+    ImportList:
       type: object
-      description: A Power BI report
+      description: A list of import operations
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Import'
+          example: []
+        '@odata.context':
+          type: string
+          example: example_value
+    ErrorResponse:
+      type: object
+      description: Error response from the Power BI REST API
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Machine-readable error code
+            message:
+              type: string
+              description: Human-readable error message
+            details:
+              type: array
+              description: Additional error details
+              items:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  target:
+                    type: string
+          example: example_value
+    Import:
+      type: object
+      description: An import operation
       properties:
         id:
           type: string
           format: uuid
-          description: The unique identifier of the report
+          description: The unique identifier of the import
           example: abc123
         name:
           type: string
-          description: The display name of the report
+          description: The display name of the import
           example: Example Title
-        datasetId:
+        importState:
           type: string
-          format: uuid
-          description: The ID of the dataset associated with this report
-          example: '500123'
-        webUrl:
-          type: string
-          format: uri
-          description: The web URL of the report
-          example: https://www.example.com
-        embedUrl:
-          type: string
-          format: uri
-          description: The embed URL for embedding the report in applications
-          example: https://www.example.com
-        reportType:
-          type: string
-          description: The type of the report
+          description: The state of the import
           enum:
-          - PowerBIReport
-          - PaginatedReport
-          example: PowerBIReport
-        description:
-          type: string
-          description: The report description
-          example: A sample description.
+          - Publishing
+          - Succeeded
+          - Failed
+          example: Publishing
         createdDateTime:
           type: string
           format: date-time
-          description: When the report was created
+          description: When the import was created
           example: '2026-01-15T10:30:00Z'
-        modifiedDateTime:
+        updatedDateTime:
           type: string
           format: date-time
-          description: When the report was last modified
+          description: When the import was last updated
           example: '2026-01-15T10:30:00Z'
-        modifiedBy:
-          type: string
-          description: The user who last modified the report
-          example: example_value
+        reports:
+          type: array
+          description: Reports created by this import
+          items:
+            $ref: '#/components/schemas/Report'
+          example: []
+        datasets:
+          type: array
+          description: Datasets created by this import
+          items:
+            $ref: '#/components/schemas/Dataset'
+          example: []
   parameters:
     groupId:
       name: groupId

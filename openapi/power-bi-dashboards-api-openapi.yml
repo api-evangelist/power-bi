@@ -390,56 +390,7 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    tileId:
-      name: tileId
-      in: path
-      required: true
-      description: The unique identifier of the tile
-      schema:
-        type: string
-        format: uuid
-    groupId:
-      name: groupId
-      in: path
-      required: true
-      description: The unique identifier of the workspace (group)
-      schema:
-        type: string
-        format: uuid
-    dashboardId:
-      name: dashboardId
-      in: path
-      required: true
-      description: The unique identifier of the dashboard
-      schema:
-        type: string
-        format: uuid
   schemas:
-    ErrorResponse:
-      type: object
-      description: Error response from the Power BI REST API
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Machine-readable error code
-            message:
-              type: string
-              description: Human-readable error message
-            details:
-              type: array
-              description: Additional error details
-              items:
-                type: object
-                properties:
-                  message:
-                    type: string
-                  target:
-                    type: string
-          example: example_value
     TileList:
       type: object
       description: A list of dashboard tiles
@@ -462,18 +413,6 @@ components:
           type: string
           description: The display name of the new dashboard
           example: Example Title
-    DashboardList:
-      type: object
-      description: A list of Power BI dashboards
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Dashboard'
-          example: []
-        '@odata.context':
-          type: string
-          example: example_value
     Tile:
       type: object
       description: A tile on a Power BI dashboard
@@ -518,6 +457,42 @@ components:
           type: integer
           description: The number of columns the tile spans
           example: 10
+    DashboardList:
+      type: object
+      description: A list of Power BI dashboards
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dashboard'
+          example: []
+        '@odata.context':
+          type: string
+          example: example_value
+    ErrorResponse:
+      type: object
+      description: Error response from the Power BI REST API
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Machine-readable error code
+            message:
+              type: string
+              description: Human-readable error message
+            details:
+              type: array
+              description: Additional error details
+              items:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  target:
+                    type: string
+          example: example_value
     Dashboard:
       type: object
       description: A Power BI dashboard
@@ -549,6 +524,31 @@ components:
           type: string
           description: The data classification label
           example: example_value
+  parameters:
+    groupId:
+      name: groupId
+      in: path
+      required: true
+      description: The unique identifier of the workspace (group)
+      schema:
+        type: string
+        format: uuid
+    dashboardId:
+      name: dashboardId
+      in: path
+      required: true
+      description: The unique identifier of the dashboard
+      schema:
+        type: string
+        format: uuid
+    tileId:
+      name: tileId
+      in: path
+      required: true
+      description: The unique identifier of the tile
+      schema:
+        type: string
+        format: uuid
   securitySchemes:
     bearerAuth:
       type: http
