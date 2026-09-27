@@ -815,93 +815,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    GroupList:
-      type: object
-      description: A list of Power BI workspaces
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Group'
-          example: []
-        '@odata.context':
-          type: string
-          example: example_value
-    Report:
-      type: object
-      description: A Power BI report
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: The unique identifier of the report
-          example: abc123
-        name:
-          type: string
-          description: The display name of the report
-          example: Example Title
-        datasetId:
-          type: string
-          format: uuid
-          description: The ID of the dataset associated with this report
-          example: '500123'
-        webUrl:
-          type: string
-          format: uri
-          description: The web URL of the report
-          example: https://www.example.com
-        embedUrl:
-          type: string
-          format: uri
-          description: The embed URL for embedding the report in applications
-          example: https://www.example.com
-        reportType:
-          type: string
-          description: The type of the report
-          enum:
-          - PowerBIReport
-          - PaginatedReport
-          example: PowerBIReport
-        description:
-          type: string
-          description: The report description
-          example: A sample description.
-        createdDateTime:
-          type: string
-          format: date-time
-          description: When the report was created
-          example: '2026-01-15T10:30:00Z'
-        modifiedDateTime:
-          type: string
-          format: date-time
-          description: When the report was last modified
-          example: '2026-01-15T10:30:00Z'
-        modifiedBy:
-          type: string
-          description: The user who last modified the report
-          example: example_value
-    GroupUserList:
-      type: object
-      description: A list of workspace users
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/GroupUser'
-          example: []
-        '@odata.context':
-          type: string
-          example: example_value
-    CreateGroupRequest:
-      type: object
-      required:
-      - name
-      description: Request body for creating a workspace
-      properties:
-        name:
-          type: string
-          description: The display name of the new workspace
-          example: Example Title
     Group:
       type: object
       description: A Power BI workspace (group)
@@ -944,6 +857,173 @@ components:
           - Deleted
           - Removing
           example: Active
+    Import:
+      type: object
+      description: An import operation
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The unique identifier of the import
+          example: abc123
+        name:
+          type: string
+          description: The display name of the import
+          example: Example Title
+        importState:
+          type: string
+          description: The state of the import
+          enum:
+          - Publishing
+          - Succeeded
+          - Failed
+          example: Publishing
+        createdDateTime:
+          type: string
+          format: date-time
+          description: When the import was created
+          example: '2026-01-15T10:30:00Z'
+        updatedDateTime:
+          type: string
+          format: date-time
+          description: When the import was last updated
+          example: '2026-01-15T10:30:00Z'
+        reports:
+          type: array
+          description: Reports created by this import
+          items:
+            $ref: '#/components/schemas/Report'
+          example: []
+        datasets:
+          type: array
+          description: Datasets created by this import
+          items:
+            $ref: '#/components/schemas/Dataset'
+          example: []
+    ImportList:
+      type: object
+      description: A list of import operations
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Import'
+          example: []
+        '@odata.context':
+          type: string
+          example: example_value
+    GroupUser:
+      type: object
+      required:
+      - emailAddress
+      - groupUserAccessRight
+      description: A user in a Power BI workspace
+      properties:
+        emailAddress:
+          type: string
+          format: email
+          description: The email address of the user
+          example: user@example.com
+        displayName:
+          type: string
+          description: The display name of the user
+          example: example_value
+        identifier:
+          type: string
+          description: The object ID of the user
+          example: example_value
+        graphId:
+          type: string
+          description: The Microsoft Graph ID of the user
+          example: '500123'
+        groupUserAccessRight:
+          type: string
+          description: The access right of the user in the workspace
+          enum:
+          - Admin
+          - Member
+          - Contributor
+          - Viewer
+          example: Admin
+        principalType:
+          type: string
+          description: The principal type
+          enum:
+          - User
+          - Group
+          - App
+          example: User
+    DashboardList:
+      type: object
+      description: A list of Power BI dashboards
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dashboard'
+          example: []
+        '@odata.context':
+          type: string
+          example: example_value
+    GroupUserList:
+      type: object
+      description: A list of workspace users
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupUser'
+          example: []
+        '@odata.context':
+          type: string
+          example: example_value
+    CreateGroupRequest:
+      type: object
+      required:
+      - name
+      description: Request body for creating a workspace
+      properties:
+        name:
+          type: string
+          description: The display name of the new workspace
+          example: Example Title
+    ErrorResponse:
+      type: object
+      description: Error response from the Power BI REST API
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Machine-readable error code
+            message:
+              type: string
+              description: Human-readable error message
+            details:
+              type: array
+              description: Additional error details
+              items:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  target:
+                    type: string
+          example: example_value
+    DatasetList:
+      type: object
+      description: A list of Power BI datasets
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dataset'
+          example: []
+        '@odata.context':
+          type: string
+          description: OData context URL
+          example: example_value
     Dataset:
       type: object
       description: A Power BI dataset representing a data model
@@ -1014,163 +1094,71 @@ components:
           type: string
           description: The content provider type
           example: example_value
-    ImportList:
+    GroupList:
       type: object
-      description: A list of import operations
+      description: A list of Power BI workspaces
       properties:
         value:
           type: array
           items:
-            $ref: '#/components/schemas/Import'
+            $ref: '#/components/schemas/Group'
           example: []
         '@odata.context':
           type: string
           example: example_value
-    DatasetList:
+    Report:
       type: object
-      description: A list of Power BI datasets
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Dataset'
-          example: []
-        '@odata.context':
-          type: string
-          description: OData context URL
-          example: example_value
-    ReportList:
-      type: object
-      description: A list of Power BI reports
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Report'
-          example: []
-        '@odata.context':
-          type: string
-          example: example_value
-    GroupUser:
-      type: object
-      required:
-      - emailAddress
-      - groupUserAccessRight
-      description: A user in a Power BI workspace
-      properties:
-        emailAddress:
-          type: string
-          format: email
-          description: The email address of the user
-          example: user@example.com
-        displayName:
-          type: string
-          description: The display name of the user
-          example: example_value
-        identifier:
-          type: string
-          description: The object ID of the user
-          example: example_value
-        graphId:
-          type: string
-          description: The Microsoft Graph ID of the user
-          example: '500123'
-        groupUserAccessRight:
-          type: string
-          description: The access right of the user in the workspace
-          enum:
-          - Admin
-          - Member
-          - Contributor
-          - Viewer
-          example: Admin
-        principalType:
-          type: string
-          description: The principal type
-          enum:
-          - User
-          - Group
-          - App
-          example: User
-    DashboardList:
-      type: object
-      description: A list of Power BI dashboards
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Dashboard'
-          example: []
-        '@odata.context':
-          type: string
-          example: example_value
-    ErrorResponse:
-      type: object
-      description: Error response from the Power BI REST API
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Machine-readable error code
-            message:
-              type: string
-              description: Human-readable error message
-            details:
-              type: array
-              description: Additional error details
-              items:
-                type: object
-                properties:
-                  message:
-                    type: string
-                  target:
-                    type: string
-          example: example_value
-    Import:
-      type: object
-      description: An import operation
+      description: A Power BI report
       properties:
         id:
           type: string
           format: uuid
-          description: The unique identifier of the import
+          description: The unique identifier of the report
           example: abc123
         name:
           type: string
-          description: The display name of the import
+          description: The display name of the report
           example: Example Title
-        importState:
+        datasetId:
           type: string
-          description: The state of the import
+          format: uuid
+          description: The ID of the dataset associated with this report
+          example: '500123'
+        webUrl:
+          type: string
+          format: uri
+          description: The web URL of the report
+          example: https://www.example.com
+        embedUrl:
+          type: string
+          format: uri
+          description: The embed URL for embedding the report in applications
+          example: https://www.example.com
+        reportType:
+          type: string
+          description: The type of the report
           enum:
-          - Publishing
-          - Succeeded
-          - Failed
-          example: Publishing
+          - PowerBIReport
+          - PaginatedReport
+          example: PowerBIReport
+        description:
+          type: string
+          description: The report description
+          example: A sample description.
         createdDateTime:
           type: string
           format: date-time
-          description: When the import was created
+          description: When the report was created
           example: '2026-01-15T10:30:00Z'
-        updatedDateTime:
+        modifiedDateTime:
           type: string
           format: date-time
-          description: When the import was last updated
+          description: When the report was last modified
           example: '2026-01-15T10:30:00Z'
-        reports:
-          type: array
-          description: Reports created by this import
-          items:
-            $ref: '#/components/schemas/Report'
-          example: []
-        datasets:
-          type: array
-          description: Datasets created by this import
-          items:
-            $ref: '#/components/schemas/Dataset'
-          example: []
+        modifiedBy:
+          type: string
+          description: The user who last modified the report
+          example: example_value
     Dashboard:
       type: object
       description: A Power BI dashboard
@@ -1202,7 +1190,26 @@ components:
           type: string
           description: The data classification label
           example: example_value
+    ReportList:
+      type: object
+      description: A list of Power BI reports
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Report'
+          example: []
+        '@odata.context':
+          type: string
+          example: example_value
   parameters:
+    userId:
+      name: userId
+      in: path
+      required: true
+      description: The email address or object ID of the user
+      schema:
+        type: string
     groupId:
       name: groupId
       in: path
@@ -1211,13 +1218,6 @@ components:
       schema:
         type: string
         format: uuid
-    userId:
-      name: userId
-      in: path
-      required: true
-      description: The email address or object ID of the user
-      schema:
-        type: string
   securitySchemes:
     bearerAuth:
       type: http
