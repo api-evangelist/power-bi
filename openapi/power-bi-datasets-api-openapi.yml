@@ -705,47 +705,29 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    Table:
+    Measure:
       type: object
       required:
       - name
-      - columns
-      description: A table within a Power BI dataset
+      - expression
+      description: A DAX measure defined on a table
       properties:
         name:
           type: string
-          description: The name of the table
+          description: The name of the measure
           example: Example Title
-        columns:
-          type: array
-          description: The columns in the table
-          items:
-            $ref: '#/components/schemas/Column'
-          example: []
-        rows:
-          type: array
-          description: Rows of data in the table
-          items:
-            type: object
-          example: []
-        measures:
-          type: array
-          description: DAX measures defined on the table
-          items:
-            $ref: '#/components/schemas/Measure'
-          example: []
-    RefreshList:
-      type: object
-      description: A list of dataset refresh entries
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Refresh'
-          example: []
-        '@odata.context':
+        expression:
           type: string
+          description: The DAX expression for the measure
           example: example_value
+        formatString:
+          type: string
+          description: Optional format string
+          example: example_value
+        isHidden:
+          type: boolean
+          description: Whether the measure is hidden in reports
+          example: true
     CreateDatasetRequest:
       type: object
       required:
@@ -777,41 +759,40 @@ components:
           items:
             $ref: '#/components/schemas/Relationship'
           example: []
-    Measure:
+    Column:
       type: object
       required:
       - name
-      - expression
-      description: A DAX measure defined on a table
+      - dataType
+      description: A column in a dataset table
       properties:
         name:
           type: string
-          description: The name of the measure
+          description: The column name
           example: Example Title
-        expression:
+        dataType:
           type: string
-          description: The DAX expression for the measure
-          example: example_value
+          description: The data type of the column
+          enum:
+          - Int64
+          - Double
+          - Boolean
+          - Datetime
+          - String
+          - Decimal
+          example: Int64
         formatString:
           type: string
-          description: Optional format string
+          description: Optional format string for the column
+          example: example_value
+        sortByColumn:
+          type: string
+          description: Name of the column to sort by
           example: example_value
         isHidden:
           type: boolean
-          description: Whether the measure is hidden in reports
+          description: Whether the column is hidden in reports
           example: true
-    DatasourceList:
-      type: object
-      description: A list of data sources
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Datasource'
-          example: []
-        '@odata.context':
-          type: string
-          example: example_value
     Relationship:
       type: object
       required:
@@ -850,44 +831,96 @@ components:
           - BothDirections
           - Automatic
           example: OneDirection
-    Parameter:
+    RefreshList:
       type: object
-      description: A parameter in a dataset
-      properties:
-        name:
-          type: string
-          description: The parameter name
-          example: Example Title
-        type:
-          type: string
-          description: The data type of the parameter
-          example: example_value
-        currentValue:
-          type: string
-          description: The current value of the parameter
-          example: example_value
-        isRequired:
-          type: boolean
-          description: Whether the parameter is required
-          example: true
-        suggestedValues:
-          type: array
-          description: Suggested values for the parameter
-          items:
-            type: string
-          example: []
-    ParameterList:
-      type: object
-      description: A list of dataset parameters
+      description: A list of dataset refresh entries
       properties:
         value:
           type: array
           items:
-            $ref: '#/components/schemas/Parameter'
+            $ref: '#/components/schemas/Refresh'
           example: []
         '@odata.context':
           type: string
           example: example_value
+    Datasource:
+      type: object
+      description: A data source used by a dataset
+      properties:
+        datasourceType:
+          type: string
+          description: The type of data source (e.g. Sql, AnalysisServices, File)
+          example: example_value
+        connectionDetails:
+          type: object
+          description: Connection details for the data source
+          properties:
+            server:
+              type: string
+              description: The server address
+            database:
+              type: string
+              description: The database name
+            url:
+              type: string
+              description: The connection URL
+            path:
+              type: string
+              description: The file path
+          example: example_value
+        datasourceId:
+          type: string
+          format: uuid
+          description: The unique identifier of the data source
+          example: '500123'
+        gatewayId:
+          type: string
+          format: uuid
+          description: The gateway identifier if using an on-premises gateway
+          example: '500123'
+    RefreshRequest:
+      type: object
+      description: Request body for an enhanced dataset refresh
+      properties:
+        type:
+          type: string
+          description: The type of processing to perform
+          enum:
+          - Full
+          - ClearValues
+          - Calculate
+          - DataOnly
+          - Automatic
+          - Defragment
+          example: Full
+        commitMode:
+          type: string
+          description: Determines whether objects are committed in batches or only when complete
+          enum:
+          - transactional
+          - partialBatch
+          example: transactional
+        maxParallelism:
+          type: integer
+          description: Maximum number of threads to run in parallel
+          example: 10
+        retryCount:
+          type: integer
+          description: Number of times to retry on failure
+          example: 10
+        objects:
+          type: array
+          description: Specific tables or partitions to refresh
+          items:
+            type: object
+            properties:
+              table:
+                type: string
+                description: The table name to refresh
+              partition:
+                type: string
+                description: The partition name within the table to refresh
+          example: []
     UpdateParametersRequest:
       type: object
       required:
@@ -909,43 +942,6 @@ components:
                 type: string
                 description: The new value for the parameter
           example: []
-    ErrorResponse:
-      type: object
-      description: Error response from the Power BI REST API
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Machine-readable error code
-            message:
-              type: string
-              description: Human-readable error message
-            details:
-              type: array
-              description: Additional error details
-              items:
-                type: object
-                properties:
-                  message:
-                    type: string
-                  target:
-                    type: string
-          example: example_value
-    DatasetList:
-      type: object
-      description: A list of Power BI datasets
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Dataset'
-          example: []
-        '@odata.context':
-          type: string
-          description: OData context URL
-          example: example_value
     Dataset:
       type: object
       description: A Power BI dataset representing a data model
@@ -1016,49 +1012,93 @@ components:
           type: string
           description: The content provider type
           example: example_value
-    RefreshRequest:
+    Parameter:
       type: object
-      description: Request body for an enhanced dataset refresh
+      description: A parameter in a dataset
       properties:
+        name:
+          type: string
+          description: The parameter name
+          example: Example Title
         type:
           type: string
-          description: The type of processing to perform
-          enum:
-          - Full
-          - ClearValues
-          - Calculate
-          - DataOnly
-          - Automatic
-          - Defragment
-          example: Full
-        commitMode:
+          description: The data type of the parameter
+          example: example_value
+        currentValue:
           type: string
-          description: Determines whether objects are committed in batches or only when complete
-          enum:
-          - transactional
-          - partialBatch
-          example: transactional
-        maxParallelism:
-          type: integer
-          description: Maximum number of threads to run in parallel
-          example: 10
-        retryCount:
-          type: integer
-          description: Number of times to retry on failure
-          example: 10
-        objects:
+          description: The current value of the parameter
+          example: example_value
+        isRequired:
+          type: boolean
+          description: Whether the parameter is required
+          example: true
+        suggestedValues:
           type: array
-          description: Specific tables or partitions to refresh
+          description: Suggested values for the parameter
           items:
-            type: object
-            properties:
-              table:
-                type: string
-                description: The table name to refresh
-              partition:
-                type: string
-                description: The partition name within the table to refresh
+            type: string
           example: []
+    ErrorResponse:
+      type: object
+      description: Error response from the Power BI REST API
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Machine-readable error code
+            message:
+              type: string
+              description: Human-readable error message
+            details:
+              type: array
+              description: Additional error details
+              items:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  target:
+                    type: string
+          example: example_value
+    ParameterList:
+      type: object
+      description: A list of dataset parameters
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Parameter'
+          example: []
+        '@odata.context':
+          type: string
+          example: example_value
+    DatasetList:
+      type: object
+      description: A list of Power BI datasets
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dataset'
+          example: []
+        '@odata.context':
+          type: string
+          description: OData context URL
+          example: example_value
+    DatasourceList:
+      type: object
+      description: A list of data sources
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Datasource'
+          example: []
+        '@odata.context':
+          type: string
+          example: example_value
     Refresh:
       type: object
       description: A dataset refresh operation entry
@@ -1104,89 +1144,49 @@ components:
           type: string
           description: JSON-formatted error details if the refresh failed
           example: example_value
-    Datasource:
-      type: object
-      description: A data source used by a dataset
-      properties:
-        datasourceType:
-          type: string
-          description: The type of data source (e.g. Sql, AnalysisServices, File)
-          example: example_value
-        connectionDetails:
-          type: object
-          description: Connection details for the data source
-          properties:
-            server:
-              type: string
-              description: The server address
-            database:
-              type: string
-              description: The database name
-            url:
-              type: string
-              description: The connection URL
-            path:
-              type: string
-              description: The file path
-          example: example_value
-        datasourceId:
-          type: string
-          format: uuid
-          description: The unique identifier of the data source
-          example: '500123'
-        gatewayId:
-          type: string
-          format: uuid
-          description: The gateway identifier if using an on-premises gateway
-          example: '500123'
-    Column:
+    Table:
       type: object
       required:
       - name
-      - dataType
-      description: A column in a dataset table
+      - columns
+      description: A table within a Power BI dataset
       properties:
         name:
           type: string
-          description: The column name
+          description: The name of the table
           example: Example Title
-        dataType:
-          type: string
-          description: The data type of the column
-          enum:
-          - Int64
-          - Double
-          - Boolean
-          - Datetime
-          - String
-          - Decimal
-          example: Int64
-        formatString:
-          type: string
-          description: Optional format string for the column
-          example: example_value
-        sortByColumn:
-          type: string
-          description: Name of the column to sort by
-          example: example_value
-        isHidden:
-          type: boolean
-          description: Whether the column is hidden in reports
-          example: true
+        columns:
+          type: array
+          description: The columns in the table
+          items:
+            $ref: '#/components/schemas/Column'
+          example: []
+        rows:
+          type: array
+          description: Rows of data in the table
+          items:
+            type: object
+          example: []
+        measures:
+          type: array
+          description: DAX measures defined on the table
+          items:
+            $ref: '#/components/schemas/Measure'
+          example: []
   parameters:
-    groupId:
-      name: groupId
-      in: path
-      required: true
-      description: The unique identifier of the workspace (group)
-      schema:
-        type: string
-        format: uuid
     datasetId:
       name: datasetId
       in: path
       required: true
       description: The unique identifier of the dataset
+      schema:
+        type: string
+        format: uuid
+    groupId:
+      name: groupId
+      in: path
+      required: true
+      description: The unique identifier of the workspace (group)
       schema:
         type: string
         format: uuid

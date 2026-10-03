@@ -523,73 +523,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    CloneReportRequest:
-      type: object
-      required:
-      - name
-      description: Request body for cloning a report
-      properties:
-        name:
-          type: string
-          description: The name for the cloned report
-          example: Example Title
-        targetModelId:
-          type: string
-          format: uuid
-          description: Optional dataset ID to rebind the cloned report to
-          example: '500123'
-        targetWorkspaceId:
-          type: string
-          format: uuid
-          description: Optional workspace ID for the cloned report
-          example: '500123'
-    RebindReportRequest:
-      type: object
-      required:
-      - datasetId
-      description: Request body for rebinding a report to a different dataset
-      properties:
-        datasetId:
-          type: string
-          format: uuid
-          description: The ID of the target dataset
-          example: '500123'
-    PageList:
-      type: object
-      description: A list of report pages
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Page'
-          example: []
-        '@odata.context':
-          type: string
-          example: example_value
-    ErrorResponse:
-      type: object
-      description: Error response from the Power BI REST API
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Machine-readable error code
-            message:
-              type: string
-              description: Human-readable error message
-            details:
-              type: array
-              description: Additional error details
-              items:
-                type: object
-                properties:
-                  message:
-                    type: string
-                  target:
-                    type: string
-          example: example_value
     Report:
       type: object
       description: A Power BI report
@@ -643,6 +576,85 @@ components:
           type: string
           description: The user who last modified the report
           example: example_value
+    PageList:
+      type: object
+      description: A list of report pages
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Page'
+          example: []
+        '@odata.context':
+          type: string
+          example: example_value
+    CloneReportRequest:
+      type: object
+      required:
+      - name
+      description: Request body for cloning a report
+      properties:
+        name:
+          type: string
+          description: The name for the cloned report
+          example: Example Title
+        targetModelId:
+          type: string
+          format: uuid
+          description: Optional dataset ID to rebind the cloned report to
+          example: '500123'
+        targetWorkspaceId:
+          type: string
+          format: uuid
+          description: Optional workspace ID for the cloned report
+          example: '500123'
+    RebindReportRequest:
+      type: object
+      required:
+      - datasetId
+      description: Request body for rebinding a report to a different dataset
+      properties:
+        datasetId:
+          type: string
+          format: uuid
+          description: The ID of the target dataset
+          example: '500123'
+    ErrorResponse:
+      type: object
+      description: Error response from the Power BI REST API
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Machine-readable error code
+            message:
+              type: string
+              description: Human-readable error message
+            details:
+              type: array
+              description: Additional error details
+              items:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  target:
+                    type: string
+          example: example_value
+    ReportList:
+      type: object
+      description: A list of Power BI reports
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Report'
+          example: []
+        '@odata.context':
+          type: string
+          example: example_value
     Page:
       type: object
       description: A page within a Power BI report
@@ -659,18 +671,6 @@ components:
           type: integer
           description: The order of the page within the report
           example: 10
-    ReportList:
-      type: object
-      description: A list of Power BI reports
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Report'
-          example: []
-        '@odata.context':
-          type: string
-          example: example_value
   parameters:
     reportId:
       name: reportId

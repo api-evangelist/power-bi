@@ -390,7 +390,88 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    tileId:
+      name: tileId
+      in: path
+      required: true
+      description: The unique identifier of the tile
+      schema:
+        type: string
+        format: uuid
+    dashboardId:
+      name: dashboardId
+      in: path
+      required: true
+      description: The unique identifier of the dashboard
+      schema:
+        type: string
+        format: uuid
+    groupId:
+      name: groupId
+      in: path
+      required: true
+      description: The unique identifier of the workspace (group)
+      schema:
+        type: string
+        format: uuid
   schemas:
+    TileList:
+      type: object
+      description: A list of dashboard tiles
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tile'
+          example: []
+        '@odata.context':
+          type: string
+          example: example_value
+    Tile:
+      type: object
+      description: A tile on a Power BI dashboard
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The unique identifier of the tile
+          example: abc123
+        title:
+          type: string
+          description: The display title of the tile
+          example: Example Title
+        subTitle:
+          type: string
+          description: The subtitle of the tile
+          example: example_value
+        embedUrl:
+          type: string
+          format: uri
+          description: The embed URL for the tile
+          example: https://www.example.com
+        embedData:
+          type: string
+          description: Additional embed data for the tile
+          example: example_value
+        reportId:
+          type: string
+          format: uuid
+          description: The ID of the report the tile is pinned from
+          example: '500123'
+        datasetId:
+          type: string
+          format: uuid
+          description: The ID of the dataset used by this tile
+          example: '500123'
+        rowSpan:
+          type: integer
+          description: The number of rows the tile spans
+          example: 10
+        colSpan:
+          type: integer
+          description: The number of columns the tile spans
+          example: 10
     CreateDashboardRequest:
       type: object
       required:
@@ -437,50 +518,6 @@ components:
                   target:
                     type: string
           example: example_value
-    Tile:
-      type: object
-      description: A tile on a Power BI dashboard
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: The unique identifier of the tile
-          example: abc123
-        title:
-          type: string
-          description: The display title of the tile
-          example: Example Title
-        subTitle:
-          type: string
-          description: The subtitle of the tile
-          example: example_value
-        embedUrl:
-          type: string
-          format: uri
-          description: The embed URL for the tile
-          example: https://www.example.com
-        embedData:
-          type: string
-          description: Additional embed data for the tile
-          example: example_value
-        reportId:
-          type: string
-          format: uuid
-          description: The ID of the report the tile is pinned from
-          example: '500123'
-        datasetId:
-          type: string
-          format: uuid
-          description: The ID of the dataset used by this tile
-          example: '500123'
-        rowSpan:
-          type: integer
-          description: The number of rows the tile spans
-          example: 10
-        colSpan:
-          type: integer
-          description: The number of columns the tile spans
-          example: 10
     Dashboard:
       type: object
       description: A Power BI dashboard
@@ -512,43 +549,6 @@ components:
           type: string
           description: The data classification label
           example: example_value
-    TileList:
-      type: object
-      description: A list of dashboard tiles
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Tile'
-          example: []
-        '@odata.context':
-          type: string
-          example: example_value
-  parameters:
-    tileId:
-      name: tileId
-      in: path
-      required: true
-      description: The unique identifier of the tile
-      schema:
-        type: string
-        format: uuid
-    groupId:
-      name: groupId
-      in: path
-      required: true
-      description: The unique identifier of the workspace (group)
-      schema:
-        type: string
-        format: uuid
-    dashboardId:
-      name: dashboardId
-      in: path
-      required: true
-      description: The unique identifier of the dashboard
-      schema:
-        type: string
-        format: uuid
   securitySchemes:
     bearerAuth:
       type: http
