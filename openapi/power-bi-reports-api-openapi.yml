@@ -523,6 +523,29 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    ReportList:
+      type: object
+      description: A list of Power BI reports
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Report'
+          example: []
+        '@odata.context':
+          type: string
+          example: example_value
+    RebindReportRequest:
+      type: object
+      required:
+      - datasetId
+      description: Request body for rebinding a report to a different dataset
+      properties:
+        datasetId:
+          type: string
+          format: uuid
+          description: The ID of the target dataset
+          example: '500123'
     Report:
       type: object
       description: A Power BI report
@@ -576,18 +599,22 @@ components:
           type: string
           description: The user who last modified the report
           example: example_value
-    PageList:
+    Page:
       type: object
-      description: A list of report pages
+      description: A page within a Power BI report
       properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Page'
-          example: []
-        '@odata.context':
+        name:
           type: string
+          description: The internal name of the page
+          example: Example Title
+        displayName:
+          type: string
+          description: The display name shown in the report
           example: example_value
+        order:
+          type: integer
+          description: The order of the page within the report
+          example: 10
     CloneReportRequest:
       type: object
       required:
@@ -608,17 +635,18 @@ components:
           format: uuid
           description: Optional workspace ID for the cloned report
           example: '500123'
-    RebindReportRequest:
+    PageList:
       type: object
-      required:
-      - datasetId
-      description: Request body for rebinding a report to a different dataset
+      description: A list of report pages
       properties:
-        datasetId:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Page'
+          example: []
+        '@odata.context':
           type: string
-          format: uuid
-          description: The ID of the target dataset
-          example: '500123'
+          example: example_value
     ErrorResponse:
       type: object
       description: Error response from the Power BI REST API
@@ -643,34 +671,6 @@ components:
                   target:
                     type: string
           example: example_value
-    ReportList:
-      type: object
-      description: A list of Power BI reports
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Report'
-          example: []
-        '@odata.context':
-          type: string
-          example: example_value
-    Page:
-      type: object
-      description: A page within a Power BI report
-      properties:
-        name:
-          type: string
-          description: The internal name of the page
-          example: Example Title
-        displayName:
-          type: string
-          description: The display name shown in the report
-          example: example_value
-        order:
-          type: integer
-          description: The order of the page within the report
-          example: 10
   parameters:
     reportId:
       name: reportId

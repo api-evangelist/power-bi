@@ -272,6 +272,49 @@ components:
           type: string
           description: The user who last modified the report
           example: example_value
+    Import:
+      type: object
+      description: An import operation
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The unique identifier of the import
+          example: abc123
+        name:
+          type: string
+          description: The display name of the import
+          example: Example Title
+        importState:
+          type: string
+          description: The state of the import
+          enum:
+          - Publishing
+          - Succeeded
+          - Failed
+          example: Publishing
+        createdDateTime:
+          type: string
+          format: date-time
+          description: When the import was created
+          example: '2026-01-15T10:30:00Z'
+        updatedDateTime:
+          type: string
+          format: date-time
+          description: When the import was last updated
+          example: '2026-01-15T10:30:00Z'
+        reports:
+          type: array
+          description: Reports created by this import
+          items:
+            $ref: '#/components/schemas/Report'
+          example: []
+        datasets:
+          type: array
+          description: Datasets created by this import
+          items:
+            $ref: '#/components/schemas/Dataset'
+          example: []
     Dataset:
       type: object
       description: A Power BI dataset representing a data model
@@ -342,6 +385,18 @@ components:
           type: string
           description: The content provider type
           example: example_value
+    ImportList:
+      type: object
+      description: A list of import operations
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Import'
+          example: []
+        '@odata.context':
+          type: string
+          example: example_value
     ErrorResponse:
       type: object
       description: Error response from the Power BI REST API
@@ -365,61 +420,6 @@ components:
                     type: string
                   target:
                     type: string
-          example: example_value
-    Import:
-      type: object
-      description: An import operation
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: The unique identifier of the import
-          example: abc123
-        name:
-          type: string
-          description: The display name of the import
-          example: Example Title
-        importState:
-          type: string
-          description: The state of the import
-          enum:
-          - Publishing
-          - Succeeded
-          - Failed
-          example: Publishing
-        createdDateTime:
-          type: string
-          format: date-time
-          description: When the import was created
-          example: '2026-01-15T10:30:00Z'
-        updatedDateTime:
-          type: string
-          format: date-time
-          description: When the import was last updated
-          example: '2026-01-15T10:30:00Z'
-        reports:
-          type: array
-          description: Reports created by this import
-          items:
-            $ref: '#/components/schemas/Report'
-          example: []
-        datasets:
-          type: array
-          description: Datasets created by this import
-          items:
-            $ref: '#/components/schemas/Dataset'
-          example: []
-    ImportList:
-      type: object
-      description: A list of import operations
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Import'
-          example: []
-        '@odata.context':
-          type: string
           example: example_value
   parameters:
     groupId:
