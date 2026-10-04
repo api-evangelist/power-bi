@@ -1,21 +1,19 @@
-# Kin Score artifact — power-bi — 2026-09-02T224043
+# Kin Score artifact — power-bi — 2026-09-24T161608
 # The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
 ---
 kin_score:
   slug: power-bi
-  schema_version: 0.18.0
-  scored_at: '2026-09-02'
-  run_ts: 2026-09-02T224043
-  composite: 70.8
+  schema_version: 0.22.0
+  scored_at: '2026-09-24'
+  run_ts: 2026-09-24T161608
+  composite: 72.7
   band: exemplar
   facets:
     discoverability: 75.9
-    contract_quality: 72.8
-    governance: 18.2
-    operational_transparency: 55.3
-    developer_ergonomics: 100.0
-    commercial_clarity: 61.8
+    contract_quality: 69.2
     contract_governance: 18.2
+    operational_transparency: 52.6
+    developer_ergonomics: 96.4
     access_clarity: 61.8
   agent_readiness:
     score: 34.2
@@ -40,15 +38,18 @@ kin_score:
       protected_resource_metadata: false
       dynamic_client_registration: false
       agentic_commerce: false
-  open_source:
+  regulatory:
     applies: true
-    score: 100.0
+    regime: Energy & Utilities
+    regime_id: energy_utilities
+    score: 71.6
+    matched_via: tags
   provenance:
     mcp: derived
     agentic_access: derived
     conformance: derived
     contracts:
-      total: 6
+      total: 10
       derived: 0
       coverage: 0.0
       callable: 100.0
