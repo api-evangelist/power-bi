@@ -46,6 +46,7 @@ tags:
 - Reporting
 - Visualization
 - Power BI
+- Data Visualization
 apis:
 - name: Power BI Embedded
   description: Azure service that enables ISVs and developers to embed Power BI visuals, reports, and dashboards into their applications.
