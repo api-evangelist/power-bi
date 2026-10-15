@@ -28,7 +28,7 @@
     builder: unknown (not in the directory record)
     other_apps:
     - power-bi
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: power-bi-pipedream
   label: Pipedream
@@ -54,5 +54,5 @@
     actions: true
     sources: true
     builder: Pipedream repo (component)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
