@@ -391,18 +391,16 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    DashboardList:
+    CreateDashboardRequest:
       type: object
-      description: A list of Power BI dashboards
+      required:
+      - name
+      description: Request body for creating a dashboard
       properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Dashboard'
-          example: []
-        '@odata.context':
+        name:
           type: string
-          example: example_value
+          description: The display name of the new dashboard
+          example: Example Title
     TileList:
       type: object
       description: A list of dashboard tiles
@@ -411,6 +409,73 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Tile'
+          example: []
+        '@odata.context':
+          type: string
+          example: example_value
+    Dashboard:
+      type: object
+      description: A Power BI dashboard
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The unique identifier of the dashboard
+          example: abc123
+        displayName:
+          type: string
+          description: The display name of the dashboard
+          example: example_value
+        isReadOnly:
+          type: boolean
+          description: Whether the dashboard is read-only
+          example: true
+        webUrl:
+          type: string
+          format: uri
+          description: The web URL of the dashboard
+          example: https://www.example.com
+        embedUrl:
+          type: string
+          format: uri
+          description: The embed URL for embedding the dashboard
+          example: https://www.example.com
+        dataClassification:
+          type: string
+          description: The data classification label
+          example: example_value
+    ErrorResponse:
+      type: object
+      description: Error response from the Power BI REST API
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Machine-readable error code
+            message:
+              type: string
+              description: Human-readable error message
+            details:
+              type: array
+              description: Additional error details
+              items:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  target:
+                    type: string
+          example: example_value
+    DashboardList:
+      type: object
+      description: A list of Power BI dashboards
+      properties:
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Dashboard'
           example: []
         '@odata.context':
           type: string
@@ -459,80 +524,7 @@ components:
           type: integer
           description: The number of columns the tile spans
           example: 10
-    Dashboard:
-      type: object
-      description: A Power BI dashboard
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: The unique identifier of the dashboard
-          example: abc123
-        displayName:
-          type: string
-          description: The display name of the dashboard
-          example: example_value
-        isReadOnly:
-          type: boolean
-          description: Whether the dashboard is read-only
-          example: true
-        webUrl:
-          type: string
-          format: uri
-          description: The web URL of the dashboard
-          example: https://www.example.com
-        embedUrl:
-          type: string
-          format: uri
-          description: The embed URL for embedding the dashboard
-          example: https://www.example.com
-        dataClassification:
-          type: string
-          description: The data classification label
-          example: example_value
-    CreateDashboardRequest:
-      type: object
-      required:
-      - name
-      description: Request body for creating a dashboard
-      properties:
-        name:
-          type: string
-          description: The display name of the new dashboard
-          example: Example Title
-    ErrorResponse:
-      type: object
-      description: Error response from the Power BI REST API
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Machine-readable error code
-            message:
-              type: string
-              description: Human-readable error message
-            details:
-              type: array
-              description: Additional error details
-              items:
-                type: object
-                properties:
-                  message:
-                    type: string
-                  target:
-                    type: string
-          example: example_value
   parameters:
-    tileId:
-      name: tileId
-      in: path
-      required: true
-      description: The unique identifier of the tile
-      schema:
-        type: string
-        format: uuid
     dashboardId:
       name: dashboardId
       in: path
@@ -546,6 +538,14 @@ components:
       in: path
       required: true
       description: The unique identifier of the workspace (group)
+      schema:
+        type: string
+        format: uuid
+    tileId:
+      name: tileId
+      in: path
+      required: true
+      description: The unique identifier of the tile
       schema:
         type: string
         format: uuid

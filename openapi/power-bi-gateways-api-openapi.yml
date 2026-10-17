@@ -180,7 +180,40 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    gatewayId:
+      name: gatewayId
+      in: path
+      required: true
+      description: The unique identifier of the gateway
+      schema:
+        type: string
+        format: uuid
   schemas:
+    ErrorResponse:
+      type: object
+      description: Error response from the Power BI REST API
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Machine-readable error code
+            message:
+              type: string
+              description: Human-readable error message
+            details:
+              type: array
+              description: Additional error details
+              items:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  target:
+                    type: string
+          example: example_value
     GatewayDatasourceList:
       type: object
       description: A list of gateway data sources
@@ -189,18 +222,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/GatewayDatasource'
-          example: []
-        '@odata.context':
-          type: string
-          example: example_value
-    GatewayList:
-      type: object
-      description: A list of gateways
-      properties:
-        value:
-          type: array
-          items:
-            $ref: '#/components/schemas/Gateway'
           example: []
         '@odata.context':
           type: string
@@ -276,39 +297,18 @@ components:
           type: string
           description: Gateway metadata annotation
           example: example_value
-    ErrorResponse:
+    GatewayList:
       type: object
-      description: Error response from the Power BI REST API
+      description: A list of gateways
       properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              description: Machine-readable error code
-            message:
-              type: string
-              description: Human-readable error message
-            details:
-              type: array
-              description: Additional error details
-              items:
-                type: object
-                properties:
-                  message:
-                    type: string
-                  target:
-                    type: string
+        value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Gateway'
+          example: []
+        '@odata.context':
+          type: string
           example: example_value
-  parameters:
-    gatewayId:
-      name: gatewayId
-      in: path
-      required: true
-      description: The unique identifier of the gateway
-      schema:
-        type: string
-        format: uuid
   securitySchemes:
     bearerAuth:
       type: http
