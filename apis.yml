@@ -54,6 +54,10 @@ apis:
   humanURL: https://azure.microsoft.com/en-us/services/power-bi-embedded/
   baseURL: https://api.powerbi.com
   tags:
+  - Microsoft Azure
+  - Embedded
+  - Integration
+  tags_raw:
   - Azure
   - Embedded
   - Integration
