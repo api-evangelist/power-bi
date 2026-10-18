@@ -80,7 +80,7 @@
     - connectors/applications/microsoft-power-bi
     vendor_link: https://www.microsoft.com/en-us/power-platform/products/power-bi/power-bi-pro
     builder: Fivetran
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: power-bi-meltano
   label: Meltano
@@ -111,5 +111,5 @@
     - gold
     - silver
     builder: 'community (Meltano Hub variant maintainers: dataops-tk, hotgluexyz)'
-  status: pending-partner-spec
+  status: not-a-workflow
   arazzo: null
