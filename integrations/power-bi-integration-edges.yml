@@ -110,12 +110,58 @@ edges:
     builder: 'community (Meltano Hub variant maintainers: dataops-tk, hotgluexyz)'
   detected_by: sweep-data-integration.py
   first_seen: '2026-10-18'
+- partner_name: npm registry
+  partner: npm
+  partner_match: register
+  type: register
+  direction: provider-built
+  category: official SDK (JavaScript/TypeScript)
+  evidence: https://www.npmjs.com/package/powerbi-client-react
+  channel: package-registry
+  relationship: distribution-channel
+  contract_reference:
+    register: npm registry (public registry JSON)
+    spec_file: null
+    language: JavaScript/TypeScript
+    packages:
+    - name: powerbi-client-react
+      version: 2.0.2
+      released: '2026-07-16'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/powerbi-client-react
+      repo_leg: shared-github-org:microsoft
+      publisher_leg: email:microsoft.com
+      matched_by: domain+name-among-holders
+    - name: powerbi-report-authoring
+      version: 3.0.0
+      released: '2026-07-16'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/powerbi-report-authoring
+      repo_leg: shared-github-org:microsoft
+      publisher_leg: email:microsoft.com
+      matched_by: domain+name-among-holders
+    current: true
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  detected_by: sweep-official-sdks.py
+  first_seen: '2026-10-18'
 method: searched
 checked:
+- https://api.nuget.org/v3
+- https://crates.io/api/v1
 - https://fivetran.com/docs-sitemap.xml
 - https://fivetran.com/docs/connectors/partner-built-program
 - https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/
 - https://github.com/meltano/hub
+- https://proxy.golang.org
+- https://pypi.org/pypi
+- https://registry.npmjs.org
+- https://repo1.maven.org/maven2
+- https://rubygems.org/api/v1
 - https://zapier.com/api/v4/apps/
 source:
 - https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/
