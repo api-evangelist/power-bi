@@ -153,3 +153,590 @@
     detected: '2026-10-18'
   status: not-a-workflow
   arazzo: null
+- slug: power-bi-adp
+  label: ADP
+  partner: adp
+  partner_name: ADP
+  category: Other
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/adp-analytics
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: ADP
+    matched_domain: adp.com
+    matched_by: domain+name-among-holders
+    listings: 1
+    sample_apps:
+    - ADPAnalytics
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+    identity_source: 'wikidata Q489080 ''Automatic Data Processing'' P856 http://www.adp.com/ (labelled identity
+      step: the Learn page names the owner, not its domain)'
+  status: not-a-workflow
+  arazzo: null
+- slug: power-bi-anaplan
+  label: Anaplan
+  partner: anaplan
+  partner_name: Anaplan
+  category: Other
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/anaplan
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: Anaplan
+    matched_domain: anaplan.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Anaplan
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+    identity_source: 'wikidata Q4751571 ''Anaplan'' P856 https://www.anaplan.com/ (labelled identity step: the Learn
+      page names the owner, not its domain)'
+  status: not-a-workflow
+  arazzo: null
+- slug: power-bi-autodesk
+  label: Autodesk
+  partner: autodesk
+  partner_name: Autodesk
+  category: Online Services
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/assemble-views
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: Autodesk
+    matched_domain: autodesk.com
+    matched_by: domain+name-among-holders
+    listings: 2
+    sample_apps:
+    - Assemble Views
+    - Autodesk Forma
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+    identity_source: 'wikidata Q628051 ''Autodesk'' P856 https://www.autodesk.com/ (labelled identity step: the
+      Learn page names the owner, not its domain)'
+  status: not-a-workflow
+  arazzo: null
+- slug: power-bi-bitsight
+  label: Bitsight
+  partner: bitsight
+  partner_name: Bitsight
+  category: Other
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/bitsight-security-ratings
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: Bitsight
+    matched_domain: bitsight.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Bitsight Security Ratings
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+    identity_source: 'wikidata Q65121483 ''Bitsight'' P856 https://www.bitsight.com/ (labelled identity step: the
+      Learn page names the owner, not its domain)'
+  status: not-a-workflow
+  arazzo: null
+- slug: power-bi-bloomberg
+  label: Bloomberg
+  partner: bloomberg
+  partner_name: Bloomberg
+  category: Other
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/bloomberg-data-and-analytics
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: Bloomberg
+    matched_domain: bloomberg.com
+    matched_by: domain+name-among-holders
+    listings: 1
+    sample_apps:
+    - Bloomberg Data and Analytics
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+  status: not-a-workflow
+  arazzo: null
+- slug: power-bi-cdata
+  label: CData
+  partner: cdata
+  partner_name: CData
+  category: Online Services
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/cdata-connect-cloud
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: CData
+    matched_domain: cdata.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - CData Connect Cloud
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+  status: not-a-workflow
+  arazzo: null
+- slug: power-bi-celonis
+  label: Celonis
+  partner: celonis
+  partner_name: Celonis
+  category: Other
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/celonis-ems
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: Celonis
+    matched_domain: celonis.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Celonis EMS
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+  status: not-a-workflow
+  arazzo: null
+- slug: power-bi-clickhouse-inc
+  label: ClickHouse, Inc
+  partner: clickhouse
+  partner_name: ClickHouse, Inc
+  category: Database
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/clickhouse
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: ClickHouse, Inc
+    matched_domain: clickhouse.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - ClickHouse
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+  status: not-a-workflow
+  arazzo: null
+- slug: power-bi-databricks
+  label: Databricks
+  partner: databricks
+  partner_name: Databricks
+  category: Database
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/databricks
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: Databricks
+    matched_domain: databricks.com
+    matched_by: domain+name-among-holders
+    listings: 3
+    sample_apps:
+    - Azure Databricks
+    - Databricks
+    - Delta Sharing
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+    identity_source: 'wikidata Q18350420 ''Databricks'' P856 http://databricks.com/ (labelled identity step: the
+      Learn page names the owner, not its domain)'
+  status: not-a-workflow
+  arazzo: null
+- slug: power-bi-dynatrace
+  label: Dynatrace
+  partner: dynatrace
+  partner_name: Dynatrace
+  category: Other
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/dynatrace-grail-dql
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: Dynatrace
+    matched_domain: dynatrace.com
+    matched_by: domain+name-among-holders
+    listings: 1
+    sample_apps:
+    - Dynatrace Grail DQL
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+    identity_source: 'wikidata Q25048844 ''Dynatrace'' P856 https://www.dynatrace.com (labelled identity step: the
+      Learn page names the owner, not its domain)'
+  status: not-a-workflow
+  arazzo: null
+- slug: power-bi-exact-online
+  label: Exact Online
+  partner: exact-online
+  partner_name: Exact Online
+  category: Database
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/exact-online-premium
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: Exact Online
+    matched_domain: exact.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Exact Online Premium
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+    identity_source: 'wikidata Q26857571 ''Exact Online'' P856 http://www.exact.com/nl/exact-online/ (labelled identity
+      step: the Learn page names the owner, not its domain)'
+  status: not-a-workflow
+  arazzo: null
+- slug: power-bi-factset
+  label: FactSet
+  partner: factset
+  partner_name: FactSet
+  category: Other
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/factset
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: FactSet
+    matched_domain: factset.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - FactSet
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+  status: not-a-workflow
+  arazzo: null
+- slug: power-bi-funnel
+  label: Funnel
+  partner: funnel
+  partner_name: Funnel
+  category: Online Services
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/funnel
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: Funnel
+    matched_domain: funnel.io
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Funnel
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+  status: not-a-workflow
+  arazzo: null
+- slug: power-bi-intersystem
+  label: Intersystem
+  partner: intersystems
+  partner_name: Intersystem
+  category: Database
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/intersystems-healthinsight
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: Intersystem
+    matched_domain: intersystems.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - InterSystems Health Insight
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+  status: not-a-workflow
+  arazzo: null
+- slug: power-bi-mongodb
+  label: MongoDB
+  partner: mongodb
+  partner_name: MongoDB
+  category: Database
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/mongodb-atlas-sql-interface
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: MongoDB
+    matched_domain: mongodb.com
+    matched_by: domain+name-among-holders
+    listings: 1
+    sample_apps:
+    - MongoDB Atlas SQL
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+  status: not-a-workflow
+  arazzo: null
+- slug: power-bi-onestream
+  label: OneStream
+  partner: onestream
+  partner_name: OneStream
+  category: Other
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/onestream
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: OneStream
+    matched_domain: onestream.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - OneStream
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+  status: not-a-workflow
+  arazzo: null
+- slug: power-bi-palantir
+  label: Palantir
+  partner: palantir
+  partner_name: Palantir
+  category: Online Services
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/palantir-foundry-datasets
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: Palantir
+    matched_domain: palantir.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Palantir Foundry Datasets
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+  status: not-a-workflow
+  arazzo: null
+- slug: power-bi-singlestore
+  label: SingleStore
+  partner: singlestore
+  partner_name: SingleStore
+  category: Other
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/singlestore
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: SingleStore
+    matched_domain: singlestore.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - SingleStore Direct Query Connector
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+  status: not-a-workflow
+  arazzo: null
+- slug: power-bi-smartsheet
+  label: Smartsheet
+  partner: smartsheet
+  partner_name: Smartsheet
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/smartsheet
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: Smartsheet
+    matched_domain: smartsheet.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Smartsheet
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+    identity_source: 'wikidata Q7544153 ''Smartsheet'' P856 https://www.smartsheet.com (labelled identity step:
+      the Learn page names the owner, not its domain)'
+  status: not-a-workflow
+  arazzo: null
+- slug: power-bi-solarwinds
+  label: SolarWinds
+  partner: solarwinds
+  partner_name: SolarWinds
+  category: Other
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/solarwinds-service-desk
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: SolarWinds
+    matched_domain: solarwinds.com
+    matched_by: domain+name-among-holders
+    listings: 1
+    sample_apps:
+    - SolarWinds Service Desk
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+    identity_source: 'wikidata Q7555837 ''SolarWinds'' P856 http://www.solarwinds.com/ (labelled identity step:
+      the Learn page names the owner, not its domain)'
+  status: not-a-workflow
+  arazzo: null
+- slug: power-bi-supermetrics
+  label: Supermetrics
+  partner: supermetrics
+  partner_name: Supermetrics
+  category: Online Services
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/supermetrics
+  source: edge
+  relationship: platform-app
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: Supermetrics
+    matched_domain: supermetrics.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Supermetrics
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+  status: not-a-workflow
+  arazzo: null

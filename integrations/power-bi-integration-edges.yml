@@ -149,6 +149,957 @@ edges:
     detected: '2026-10-18'
   detected_by: sweep-official-sdks.py
   first_seen: '2026-10-18'
+- partner_name: ADP
+  app: ADPAnalytics
+  partner: adp
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/adp-analytics
+  category: Other
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: ADP
+    matched_domain: adp.com
+    matched_by: domain+name-among-holders
+    listings: 1
+    sample_apps:
+    - ADPAnalytics
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+    identity_source: 'wikidata Q489080 ''Automatic Data Processing'' P856 http://www.adp.com/ (labelled identity
+      step: the Learn page names the owner, not its domain)'
+  detected_by: sweep-bi-analytics.py
+  detected: '2026-10-19'
+  certified_products:
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power BI (semantic models)
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/adp-analytics
+    connectors:
+    - ADPAnalytics
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power Query Online
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/adp-analytics
+    connectors:
+    - ADPAnalytics
+- partner_name: Anaplan
+  app: Anaplan
+  partner: anaplan
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/anaplan
+  category: Other
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: Anaplan
+    matched_domain: anaplan.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Anaplan
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+    identity_source: 'wikidata Q4751571 ''Anaplan'' P856 https://www.anaplan.com/ (labelled identity step: the Learn
+      page names the owner, not its domain)'
+  detected_by: sweep-bi-analytics.py
+  detected: '2026-10-19'
+  certified_products:
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power BI (semantic models)
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/anaplan
+    connectors:
+    - Anaplan
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power Query Online
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/anaplan
+    connectors:
+    - Anaplan
+- partner_name: Autodesk
+  app: Assemble Views
+  partner: autodesk
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/assemble-views
+  category: Online Services
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: Autodesk
+    matched_domain: autodesk.com
+    matched_by: domain+name-among-holders
+    listings: 2
+    sample_apps:
+    - Assemble Views
+    - Autodesk Forma
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+    identity_source: 'wikidata Q628051 ''Autodesk'' P856 https://www.autodesk.com/ (labelled identity step: the
+      Learn page names the owner, not its domain)'
+  detected_by: sweep-bi-analytics.py
+  detected: '2026-10-19'
+  certified_products:
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power BI (semantic models)
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/assemble-views
+    connectors:
+    - Assemble Views
+    - Autodesk Forma
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power Query Online
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/assemble-views
+    connectors:
+    - Assemble Views
+    - Autodesk Forma
+- partner_name: Bitsight
+  app: Bitsight Security Ratings
+  partner: bitsight
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/bitsight-security-ratings
+  category: Other
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: Bitsight
+    matched_domain: bitsight.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Bitsight Security Ratings
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+    identity_source: 'wikidata Q65121483 ''Bitsight'' P856 https://www.bitsight.com/ (labelled identity step: the
+      Learn page names the owner, not its domain)'
+  detected_by: sweep-bi-analytics.py
+  detected: '2026-10-19'
+  certified_products:
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power BI (semantic models)
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/bitsight-security-ratings
+    connectors:
+    - Bitsight Security Ratings
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power Query Online
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/bitsight-security-ratings
+    connectors:
+    - Bitsight Security Ratings
+- partner_name: Bloomberg
+  app: Bloomberg Data and Analytics
+  partner: bloomberg
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/bloomberg-data-and-analytics
+  category: Other
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: Bloomberg
+    matched_domain: bloomberg.com
+    matched_by: domain+name-among-holders
+    listings: 1
+    sample_apps:
+    - Bloomberg Data and Analytics
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+  detected_by: sweep-bi-analytics.py
+  detected: '2026-10-19'
+  certified_products:
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power BI (semantic models)
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/bloomberg-data-and-analytics
+    connectors:
+    - Bloomberg Data and Analytics
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power Query Online
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/bloomberg-data-and-analytics
+    connectors:
+    - Bloomberg Data and Analytics
+- partner_name: Autodesk
+  app: BuildingConnected & TradeTapp
+  partner: buildingconnected
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/buildingconnected
+  category: Online
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: Autodesk
+    matched_domain: buildingconnected.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - BuildingConnected & TradeTapp
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+  detected_by: sweep-bi-analytics.py
+  detected: '2026-10-19'
+  certified_products:
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power BI (semantic models)
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/buildingconnected
+    connectors:
+    - BuildingConnected & TradeTapp
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power Query Online
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/buildingconnected
+    connectors:
+    - BuildingConnected & TradeTapp
+- partner_name: CData
+  app: CData Connect Cloud
+  partner: cdata
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/cdata-connect-cloud
+  category: Online Services
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: CData
+    matched_domain: cdata.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - CData Connect Cloud
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+  detected_by: sweep-bi-analytics.py
+  detected: '2026-10-19'
+  certified_products:
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power BI (semantic models)
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/cdata-connect-cloud
+    connectors:
+    - CData Connect Cloud
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power Query Online
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/cdata-connect-cloud
+    connectors:
+    - CData Connect Cloud
+- partner_name: Celonis
+  app: Celonis EMS
+  partner: celonis
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/celonis-ems
+  category: Other
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: Celonis
+    matched_domain: celonis.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Celonis EMS
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+  detected_by: sweep-bi-analytics.py
+  detected: '2026-10-19'
+  certified_products:
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power BI (semantic models)
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/celonis-ems
+    connectors:
+    - Celonis EMS
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power Query Online
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/celonis-ems
+    connectors:
+    - Celonis EMS
+- partner_name: ClickHouse, Inc
+  app: ClickHouse
+  partner: clickhouse
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/clickhouse
+  category: Database
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: ClickHouse, Inc
+    matched_domain: clickhouse.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - ClickHouse
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+  detected_by: sweep-bi-analytics.py
+  detected: '2026-10-19'
+  certified_products:
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power BI (semantic models)
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/clickhouse
+    connectors:
+    - ClickHouse
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power Query Online
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/clickhouse
+    connectors:
+    - ClickHouse
+- partner_name: Databricks
+  app: Databricks
+  partner: databricks
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/databricks
+  category: Database
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: Databricks
+    matched_domain: databricks.com
+    matched_by: domain+name-among-holders
+    listings: 3
+    sample_apps:
+    - Azure Databricks
+    - Databricks
+    - Delta Sharing
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+    identity_source: 'wikidata Q18350420 ''Databricks'' P856 http://databricks.com/ (labelled identity step: the
+      Learn page names the owner, not its domain)'
+  detected_by: sweep-bi-analytics.py
+  detected: '2026-10-19'
+  certified_products:
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power BI (semantic models)
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/databricks
+    connectors:
+    - Databricks
+    - Azure Databricks
+    - Delta Sharing
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power Query Online
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/databricks
+    connectors:
+    - Databricks
+    - Azure Databricks
+    - Delta Sharing
+- partner_name: Dynatrace
+  app: Dynatrace Grail DQL
+  partner: dynatrace
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/dynatrace-grail-dql
+  category: Other
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: Dynatrace
+    matched_domain: dynatrace.com
+    matched_by: domain+name-among-holders
+    listings: 1
+    sample_apps:
+    - Dynatrace Grail DQL
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+    identity_source: 'wikidata Q25048844 ''Dynatrace'' P856 https://www.dynatrace.com (labelled identity step: the
+      Learn page names the owner, not its domain)'
+  detected_by: sweep-bi-analytics.py
+  detected: '2026-10-19'
+  certified_products:
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power BI (semantic models)
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/dynatrace-grail-dql
+    connectors:
+    - Dynatrace Grail DQL
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power Query Online
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/dynatrace-grail-dql
+    connectors:
+    - Dynatrace Grail DQL
+- partner_name: Exact Online
+  app: Exact Online Premium
+  partner: exact-online
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/exact-online-premium
+  category: Database
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: Exact Online
+    matched_domain: exact.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Exact Online Premium
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+    identity_source: 'wikidata Q26857571 ''Exact Online'' P856 http://www.exact.com/nl/exact-online/ (labelled identity
+      step: the Learn page names the owner, not its domain)'
+  detected_by: sweep-bi-analytics.py
+  detected: '2026-10-19'
+  certified_products:
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power BI (semantic models)
+    product_type: connector
+    status: Preview
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/exact-online-premium
+    connectors:
+    - Exact Online Premium
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power Query Online
+    product_type: connector
+    status: Preview
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/exact-online-premium
+    connectors:
+    - Exact Online Premium
+- partner_name: FactSet
+  app: FactSet
+  partner: factset
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/factset
+  category: Other
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: FactSet
+    matched_domain: factset.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - FactSet
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+  detected_by: sweep-bi-analytics.py
+  detected: '2026-10-19'
+  certified_products:
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power BI (semantic models)
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/factset
+    connectors:
+    - FactSet
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power Query Online
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/factset
+    connectors:
+    - FactSet
+- partner_name: Funnel
+  app: Funnel
+  partner: funnel
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/funnel
+  category: Online Services
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: Funnel
+    matched_domain: funnel.io
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Funnel
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+  detected_by: sweep-bi-analytics.py
+  detected: '2026-10-19'
+  certified_products:
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power BI (semantic models)
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/funnel
+    connectors:
+    - Funnel
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power Query Online
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/funnel
+    connectors:
+    - Funnel
+- partner_name: Intersystem
+  app: InterSystems Health Insight
+  partner: intersystems
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/intersystems-healthinsight
+  category: Database
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: Intersystem
+    matched_domain: intersystems.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - InterSystems Health Insight
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+  detected_by: sweep-bi-analytics.py
+  detected: '2026-10-19'
+  certified_products:
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power BI (semantic models)
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/intersystems-healthinsight
+    connectors:
+    - InterSystems Health Insight
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power Query Online
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/intersystems-healthinsight
+    connectors:
+    - InterSystems Health Insight
+- partner_name: MongoDB
+  app: MongoDB Atlas SQL
+  partner: mongodb
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/mongodb-atlas-sql-interface
+  category: Database
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: MongoDB
+    matched_domain: mongodb.com
+    matched_by: domain+name-among-holders
+    listings: 1
+    sample_apps:
+    - MongoDB Atlas SQL
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+  detected_by: sweep-bi-analytics.py
+  detected: '2026-10-19'
+  certified_products:
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power BI (semantic models)
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/mongodb-atlas-sql-interface
+    connectors:
+    - MongoDB Atlas SQL
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power Query Online
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/mongodb-atlas-sql-interface
+    connectors:
+    - MongoDB Atlas SQL
+- partner_name: OneStream
+  app: OneStream
+  partner: onestream
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/onestream
+  category: Other
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: OneStream
+    matched_domain: onestream.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - OneStream
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+  detected_by: sweep-bi-analytics.py
+  detected: '2026-10-19'
+  certified_products:
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power BI (semantic models)
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/onestream
+    connectors:
+    - OneStream
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power Query Online
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/onestream
+    connectors:
+    - OneStream
+- partner_name: Palantir
+  app: Palantir Foundry Datasets
+  partner: palantir
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/palantir-foundry-datasets
+  category: Online Services
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: Palantir
+    matched_domain: palantir.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Palantir Foundry Datasets
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+  detected_by: sweep-bi-analytics.py
+  detected: '2026-10-19'
+  certified_products:
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power BI (semantic models)
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/palantir-foundry-datasets
+    connectors:
+    - Palantir Foundry Datasets
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power Query Online
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/palantir-foundry-datasets
+    connectors:
+    - Palantir Foundry Datasets
+- partner_name: SingleStore
+  app: SingleStore Direct Query Connector
+  partner: singlestore
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/singlestore
+  category: Other
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: SingleStore
+    matched_domain: singlestore.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - SingleStore Direct Query Connector
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+  detected_by: sweep-bi-analytics.py
+  detected: '2026-10-19'
+  certified_products:
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power BI (semantic models)
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/singlestore
+    connectors:
+    - SingleStore Direct Query Connector
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power Query Online
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/singlestore
+    connectors:
+    - SingleStore Direct Query Connector
+- partner_name: Smartsheet
+  app: Smartsheet
+  partner: smartsheet
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/smartsheet
+  category: null
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: Smartsheet
+    matched_domain: smartsheet.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Smartsheet
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+    identity_source: 'wikidata Q7544153 ''Smartsheet'' P856 https://www.smartsheet.com (labelled identity step:
+      the Learn page names the owner, not its domain)'
+  detected_by: sweep-bi-analytics.py
+  detected: '2026-10-19'
+  certified_products:
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power BI (semantic models)
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/smartsheet
+    connectors:
+    - Smartsheet
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power Query Online
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/smartsheet
+    connectors:
+    - Smartsheet
+- partner_name: SolarWinds
+  app: SolarWinds Service Desk
+  partner: solarwinds
+  partner_match: domain+name-among-holders
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/solarwinds-service-desk
+  category: Other
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: SolarWinds
+    matched_domain: solarwinds.com
+    matched_by: domain+name-among-holders
+    listings: 1
+    sample_apps:
+    - SolarWinds Service Desk
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+    identity_source: 'wikidata Q7555837 ''SolarWinds'' P856 http://www.solarwinds.com/ (labelled identity step:
+      the Learn page names the owner, not its domain)'
+  detected_by: sweep-bi-analytics.py
+  detected: '2026-10-19'
+  certified_products:
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power BI (semantic models)
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/solarwinds-service-desk
+    connectors:
+    - SolarWinds Service Desk
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power Query Online
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/solarwinds-service-desk
+    connectors:
+    - SolarWinds Service Desk
+- partner_name: Supermetrics
+  app: Supermetrics
+  partner: supermetrics
+  partner_match: domain
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  relationship: platform-app
+  direction: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/supermetrics
+  category: Online Services
+  contract_reference:
+    register: 'Power Query connectors (learn.microsoft.com/power-query/connectors: ''owned and provided by'' pages)'
+    spec_file: null
+    role: power-bi-app
+    registered_name: Supermetrics
+    matched_domain: supermetrics.com
+    matched_by: domain
+    listings: 1
+    sample_apps:
+    - Supermetrics
+    signal_note: one edge per (owner, platform); certified_products lists each product the connector ships in, never
+      counted
+    detected_by: sweep-bi-analytics.py
+    detected: '2026-10-19'
+  detected_by: sweep-bi-analytics.py
+  detected: '2026-10-19'
+  certified_products:
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power BI (semantic models)
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/supermetrics
+    connectors:
+    - Supermetrics
+  - program: Microsoft Power Query Connector Certification Program
+    product: Power Query Online
+    product_type: connector
+    status: General availability
+    evidence: https://learn.microsoft.com/en-us/power-query/connectors/supermetrics
+    connectors:
+    - Supermetrics
 method: searched
 checked:
 - https://api.nuget.org/v3
@@ -157,6 +1108,7 @@ checked:
 - https://fivetran.com/docs/connectors/partner-built-program
 - https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/
 - https://github.com/meltano/hub
+- https://learn.microsoft.com/en-us/power-query/connectors/
 - https://proxy.golang.org
 - https://pypi.org/pypi
 - https://registry.npmjs.org
@@ -166,3 +1118,12 @@ checked:
 source:
 - https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/
 - https://zapier.com/api/v4/apps/
+marketplace_apps:
+- marketplace: own
+  channel: partner-built
+  app: power-bi
+  url: https://learn.microsoft.com/en-us/power-query/connectors/
+  adapter: sweep-bi-analytics.py:power-bi
+  listed: 22
+  note: 'Power BI / Power Query certified connectors: only domain-linked third-party builders are written; platform-built
+    skipped'
